@@ -23,12 +23,22 @@ The public API matches Aspose.3D for Java 26.1.0:
 
 ## Building
 
+**Option 1: Using build/test scripts (no Maven required)**
 ```bash
 # Build the project
-./gradlew build
+./build.sh
+
+# Run tests only
+./run-tests.sh
+```
+
+**Option 2: Using Maven**
+```bash
+# Build the project
+mvn clean package
 
 # Run tests
-./gradlew test
+mvn test
 ```
 
 ## Usage
