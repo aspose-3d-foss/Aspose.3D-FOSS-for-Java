@@ -17,21 +17,17 @@ public class StlImporter implements IImporter {
 
     @Override
     public Scene load(Stream stream, LoadOptions options) throws ImportException {
-        System.out.println("StlImporter.load() called");
         if (!(options instanceof StlLoadOptions)) {
             options = new StlLoadOptions();
         }
         StlLoadOptions stlOptions = (StlLoadOptions) options;
-        System.out.println("Content type: " + stlOptions.getContentType());
 
         Scene scene = new Scene();
         Node rootNode = scene.getRootNode();
 
         try {
             byte[] header = new byte[80];
-            System.out.println("    StlImporter: reading header...");
             int bytesRead = stream.read(header);
-            System.out.println("    StlImporter: read " + bytesRead + " bytes");
             
             if (bytesRead < 80) {
                 throw new ImportException("Invalid STL file - too short, read " + bytesRead + " of 80");
@@ -108,7 +104,7 @@ public class StlImporter implements IImporter {
     private boolean isAsciiHeader(byte[] header) {
         for (int i = 0; i < 80; i++) {
             char c = (char) header[i];
-            if (c < 32 || c > 126) {
+            if ((c < 32 || c > 126) && c != '\n' && c != '\r' && c != '\t') {
                 return false;
             }
         }
@@ -138,6 +134,7 @@ public class StlImporter implements IImporter {
         Mesh mesh = new Mesh(header.isEmpty() ? "Mesh" : header);
         Map<String, Integer> vertexMap = new HashMap<>();
         List<Vector3> vertices = new ArrayList<>();
+        faceVertices.clear();
 
         String line;
         while ((line = reader.readLine()) != null) {

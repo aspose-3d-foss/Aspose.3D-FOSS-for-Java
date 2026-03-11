@@ -17,10 +17,10 @@
 - [x] OBJ: Implement importer
 - [x] OBJ: Implement exporter
 - [x] OBJ: Add tests and update FILE_FORMATS.md
-- [ ] STL: Create plugin structure
-- [ ] STL: Implement importer
-- [ ] STL: Implement exporter
-- [ ] STL: Add tests and update FILE_FORMATS.md
+- [x] STL: Create plugin structure
+- [x] STL: Implement importer (binary and ASCII)
+- [x] STL: Implement exporter (binary and ASCII)
+- [x] STL: Add tests and update FILE_FORMATS.md
 - [ ] glTF: Create plugin structure
 - [ ] glTF: Implement importer
 - [ ] glTF: Implement exporter
@@ -70,6 +70,17 @@
 - Added supporting enums (VertexElementType, MappingMode, ReferenceMode, TextureMapping, CoordinateSystem, Axis)
 - Successfully tested OBJ import/export with cube.obj test file
 - Next: Implement STL format support
+
+### Session 3 - 2026-03-11
+- Refactored plugin architecture based on foss.3d.python implementation
+- Updated Scene.open() and Scene.save() to detect format by file extension
+- Updated PluginRegistry to select correct importer/exporter based on FileFormat
+- Added fileFormat field to LoadOptions class
+- Fixed STL binary exporter (buffer offset calculation)
+- Fixed STL ASCII importer (allow newline characters in header detection)
+- Added comprehensive STL format tests (StlFormatTest with 6 tests)
+- All 13 tests passing (3 SceneTest, 4 Vector3Test, 6 StlFormatTest)
+- Next: Implement glTF format support
 
 ## Test Data Requests
 - None yet

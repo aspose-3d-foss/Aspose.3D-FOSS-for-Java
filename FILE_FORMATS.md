@@ -5,7 +5,7 @@
 | Format | Extensions | Import | Export | Notes |
 |--------|------------|--------|--------|-------|
 | OBJ | .obj, .mtl | ✓ | ✓ | Full support |
-| STL | .stl | ✗ | ✗ | Not implemented |
+| STL | .stl | ✓ | ✓ | Binary and ASCII |
 | glTF | .gltf, .glb | ✗ | ✗ | Not implemented |
 | FBX | .fbx | ✗ | ✗ | Not implemented |
 | USD | .usd, .usda, .usdc | ✗ | ✗ | Not implemented |
@@ -22,9 +22,12 @@
   - Multiple objects in one file need testing
 
 ### STL
-- **Import**: Not implemented
-- **Export**: Not implemented
-- **Limitations**: None (format not yet implemented)
+- **Import**: Full support for binary and ASCII STL
+- **Export**: Full support for binary and ASCII STL
+- **Limitations**:
+  - No material support (STL is geometry-only)
+  - Vertex deduplication not implemented (uses separate vertices for each face)
+  - Normal recalculation option available but not tested
 
 ### glTF/GLB
 - **Import**: Not implemented

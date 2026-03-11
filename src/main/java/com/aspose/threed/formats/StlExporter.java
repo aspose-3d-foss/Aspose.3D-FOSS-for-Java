@@ -69,19 +69,21 @@ public class StlExporter implements IExporter {
 
             Vector3 normal = calculateNormal(mesh, face);
             writeFloat(buffer, 0, (float) normal.x);
-            writeFloat(buffer, 12, (float) normal.y);
-            writeFloat(buffer, 24, (float) normal.z);
+            writeFloat(buffer, 4, (float) normal.y);
+            writeFloat(buffer, 8, (float) normal.z);
 
-            for (int idx : face) {
-                Vector4 v = mesh.getControlPoints().get(idx);
-                writeFloat(buffer, 36, (float) v.x);
-                writeFloat(buffer, 48, (float) v.y);
-                writeFloat(buffer, 60, (float) v.z);
-            }
-
+            int vertexOffset = 12;
             for (int i = 0; i < 3; i++) {
-                writeFloat(buffer, 72, 0.0f);
+                if (i < face.length) {
+                    Vector4 v = mesh.getControlPoints().get(face[i]);
+                    writeFloat(buffer, vertexOffset, (float) v.x);
+                    writeFloat(buffer, vertexOffset + 4, (float) v.y);
+                    writeFloat(buffer, vertexOffset + 8, (float) v.z);
+                }
+                vertexOffset += 12;
             }
+
+            stream.getOutputStream().write(buffer);
 
             byte[] attr = new byte[2];
             stream.getOutputStream().write(attr);

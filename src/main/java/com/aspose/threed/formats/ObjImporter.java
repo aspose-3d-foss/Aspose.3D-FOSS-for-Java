@@ -17,7 +17,6 @@ public class ObjImporter implements IImporter {
 
     @Override
     public Scene load(Stream stream, LoadOptions options) throws ImportException {
-        System.out.println("ObjImporter.load() called - should NOT be called for STL!");
         if (!(options instanceof ObjLoadOptions)) {
             options = new ObjLoadOptions();
         }
@@ -38,7 +37,6 @@ public class ObjImporter implements IImporter {
         String currentObjectName = "Mesh";
 
         try {
-            System.out.println("  ObjImporter: about to parse file");
             String line;
             while ((line = reader.readLine()) != null) {
                 line = line.trim();
@@ -104,7 +102,6 @@ public class ObjImporter implements IImporter {
                 }
             }
 
-            System.out.println("  ObjImporter: vertices=" + vertices.size() + ", faces=" + faces.size());
             if (objOptions.getFlipCoordinateSystem()) {
                 for (Vector3 v : vertices) {
                     v.z = -v.z;
@@ -132,8 +129,6 @@ public class ObjImporter implements IImporter {
                 }
                 mesh.createPolygon(indices);
             }
-
-            System.out.println("  ObjImporter: mesh has " + mesh.getControlPoints().size() + " vertices, " + mesh.getPolygonCount() + " faces");
 
             Node meshNode = rootNode.createChildNode(currentObjectName, mesh);
             if (currentMaterial != null && objOptions.getEnableMaterials()) {

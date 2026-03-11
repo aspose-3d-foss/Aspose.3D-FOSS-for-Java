@@ -18,7 +18,7 @@ public class ObjExporter implements IExporter {
     @Override
     public void export(Scene scene, Stream stream, SaveOptions options) throws ExportException {
         if (!(options instanceof ObjSaveOptions)) {
-            options = new ObjSaveOptions();
+            throw new ExportException("Invalid save options for OBJ export");
         }
         ObjSaveOptions objOptions = (ObjSaveOptions) options;
 

@@ -32,34 +32,17 @@ final class PluginRegistry {
         exporters.add(exporter);
     }
 
-    static Scene importScene(Stream stream, LoadOptions options) throws IOException {
-        // Read the entire stream into memory so we can try multiple importers
-        byte[] data = readAllBytes(stream);
-        
+    static Scene importScene(Stream stream, FileFormat format, LoadOptions options) throws IOException {
         for (IImporter importer : importers) {
-            try {
-                ByteArrayInputStream bis = new ByteArrayInputStream(data);
-                Stream s = new Stream(bis);
-                Scene scene = importer.load(s, options);
-                if (scene != null && !scene.getRootNode().getChildNodes().isEmpty()) {
-                    boolean hasData = false;
-                    for (Node n : scene.getRootNode().getChildNodes()) {
-                        if (n.getEntity() instanceof Mesh) {
-                            Mesh m = (Mesh) n.getEntity();
-                            if (m.getControlPoints().size() > 0) {
-                                hasData = true;
-                                break;
-                            }
-                        }
-                    }
-                    if (hasData) {
-                        return scene;
-                    }
+            if (importer.canImport(format)) {
+                try {
+                    return importer.load(stream, options);
+                } catch (ImportException e) {
+                    throw new IOException("Import failed: " + e.getMessage(), e);
                 }
-            } catch (ImportException e) {
             }
         }
-        throw new IOException("No suitable importer found");
+        throw new IOException("No suitable importer found for format: " + format.getExtension());
     }
 
     private static byte[] readAllBytes(Stream stream) throws IOException {
@@ -77,15 +60,18 @@ final class PluginRegistry {
         return baos.toByteArray();
     }
 
-    static void exportScene(Scene scene, Stream stream, SaveOptions options) throws IOException {
+    static void exportScene(Scene scene, Stream stream, FileFormat format, SaveOptions options) throws IOException {
         for (IExporter exporter : exporters) {
-            try {
-                exporter.export(scene, stream, options);
-                return;
-            } catch (ExportException e) {
+            if (exporter.canExport(format)) {
+                try {
+                    exporter.export(scene, stream, options);
+                    return;
+                } catch (ExportException e) {
+                    throw new IOException("Export failed: " + e.getMessage(), e);
+                }
             }
         }
-        throw new IOException("No suitable exporter found");
+        throw new IOException("No suitable exporter found for format: " + format.getExtension());
     }
 
     static void registerFormat(FileFormat format) {

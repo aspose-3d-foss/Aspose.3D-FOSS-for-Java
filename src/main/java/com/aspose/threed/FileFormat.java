@@ -247,10 +247,13 @@ public class FileFormat {
 
     public LoadOptions createLoadOptions() throws ImportException {
         if (loadOptionsClass == null) {
-            return new LoadOptions();
+            LoadOptions options = new LoadOptions();
+            options.setFileFormat(this);
+            return options;
         }
         try {
             LoadOptions options = (LoadOptions) Class.forName(loadOptionsClass).getDeclaredConstructor().newInstance();
+            options.setFileFormat(this);
             if (options instanceof StlLoadOptions) {
                 ((StlLoadOptions) options).setContentType(this.contentType);
             }
