@@ -5,6 +5,7 @@ public class GltfSaveOptions extends SaveOptions {
     private boolean prettyPrint = false;
     private String bufferFilePrefix = "";
     private String saveExtras = null;
+    private FileContentType contentType = FileContentType.ASCII;
 
     public GltfSaveOptions() {
         super();
@@ -40,5 +41,13 @@ public class GltfSaveOptions extends SaveOptions {
 
     public void setSaveExtras(String value) {
         this.saveExtras = value;
+    }
+
+    public FileContentType getContentType() {
+        return contentType;
+    }
+
+    public void setContentType(FileContentType value) {
+        this.contentType = value;
     }
 }

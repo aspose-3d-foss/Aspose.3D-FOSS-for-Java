@@ -18,6 +18,6 @@ public class GltfExporter implements IExporter {
 
     @Override
     public void export(Scene scene, Stream stream, SaveOptions options) throws ExportException {
-        throw new ExportException("glTF export not yet fully implemented - stub");
+        throw new ExportException("glTF export not yet fully implemented");
     }
 }
