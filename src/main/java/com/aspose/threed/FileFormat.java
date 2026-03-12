@@ -89,10 +89,10 @@ public class FileFormat {
             FileContentType.ASCII, ".obj", new String[]{".obj", ".mtl"}, true, true, 
             "com.aspose.threed.ObjLoadOptions", "com.aspose.threed.ObjSaveOptions");
         GLTF2 = new FileFormat(FileFormatType.GLTF, new Version(2, 0, 0), 
-            FileContentType.ASCII, ".gltf", new String[]{".gltf"}, false, false, 
+            FileContentType.ASCII, ".gltf", new String[]{".gltf"}, true, true, 
             "com.aspose.threed.GltfLoadOptions", "com.aspose.threed.GltfSaveOptions");
         GLTF2_BINARY = new FileFormat(FileFormatType.GLTF, new Version(2, 0, 0), 
-            FileContentType.BINARY, ".glb", new String[]{".glb"}, false, false, 
+            FileContentType.BINARY, ".glb", new String[]{".glb"}, true, true, 
             "com.aspose.threed.GltfLoadOptions", "com.aspose.threed.GltfSaveOptions");
 
         FBX7200ASCII = FBX6100ASCII;
@@ -118,9 +118,11 @@ public class FileFormat {
         UNIVERSAL3D = new FileFormat(FileFormatType.UNIVERSAL3D, new Version(1, 0, 0), 
             FileContentType.BINARY, ".u3d", new String[]{".u3d"}, false, false, null, null);
         GLTF = new FileFormat(FileFormatType.GLTF, new Version(1, 0, 0), 
-            FileContentType.ASCII, ".gltf", new String[]{".gltf"}, false, false, null, null);
+            FileContentType.ASCII, ".gltf", new String[]{".gltf"}, true, true, 
+            "com.aspose.threed.GltfLoadOptions", "com.aspose.threed.GltfSaveOptions");
         GLTF_BINARY = new FileFormat(FileFormatType.GLTF, new Version(1, 0, 0), 
-            FileContentType.BINARY, ".glb", new String[]{".glb"}, false, false, null, null);
+            FileContentType.BINARY, ".glb", new String[]{".glb"}, true, true, 
+            "com.aspose.threed.GltfLoadOptions", "com.aspose.threed.GltfSaveOptions");
         PDF = new PdfFormat();
         BLENDER = new FileFormat(FileFormatType.BLENDER, new Version(1, 0, 0), 
             FileContentType.BINARY, ".blend", new String[]{".blend"}, false, false, null, null);

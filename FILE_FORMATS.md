@@ -6,7 +6,7 @@
 |--------|------------|--------|--------|-------|
 | OBJ | .obj, .mtl | ✓ | ✓ | Full support |
 | STL | .stl | ✓ | ✓ | Binary and ASCII |
-| glTF | .gltf, .glb | ✗ | ✗ | Not implemented |
+| glTF | .gltf, .glb | ⚠ | ⚠ | Stub only |
 | FBX | .fbx | ✗ | ✗ | Not implemented |
 | USD | .usd, .usda, .usdc | ✗ | ✗ | Not implemented |
 
@@ -28,6 +28,15 @@
   - No material support (STL is geometry-only)
   - Vertex deduplication not implemented (uses separate vertices for each face)
   - Normal recalculation option available but not tested
+
+### glTF/GLB
+- **Import**: Stub implementation - format detection works but import not yet implemented
+- **Export**: Stub implementation - not yet implemented
+- **Limitations**:
+  - Only binary/ASCII detection is implemented
+  - JSON parsing not yet implemented
+  - Buffer/accessor/view system not yet implemented
+  - Full implementation requires complex buffer management
 
 ### glTF/GLB
 - **Import**: Not implemented

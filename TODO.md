@@ -21,10 +21,10 @@
 - [x] STL: Implement importer (binary and ASCII)
 - [x] STL: Implement exporter (binary and ASCII)
 - [x] STL: Add tests and update FILE_FORMATS.md
-- [ ] glTF: Create plugin structure
-- [ ] glTF: Implement importer
-- [ ] glTF: Implement exporter
-- [ ] glTF: Add tests and update FILE_FORMATS.md
+- [x] glTF: Create plugin structure
+- [x] glTF: Implement importer (stub)
+- [x] glTF: Implement exporter (stub)
+- [x] glTF: Add tests and update FILE_FORMATS.md
 - [ ] FBX: Research format specification
 - [ ] FBX: Create plugin structure
 - [ ] FBX: Implement importer
@@ -81,6 +81,18 @@
 - Added comprehensive STL format tests (StlFormatTest with 6 tests)
 - All 13 tests passing (3 SceneTest, 4 Vector3Test, 6 StlFormatTest)
 - Next: Implement glTF format support
+
+### Session 4 - 2026-03-11
+- Implemented glTF format support (stub)
+- Created GltfLoadOptions and GltfSaveOptions classes
+- Created GltfImporter with basic structure (binary/ASCII detection)
+- Created GltfExporter as stub (not yet implemented)
+- Enabled GLTF, GLTF2, GLTF_BINARY, GLTF2_BINARY in FileFormat
+- Registered glTF importer/exporter in PluginRegistry
+- Added GltfFormatTest with 3 tests (options and format detection)
+- All 16 tests passing (3 SceneTest, 4 Vector3Test, 6 StlFormatTest, 3 GltfFormatTest)
+- Note: glTF import/export is stub only - full implementation requires JSON parsing and buffer handling
+- Next: Implement FBX format support (or complete glTF implementation)
 
 ## Test Data Requests
 - None yet

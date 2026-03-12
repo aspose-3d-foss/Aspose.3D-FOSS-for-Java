@@ -4,6 +4,8 @@ import com.aspose.threed.formats.ObjImporter;
 import com.aspose.threed.formats.ObjExporter;
 import com.aspose.threed.formats.StlImporter;
 import com.aspose.threed.formats.StlExporter;
+import com.aspose.threed.formats.GltfImporter;
+import com.aspose.threed.formats.GltfExporter;
 
 import java.util.*;
 import java.io.*;
@@ -22,6 +24,8 @@ final class PluginRegistry {
         registerExporter(new ObjExporter());
         registerImporter(new StlImporter());
         registerExporter(new StlExporter());
+        registerImporter(new GltfImporter());
+        registerExporter(new GltfExporter());
     }
 
     static void registerImporter(IImporter importer) {
