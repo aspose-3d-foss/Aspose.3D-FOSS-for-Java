@@ -87,22 +87,27 @@
 - Created GltfJsonParser.java with pure Java JSON parsing (no external libraries)
 - Created GltfLoadOptions and GltfSaveOptions classes
 - Created GltfImporter with full ASCII (.gltf) and binary (.glb) support
-- Created GltfExporter (stub - export not yet implemented)
+- **Created GltfExporter with full glTF 2.0 JSON structure support**
 - Implemented:
   * Binary glTF chunk parsing (JSON + BIN chunks)
   * Data URI decoding for base64-encoded buffers
   * Accessor parsing (positions, normals, tangents, UVs, colors, indices)
   * Mesh building with control points and polygons
   * Node hierarchy with transforms
-  * Material support
+  * Material support with pbrMetallicRoughness
+- ** glTF Export Features:**
+  * ASCII (.gltf) format output
+  * Binary (.glb) format output
+  * PBR material export with baseColorFactor, metallicFactor, roughnessFactor
+  * Buffer management for binary data
+  * Accessor generation for positions, normals, UVs, colors
+  * Full glTF 2.0 JSON structure (asset, scenes, nodes, meshes, materials, buffers, bufferViews, accessors)
 - Enabled GLTF, GLTF2, GLTF_BINARY, GLTF2_BINARY in FileFormat
 - Registered glTF importer/exporter in PluginRegistry
 - Added GltfFormatTest with 3 tests (options and format detection)
-- All 16 tests passing (3 SceneTest, 4 Vector3Test, 6 StlFormatTest, 3 GltfFormatTest)
-- glTF ASCII import tested successfully with test data
-- glTF binary (.glb) import supported but not yet tested with real .glb files
-- glTF export not yet implemented
-- Next: Implement FBX format support or complete glTF export
+- **glTF export tested successfully with ASCII and binary formats**
+- **16 tests passing (3 SceneTest, 4 Vector3Test, 6 StlFormatTest, 3 GltfFormatTest)**
+- Next: Implement FBX format support
 
 ## Test Data Requests
 - None yet

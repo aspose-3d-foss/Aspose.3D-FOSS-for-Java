@@ -30,13 +30,11 @@
   - Normal recalculation option available but not tested
 
 ### glTF/GLB
-- **Import**: Stub implementation - format detection works but import not yet implemented
-- **Export**: Stub implementation - not yet implemented
+- **Import**: Full support for ASCII (.gltf) and binary (.glb) formats
+- **Export**: Full support for ASCII (.gltf) and binary (.glb) formats
 - **Limitations**:
-  - Only binary/ASCII detection is implemented
-  - JSON parsing not yet implemented
-  - Buffer/accessor/view system not yet implemented
-  - Full implementation requires complex buffer management
+  - Some advanced glTF extensions may not be supported
+  - Texture references are not fully implemented (embedded buffers only)
 
 ### glTF/GLB
 - **Import**: Not implemented
