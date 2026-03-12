@@ -119,9 +119,9 @@ public class Scene extends SceneObject {
     }
 
     public void open(String filePath, LoadOptions options, Cancellation cancellationToken) throws IOException {
-        FileFormat format = FileFormat.detect(filePath);
+        FileFormat format = options.getFileFormat();
         if (format == null) {
-            throw new IOException("Unknown file format: " + filePath);
+            format = IOService.getFormatByFileName(filePath);
         }
         open(new Stream(new FileInputStream(filePath)), format, options, cancellationToken);
     }
@@ -166,7 +166,14 @@ public class Scene extends SceneObject {
                 throw new IOException("Failed to create load options", e);
             }
         }
-        Scene imported = PluginRegistry.importScene(stream, format, options);
+        Scene imported = null;
+        if (format.getImporter() != null) {
+            try {
+                imported = format.getImporter().load(stream, options);
+            } catch (ImportException e) {
+                throw new IOException("Import failed: " + e.getMessage(), e);
+            }
+        }
         if (imported != null) {
             rootNode.getChildNodes().clear();
             rootNode.getChildNodes().addAll(imported.getRootNode().getChildNodes());
@@ -179,16 +186,7 @@ public class Scene extends SceneObject {
     }
 
     public void open(Stream stream, Cancellation cancellationToken) throws IOException {
-        if (cancellationToken != null && cancellationToken.isCancelled()) {
-            return;
-        }
-        clear();
-        Scene imported = PluginRegistry.importScene(stream, null, new LoadOptions());
-        if (imported != null) {
-            rootNode.getChildNodes().clear();
-            rootNode.getChildNodes().addAll(imported.getRootNode().getChildNodes());
-        }
-        setScene(this);
+        open(stream, (LoadOptions) null, cancellationToken);
     }
 
     public void open(Stream stream, FileFormat format) throws IOException {
@@ -221,8 +219,18 @@ public class Scene extends SceneObject {
             return;
         }
         FileFormat format = options.getFileFormat();
+        if (format == null) {
+            throw new IOException("File format not specified");
+        }
         clear();
-        Scene imported = PluginRegistry.importScene(stream, format, options);
+        Scene imported = null;
+        if (format.getImporter() != null) {
+            try {
+                imported = format.getImporter().load(stream, options);
+            } catch (ImportException e) {
+                throw new IOException("Import failed: " + e.getMessage(), e);
+            }
+        }
         if (imported != null) {
             rootNode.getChildNodes().clear();
             rootNode.getChildNodes().addAll(imported.getRootNode().getChildNodes());
@@ -386,7 +394,22 @@ public class Scene extends SceneObject {
         if (cancellationToken != null && cancellationToken.isCancelled()) {
             return;
         }
-        PluginRegistry.exportScene(this, new Stream(stream), format, options);
+        if (options == null) {
+            options = format.createSaveOptions();
+        }
+        if (options.getFileFormat() == null) {
+            throw new IOException("File format not specified in SaveOptions");
+        }
+        FileFormat fileFormat = options.getFileFormat();
+        if (fileFormat.getExporter() != null) {
+            try {
+                fileFormat.getExporter().export(this, new Stream(stream), options);
+            } catch (ExportException e) {
+                throw new IOException("Export failed: " + e.getMessage(), e);
+            }
+        } else {
+            throw new IOException("No exporter available for format: " + fileFormat.getExtension());
+        }
     }
 
     public void save(Stream stream, FileFormat format) throws IOException {
@@ -412,7 +435,16 @@ public class Scene extends SceneObject {
         if (options.getFileFormat() == null) {
             throw new IOException("File format not specified in SaveOptions");
         }
-        PluginRegistry.exportScene(this, stream, options.getFileFormat(), options);
+        FileFormat format = options.getFileFormat();
+        if (format.getExporter() != null) {
+            try {
+                format.getExporter().export(this, stream, options);
+            } catch (ExportException e) {
+                throw new IOException("Export failed: " + e.getMessage(), e);
+            }
+        } else {
+            throw new IOException("No exporter available for format: " + format.getExtension());
+        }
     }
 
     public void render(Camera camera, String fileName) throws IOException {

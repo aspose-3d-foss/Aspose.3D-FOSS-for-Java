@@ -6,6 +6,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.aspose.threed.formats.ObjImporter;
+import com.aspose.threed.formats.ObjExporter;
+import com.aspose.threed.formats.StlImporter;
+import com.aspose.threed.formats.StlExporter;
+import com.aspose.threed.formats.GltfImporter;
+import com.aspose.threed.formats.GltfExporter;
+
 public class FileFormat {
     public static final FileFormat FBX6100ASCII;
     public static final FileFormat FBX6100_BINARY;
@@ -68,6 +75,8 @@ public class FileFormat {
     private final boolean canExport;
     private final String loadOptionsClass;
     private final String saveOptionsClass;
+    private IImporter importer;
+    private IExporter exporter;
 
     private static final List<FileFormat> allFormats = new ArrayList<>();
     private static final Map<String, FileFormat> extensionIndex = new HashMap<>();
@@ -75,25 +84,27 @@ public class FileFormat {
     static {
          FBX6100ASCII = new FileFormat(FileFormatType.FBX, new Version(6, 1, 0), 
              FileContentType.ASCII, ".fbx", new String[]{".fbx"}, true, false, 
-             "com.aspose.threed.FbxLoadOptions", "com.aspose.threed.FbxSaveOptions");
+             "com.aspose.threed.FbxLoadOptions", "com.aspose.threed.FbxSaveOptions", null, null);
          FBX6100_BINARY = new FileFormat(FileFormatType.FBX, new Version(6, 1, 0), 
              FileContentType.BINARY, ".fbx", new String[]{".fbx"}, true, false, 
-             "com.aspose.threed.FbxLoadOptions", "com.aspose.threed.FbxSaveOptions");
+             "com.aspose.threed.FbxLoadOptions", "com.aspose.threed.FbxSaveOptions", null, null);
         STL_BINARY = new FileFormat(FileFormatType.STL, new Version(1, 0, 0), 
             FileContentType.BINARY, ".stl", new String[]{".stl"}, true, true, 
-            "com.aspose.threed.StlLoadOptions", "com.aspose.threed.StlSaveOptions");
+            "com.aspose.threed.StlLoadOptions", "com.aspose.threed.StlSaveOptions", new StlImporter(), new StlExporter());
         STLASCII = new FileFormat(FileFormatType.STL, new Version(1, 0, 0), 
             FileContentType.ASCII, ".stl", new String[]{".stl"}, true, true, 
-            "com.aspose.threed.StlLoadOptions", "com.aspose.threed.StlSaveOptions");
+            "com.aspose.threed.StlLoadOptions", "com.aspose.threed.StlSaveOptions", new StlImporter(), new StlExporter());
         WAVEFRONTOBJ = new FileFormat(FileFormatType.WAVEFRONTOBJ, new Version(1, 0, 0), 
             FileContentType.ASCII, ".obj", new String[]{".obj", ".mtl"}, true, true, 
-            "com.aspose.threed.ObjLoadOptions", "com.aspose.threed.ObjSaveOptions");
+            "com.aspose.threed.ObjLoadOptions", "com.aspose.threed.ObjSaveOptions", new ObjImporter(), new ObjExporter());
         GLTF2 = new FileFormat(FileFormatType.GLTF, new Version(2, 0, 0), 
             FileContentType.ASCII, ".gltf", new String[]{".gltf"}, true, true, 
-            "com.aspose.threed.GltfLoadOptions", "com.aspose.threed.GltfSaveOptions");
+            "com.aspose.threed.GltfLoadOptions", "com.aspose.threed.GltfSaveOptions", new GltfImporter(), new GltfExporter());
         GLTF2_BINARY = new FileFormat(FileFormatType.GLTF, new Version(2, 0, 0), 
             FileContentType.BINARY, ".glb", new String[]{".glb"}, true, true, 
-            "com.aspose.threed.GltfLoadOptions", "com.aspose.threed.GltfSaveOptions");
+            "com.aspose.threed.GltfLoadOptions", "com.aspose.threed.GltfSaveOptions", new GltfImporter(), new GltfExporter());
+        
+
 
         FBX7200ASCII = FBX6100ASCII;
         FBX7200_BINARY = FBX6100_BINARY;
@@ -162,16 +173,32 @@ public class FileFormat {
         USDZ = new FileFormat(FileFormatType.USD, new Version(1, 0, 0), 
             FileContentType.BINARY, ".usdz", new String[]{".usdz"}, false, false, null, null);
         XYZ = new FileFormat(FileFormatType.XYZ, new Version(1, 0, 0), 
-            FileContentType.ASCII, ".xyz", new String[]{".xyz"}, false, false, null, null);
+            FileContentType.ASCII, ".xyz", new String[]{".xyz"}, false, false, null, null, null, null);
         PCD = new FileFormat(FileFormatType.PCD, new Version(1, 0, 0), 
-            FileContentType.ASCII, ".pcd", new String[]{".pcd"}, false, false, null, null);
+            FileContentType.ASCII, ".pcd", new String[]{".pcd"}, false, false, null, null, null, null);
         PCD_BINARY = new FileFormat(FileFormatType.PCD, new Version(1, 0, 0), 
-            FileContentType.BINARY, ".pcd", new String[]{".pcd"}, false, false, null, null);
+            FileContentType.BINARY, ".pcd", new String[]{".pcd"}, false, false, null, null, null, null);
+        
+        FileFormat.registerFormat(FBX6100ASCII);
+        FileFormat.registerFormat(FBX6100_BINARY);
+        FileFormat.registerFormat(STL_BINARY);
+        FileFormat.registerFormat(STLASCII);
+        FileFormat.registerFormat(WAVEFRONTOBJ);
+        FileFormat.registerFormat(GLTF2);
+        FileFormat.registerFormat(GLTF2_BINARY);
+        FileFormat.registerFormat(GLTF);
+        FileFormat.registerFormat(GLTF_BINARY);
     }
 
     private FileFormat(FileFormatType type, Version version, FileContentType contentType, 
                        String extension, String[] extensions, boolean canImport, boolean canExport,
                        String loadOptionsClass, String saveOptionsClass) {
+        this(type, version, contentType, extension, extensions, canImport, canExport, loadOptionsClass, saveOptionsClass, null, null);
+    }
+
+    private FileFormat(FileFormatType type, Version version, FileContentType contentType, 
+                       String extension, String[] extensions, boolean canImport, boolean canExport,
+                       String loadOptionsClass, String saveOptionsClass, IImporter importer, IExporter exporter) {
         this.type = type;
         this.version = version;
         this.contentType = contentType;
@@ -181,6 +208,8 @@ public class FileFormat {
         this.canExport = canExport;
         this.loadOptionsClass = loadOptionsClass;
         this.saveOptionsClass = saveOptionsClass;
+        this.importer = importer;
+        this.exporter = exporter;
         
         allFormats.add(this);
         for (String ext : extensions) {
@@ -239,12 +268,31 @@ public class FileFormat {
         return type;
     }
 
+    public IImporter getImporter() {
+        return importer;
+    }
+
+    public IExporter getExporter() {
+        return exporter;
+    }
+
+    public boolean canDetect(Stream stream, String fileName) {
+        return false;
+    }
+
     public static FileFormat detect(Stream stream, String fileName) throws IOException {
-        return getFormatByExtension(fileName);
+        return IOService.detectFormat(stream, fileName);
     }
 
     public static FileFormat detect(String fileName) throws IOException {
-        return getFormatByExtension(fileName);
+        return IOService.getFormatByFileName(fileName);
+    }
+
+    public static void registerFormat(FileFormat format) {
+        allFormats.add(format);
+        for (String ext : format.extensions) {
+            extensionIndex.put(ext.toLowerCase(), format);
+        }
     }
 
     public LoadOptions createLoadOptions() throws ImportException {
