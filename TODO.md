@@ -22,13 +22,13 @@
 - [x] STL: Implement exporter (binary and ASCII)
 - [x] STL: Add tests and update FILE_FORMATS.md
 - [x] glTF: Create plugin structure
-- [x] glTF: Implement importer (stub)
-- [x] glTF: Implement exporter (stub)
+- [x] glTF: Implement importer
+- [x] glTF: Implement exporter
 - [x] glTF: Add tests and update FILE_FORMATS.md
-- [ ] FBX: Research format specification
-- [ ] FBX: Create plugin structure
-- [ ] FBX: Implement importer
-- [ ] FBX: Implement exporter
+- [x] FBX: Research format specification
+- [x] FBX: Create plugin structure
+- [x] FBX: Implement importer (binary)
+- [x] FBX: Implement exporter (stub)
 - [ ] FBX: Add tests and update FILE_FORMATS.md
 
 ## Phase 3: Core 3D Operations

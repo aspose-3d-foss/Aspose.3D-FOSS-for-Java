@@ -73,12 +73,12 @@ public class FileFormat {
     private static final Map<String, FileFormat> extensionIndex = new HashMap<>();
 
     static {
-        FBX6100ASCII = new FileFormat(FileFormatType.FBX, new Version(6, 1, 0), 
-            FileContentType.ASCII, ".fbx", new String[]{".fbx"}, false, false, 
-            "com.aspose.threed.FbxLoadOptions", "com.aspose.threed.FbxSaveOptions");
-        FBX6100_BINARY = new FileFormat(FileFormatType.FBX, new Version(6, 1, 0), 
-            FileContentType.BINARY, ".fbx", new String[]{".fbx"}, false, false, 
-            "com.aspose.threed.FbxLoadOptions", "com.aspose.threed.FbxSaveOptions");
+         FBX6100ASCII = new FileFormat(FileFormatType.FBX, new Version(6, 1, 0), 
+             FileContentType.ASCII, ".fbx", new String[]{".fbx"}, true, false, 
+             "com.aspose.threed.FbxLoadOptions", "com.aspose.threed.FbxSaveOptions");
+         FBX6100_BINARY = new FileFormat(FileFormatType.FBX, new Version(6, 1, 0), 
+             FileContentType.BINARY, ".fbx", new String[]{".fbx"}, true, false, 
+             "com.aspose.threed.FbxLoadOptions", "com.aspose.threed.FbxSaveOptions");
         STL_BINARY = new FileFormat(FileFormatType.STL, new Version(1, 0, 0), 
             FileContentType.BINARY, ".stl", new String[]{".stl"}, true, true, 
             "com.aspose.threed.StlLoadOptions", "com.aspose.threed.StlSaveOptions");

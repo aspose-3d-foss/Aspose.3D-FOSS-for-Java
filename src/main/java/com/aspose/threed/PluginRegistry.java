@@ -6,6 +6,8 @@ import com.aspose.threed.formats.StlImporter;
 import com.aspose.threed.formats.StlExporter;
 import com.aspose.threed.formats.GltfImporter;
 import com.aspose.threed.formats.GltfExporter;
+import com.aspose.threed.formats.FbxImporter;
+import com.aspose.threed.formats.FbxExporter;
 
 import java.util.*;
 import java.io.*;
@@ -26,6 +28,8 @@ final class PluginRegistry {
         registerExporter(new StlExporter());
         registerImporter(new GltfImporter());
         registerExporter(new GltfExporter());
+        registerImporter(new FbxImporter());
+        registerExporter(new FbxExporter());
     }
 
     static void registerImporter(IImporter importer) {
