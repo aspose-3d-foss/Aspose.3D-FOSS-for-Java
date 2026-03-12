@@ -4,8 +4,14 @@
 - [x] Initialize project structure
 - [x] Create IImporter interface
 - [x] Create IExporter interface
-- [x] Implement PluginRegistry for format discovery
-- [x] Implement Scene class with Open()/Save() methods
+- [x] Synchronize Java with .NET FOSS implementation
+- [x] Create centralized IOService class for format detection
+- [x] Add Importer/Exporter fields to FileFormat
+- [x] Add canDetect() method to FileFormat
+- [x] Updated Scene.Open() to use IOService.detectFormat()
+- [x] Updated Scene.save() to use export directly on FileFormat
+- [x] Remove PluginRegistry.java (replaced by IOService)
+- [x] Register importers/exporters in FileFormat constructors
 - [x] Implement Node class hierarchy
 - [x] Implement Transform class
 - [x] Implement Geometry base class
@@ -119,6 +125,20 @@
 - **16 tests passing**
 - FBX binary import supported but no tests yet (test data needed)
 - Next: FBX export or add more format tests
+
+### Session 6 - 2026-03-12
+- Synchronized Java implementation with .NET FOSS implementation (foss.3d.net)
+- **Key architectural changes:**
+  - Added centralized IOService class for format detection (matches .NET approach)
+  - Added Importer and Exporter fields to FileFormat class
+  - Added canDetect(Stream, String) method to FileFormat
+  - Updated FileFormat constructor to accept importer/exporter parameters
+  - Removed PluginRegistry.java (replaced by IOService static initialization)
+  - Scene.Open() now uses format.getImporter() directly
+  - Scene.save() now uses format.getExporter() directly
+- Updated OBJ, STL, glTF format instantiations to pass their importers/exporters
+- All 16 tests passing with new architecture
+- Architecture now matches .NET FOSS implementation
 
 ## Test Data Requests
 - None yet
