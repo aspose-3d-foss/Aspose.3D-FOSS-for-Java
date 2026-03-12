@@ -6,8 +6,8 @@
 |--------|------------|--------|--------|-------|
 | OBJ | .obj, .mtl | ✓ | ✓ | Full support |
 | STL | .stl | ✓ | ✓ | Binary and ASCII |
-| glTF | .gltf, .glb | ⚠ | ⚠ | Stub only |
-| FBX | .fbx | ✗ | ✗ | Not implemented |
+| glTF | .gltf, .glb | ✓ | ✓ | Full import/export |
+| FBX | .fbx | ⚠ | ⚠ | Import only (binary) |
 | USD | .usd, .usda, .usdc | ✗ | ✗ | Not implemented |
 
 ## Format Details
@@ -35,6 +35,15 @@
 - **Limitations**:
   - Some advanced glTF extensions may not be supported
   - Texture references are not fully implemented (embedded buffers only)
+
+### FBX
+- **Import**: Binary FBX format supported (version 6.1+)
+- **Export**: Not implemented
+- **Limitations**:
+  - Only binary FBX format is supported
+  - ASCII FBX format not yet supported
+  - Full node hierarchy and material extraction not yet tested
+  - Advanced FBX features (animations, constraints) not implemented
 
 ### glTF/GLB
 - **Import**: Not implemented

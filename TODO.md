@@ -109,5 +109,16 @@
 - **16 tests passing (3 SceneTest, 4 Vector3Test, 6 StlFormatTest, 3 GltfFormatTest)**
 - Next: Implement FBX format support
 
+### Session 5 - 2026-03-12
+- Implemented FBX format support
+- Created FbxLoadOptions and FbxSaveOptions classes
+- Created FbxImporter with binary FBX parsing (version detection, chunk parsing)
+- Created FbxExporter stub (export not implemented)
+- Enabled FBX canImport in FileFormat
+- Registered FBX importer/exporter in PluginRegistry
+- **16 tests passing**
+- FBX binary import supported but no tests yet (test data needed)
+- Next: FBX export or add more format tests
+
 ## Test Data Requests
 - None yet
