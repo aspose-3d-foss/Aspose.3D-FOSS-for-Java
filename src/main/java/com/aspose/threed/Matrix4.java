@@ -106,14 +106,12 @@ public final class Matrix4 implements Struct<Matrix4>, Serializable {
         return m;
     }
 
-    public static Matrix4 rotateFromEuler(Vector3 e) {
-        return rotateFromEuler(e.x, e.y, e.z);
-    }
+    public static Matrix4 rotateFromEuler(Vector3 e) {         return rotateFromEuler(e.x, e.y, e.z);
+     }
 
-    public static Matrix4 rotateFromEuler(double x, double y, double z) {
-        return rotate(Quaternion.fromEuler(x, y, z));
-    }
-
+     public static Matrix4 rotateFromEuler(double x, double y, double z) {
+         return rotate(Quaternion.fromEulerAngle(x, y, z));
+     }
     public static Matrix4 mul(Matrix4 a, Matrix4 b) {
         return new Matrix4(
             a.m00 * b.m00 + a.m01 * b.m10 + a.m02 * b.m20 + a.m03 * b.m30,
@@ -236,11 +234,9 @@ public final class Matrix4 implements Struct<Matrix4>, Serializable {
     public final Matrix4 normalize() {
         return this;
     }
-
-    public final void setTRS(Vector3 translation, Vector3 rotation, Vector3 scale) {
-        setTRS(translation, Quaternion.fromEuler(rotation.x, rotation.y, rotation.z), scale);
-    }
-
+     public final void setTRS(Vector3 translation, Vector3 rotation, Vector3 scale) {
+         setTRS(translation, Quaternion.fromEulerAngle(rotation.x, rotation.y, rotation.z), scale);
+     }
     public final void setTRS(Vector3 t, Quaternion r, Vector3 s) {
         Matrix4 tm = translate(t);
         Matrix4 rm = rotate(r);

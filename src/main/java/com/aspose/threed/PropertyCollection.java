@@ -33,7 +33,8 @@ public class PropertyCollection implements Iterable<Property> {
         if (p != null) {
             p.setValue(value);
         } else {
-            add(new Property(name, value));
+            // Create a concrete property type based on value type
+            add(new ObjectProperty(name, value));
         }
     }
 
@@ -44,5 +45,35 @@ public class PropertyCollection implements Iterable<Property> {
 
     public int size() {
         return properties.size();
+    }
+
+    public Property get(int idx) {
+        if (idx < 0 || idx >= properties.size()) {
+            throw new IndexOutOfBoundsException("Index: " + idx + ", Size: " + properties.size());
+        }
+        return properties.get(idx);
+    }
+
+    /**
+     * Concrete property implementation for Object values.
+     */
+    public static class ObjectProperty extends Property {
+        public ObjectProperty(String name) {
+            super(name);
+        }
+
+        public ObjectProperty(String name, Object value) {
+            super(name, value);
+        }
+
+        @Override
+        public Object getValue() {
+            return value;
+        }
+
+        @Override
+        public void setValue(Object value) {
+            this.value = value;
+        }
     }
 }

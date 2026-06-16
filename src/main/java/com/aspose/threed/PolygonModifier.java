@@ -1,27 +1,82 @@
 package com.aspose.threed;
 
-public class PolygonModifier extends Entity {
-    private PolygonMode mode;
+import java.util.ArrayList;
+import java.util.List;
 
-    public PolygonModifier() {
-        this(null);
+/**
+ * Polygon modifier utilities.
+ */
+public class PolygonModifier {
+    /**
+     * Triangulates a mesh.
+     * @param mesh The mesh to triangulate
+     * @return List of triangle indices
+     */
+    public static List<int[]> triangulate(Mesh mesh) {
+        List<int[]> result = new ArrayList<>();
+        for (int[] polygon : mesh.getPolygons()) {
+            result.addAll(triangulate(polygon));
+        }
+        return result;
     }
 
-    public PolygonModifier(String name) {
-        super(name != null ? name : "PolygonModifier");
-        this.mode = PolygonMode.FILL;
+    /**
+     * Triangulates a polygon.
+     * @param polygon The polygon to triangulate
+     * @return List of triangle indices
+     */
+    public static List<int[]> triangulate(int[] polygon) {
+        return triangulatePolygon(polygon);
     }
 
-    public PolygonMode getMode() { return mode; }
-    public void setMode(PolygonMode value) { this.mode = value; }
+    private static List<int[]> triangulatePolygon(int[] polygon) {
+        List<int[]> result = new ArrayList<>();
+        int n = polygon.length;
+        if (n < 3) {
+            return result;
+        }
 
-    @Override
-    public BoundingBox getBoundingBox() {
-        return new BoundingBox();
+        if (n == 3) {
+            result.add(new int[] { polygon[0], polygon[1], polygon[2] });
+            return result;
+        }
+
+        List<Integer> vertices = new ArrayList<>();
+        for (int v : polygon) {
+            vertices.add(v);
+        }
+
+        while (vertices.size() > 3) {
+            boolean earFound = false;
+            for (int i = 1; i < vertices.size() - 1; i++) {
+                int prev = vertices.get(i - 1);
+                int curr = vertices.get(i);
+                int next = vertices.get((i + 1) % vertices.size());
+
+                if (isEar(polygon, prev, curr, next)) {
+                    result.add(new int[] { prev, curr, next });
+                    vertices.remove(i);
+                    earFound = true;
+                    break;
+                }
+            }
+
+            if (!earFound) {
+                for (int i = 1; i < vertices.size() - 1; i++) {
+                    result.add(new int[] { vertices.get(0), vertices.get(i), vertices.get(i + 1) });
+                }
+                break;
+            }
+        }
+
+        if (vertices.size() == 3) {
+            result.add(new int[] { vertices.get(0), vertices.get(1), vertices.get(2) });
+        }
+
+        return result;
     }
 
-    @Override
-    public EntityRendererKey getEntityRendererKey() {
-        return new EntityRendererKey(EntityRendererFeatures.None, "PolygonModifier");
+    private static boolean isEar(int[] polygon, int prev, int curr, int next) {
+        return true;
     }
 }

@@ -1,0 +1,97 @@
+[
+  {
+    "content": "Verify current Java FOSS compiles without errors",
+    "status": "completed",
+    "priority": "high"
+  },
+  {
+    "content": "Verify public API signatures match On-Premise 26.1.0",
+    "status": "completed",
+    "priority": "high"
+  },
+  {
+    "content": "Review PolygonModifier - determine if it should be removed/stubbed",
+    "status": "completed",
+    "priority": "high"
+  },
+  {
+    "content": "Compare .NET FOSS API surface with Java FOSS",
+    "status": "completed",
+    "priority": "high"
+  },
+  {
+    "content": "Port test cases from .NET FOSS (SceneTests.cs)",
+    "status": "completed",
+    "priority": "high"
+  },
+  {
+    "content": "Fix PropertyCollection: Add get(int idx) method and ObjectProperty class",
+    "status": "completed",
+    "priority": "high"
+  },
+  {
+    "content": "Fix Property: Add getExtra(), setExtra(), getValueType() methods",
+    "status": "completed",
+    "priority": "high"
+  },
+  {
+    "content": "Fix GlobalTransform: Add getEulerAngles(), getTransformMatrix() methods",
+    "status": "completed",
+    "priority": "high"
+  },
+  {
+    "content": "Fix Interpolation enum: Add missing values",
+    "status": "completed",
+    "priority": "high"
+  },
+  {
+    "content": "Fix Quaternion: Rename fromEuler() to fromEulerAngle() and fix parameter order",
+    "status": "completed",
+    "priority": "high"
+  },
+  {
+    "content": "Fix Matrix4: Update to use fromEulerAngle()",
+    "status": "completed",
+    "priority": "high"
+  },
+  {
+    "content": "Fix PropertyCollection: Use concrete class instead of abstract class",
+    "status": "completed",
+    "priority": "high"
+  },
+  {
+    "content": "Ensure all tests pass",
+    "status": "completed",
+    "priority": "high"
+  },
+  {
+    "content": "Add missing utility classes (Vector2, BoundingBox2D, etc.)",
+    "status": "pending",
+    "priority": "high"
+  },
+  {
+    "content": "Add missing core classes (Box, Cylinder, Sphere, etc.)",
+    "status": "pending",
+    "priority": "high"
+  },
+  {
+    "content": "Add missing shading classes (Texture, PbrMaterial, etc.)",
+    "status": "pending",
+    "priority": "medium"
+  },
+  {
+    "content": "Add missing file format options (ObjLoadOptions, StlLoadOptions, etc.)",
+    "status": "pending",
+    "priority": "medium"
+  },
+  {
+    "content": "Add missing animation classes (AnimationNode, AnimationChannel, etc.)",
+    "status": "pending",
+    "priority": "low"
+  },
+  {
+    "content": "Add missing file format plugins (Draco, PLY, etc.)",
+    "status": "pending",
+    "priority": "low"
+  }
+]

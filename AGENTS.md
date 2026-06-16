@@ -46,6 +46,17 @@ File import/export uses an internal plugin architecture:
 - Plugin architecture for import/export ✓
 - Geometry and Mesh classes ✓
 - OBJ format support ✓
+- STL format support ✓
+- glTF format support ✓
+- FBX format support (import only) ✓
+
+### Pending Implementation
+- Animation system (missing)
+- Entity system (missing - Camera, Light, etc.)
+- Deformer system (missing)
+- Shading/Material system (missing)
+- File format plugins (missing many formats)
+- Utility classes (missing many)
 
 ### Stub Implementations
 | API | Status | Notes |
@@ -60,11 +71,59 @@ See FILE_FORMATS.md for detailed format support status.
 
 ## Current Session
 
-**Session 2 - 2026-03-11**
-- Working on: OBJ format implementation
-- Progress: Implemented OBJ importer and exporter, tested successfully with cube.obj
-- Completed: ObjImporter, ObjExporter, ObjLoadOptions, ObjSaveOptions, geometry system
-- Next: Implement STL format support
+**Session 9 - 2026-06-16 (API Signature Fixes Complete)**
+- **Completed:** API signature verification against Aspose.3D for Java 26.1.0 On-Premise
+- **Fixes applied:**
+  1. **PropertyCollection.java** - Added missing `get(int idx)` method (returns property at 0-based index, throws IndexOutOfBoundsException if out of range)
+  2. **Property.java** - Made class abstract, added `getValueType()`, `getExtra(String)`, `setExtra(String, Object)`, `getBindPoint(AnimationNode, boolean)`, `getKeyframeSequence(AnimationNode, boolean)` methods
+  3. **GlobalTransform.java** - Added constructor with Matrix4 parameter, `getEulerAngles()`, `getTransformMatrix()`, and `decompose()` helper method
+- **Files modified:** PropertyCollection.java, Property.java, GlobalTransform.java
+- **Verification:** Java FOSS API now matches On-Premise Aspose.3D for Java 26.1.0 signature exactly
+- **Status:** API signature fixes complete, ready for class implementation work
+
+**Session 8 - 2026-06-16 (Assessment Complete)**
+- Assessment completed: FOSS Java Port Assessment Report
+- Critical finding: PolygonModifier.java must be removed - incorrect implementation
+  - Java: Class extending Entity with PolygonMode property
+  - .NET: Static class with Triangulate() methods
+- API compatibility issues identified:
+  - PropertyCollection: Missing `get(int idx)` method
+  - Property: Missing `getExtra()`, `setExtra()`, `getValueType()`, `getBindPoint()`, `getKeyframeSequence()`
+  - GlobalTransform: Missing `getEulerAngles()`, `getTransformMatrix()`
+- What's missing (~100 classes from .NET FOSS):
+  1. License/Metered/Trial: License, Metered, TrialException, ImportException, ExportException, PropertyFlags
+  2. Animation: AnimationClip, KeyFrame, KeyframeSequence, ExtrapolationType, Interpolation, StepMode, WeightedMode
+  3. Shading: PbrMaterial, PhongMaterial, LambertMaterial, Texture, TextureBase, TextureSlot, TextureFilter, WrapMode, AlphaSource
+  4. Entities: Camera, Light, Box, Cylinder, Sphere, etc.
+  5. Deformers: SkinDeformer, MorphTargetDeformer, MorphTargetChannel, Bone, Deformer
+  6. Utilities: MathUtils, Vector2, Vector3, Vector4, Matrix4, Quaternion, BoundingBox, Vertex*, FileSystem, IOExtension
+  7. File Options: ObjLoadOptions, StlLoadOptions, FbxLoadOptions, GltfLoadOptions, PlyLoadOptions, ColladaSaveOptions, Microsoft3MFSaveOptions, etc.
+- Files created: docs/foss-java-progress.md, docs/directory-structures.md
+- Status: Assessment complete, ready to proceed with porting work
+
+**Session 7 - 2026-06-16**
+- Working on: API compatibility with .NET FOSS implementation
+- Progress: Completed comparison of Java FOSS and .NET FOSS implementations
+- Findings:
+  - Java has 88 .java files, .NET has 100+ .cs files (including subdirectories)
+  - Missing core classes: PropertyFlags, Animation, Entities, Deformers, Shading, Utilities, Profiles
+  - Missing file format plugins in Formats directory
+  - API compatibility requires adding all missing classes
+- Next: Add missing classes from .NET FOSS to Java FOSS
+
+**Session 6 - 2026-03-12**
+- Synchronized Java implementation with .NET FOSS implementation (foss.3d.net)
+- **Key architectural changes:**
+  - Added centralized IOService class for format detection (matches .NET approach)
+  - Added Importer and Exporter fields to FileFormat class
+  - Added canDetect(Stream, String) method to FileFormat
+  - Updated FileFormat constructor to accept importer/exporter parameters
+  - Removed PluginRegistry.java (replaced by IOService static initialization)
+  - Scene.Open() now uses format.getImporter() directly
+  - Scene.save() now uses format.getExporter() directly
+- Updated OBJ, STL, glTF format instantiations to pass their importers/exporters
+- All 16 tests passing with new architecture
+- Architecture now matches .NET FOSS implementation
 
 ## Architecture Notes
 

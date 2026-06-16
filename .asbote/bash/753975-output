@@ -1,0 +1,239 @@
+/**
+ * Quaternion is usually used to perform rotation in computer graphics.
+ */
+public final class com.aspose.threed.Quaternion implements com.aspose.threed.Struct<com.aspose.threed.Quaternion>, java.io.Serializable {
+/**
+ * The Identity quaternion.
+ */
+  public static final com.aspose.threed.Quaternion IDENTITY;
+/**
+ * The w component.
+ */
+  public double w;
+/**
+ * The x component.
+ */
+  public double x;
+/**
+ * The y component.
+ */
+  public double y;
+/**
+ * The z component.
+ */
+  public double z;
+/**
+ * Initializes a new instance of the Quaternion class.
+ * @param w w component of the quaternion
+ * @param x x component of the quaternion
+ * @param y y component of the quaternion
+ * @param z z component of the quaternion
+ */
+  public com.aspose.threed.Quaternion(double w, double x, double y, double z);
+/**
+ * Check if two quaternions equals
+ * @param obj The object to check equality.
+ * @return True if all components are identically equal.
+ */
+  public final boolean equals(java.lang.Object obj);
+/**
+ * Returns a conjugate quaternion of current quaternion
+ * @return The conjugate quaternion.
+ */
+  public final com.aspose.threed.Quaternion conjugate();
+/**
+ * Returns a inverse quaternion of current quaternion
+ * @return Inverse quaternion.
+ */
+  public final com.aspose.threed.Quaternion inverse();
+/**
+ * Dots product
+ * @param q The quaternion
+ * @return Dot value
+ */
+  public final double dot(com.aspose.threed.Quaternion q);
+/**
+ * Converts quaternion to rotation represented by Euler angles
+ *   All components are in radian
+ * @return Result vector
+ */
+  public final com.aspose.threed.Vector3 eulerAngles();
+/**
+ * Gets the length of the quaternion
+ * @return the length of the quaternion
+ */
+  public final double getLength();
+/**
+ * Normalize the quaternion
+ * @return Normalized quaternion.
+ */
+  public final com.aspose.threed.Quaternion normalize();
+/**
+ * Decompose the quaternion to angle and axis
+ * @param angle The angle to rotate, in radian.
+ * @param axis The axis that rotates around.
+ */
+  public final void toAngleAxis(double[] angle, com.aspose.threed.Vector3 axis);
+/**
+ * Concatenate two quaternions
+ */
+  public final com.aspose.threed.Quaternion concat(com.aspose.threed.Quaternion rhs);
+/**
+ * Creates a quaternion around given axis and rotate in clockwise
+ * @param a Clockwise rotation in radian
+ * @param axis Axis
+ * @return Created quaternion
+ */
+  public static com.aspose.threed.Quaternion fromAngleAxis(double a, com.aspose.threed.Vector3 axis);
+/**
+ * Creates a quaternion that rotate from original to destination direction
+ * @param orig Original direction
+ * @param dest Destination direction
+ * @return Created quaternion
+ */
+  public static com.aspose.threed.Quaternion fromRotation(com.aspose.threed.Vector3 orig, com.aspose.threed.Vector3 dest);
+/**
+ * Creates quaternion from given Euler angle
+ * @param pitch Pitch in radian
+ * @param yaw Yaw in radian
+ * @param roll Roll in radian
+ * @return Created quaternion
+ */
+  public static com.aspose.threed.Quaternion fromEulerAngle(double pitch, double yaw, double roll);
+/**
+ * Creates quaternion from given Euler angle
+ * @param eulerAngle Euler angle in radian
+ * @return Created quaternion
+ */
+  public static com.aspose.threed.Quaternion fromEulerAngle(com.aspose.threed.Vector3 eulerAngle);
+/**
+ * Convert the rotation presented by quaternion to transform matrix.
+ * @return The matrix representation of current quaternion.
+ */
+  public final com.aspose.threed.Matrix4 toMatrix();
+/**
+ * Convert the rotation presented by quaternion to transform matrix.
+ * @param translation The translation part of the matrix.
+ * @return The matrix representation of current quaternion.
+ */
+  public final com.aspose.threed.Matrix4 toMatrix(com.aspose.threed.Vector3 translation);
+/**
+ * Operator overloading for +
+ * @param lhs Left quaternion
+ * @param rhs Right quaternion
+ * @return Result quaternion
+ */
+  public static com.aspose.threed.Quaternion add(com.aspose.threed.Quaternion lhs, com.aspose.threed.Quaternion rhs);
+/**
+ * Operator overloading for /
+ * @param lhs Left quaternion
+ * @param rhs Right quaternion
+ * @return Result quaternion
+ */
+  public static com.aspose.threed.Quaternion div(com.aspose.threed.Quaternion lhs, double rhs);
+/**
+ * Operator overloading for *
+ * @param lhs Left quaternion
+ * @param rhs Right quaternion
+ * @return Result quaternion
+ */
+  public static com.aspose.threed.Quaternion mul(com.aspose.threed.Quaternion lhs, double rhs);
+/**
+ * Operator overloading for *
+ * @param lhs Left quaternion
+ * @param rhs Right quaternion
+ * @return Result quaternion
+ */
+  public static com.aspose.threed.Quaternion mul(com.aspose.threed.Quaternion lhs, com.aspose.threed.Quaternion rhs);
+/**
+ * Operator overloading for *
+ * @param q The rotation quaternion
+ * @param v Vector to rotate
+ * @return Rotated vector
+ */
+  public static com.aspose.threed.Vector3 mul(com.aspose.threed.Quaternion q, com.aspose.threed.Vector3 v);
+/**
+ * Operator overloading for *
+ * @param q The rotation quaternion
+ * @param v Vector to rotate
+ * @return Rotated vector
+ */
+  public static com.aspose.threed.Vector4 mul(com.aspose.threed.Quaternion q, com.aspose.threed.Vector4 v);
+/**
+ * Operator overloading for *
+ * @param q The rotation quaternion
+ * @param v Vector to rotate
+ * @return Rotated vector
+ */
+  public static com.aspose.threed.FVector3 mul(com.aspose.threed.Quaternion q, com.aspose.threed.FVector3 v);
+/**
+ * Operator overloading for *
+ * @param q The rotation quaternion
+ * @param v Vector to rotate
+ * @return Rotated vector
+ */
+  public static com.aspose.threed.FVector4 mul(com.aspose.threed.Quaternion q, com.aspose.threed.FVector4 v);
+/**
+ * Gets the representation of quaternion in string
+ * @return Object string
+ */
+  public final java.lang.String toString();
+/**
+ * Operator overloading for *
+ * @param v The rotation quaternion
+ * @param q Vector to rotate
+ * @return Rotated vector
+ */
+  public static com.aspose.threed.Vector3 mul(com.aspose.threed.Vector3 v, com.aspose.threed.Quaternion q);
+/**
+ * Equal operator for quaternion
+ * @param lhs Left hand side value.
+ * @param rhs Right hand side value.
+ * @return True if all components are identically equal.
+ */
+  public static boolean op_eq(com.aspose.threed.Quaternion lhs, com.aspose.threed.Quaternion rhs);
+/**
+ * Not-equal operator for quaternion
+ * @param lhs Left hand side value.
+ * @param rhs Right hand side value.
+ * @return True if two quaternions are not equal.
+ */
+  public static boolean op_ne(com.aspose.threed.Quaternion lhs, com.aspose.threed.Quaternion rhs);
+/**
+ * Populates this quaternion with the interpolated value between the given quaternion arguments for a t between from and to.
+ * @param t The coefficient to interpolate.
+ * @param from Source quaternion.
+ * @param to Target quaternion.
+ * @return The interpolated quaternion.
+ */
+  public static com.aspose.threed.Quaternion interpolate(float t, com.aspose.threed.Quaternion from, com.aspose.threed.Quaternion to);
+/**
+ * Perform spherical linear interpolation between two values
+ * @param t t is between 0 to 1
+ * @param v1 First value
+ * @param v2 Second value
+ */
+  public static com.aspose.threed.Quaternion slerp(double t, com.aspose.threed.Quaternion v1, com.aspose.threed.Quaternion v2);
+  public com.aspose.threed.Quaternion();
+/**
+ * Description copied from interface: Struct
+ * @return cloned instance
+ */
+  public final com.aspose.threed.Quaternion clone();
+/**
+ * Description copied from interface: Struct
+ * @param src source instance to copy
+ */
+  public final void copyFrom(com.aspose.threed.Quaternion src);
+/**
+ * Gets the hash code of Quaternion
+ * @return The hash code of the Quaternion
+ */
+  public final int hashCode();
+/**
+ * Description copied from interface: Struct
+ * @return cloned instance
+ */
+  public final java.lang.Object clone() throws java.lang.CloneNotSupportedException;
+  public final void copyFrom(java.lang.Object);
+}
