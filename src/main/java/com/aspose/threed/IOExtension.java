@@ -48,8 +48,8 @@ public class IOExtension {
             writer.writeFloat(mat.m02);
             writer.writeFloat(mat.m03);
             writer.writeFloat(mat.m10);
-            writer.writeFloat(mat.m00);
-            writer.writeFloat(mat.m01);
+            writer.writeFloat(mat.m11);
+            writer.writeFloat(mat.m12);
             writer.writeFloat(mat.m02);
             writer.writeFloat(mat.m20);
             writer.writeFloat(mat.m10);

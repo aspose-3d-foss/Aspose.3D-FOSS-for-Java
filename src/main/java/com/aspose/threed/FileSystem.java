@@ -2,6 +2,9 @@ package com.aspose.threed;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.HashMap;
@@ -75,6 +78,27 @@ public abstract class FileSystem implements AutoCloseable {
         return new DummyFileSystem();
     }
 
+    /**
+     * Create a file system to provide to the read-only access to specified zip file or zip stream.
+     * File system will be disposed after the open/save operation.
+     * @param stream The zip stream
+     * @param baseDir The base directory within the zip
+     * @return A zip file system
+     */
+    public static ZipFileSystem createZipFileSystem(InputStream stream, String baseDir) {
+        return new ZipFileSystem(stream, baseDir);
+    }
+
+    /**
+     * Create a file system to provide to the read-only access to specified zip file or zip stream.
+     * File system will be disposed after the open/save operation.
+     * @param fileName The zip file name
+     * @return A zip file system
+     */
+    public static ZipFileSystem createZipFileSystem(String fileName) {
+        return new ZipFileSystem(fileName);
+    }
+
     public static class LocalFileSystem extends FileSystem {
         private final String directory;
 
@@ -84,14 +108,29 @@ public abstract class FileSystem implements AutoCloseable {
 
         @Override
         public InputStream readFile(String fileName, IOConfig options) {
-            // For now, return empty stream
-            return new ByteArrayInputStream(new byte[0]);
+            String fullPath = directory + File.separator + fileName;
+            try {
+                return new FileInputStream(fullPath);
+            } catch (java.io.FileNotFoundException e) {
+                // Return empty stream if file not found
+                return new ByteArrayInputStream(new byte[0]);
+            }
         }
 
         @Override
         public OutputStream writeFile(String fileName, IOConfig options) {
-            // For now, return empty stream
-            return new ByteArrayOutputStream();
+            String fullPath = directory + File.separator + fileName;
+            File file = new File(fullPath);
+            File dir = file.getParentFile();
+            if (dir != null && !dir.exists()) {
+                dir.mkdirs();
+            }
+            try {
+                return new FileOutputStream(fullPath);
+            } catch (java.io.FileNotFoundException e) {
+                // Return empty stream if file cannot be created
+                return new ByteArrayOutputStream();
+            }
         }
     }
 
@@ -99,7 +138,7 @@ public abstract class FileSystem implements AutoCloseable {
         private final Map<String, ByteArrayOutputStream> files;
 
         public MemoryFileSystem(Map<String, ByteArrayOutputStream> files) {
-            this.files = files != null ? files : new HashMap<>();
+            this.files = files != null ? files : new HashMap<String, ByteArrayOutputStream>();
         }
 
         @Override
@@ -128,6 +167,45 @@ public abstract class FileSystem implements AutoCloseable {
         @Override
         public OutputStream writeFile(String fileName, IOConfig options) {
             return new ByteArrayOutputStream();
+        }
+    }
+
+    public static class ZipFileSystem extends FileSystem {
+        private final String fileName;
+        private final InputStream stream;
+        private boolean disposed = false;
+
+        public ZipFileSystem(String fileName) {
+            this.fileName = fileName;
+            this.stream = null;
+        }
+
+        public ZipFileSystem(InputStream stream, String baseDir) {
+            this.fileName = null;
+            this.stream = stream;
+        }
+
+        @Override
+        protected void dispose(boolean disposing) {
+            if (!disposed && stream != null) {
+                try {
+                    stream.close();
+                } catch (java.io.IOException e) {
+                    // Ignore
+                }
+                disposed = true;
+            }
+            super.dispose(disposing);
+        }
+
+        @Override
+        public InputStream readFile(String fileName, IOConfig options) {
+            throw new UnsupportedOperationException("Zip file system read not implemented in FOSS version");
+        }
+
+        @Override
+        public OutputStream writeFile(String fileName, IOConfig options) {
+            throw new UnsupportedOperationException("Zip file system write not implemented in FOSS version");
         }
     }
 }
