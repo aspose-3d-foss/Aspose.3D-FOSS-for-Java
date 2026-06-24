@@ -16,6 +16,6 @@ public class Group extends Entity {
 
     @Override
     public EntityRendererKey getEntityRendererKey() {
-        return new EntityRendererKey(EntityRendererFeatures.None, "Group");
+        return new EntityRendererKey("Group");
     }
 }

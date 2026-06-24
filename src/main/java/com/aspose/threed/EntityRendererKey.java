@@ -1,19 +1,25 @@
 package com.aspose.threed;
 
-public class EntityRendererKey {
-    private final EntityRendererFeatures features;
+/**
+ * The key of registered entity renderer.
+ */
+public final class EntityRendererKey {
     private final String name;
 
-    public EntityRendererKey(EntityRendererFeatures features, String name) {
-        this.features = features;
+    /**
+     * Constructor.
+     * @param name The name of the key.
+     */
+    public EntityRendererKey(String name) {
         this.name = name;
     }
 
-    public EntityRendererFeatures getFeatures() {
-        return features;
-    }
-
-    public String getName() {
-        return name;
+    /**
+     * Gets the string representation of the key.
+     * @return The string representation.
+     */
+    @Override
+    public String toString() {
+        return name != null ? name : "";
     }
 }

@@ -278,17 +278,13 @@ public class FileFormat {
 
     public boolean canDetect(Stream stream, String fileName) {
         return false;
-    }
+    }     public static FileFormat detect(Stream stream, String fileName) throws IOException {
+          return com.aspose.threed.IOService.detectFormat(stream, fileName);
+     }
 
-    public static FileFormat detect(Stream stream, String fileName) throws IOException {
-        return IOService.detectFormat(stream, fileName);
-    }
-
-    public static FileFormat detect(String fileName) throws IOException {
-        return IOService.getFormatByFileName(fileName);
-    }
-
-    public static void registerFormat(FileFormat format) {
+     public static FileFormat detect(String fileName) throws IOException {
+          return com.aspose.threed.IOService.getFormatByFileName(fileName);
+     }    public static void registerFormat(FileFormat format) {
         allFormats.add(format);
         for (String ext : format.extensions) {
             extensionIndex.put(ext.toLowerCase(), format);

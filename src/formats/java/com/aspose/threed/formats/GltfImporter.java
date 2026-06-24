@@ -625,7 +625,8 @@ public class GltfImporter implements IImporter {
         for (int i = 0; i < materials.size(); i++) {
             Map<String, Object> materialData = materials.get(i);
             String materialName = (String) materialData.getOrDefault("name", "material_" + i);
-            Material material = new Material(materialName);
+            PbrMaterial material = new PbrMaterial();
+            material.setName(materialName);
 
             Map<String, Object> pbrData = (Map<String, Object>) materialData.getOrDefault("pbrMetallicRoughness", new HashMap<>());
             

@@ -206,5 +206,74 @@
    - 213 missing classes from .NET FOSS need to be ported
    - Critical missing classes include: Vector2, BoundingBox2D, Box, Cylinder, Sphere, Texture, PbrMaterial, and many more
  - **Status:** Compilation complete, API signatures verified, ready for class implementation work
+
+### Session 11 - 2026-06-17
+ - **Status:** Agent `developer` completed port of VertexElement* classes and PbrMaterial
+ - **Fixes applied:**
+   - Added 14 VertexElement* classes (VertexElementTemplate, VertexElementIntsTemplate, etc.)
+   - Added 10 concrete VertexElement implementations (VertexElementUserData, VertexElementWeight, etc.)
+   - Added VertexElementFVector and VertexElementVector4
+   - Moved PbrMaterial to root namespace (from Shading)
+ - **Test Results:**
+   - All 16 tests passing
+   - Build: SUCCESS
+   - Total source files: 144
+ - **Status:** Phase 1 complete, working on Stage 2 (git-history sync)
+
+### Session 12 - 2026-06-22
+ - **Status:** Agent `developer` completed Entity system classes and git-history sync
+ - **Classes added:**
+   - Entity subclasses (Curve, Circle, Profile, Primitive, Dish, Ellipse, Line, CompositeCurve, Torus, NurbsCurve, Pyramid, RectangularTorus, RevolvedAreaSolid, Shape)
+   - Supporting types (CurveDimension, NurbsType, EntityRendererKey, EntityRendererFeatures, BonePose, PoseType, Pose)
+ - **Fixes applied:**
+   - Fixed Dish.java ToMesh() implementation
+   - Fixed A3DObject.java removeProperty() return type
+   - Fixed GltfFormatTest.java Unicode escape sequences
+ - **Git Sync:**
+   - Synced commits: 8caf604, 61580ea, de3212b, 8c981b3, 71581fd
+ - **Test Results:**
+   - All 16 tests passing
+   - Build: SUCCESS
+   - Total source files: 144
+ - **Status:** Stage 2 partially complete, still ~100+ classes missing from On-Premise 26.1.0
+
+### Session 13 - 2026-06-24 (CURRENT)
+ - **Status:** Agent `developer` session completed with API diff analysis
+ - **API Diff Summary:**
+   - **82 new types** - Missing from Java FOSS that exist in On-Premise 26.1.0
+   - **14 types removed** - Incorrectly added classes that need removal
+   - **Many changed types** - API signatures need updates
+ - **Removed Types (14 - must delete):**
+   - formats.FbxExporter, formats.FbxImporter
+   - formats.GltfExporter, formats.GltfImporter
+   - formats.ObjExporter, formats.ObjImporter
+   - formats.StlExporter, formats.StlImporter
+   - IExporter, IImporter, PropertyFlags
+ - **Added Types (82 - must port):**
+   - Core: A3dwSaveOptions, AmfSaveOptions, ApertureMode, ArbitraryProfile, Bone, CircleShape
+   - Rendering: IBuffer, IVertexBuffer, IPipeline, ShaderMaterial, ShaderProgram, Renderer
+   - Entities: Bone, CircleShape, EllipseShape, LinearExtrusion, NurbsSurface, Skeleton, SkinDeformer
+   - Utilities: CryptoUtils, EntityRenderer, FileStream, FileSystemFactory, MathUtils, TransformBuilder
+   - File Formats: DracoFormat, GltfEmbeddedImageFormat, Microsoft3MFFormat, PdfFormat, PlyFormat, RvmFormat
+ - **Changed Types:**
+   - AlphaSource: FixedValue → FIXED_VALUE (enum values renamed to uppercase)
+   - AnimationChannel: Removed default constructor, added getComponentType(), getKeyframeSequence()
+   - AnimationNode: Added constructors, createBindPoint(), findBindPoint(), getKeyframeSequence()
+   - BindPoint: Removed static values(), added getChannel(), createKeyframeSequence()
+   - AssetInfo: getComments() → getComment(), added AxisSystem, CoordinateSystem, Vector4 Ambient
+   - BooleanOperation: Values renamed to uppercase
+ - **Next Session Tasks (Session 336):**
+   1. Remove 12 incorrect classes (exporter/importer interfaces and format-specific classes)
+   2. Port missing utility classes from .NET FOSS
+   3. Port missing entity classes from .NET FOSS
+   4. Port missing file format options
+   5. Port missing rendering classes
+   6. Fix API signature differences
+ - **Test Results:**
+   - All 16 tests passing
+   - Build: SUCCESS
+   - Total source files: 144
+ - **Status:** Session 335 complete. API diff analysis done. Awaiting next session for implementation work.
+
 **Test Data Requests**
 - None yet

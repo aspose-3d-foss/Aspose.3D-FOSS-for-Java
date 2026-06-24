@@ -203,4 +203,51 @@ Before marking an API complete:
 - [ ] TODO.md updated with task completion
 - [ ] No license/trial/DRM code exists
 
+## Current Status (Session 13 - 2026-06-24)
+
+**Stage 2: API Surface Alignment** (IN PROGRESS)
+
+**Status:** The Java FOSS is missing ~107 classes that exist in On-Premise 26.1.0 and needs removal of 12 incorrectly added classes.
+
+**API Diff Summary:**
+- **Added types (107):** Missing from Java FOSS (A3dwSaveOptions, AmfSaveOptions, ApertureMode, ArbitraryProfile, BlendFactor, Bone, BoneLinkMode, BooleanOperand, BooleanOperator, CenterLineProfile, CircleShape, CompareFunction, ComposeOrder, CryptoUtils, CShape, CubeFace, CubeFaceData<T>, CullFaceMode, DescriptorSetUpdater, Discreet3dsLoadOptions, Discreet3dsSaveOptions, DracoCompressionLevel, DracoFormat, DracoSaveOptions, DrawOperation, DriverException, EllipseShape, EndPoint, EntityRenderer, Enumerable<T>, Enumerator<T>, EventCallback<EventArg>, FileStream, FileSystemFactory, FontFile, FrontFace, Frustum, GLSLSource, GltfEmbeddedImageFormat, HalfSpace, HollowCircleShape, HollowRectangleShape, HShape, Html5SaveOptions, IBuffer, ICommandList, IDescriptorSet, IIndexBuffer, IIndexedVertexElement, IndexDataType, InitializationException, Int2D, IOrientable, IPipeline, IRenderQueue, IRenderTarget, IRenderTexture, IRenderWindow, ITexture1D, ITexture2D, ITextureCodec, ITextureCubemap, ITextureDecoder, ITextureEncoder, ITextureUnit, IVertexBuffer, JavaXImageCodec, JtLoadOptions, LinearExtrusion, LShape, MaterialConverter, MathUtils, MemoryStream, Microsoft3MFFormat, MirroredProfile, MorphTargetChannel, MorphTargetDeformer, MulticastEvent<EventArg>, NotImplementedException, NurbsDirection, NurbsSurface, ParameterizedProfile, Patch, PatchDirection, PatchDirectionType, PbrSpecularMaterial, PdfFormat, PdfLightingScheme, PdfLoadOptions, PdfRenderMode, PdfSaveOptions, PixelFormat, PixelMapMode, PixelMapping, PlyFormat, PointCloud, PolygonBuilder, PostProcessing, PresetShaders, ProjectionType, PushConstant, Rect, RectangleShape, RelativeRectangle, Renderer, RendererException, RendererVariableManager, RenderFactory, RenderParameters, RenderQueueGroupId, RenderResource, RenderStage, RenderState, RotationMode, RotationOrder, RvmFormat, RvmLoadOptions, RvmSaveOptions, ShaderException, ShaderMaterial, ShaderProgram, ShaderSet, ShaderSource, ShaderStage, ShaderTechnique, ShaderVariable, Skeleton, SkeletonType, SkinDeformer, SPIRVSource, SplitMeshPolicy, StencilAction, StencilState, Structs, StructuralMetadata, SweptAreaSolid, Text, TextureCodec, TextureType, TransformBuilder, TransformedCurve, TrapeziumShape, TriMesh, TrimmedCurve, TShape, U3dLoadOptions, U3dSaveOptions, UsdSaveOptions, UShape, Vertex, VertexElementDoublesTemplate, VertexElementEdgeCrease, VertexElementFVector, VertexElementHole, VertexElementIntsTemplate, VertexElementPolygonGroup, VertexElementSmoothingGroup, VertexElementSpecular, VertexElementTemplate<T>, VertexElementUserData, VertexElementVector4, VertexElementVertexCrease, VertexElementVisibility, VertexElementWeight, Viewport, Watermark, WindowHandle, XLoadOptions, ZShape)
+
+- **Removed types (12):** Incorrectly added to Java FOSS - need removal:
+  - formats.FbxExporter, formats.FbxImporter, formats.GltfExporter, formats.GltfImporter
+  - formats.ObjExporter, formats.ObjImporter, formats.StlExporter, formats.StlImporter
+  - IExporter, IImporter, PropertyFlags
+
+- **Changed types:** Various API signatures need fixes (AlphaSource, AnimationChannel, etc.)
+
+**What's Missing:**
+1. **File Format Options (25+ types):** A3dwSaveOptions, AmfSaveOptions, Discreet3dsLoadOptions, Discreet3dsSaveOptions, DracoSaveOptions, Html5SaveOptions, JtLoadOptions, PdfLoadOptions, PdfSaveOptions, RvmLoadOptions, RvmSaveOptions, U3dLoadOptions, U3dSaveOptions, UsdSaveOptions, XLoadOptions, and more
+2. **Rendering System (30+ types):** IRender* interfaces, RenderFactory, Renderer, Shader* classes, Pipeline interfaces
+3. **Entity System (15+ types):** Bone, CircleShape, EllipseShape, LinearExtrusion, NurbsSurface, Patch, RectangleShape, Skeleton, SkinDeformer, etc.
+4. **Deformers (6+ types):** MorphTargetDeformer, MorphTargetChannel, SkinDeformer
+5. **Utilities (10+ types):** CryptoUtils, EntityRenderer, Enumerables, EventCallback, FileStream, FileSystemFactory, FontFile, Int2D, IOrientable, MemoryStream, TransformBuilder, etc.
+6. **File Formats (15+ types):** DracoFormat, GltfEmbeddedImageFormat, Microsoft3MFFormat, PdfFormat, PlyFormat, RvmFormat
+
+**Next Session Tasks:**
+1. Remove 12 incorrect classes (FbxExporter, FbxImporter, GltfExporter, GltfImporter, ObjExporter, ObjImporter, StlExporter, StlImporter, IExporter, IImporter, PropertyFlags)
+2. Port missing classes from .NET FOSS to match On-Premise 26.1.0 API
+3. Fix any API signature differences
+
+**Files to Port from .NET FOSS:**
+- src/main/Aspose.ThreeD/Aspose/ThreeD/ (most files missing)
+- src/main/Aspose.ThreeD/Aspose/ThreeD/Animation/
+- src/main/Aspose.ThreeD/Aspose/ThreeD/Deformers/
+- src/main/Aspose.ThreeD/Aspose/ThreeD/Entities/
+- src/main/Aspose.ThreeD/Aspose/ThreeD/Formats/
+- src/main/Aspose.ThreeD/Aspose/ThreeD/Profiles/
+- src/main/Aspose.ThreeD/Aspose/ThreeD/Shading/
+- src/main/Aspose.ThreeD/Aspose/ThreeD/Utilities/
+- src/main/Aspose.ThreeD/Aspose/ThreeD/Render/
+
+**Test Results:**
+- All 16 tests passing
+- Build: SUCCESS
+- Total source files: 144
+
+**Status:** Stage 2 in progress, awaiting developer to complete API alignment
+
 See TODO.md for full project status and session history.

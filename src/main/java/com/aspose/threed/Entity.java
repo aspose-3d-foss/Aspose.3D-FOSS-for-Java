@@ -40,6 +40,6 @@ public abstract class Entity extends SceneObject {
     }
 
     public EntityRendererKey getEntityRendererKey() {
-        return new EntityRendererKey(EntityRendererFeatures.None, "Generic");
+        return new EntityRendererKey("Entity");
     }
 }

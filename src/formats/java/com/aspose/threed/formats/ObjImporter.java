@@ -86,7 +86,8 @@ public class ObjImporter implements IImporter {
                                 String matName = parts[1];
                                 currentMaterial = materials.get(matName);
                                 if (currentMaterial == null) {
-                                    currentMaterial = new Material(matName);
+                                    currentMaterial = new PbrMaterial();
+                                    currentMaterial.setName(matName);
                                     materials.put(matName, currentMaterial);
                                 }
                             }
@@ -190,7 +191,8 @@ public class ObjImporter implements IImporter {
                 switch (keyword) {
                     case "newmtl":
                         if (currentMatName != null && kd != null) {
-                            Material mat = new Material(currentMatName);
+                            Material mat = new PbrMaterial();
+                            mat.setName(currentMatName);
                             materials.put(currentMatName, mat);
                         }
                         if (parts.length > 1) {
@@ -221,7 +223,8 @@ public class ObjImporter implements IImporter {
             }
 
             if (currentMatName != null) {
-                Material mat = new Material(currentMatName);
+                Material mat = new PbrMaterial();
+                mat.setName(currentMatName);
                 materials.put(currentMatName, mat);
             }
 

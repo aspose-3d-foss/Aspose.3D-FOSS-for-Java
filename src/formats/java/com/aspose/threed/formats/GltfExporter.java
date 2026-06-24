@@ -1,7 +1,6 @@
 package com.aspose.threed.formats;
 
 import com.aspose.threed.*;
-import com.aspose.threed.shading.*;
 import java.io.*;
 import java.util.*;
 
@@ -167,8 +166,8 @@ public class GltfExporter implements IExporter {
             Map<String, Object> pbrData = new HashMap<>();
 
             if (pbrMaterial.getAlbedo() != null) {
-                Vector4 albedo = pbrMaterial.getAlbedo();
-                pbrData.put("baseColorFactor", new double[]{albedo.x, albedo.y, albedo.z, albedo.w});
+                Vector3 albedo = pbrMaterial.getAlbedo();
+                pbrData.put("baseColorFactor", new double[]{albedo.x, albedo.y, albedo.z, 1.0});
             }
 
             if (pbrMaterial.getMetallicFactor() != 0.0) {

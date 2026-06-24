@@ -1,27 +1,65 @@
 package com.aspose.threed;
 
-import java.io.*;
-import java.util.*;
+import com.aspose.threed.FileFormat;
+import com.aspose.threed.IImporter;
+import com.aspose.threed.IExporter;
+import com.aspose.threed.Stream;
+import java.io.IOException;
 
-public class IOService {
-    private static final List<FileFormat> registeredFormats = new ArrayList<>();
-
-    static {
-        // File formats are registered in FileFormat static initialization
+/**
+ * IO service for importing and exporting files.
+ * This is a stub implementation for FOSS version.
+ */
+class IOService {
+    
+    private IOService() {
+        // Private constructor to prevent instantiation
     }
 
-    public static FileFormat detectFormat(Stream stream, String fileName) throws IOException {
-        if (stream != null && stream.getInputStream() != null && stream.getInputStream().markSupported()) {
-            InputStream in = stream.getInputStream();
-            in.mark(Integer.MAX_VALUE);
-            try {
-                for (FileFormat format : registeredFormats) {
-                    if (format.canDetect(stream, fileName)) {
-                        return format;
+    /**
+     * Gets the singleton instance of IOService.
+     */
+    static IOService getInstance() {
+        return IOServiceHolder.INSTANCE;
+    }
+
+    private static class IOServiceHolder {
+        private static final IOService INSTANCE = new IOService();
+    }
+
+    /**
+     * Creates an importer for the specified file format.
+     */
+    static IImporter createImporter(FileFormat format) {
+        return format.getImporter();
+    }
+
+    /**
+     * Creates an exporter for the specified file format.
+     */
+    static IExporter createExporter(FileFormat format) {
+        return format.getExporter();
+    }
+
+    /**
+     * Detects the format of a file from a stream.
+     */
+    static FileFormat detectFormat(Stream stream, String fileName) throws IOException {
+        if (stream != null && stream.getInputStream() != null) {
+            java.io.InputStream in = stream.getInputStream();
+            if (in.markSupported()) {
+                in.mark(Integer.MAX_VALUE);
+                try {
+                    // Try to detect by extension
+                    if (fileName != null) {
+                        FileFormat format = FileFormat.getFormatByExtension(fileName);
+                        if (format != null && format.getCanImport()) {
+                            return format;
+                        }
                     }
+                } finally {
+                    in.reset();
                 }
-            } finally {
-                in.reset();
             }
         }
 
@@ -32,21 +70,16 @@ public class IOService {
         throw new IOException("Cannot detect file format without file name or stream data");
     }
 
-    public static FileFormat getFormatByFileName(String fileName) {
-        String ext = getExtension(fileName);
-        return FileFormat.getFormatByExtension(ext);
-    }
-
-    private static String getExtension(String fileName) {
-        if (fileName == null) return "";
+    /**
+     * Gets the file format by file name.
+     */
+    static FileFormat getFormatByFileName(String fileName) {
+        if (fileName == null) return null;
         int lastDot = fileName.lastIndexOf('.');
-        if (lastDot > 0) {
-            return fileName.substring(lastDot);
+        if (lastDot >= 0) {
+            String ext = fileName.substring(lastDot);
+            return FileFormat.getFormatByExtension(ext);
         }
-        return "";
-    }
-
-    public static void registerFormat(FileFormat format) {
-        registeredFormats.add(format);
+        return null;
     }
 }

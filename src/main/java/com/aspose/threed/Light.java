@@ -57,6 +57,6 @@ public class Light extends Entity {
 
     @Override
     public EntityRendererKey getEntityRendererKey() {
-        return new EntityRendererKey(EntityRendererFeatures.None, "Light");
+        return new EntityRendererKey("Light");
     }
 }

@@ -47,7 +47,14 @@ public class A3DObject implements INamedObject {
         return false;
     }
 
-    public void removeProperty(Property property) {
-        properties.remove(property);
+    public boolean removeProperty(Property property) {
+        if (property == null) {
+            throw new IllegalArgumentException("property");
+        }
+        boolean found = findProperty(property.getName()) != null;
+        if (found) {
+            properties.remove(property);
+        }
+        return found;
     }
 }
