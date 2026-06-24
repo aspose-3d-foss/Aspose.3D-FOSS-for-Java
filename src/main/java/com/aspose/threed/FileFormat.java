@@ -6,12 +6,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.aspose.threed.formats.ObjImporter;
-import com.aspose.threed.formats.ObjExporter;
-import com.aspose.threed.formats.StlImporter;
-import com.aspose.threed.formats.StlExporter;
-import com.aspose.threed.formats.GltfImporter;
-import com.aspose.threed.formats.GltfExporter;
+import com.aspose.threed.ObjImporter;
+import com.aspose.threed.ObjExporter;
+import com.aspose.threed.StlImporter;
+import com.aspose.threed.StlExporter;
+import com.aspose.threed.GltfImporter;
+import com.aspose.threed.GltfExporter;
 
 public class FileFormat {
     public static final FileFormat FBX6100ASCII;

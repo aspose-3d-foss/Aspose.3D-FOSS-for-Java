@@ -1,4 +1,4 @@
-package com.aspose.threed.formats;
+package com.aspose.threed;
 
 import com.aspose.threed.*;
 import java.io.*;
