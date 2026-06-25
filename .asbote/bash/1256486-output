@@ -1,0 +1,306 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
+using System.Threading;
+using Aspose.ThreeD.Utilities;
+
+namespace Aspose.ThreeD.Formats
+{
+    /// <summary>
+    /// Detect file's version and type
+    /// </summary>
+    interface IFileFormatDetector
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="header"></param>
+        /// <returns>return null if failed to detect the file type</returns>
+        FileFormat Detect(string fileName, byte[] header);
+    }
+
+    interface IZip3DFormatDetector
+    {
+        FileFormat Detect(string fileName, ZipReader reader);
+    }
+
+
+    /// <summary>
+    /// The IOService allows to create exporter/importer for different file formats, and provides the file format detection service.
+    /// </summary>
+    class IOService
+    {
+        private static readonly IOService instance = new IOService();
+        internal static IOService Instance { get { return instance; } }
+        private IFileFormatDetector[] formatDetectors;
+        private IZip3DFormatDetector[] zipDetectors;
+        private List<Plugin> plugins = new List<Plugin>();
+        private static int serializeVersionCounter = 1;
+        private Dictionary<FileFormatType, Plugin> typeToPlugin = new Dictionary<FileFormatType, Plugin>();
+        internal HashSet<string> supportedExtensions = new HashSet<string>();
+
+        [Obfuscation(Feature = "virtualization", Exclude = false)]
+        internal int OpenCounter;// = new int[1];
+        [Obfuscation(Feature = "virtualization", Exclude = false)]
+        internal int WriteCounter;// = new int[1];
+
+        private IOService()
+        {
+            try
+            {
+                LoadPlugins();
+            }
+            catch(Exception ex)
+            {
+                throw new InvalidOperationException("Failed to load plugins", ex);
+            }
+            InitPlugins();
+        }
+
+        private void LoadPlugins()
+        {
+            plugins.AddRange(new Plugin[]
+            {
+
+                new DXF.DxfPlugin(),
+                new FBX.FBXPlugin(),
+                new STL.STLPlugin(),
+                new OBJ.WavefrontObjPlugin(),
+                new _3DS.Discreet3DSPlugin(),
+                new U3D.U3DPlugin(),
+                new Collada.ColladaPlugin(),
+                new PDF.PDFPlugin(),
+                new GLTF.GLTFPlugin(),
+                new PLY.PlyPlugin(),
+                new X.XFilePlugin(),
+                new Draco.DracoPlugin(),
+                new _3MF.Microsoft3MFPlugin(), 
+                new AvevaRVM.RvmPlugin(),
+                new ASE.AsePlugin(), 
+                new SiemensJT.JtPlugin(), 
+                new AMF.AMFPlugin(), 
+                new VRML.VrmlPlugin(),
+                new USD.UsdPlugin(),
+                new Maya.MayaPlugin(),
+#if DEBUG
+                new PRC.PRCPlugin(),
+                new STEP.StepPlugin(),
+#endif
+                new IFC.IFCPlugin(),
+#if DEBUG
+                new DebugPlugin(),
+#endif
+                new Blender.BlenderPlugin(),
+                new XYZ.XyzPlugin(),
+                new PCD.PcdPlugin(),
+                new A3DW.A3DWPlugin(),
+                new HTML5.H5Plugin(),
+                new Zip.ZipPlugin()
+            });
+        }
+        private void InitPlugins()
+        {
+            List<IFileFormatDetector> allDetectors = new List<IFileFormatDetector>();
+            List<IZip3DFormatDetector> zipDetectors = new List<IZip3DFormatDetector>();
+            foreach (Plugin plugin in plugins)
+            {
+                plugin.CreateFormatDetectors(allDetectors);
+                plugin.CreateZipFormatDetectors(zipDetectors);
+
+                if (plugin.Format != null)
+                {
+                    typeToPlugin.Add(plugin.Format, plugin);
+                    var exts = plugin.Format.Extensions;
+                    if(exts != null)
+                    {
+                        for(int i = 0; i < exts.Length; i++)
+                            supportedExtensions.Add(exts[i]);
+                    }
+                }
+            }
+            allDetectors.Add(new Express.ExpressDetector());
+            this.formatDetectors = allDetectors.ToArray();
+            this.zipDetectors = zipDetectors.ToArray();
+        }
+        /// <summary>
+        /// Get the plugin instance for specified type
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public Plugin GetPlugin(FileFormatType type)
+        {
+            Plugin ret;
+            if (type == null)
+                throw new ArgumentNullException("type");
+            if (typeToPlugin.TryGetValue(type, out ret))
+                return ret;
+            return null;
+        }
+
+        public int GenerateSerializeVersion()
+        {
+            return Interlocked.Increment(ref serializeVersionCounter);
+        }
+
+        /// <summary>
+        /// Get the file's format according to file's leading header bytes.
+        /// IOService won't guarantee the file format returned by this function is supported.
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="header"></param>
+        /// <returns></returns>
+        public FileFormat GetFileFormat(string fileName, byte[] header)
+        {
+            if (header != null && ZipReader.IsZipArchive(header) && fileName != null && File.Exists(fileName))
+            {
+                using (var fs = new FileStream(fileName, FileMode.Open, FileAccess.Read))
+                {
+                    var r = new ZipReader(fs);
+                    return GetZipFileFormat(fileName, r);
+                }
+            }
+            foreach(IFileFormatDetector detector in formatDetectors)
+            {
+                try
+                {
+                    FileFormat ret = detector.Detect(fileName, header);
+                    if (ret != null)
+                        return ret;
+                }
+                catch (Exception)
+                {
+                    //ignore it
+                }
+            }
+            return null;
+        }
+
+        public FileFormat GetFileFormat(string fileName, Stream stream)
+        {
+            ImportContext ctx = new ImportContext(null, stream, null);
+            return GetFileFormat(fileName, ctx);
+        }
+        internal FileFormat GetFileFormat(string fileName, ImportContext ctx)
+        {
+            //TODO: if stream is not seekable(like a decompress stream or internet stream)
+            //needs to use a stream adapter to wrap the prefetched data with remaining data into a new stream.
+            byte[] header = ctx.GetHeader();
+            if (header == null)
+                header = new byte[0];
+            if (ZipReader.IsZipArchive(header))
+            {
+                return GetZipFileFormat(fileName, ctx.GetZipReader());
+            }
+            else
+            {
+                FileFormat ret = GetFileFormat(fileName, header);
+                return ret;
+            }
+        }
+
+        private FileFormat GetZipFileFormat(string fileName, ZipReader r)
+        {
+            for (int i = 0; i < zipDetectors.Length; i++)
+            {
+                var format = zipDetectors[i].Detect(fileName, r);
+                if (format != null)
+                    return format;
+            }
+            return null;
+        }
+
+        public Exporter CreateExporter(FileFormat format)
+        {
+            var ret = CreateExporterImpl(format);
+            if(ret == null)
+                throw new ArgumentException("Not supported exporter type " + format);
+            return ret;
+        }
+        public bool CanImport(FileFormat format)
+        {
+            FileFormatType ft = format.FileFormatType;
+            Plugin plugin;
+            if (typeToPlugin.TryGetValue(ft, out plugin))
+            {
+                return plugin is IImportFactory;
+            }
+            return false;
+        }
+        public bool CanExport(FileFormat format)
+        {
+            FileFormatType ft = format.FileFormatType;
+            Plugin plugin;
+            if (typeToPlugin.TryGetValue(ft, out plugin))
+            {
+                return plugin is IExportFactory;
+            }
+            return false;
+        }
+        public Exporter CreateExporterImpl(FileFormat format)
+        {
+            FileFormatType ft = format.FileFormatType;
+            Plugin plugin;
+            if (typeToPlugin.TryGetValue(ft, out plugin))
+            {
+                var factory = plugin as IExportFactory;
+                if (factory != null)
+                    return factory.CreateExporter(format);
+            }
+            return null;
+        }
+        public IImporter CreateImporter(FileFormat format)
+        {
+            var ret = CreateImporterImpl(format);
+            if(ret == null)
+                throw new ArgumentException("Not supported importer type " + format);
+            return ret;
+
+        }
+        internal IImporter CreateImporterImpl(FileFormat format)
+        {
+            FileFormatType ft = format.FileFormatType;
+            Plugin plugin;
+            if (typeToPlugin.TryGetValue(ft, out plugin))
+            {
+                var factory = plugin as IImportFactory;
+                if (factory != null)
+                    return factory.CreateImporter(format);
+            }
+            return null;
+        }
+
+        public SaveOptions CreateSaveOptions(FileFormat format)
+        {
+            FileFormatType ft = format.FileFormatType;
+            Plugin plugin;
+            SaveOptions ret = null;
+            if (typeToPlugin.TryGetValue(ft, out plugin))
+            {
+                if (plugin is IExportFactory factory)
+                    ret = factory.CreateSaveOptions(format);
+            }
+            if(ret == null)
+                ret = new SaveOptions(format);
+            ret.fileFormat = format;
+            return ret;
+        }
+        public LoadOptions CreateLoadOptions(FileFormat format)
+        {
+            FileFormatType ft = format.FileFormatType;
+            Plugin plugin;
+            LoadOptions ret = null;
+            if (typeToPlugin.TryGetValue(ft, out plugin))
+            {
+                if(plugin is IImportFactory factory)
+                    ret = factory.CreateLoadOptions(format);
+            }
+            if(ret == null)
+                ret = new LoadOptions(format);
+            ret.fileFormat = format;
+            return ret;
+        }
+    }
+}

@@ -1,0 +1,200 @@
+## Added types
+- com.aspose.threed.A3dwSaveOptions
+- com.aspose.threed.AmfSaveOptions
+- com.aspose.threed.ApertureMode
+- com.aspose.threed.ArbitraryProfile
+- com.aspose.threed.BlendFactor
+- com.aspose.threed.Bone
+- com.aspose.threed.BoneLinkMode
+- com.aspose.threed.BooleanOperand
+- com.aspose.threed.BooleanOperator
+- com.aspose.threed.CenterLineProfile
+- com.aspose.threed.CircleShape
+- com.aspose.threed.CompareFunction
+- com.aspose.threed.ComposeOrder
+- com.aspose.threed.CryptoUtils
+- com.aspose.threed.CShape
+- com.aspose.threed.CubeFace
+- com.aspose.threed.CubeFaceData<T>
+- com.aspose.threed.CullFaceMode
+- com.aspose.threed.DescriptorSetUpdater
+- com.aspose.threed.Discreet3dsLoadOptions
+- com.aspose.threed.Discreet3dsSaveOptions
+- com.aspose.threed.DracoCompressionLevel
+- com.aspose.threed.DracoFormat
+- com.aspose.threed.DracoSaveOptions
+- com.aspose.threed.DrawOperation
+- com.aspose.threed.DriverException
+- com.aspose.threed.EllipseShape
+- com.aspose.threed.EndPoint
+- com.aspose.threed.EntityRenderer
+- com.aspose.threed.Enumerable<T>
+- com.aspose.threed.Enumerator<T>
+- com.aspose.threed.EventCallback<EventArg>
+- com.aspose.threed.FileStream
+- com.aspose.threed.FileSystemFactory
+- com.aspose.threed.FontFile
+- com.aspose.threed.FrontFace
+- com.aspose.threed.Frustum
+- com.aspose.threed.GLSLSource
+- com.aspose.threed.GltfEmbeddedImageFormat
+- com.aspose.threed.HalfSpace
+- com.aspose.threed.HollowCircleShape
+- com.aspose.threed.HollowRectangleShape
+- com.aspose.threed.HShape
+- com.aspose.threed.Html5SaveOptions
+- com.aspose.threed.IBuffer
+- com.aspose.threed.ICommandList
+- com.aspose.threed.IDescriptorSet
+- com.aspose.threed.IIndexBuffer
+- com.aspose.threed.IIndexedVertexElement
+- com.aspose.threed.IndexDataType
+- com.aspose.threed.InitializationException
+- com.aspose.threed.Int2D
+- com.aspose.threed.IOrientable
+- com.aspose.threed.IPipeline
+- com.aspose.threed.IRenderQueue
+- com.aspose.threed.IRenderTarget
+- com.aspose.threed.IRenderTexture
+- com.aspose.threed.IRenderWindow
+- com.aspose.threed.ITexture1D
+- com.aspose.threed.ITexture2D
+- com.aspose.threed.ITextureCodec
+- com.aspose.threed.ITextureCubemap
+- com.aspose.threed.ITextureDecoder
+- com.aspose.threed.ITextureEncoder
+- com.aspose.threed.ITextureUnit
+- com.aspose.threed.IVertexBuffer
+- com.aspose.threed.JavaXImageCodec
+- com.aspose.threed.JtLoadOptions
+- com.aspose.threed.LinearExtrusion
+- com.aspose.threed.LShape
+- com.aspose.threed.MaterialConverter
+- com.aspose.threed.MathUtils
+- com.aspose.threed.MemoryStream
+- com.aspose.threed.Microsoft3MFFormat
+- com.aspose.threed.MirroredProfile
+- com.aspose.threed.MorphTargetChannel
+- com.aspose.threed.MorphTargetDeformer
+- com.aspose.threed.MulticastEvent<EventArg>
+- com.aspose.threed.NotImplementedException
+- com.aspose.threed.NurbsDirection
+- com.aspose.threed.NurbsSurface
+- com.aspose.threed.ParameterizedProfile
+- com.aspose.threed.Patch
+- com.aspose.threed.PatchDirection
+- com.aspose.threed.PatchDirectionType
+- com.aspose.threed.PbrSpecularMaterial
+- com.aspose.threed.PdfFormat
+- com.aspose.threed.PdfLightingScheme
+- com.aspose.threed.PdfLoadOptions
+- com.aspose.threed.PdfRenderMode
+- com.aspose.threed.PdfSaveOptions
+- com.aspose.threed.PixelFormat
+- com.aspose.threed.PixelMapMode
+- com.aspose.threed.PixelMapping
+- com.aspose.threed.PlyFormat
+- com.aspose.threed.PointCloud
+- com.aspose.threed.PolygonBuilder
+- com.aspose.threed.PostProcessing
+- com.aspose.threed.PresetShaders
+- com.aspose.threed.ProjectionType
+- com.aspose.threed.PushConstant
+- com.aspose.threed.Rect
+- com.aspose.threed.RectangleShape
+- com.aspose.threed.RelativeRectangle
+- com.aspose.threed.Renderer
+- com.aspose.threed.RendererException
+- com.aspose.threed.RendererVariableManager
+- com.aspose.threed.RenderFactory
+- com.aspose.threed.RenderParameters
+- com.aspose.threed.RenderQueueGroupId
+- com.aspose.threed.RenderResource
+- com.aspose.threed.RenderStage
+- com.aspose.threed.RenderState
+- com.aspose.threed.RotationMode
+- com.aspose.threed.RotationOrder
+- com.aspose.threed.RvmFormat
+- com.aspose.threed.RvmLoadOptions
+- com.aspose.threed.RvmSaveOptions
+- com.aspose.threed.ShaderException
+- com.aspose.threed.ShaderMaterial
+- com.aspose.threed.ShaderProgram
+- com.aspose.threed.ShaderSet
+- com.aspose.threed.ShaderSource
+- com.aspose.threed.ShaderStage
+- com.aspose.threed.ShaderTechnique
+- com.aspose.threed.ShaderVariable
+- com.aspose.threed.Skeleton
+- com.aspose.threed.SkeletonType
+- com.aspose.threed.SkinDeformer
+- com.aspose.threed.SPIRVSource
+- com.aspose.threed.SplitMeshPolicy
+- com.aspose.threed.StencilAction
+- com.aspose.threed.StencilState
+- com.aspose.threed.Structs
+- com.aspose.threed.StructuralMetadata
+- com.aspose.threed.SweptAreaSolid
+- com.aspose.threed.Text
+- com.aspose.threed.TextureCodec
+- com.aspose.threed.TextureType
+- com.aspose.threed.TransformBuilder
+- com.aspose.threed.TransformedCurve
+- com.aspose.threed.TrapeziumShape
+- com.aspose.threed.TriMesh
+- com.aspose.threed.TrimmedCurve
+- com.aspose.threed.TShape
+- com.aspose.threed.U3dLoadOptions
+- com.aspose.threed.U3dSaveOptions
+- com.aspose.threed.UsdSaveOptions
+- com.aspose.threed.UShape
+- com.aspose.threed.Vertex
+- com.aspose.threed.VertexElementDoublesTemplate
+- com.aspose.threed.VertexElementEdgeCrease
+- com.aspose.threed.VertexElementFVector
+- com.aspose.threed.VertexElementHole
+- com.aspose.threed.VertexElementIntsTemplate
+- com.aspose.threed.VertexElementPolygonGroup
+- com.aspose.threed.VertexElementSmoothingGroup
+- com.aspose.threed.VertexElementSpecular
+- com.aspose.threed.VertexElementTemplate<T>
+- com.aspose.threed.VertexElementUserData
+- com.aspose.threed.VertexElementVector4
+- com.aspose.threed.VertexElementVertexCrease
+- com.aspose.threed.VertexElementVisibility
+- com.aspose.threed.VertexElementWeight
+- com.aspose.threed.Viewport
+- com.aspose.threed.Watermark
+- com.aspose.threed.WindowHandle
+- com.aspose.threed.XLoadOptions
+- com.aspose.threed.ZShape
+## Removed types
+- com.aspose.threed.FbxExporter
+- com.aspose.threed.FbxImporter
+- com.aspose.threed.GltfExporter
+- com.aspose.threed.GltfImporter
+- com.aspose.threed.IExporter
+- com.aspose.threed.IImporter
+- com.aspose.threed.ObjExporter
+- com.aspose.threed.ObjImporter
+- com.aspose.threed.StlExporter
+- com.aspose.threed.StlImporter
+## Changed types
+### com.aspose.threed.AlphaSource
+**Added:**
+- + static final com.aspose.threed.AlphaSource FIXED_VALUE
+- + static final com.aspose.threed.AlphaSource NONE
+- + static final com.aspose.threed.AlphaSource PIXEL_ALPHA
+**Removed:**
+- - static final com.aspose.threed.AlphaSource FixedValue
+- - static final com.aspose.threed.AlphaSource None
+- - static final com.aspose.threed.AlphaSource PixelAlpha
+### com.aspose.threed.AnimationChannel
+**Added:**
+- + Class<?> getComponentType()
+- + com.aspose.threed.KeyframeSequence getKeyframeSequence()
+- + Object getDefaultValue()
+- + void setDefaultValue(Object)
+- + void setKeyframeSequence(com.aspose.threed.KeyframeSequence)
+**Removed:**
+- - com.aspose.threed.AnimationChannel()

@@ -1,0 +1,425 @@
+/**
+ * Gets the current release version
+ */
+public class com.aspose.threed.Scene extends com.aspose.threed.SceneObject {
+/**
+ * Gets the current release version
+ */
+  public static final java.lang.String VERSION;
+/**
+ * Opens the scene from given stream using specified file format.
+ * @param stream Input stream, user is responsible for closing the stream.
+ * @param format File format.
+ */
+  public static com.aspose.threed.Scene fromStream(java.io.InputStream stream, com.aspose.threed.FileFormat format, com.aspose.threed.Cancellation cancellationToken) throws java.io.IOException;
+/**
+ * Opens the scene from given stream using specified file format.
+ * @param stream Input stream, user is responsible for closing the stream.
+ */
+  public static com.aspose.threed.Scene fromStream(java.io.InputStream stream, com.aspose.threed.FileFormat format) throws java.io.IOException;
+/**
+ * Opens the scene from given stream using specified IO config.
+ * @param stream Input stream, user is responsible for closing the stream.
+ * @param options More detailed configuration to open the stream.
+ */
+  public static com.aspose.threed.Scene fromStream(java.io.InputStream stream, com.aspose.threed.LoadOptions options, com.aspose.threed.Cancellation cancellationToken) throws java.io.IOException;
+/**
+ * Opens the scene from given stream using specified IO config.
+ * @param stream Input stream, user is responsible for closing the stream.
+ */
+  public static com.aspose.threed.Scene fromStream(java.io.InputStream stream, com.aspose.threed.LoadOptions options) throws java.io.IOException;
+/**
+ * Opens the scene from given stream
+ * @param stream Input stream, user is responsible for closing the stream.
+ */
+  public static com.aspose.threed.Scene fromStream(java.io.InputStream stream, com.aspose.threed.Cancellation cancellationToken) throws java.io.IOException;
+/**
+ * Opens the scene from given stream
+ */
+  public static com.aspose.threed.Scene fromStream(java.io.InputStream stream) throws java.io.IOException;
+/**
+ * Opens the scene from given stream using specified file format.
+ * @param stream Input stream, user is responsible for closing the stream.
+ * @param format File format.
+ */
+  public void open(java.io.InputStream stream, com.aspose.threed.FileFormat format, com.aspose.threed.Cancellation cancellationToken) throws java.io.IOException;
+/**
+ * Opens the scene from given stream using specified file format.
+ * @param stream Input stream, user is responsible for closing the stream.
+ */
+  public void open(java.io.InputStream stream, com.aspose.threed.FileFormat format) throws java.io.IOException;
+/**
+ * Opens the scene from given stream using specified IO config.
+ * @param stream Input stream, user is responsible for closing the stream.
+ * @param options More detailed configuration to open the stream.
+ */
+  public void open(java.io.InputStream stream, com.aspose.threed.LoadOptions options, com.aspose.threed.Cancellation cancellationToken) throws java.io.IOException;
+/**
+ * Opens the scene from given stream using specified IO config.
+ * @param stream Input stream, user is responsible for closing the stream.
+ */
+  public void open(java.io.InputStream stream, com.aspose.threed.LoadOptions options) throws java.io.IOException;
+/**
+ * Opens the scene from given stream
+ */
+  public void open(java.io.InputStream stream) throws java.io.IOException;
+/**
+ * Opens the scene from given stream
+ * @param stream Input stream, user is responsible for closing the stream.
+ */
+  public void open(java.io.InputStream stream, com.aspose.threed.Cancellation cancellationToken) throws java.io.IOException;
+/**
+ * Saves the scene to stream using specified file format.
+ * @param stream Input stream, user is responsible for closing the stream.
+ */
+  public void save(java.io.OutputStream stream, com.aspose.threed.FileFormat format) throws java.io.IOException;
+/**
+ * Saves the scene to stream using specified file format.
+ * @param stream Input stream, user is responsible for closing the stream.
+ * @param format Format.
+ */
+  public void save(java.io.OutputStream stream, com.aspose.threed.FileFormat format, com.aspose.threed.Cancellation cancellationToken) throws java.io.IOException;
+/**
+ * Saves the scene to stream using specified file format.
+ * @param stream Input stream, user is responsible for closing the stream.
+ */
+  public void save(java.io.OutputStream stream, com.aspose.threed.SaveOptions options) throws java.io.IOException;
+/**
+ * Saves the scene to stream using specified file format.
+ * @param stream Input stream, user is responsible for closing the stream.
+ * @param options More detailed configuration to save the stream.
+ */
+  public void save(java.io.OutputStream stream, com.aspose.threed.SaveOptions options, com.aspose.threed.Cancellation cancellationToken) throws java.io.IOException;
+/**
+ * Initializes a new instance of the Scene class with an entity attached to a new node.
+ */
+  public com.aspose.threed.Scene(com.aspose.threed.Entity entity);
+/**
+ * Initializes a new instance of the Scene class as a sub-scene.
+ * @param parentScene The parent scene.
+ * @param name Scene's name.
+ */
+  public com.aspose.threed.Scene(com.aspose.threed.Scene parentScene, java.lang.String name);
+/**
+ * Gets all sub-scenes
+ * @return all sub-scenes
+ */
+  public java.util.List<com.aspose.threed.Scene> getSubScenes();
+/**
+ * Objects that not directly used in scene hierarchy can be defined in Library.
+ *   This is useful when you're using sub-scenes and put reusable components under sub-scenes.
+ * @return Objects that not directly used in scene hierarchy can be defined in Library.
+ *  This is useful when you're using sub-scenes and put reusable components under sub-scenes.
+ */
+  public java.util.List<com.aspose.threed.A3DObject> getLibrary();
+/**
+ * Gets all AnimationClip defined in the scene.
+ * @return all AnimationClip defined in the scene.
+ */
+  public java.util.List<com.aspose.threed.AnimationClip> getAnimationClips();
+/**
+ * Gets the active AnimationClip
+ * @return the active AnimationClip
+ */
+  public com.aspose.threed.AnimationClip getCurrentAnimationClip();
+/**
+ * Sets the active AnimationClip
+ * @param value New value
+ */
+  public void setCurrentAnimationClip(com.aspose.threed.AnimationClip value);
+/**
+ * Gets a named AnimationClip
+ * @param name The AnimationClip's name to look up
+ * @return Returned AnimationClip
+ */
+  public com.aspose.threed.AnimationClip getAnimationClip(java.lang.String name);
+/**
+ * Gets the top-level asset information
+ * @return the top-level asset information
+ *  Example:
+ *   The following code shows how to read the application information from a FBX file:
+ *   
+ *      Scene scene = Scene.fromFile("test.fbx");
+ *      System.out.printf("The FBX file is created by %s %s",
+ *          scene.getAssetInfo().getApplicationName(),
+ *          scene.getAssetInfo().getApplicationVersion());
+ */
+  public com.aspose.threed.AssetInfo getAssetInfo();
+/**
+ * Sets the top-level asset information
+ */
+  public void setAssetInfo(com.aspose.threed.AssetInfo value);
+/**
+ * Gets all Pose used in this scene.
+ * @return all Pose used in this scene.
+ */
+  public java.util.Collection<com.aspose.threed.Pose> getPoses();
+/**
+ * Gets the root node of the scene.
+ * @return the root node of the scene.
+ *  Example:
+ *   The following code shows how to create a node with Box entity attached to the root node.
+ *   
+ *      Scene scene = new Scene();
+ *      scene.getRootNode().createChildNode(new Box());
+ *      scene.save("box.stl");
+ */
+  public com.aspose.threed.Node getRootNode();
+/**
+ * Clears the scene content and restores the default settings.
+ */
+  public void clear();
+/**
+ * A shorthand function to create and register the AnimationClip The first AnimationClip will be assigned to the getCurrentAnimationClip()
+ * @param name Animation clip's name
+ * @return A new animation clip instance with given name
+ */
+  public com.aspose.threed.AnimationClip createAnimationClip(java.lang.String name);
+/**
+ * Opens the scene from given stream using specified file format.
+ * @param stream Input stream, user is responsible for closing the stream.
+ * @param format File format.
+ * @param cancellationToken Cancellation token to the load task
+ * @throws java.io.IOException Thrown when failed at reading input
+ */
+  public void open(com.aspose.threed.Stream stream, com.aspose.threed.FileFormat format, com.aspose.threed.Cancellation cancellationToken) throws java.io.IOException;
+/**
+ * Opens the scene from given stream using specified file format.
+ * @param stream Input stream, user is responsible for closing the stream.
+ * @param format File format.
+ * @throws java.io.IOException Thrown when failed at reading input
+ */
+  public void open(com.aspose.threed.Stream stream, com.aspose.threed.FileFormat format) throws java.io.IOException;
+/**
+ * Opens the scene from given stream using specified IO config.
+ * @param stream Input stream, user is responsible for closing the stream.
+ * @param options More detailed configuration to open the stream.
+ * @param cancellationToken Cancellation token to the load task
+ * @throws java.io.IOException Thrown when failed at reading input
+ */
+  public void open(com.aspose.threed.Stream stream, com.aspose.threed.LoadOptions options, com.aspose.threed.Cancellation cancellationToken) throws java.io.IOException;
+/**
+ * Opens the scene from given stream using specified IO config.
+ * @param stream Input stream, user is responsible for closing the stream.
+ * @param options More detailed configuration to open the stream.
+ * @throws java.io.IOException Thrown when failed at reading input
+ */
+  public void open(com.aspose.threed.Stream stream, com.aspose.threed.LoadOptions options) throws java.io.IOException;
+/**
+ * Opens the scene from given stream
+ * @param stream Input stream, user is responsible for closing the stream.
+ * @throws java.io.IOException Thrown when failed at reading input
+ */
+  public void open(com.aspose.threed.Stream stream) throws java.io.IOException;
+/**
+ * Opens the scene from given stream
+ * @param stream Input stream, user is responsible for closing the stream.
+ * @param cancellationToken Cancellation token to the load task
+ * @throws java.io.IOException Thrown when failed at reading input
+ */
+  public void open(com.aspose.threed.Stream stream, com.aspose.threed.Cancellation cancellationToken) throws java.io.IOException;
+/**
+ * Opens the scene from given path using specified file format.
+ * @param fileName File name.
+ * @param format File format.
+ * @param cancellationToken Cancellation token to the load task
+ * @throws java.io.IOException Thrown when failed at reading input
+ */
+  public void open(java.lang.String fileName, com.aspose.threed.FileFormat format, com.aspose.threed.Cancellation cancellationToken) throws java.io.IOException;
+/**
+ * Opens the scene from given path using specified file format.
+ * @param fileName File name.
+ * @param format File format.
+ * @throws java.io.IOException Thrown when failed at reading input
+ */
+  public void open(java.lang.String fileName, com.aspose.threed.FileFormat format) throws java.io.IOException;
+/**
+ * Opens the scene from given path using specified file format.
+ * @param fileName File name.
+ * @param options More detailed configuration to open the stream.
+ * @throws java.io.IOException Thrown when failed at reading input
+ */
+  public void open(java.lang.String fileName, com.aspose.threed.LoadOptions options) throws java.io.IOException;
+/**
+ * Opens the scene from given path using specified file format.
+ * @param fileName File name.
+ * @param options More detailed configuration to open the stream.
+ * @param cancellationToken Cancellation token to the load task
+ * @throws java.io.IOException Thrown when failed at reading input
+ */
+  public void open(java.lang.String fileName, com.aspose.threed.LoadOptions options, com.aspose.threed.Cancellation cancellationToken) throws java.io.IOException;
+/**
+ * Opens the scene from given path
+ * @param fileName File name.
+ * @throws java.io.IOException Thrown when failed at reading input
+ */
+  public void open(java.lang.String fileName) throws java.io.IOException;
+/**
+ * Opens the scene from given path
+ * @param fileName File name.
+ * @param cancellationToken Cancellation token to the load task
+ * @throws java.io.IOException Thrown when failed at reading input
+ */
+  public void open(java.lang.String fileName, com.aspose.threed.Cancellation cancellationToken) throws java.io.IOException;
+/**
+ * Opens the scene from given stream using specified file format.
+ * @param stream Input stream, user is responsible for closing the stream.
+ * @param format File format.
+ * @param cancellationToken Cancellation token to the load task
+ * @throws java.io.IOException Thrown when failed at reading input
+ */
+  public static com.aspose.threed.Scene fromStream(com.aspose.threed.Stream stream, com.aspose.threed.FileFormat format, com.aspose.threed.Cancellation cancellationToken) throws java.io.IOException;
+/**
+ * Opens the scene from given stream using specified file format.
+ * @param stream Input stream, user is responsible for closing the stream.
+ * @param format File format.
+ * @throws java.io.IOException Thrown when failed at reading input
+ */
+  public static com.aspose.threed.Scene fromStream(com.aspose.threed.Stream stream, com.aspose.threed.FileFormat format) throws java.io.IOException;
+/**
+ * Opens the scene from given stream using specified IO config.
+ * @param stream Input stream, user is responsible for closing the stream.
+ * @param options More detailed configuration to open the stream.
+ * @param cancellationToken Cancellation token to the load task
+ * @throws java.io.IOException Thrown when failed at reading input
+ */
+  public static com.aspose.threed.Scene fromStream(com.aspose.threed.Stream stream, com.aspose.threed.LoadOptions options, com.aspose.threed.Cancellation cancellationToken) throws java.io.IOException;
+/**
+ * Opens the scene from given stream using specified IO config.
+ * @param stream Input stream, user is responsible for closing the stream.
+ * @param options More detailed configuration to open the stream.
+ * @throws java.io.IOException Thrown when failed at reading input
+ */
+  public static com.aspose.threed.Scene fromStream(com.aspose.threed.Stream stream, com.aspose.threed.LoadOptions options) throws java.io.IOException;
+/**
+ * Opens the scene from given stream
+ * @param stream Input stream, user is responsible for closing the stream.
+ * @param cancellationToken Cancellation token to the load task
+ * @throws java.io.IOException Thrown when failed at reading input
+ */
+  public static com.aspose.threed.Scene fromStream(com.aspose.threed.Stream stream, com.aspose.threed.Cancellation cancellationToken) throws java.io.IOException;
+/**
+ * Opens the scene from given stream
+ * @param stream Input stream, user is responsible for closing the stream.
+ * @throws java.io.IOException Thrown when failed at reading input
+ */
+  public static com.aspose.threed.Scene fromStream(com.aspose.threed.Stream stream) throws java.io.IOException;
+/**
+ * Opens the scene from given path using specified file format.
+ * @param fileName File name.
+ * @param format File format.
+ * @param cancellationToken Cancellation token to the load task
+ * @throws java.io.IOException Thrown when failed at reading input
+ */
+  public static com.aspose.threed.Scene fromFile(java.lang.String fileName, com.aspose.threed.FileFormat format, com.aspose.threed.Cancellation cancellationToken) throws java.io.IOException;
+/**
+ * Opens the scene from given path using specified file format.
+ * @param fileName File name.
+ * @param format File format.
+ * @throws java.io.IOException Thrown when failed at reading input
+ */
+  public static com.aspose.threed.Scene fromFile(java.lang.String fileName, com.aspose.threed.FileFormat format) throws java.io.IOException;
+/**
+ * Opens the scene from given path using specified file format.
+ * @param fileName File name.
+ * @param options More detailed configuration to open the stream.
+ * @param cancellationToken Cancellation token to the load task
+ * @throws java.io.IOException Thrown when failed at reading input
+ */
+  public static com.aspose.threed.Scene fromFile(java.lang.String fileName, com.aspose.threed.LoadOptions options, com.aspose.threed.Cancellation cancellationToken) throws java.io.IOException;
+/**
+ * Opens the scene from given path using specified file format.
+ * @param fileName File name.
+ * @param options More detailed configuration to open the stream.
+ * @throws java.io.IOException Thrown when failed at reading input
+ */
+  public static com.aspose.threed.Scene fromFile(java.lang.String fileName, com.aspose.threed.LoadOptions options) throws java.io.IOException;
+/**
+ * Opens the scene from given path
+ * @param fileName File name.
+ * @throws java.io.IOException Thrown when failed at reading input
+ */
+  public static com.aspose.threed.Scene fromFile(java.lang.String fileName) throws java.io.IOException;
+/**
+ * Opens the scene from given path
+ * @param fileName File name.
+ * @param cancellationToken Cancellation token to the load task
+ * @throws java.io.IOException Thrown when failed at reading input
+ */
+  public static com.aspose.threed.Scene fromFile(java.lang.String fileName, com.aspose.threed.Cancellation cancellationToken) throws java.io.IOException;
+/**
+ * Saves the scene to stream using specified file format.
+ * @param stream Input stream, user is responsible for closing the stream.
+ * @param format Format.
+ * @throws java.io.IOException Thrown when failed at reading input
+ */
+  public void save(com.aspose.threed.Stream stream, com.aspose.threed.FileFormat format) throws java.io.IOException;
+/**
+ * Saves the scene to stream using specified file format.
+ * @param stream Input stream, user is responsible for closing the stream.
+ * @param format Format.
+ * @param cancellationToken Cancellation token to the save task
+ * @throws java.io.IOException Thrown when failed at reading input
+ */
+  public void save(com.aspose.threed.Stream stream, com.aspose.threed.FileFormat format, com.aspose.threed.Cancellation cancellationToken) throws java.io.IOException;
+/**
+ * Saves the scene to stream using specified file format.
+ * @param stream Input stream, user is responsible for closing the stream.
+ * @param options More detailed configuration to save the stream.
+ * @throws java.io.IOException Thrown when failed at reading input
+ */
+  public void save(com.aspose.threed.Stream stream, com.aspose.threed.SaveOptions options) throws java.io.IOException;
+/**
+ * Saves the scene to stream using specified file format.
+ * @param stream Input stream, user is responsible for closing the stream.
+ * @param options More detailed configuration to save the stream.
+ * @param cancellationToken Cancellation token to the save task
+ * @throws java.io.IOException Thrown when failed at reading input
+ */
+  public void save(com.aspose.threed.Stream stream, com.aspose.threed.SaveOptions options, com.aspose.threed.Cancellation cancellationToken) throws java.io.IOException;
+/**
+ * Saves the scene to specified path using specified file format.
+ * @param fileName File name.
+ * @throws java.io.IOException Thrown when failed at reading input
+ */
+  public void save(java.lang.String fileName) throws java.io.IOException;
+/**
+ * Saves the scene to specified path using specified file format.
+ * @param fileName File name.
+ * @param format Format.
+ * @throws java.io.IOException Thrown when failed at reading input
+ */
+  public void save(java.lang.String fileName, com.aspose.threed.FileFormat format) throws java.io.IOException;
+/**
+ * Saves the scene to specified path using specified file format.
+ * @param fileName File name.
+ * @param format Format.
+ * @param cancellationToken Cancellation token to the save task
+ * @throws java.io.IOException Thrown when failed at reading input
+ */
+  public void save(java.lang.String fileName, com.aspose.threed.FileFormat format, com.aspose.threed.Cancellation cancellationToken) throws java.io.IOException;
+/**
+ * Saves the scene to specified path using specified file format.
+ * @param fileName File name.
+ * @param options More detailed configuration to save the stream.
+ * @throws java.io.IOException Thrown when failed at reading input
+ */
+  public void save(java.lang.String fileName, com.aspose.threed.SaveOptions options) throws java.io.IOException;
+/**
+ * Saves the scene to specified path using specified file format.
+ * @param fileName File name.
+ * @param options More detailed configuration to save the stream.
+ * @param cancellationToken Cancellation token to the save task
+ * @throws java.io.IOException Thrown when failed at reading input
+ */
+  public void save(java.lang.String fileName, com.aspose.threed.SaveOptions options, com.aspose.threed.Cancellation cancellationToken) throws java.io.IOException;
+  public void render(com.aspose.threed.Camera, java.lang.String) throws java.io.IOException;
+  public void render(com.aspose.threed.Camera, java.lang.String, com.aspose.threed.Vector2, java.lang.String) throws java.io.IOException;
+  public void render(com.aspose.threed.Camera, java.lang.String, com.aspose.threed.Vector2, java.lang.String, com.aspose.threed.ImageRenderOptions) throws java.io.IOException;
+  public void render(com.aspose.threed.Camera, com.aspose.threed.TextureData) throws java.io.IOException;
+  public void render(com.aspose.threed.Camera, com.aspose.threed.TextureData, com.aspose.threed.ImageRenderOptions) throws java.io.IOException;
+/**
+ * Initializes a new instance of the Scene class.
+ */
+  public com.aspose.threed.Scene();
+}

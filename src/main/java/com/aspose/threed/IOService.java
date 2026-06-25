@@ -1,14 +1,13 @@
 package com.aspose.threed;
 
 import com.aspose.threed.FileFormat;
-import com.aspose.threed.IImporter;
-import com.aspose.threed.IExporter;
 import com.aspose.threed.Stream;
 import java.io.IOException;
 
 /**
- * IO service for importing and exporting files.
+ * IO service for file format detection and I/O operations.
  * This is a stub implementation for FOSS version.
+ * File I/O operations are handled internally through FileFormat.
  */
 class IOService {
     
@@ -28,17 +27,17 @@ class IOService {
     }
 
     /**
-     * Creates an importer for the specified file format.
+     * Creates load options for the specified file format.
      */
-    static IImporter createImporter(FileFormat format) {
-        return format.getImporter();
+    static LoadOptions createLoadOptions(FileFormat format) throws ImportException {
+        return format.createLoadOptions();
     }
 
     /**
-     * Creates an exporter for the specified file format.
+     * Creates save options for the specified file format.
      */
-    static IExporter createExporter(FileFormat format) {
-        return format.getExporter();
+    static SaveOptions createSaveOptions(FileFormat format) {
+        return format.createSaveOptions();
     }
 
     /**

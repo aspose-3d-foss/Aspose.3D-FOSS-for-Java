@@ -50,15 +50,15 @@ public class IOExtension {
             writer.writeFloat(mat.m10);
             writer.writeFloat(mat.m11);
             writer.writeFloat(mat.m12);
-            writer.writeFloat(mat.m02);
-            writer.writeFloat(mat.m20);
-            writer.writeFloat(mat.m10);
-            writer.writeFloat(mat.m11);
-            writer.writeFloat(mat.m12);
-            writer.writeFloat(mat.m30);
+            writer.writeFloat(mat.m13);
             writer.writeFloat(mat.m20);
             writer.writeFloat(mat.m21);
             writer.writeFloat(mat.m22);
+            writer.writeFloat(mat.m23);
+            writer.writeFloat(mat.m30);
+            writer.writeFloat(mat.m31);
+            writer.writeFloat(mat.m32);
+            writer.writeFloat(mat.m33);
         } catch (IOException e) {
             // Should not happen with ByteArrayOutputStream
         }

@@ -1,0 +1,310 @@
+  public static final com.aspose.threed.FileFormat FBX6100ASCII;
+/**
+ * Binary FBX file format, with 6.1.0 version
+ */
+  public static final com.aspose.threed.FileFormat FBX6100_BINARY;
+/**
+ * ASCII FBX file format, with 7.2.0 version
+ */
+  public static final com.aspose.threed.FileFormat FBX7200ASCII;
+/**
+ * Binary FBX file format, with 7.2.0 version
+ */
+  public static final com.aspose.threed.FileFormat FBX7200_BINARY;
+/**
+ * ASCII FBX file format, with 7.3.0 version
+ */
+  public static final com.aspose.threed.FileFormat FBX7300ASCII;
+/**
+ * Binary FBX file format, with 7.3.0 version
+ */
+  public static final com.aspose.threed.FileFormat FBX7300_BINARY;
+/**
+ * ASCII FBX file format, with 7.4.0 version
+ */
+  public static final com.aspose.threed.FileFormat FBX7400ASCII;
+/**
+ * Binary FBX file format, with 7.4.0 version
+ */
+  public static final com.aspose.threed.FileFormat FBX7400_BINARY;
+/**
+ * ASCII FBX file format, with 7.5.0 version
+ */
+  public static final com.aspose.threed.FileFormat FBX7500ASCII;
+/**
+ * Binary FBX file format, with 7.5.0 version
+ */
+  public static final com.aspose.threed.FileFormat FBX7500_BINARY;
+/**
+ * ASCII FBX file format, with 7.6.0 version
+ */
+  public static final com.aspose.threed.FileFormat FBX7600ASCII;
+/**
+ * Binary FBX file format, with 7.6.0 version
+ */
+  public static final com.aspose.threed.FileFormat FBX7600_BINARY;
+/**
+ * ASCII FBX file format, with 7.7.0 version
+ */
+  public static final com.aspose.threed.FileFormat FBX7700ASCII;
+/**
+ * Binary FBX file format, with 7.7.0 version
+ */
+  public static final com.aspose.threed.FileFormat FBX7700_BINARY;
+/**
+ * Autodesk Maya in ASCII format
+ */
+  public static final com.aspose.threed.FileFormat MAYAASCII;
+/**
+ * Autodesk Maya in Binary format
+ */
+  public static final com.aspose.threed.FileFormat MAYA_BINARY;
+/**
+ * Binary STL file format
+ */
+  public static final com.aspose.threed.FileFormat STL_BINARY;
+/**
+ * ASCII STL file format
+ */
+  public static final com.aspose.threed.FileFormat STLASCII;
+/**
+ * Wavefront's Obj file format
+ */
+  public static final com.aspose.threed.FileFormat WAVEFRONTOBJ;
+/**
+ * 3D Studio's file format
+ */
+  public static final com.aspose.threed.FileFormat DISCREET3DS;
+/**
+ * Collada file format
+ */
+  public static final com.aspose.threed.FileFormat COLLADA;
+/**
+ * Universal3D file format
+ */
+  public static final com.aspose.threed.FileFormat UNIVERSAL3D;
+/**
+ * Khronos Group's glTF
+ */
+  public static final com.aspose.threed.FileFormat GLTF;
+/**
+ * Khronos Group's glTF version 2.0
+ */
+  public static final com.aspose.threed.FileFormat GLTF2;
+/**
+ * Khronos Group's glTF in Binary format
+ */
+  public static final com.aspose.threed.FileFormat GLTF_BINARY;
+/**
+ * Khronos Group's glTF version 2.0
+ */
+  public static final com.aspose.threed.FileFormat GLTF2_BINARY;
+/**
+ * Adobe's Portable Document Format
+ */
+  public static final com.aspose.threed.PdfFormat PDF;
+/**
+ * Blender's 3D file format
+ */
+  public static final com.aspose.threed.FileFormat BLENDER;
+/**
+ * AutoCAD DXF
+ */
+  public static final com.aspose.threed.FileFormat DXF;
+/**
+ * Polygon File Format or Stanford Triangle Format
+ */
+  public static final com.aspose.threed.PlyFormat PLY;
+/**
+ * DirectX X File in binary format
+ */
+  public static final com.aspose.threed.FileFormat X_BINARY;
+/**
+ * DirectX X File in binary format
+ */
+  public static final com.aspose.threed.FileFormat X_TEXT;
+/**
+ * Google Draco Mesh
+ */
+  public static final com.aspose.threed.DracoFormat DRACO;
+/**
+ * Microsoft 3D Manufacturing Format
+ */
+  public static final com.aspose.threed.Microsoft3MFFormat MICROSOFT3MF;
+/**
+ * AVEVA Plant Design Management System Model in text format
+ */
+  public static final com.aspose.threed.RvmFormat RVM_TEXT;
+/**
+ * AVEVA Plant Design Management System Model in binary format
+ */
+  public static final com.aspose.threed.RvmFormat RVM_BINARY;
+/**
+ * 3D Studio Max's ASCII Scene Exporter format.
+ */
+  public static final com.aspose.threed.FileFormat ASE;
+/**
+ * ISO 16739-1 Industry Foundation Classes data model.
+ */
+  public static final com.aspose.threed.FileFormat IFC;
+/**
+ * Siemens JT File Version 8
+ */
+  public static final com.aspose.threed.FileFormat SIEMENSJT8;
+/**
+ * Siemens JT File Version 9
+ */
+  public static final com.aspose.threed.FileFormat SIEMENSJT9;
+/**
+ * Additive manufacturing file format
+ */
+  public static final com.aspose.threed.FileFormat AMF;
+/**
+ * The Virtual Reality Modeling Language
+ */
+  public static final com.aspose.threed.FileFormat VRML;
+/**
+ * Aspose.3D Web format.
+ */
+  public static final com.aspose.threed.FileFormat ASPOSE3D_WEB;
+/**
+ * HTML5 File
+ */
+  public static final com.aspose.threed.FileFormat HTML5;
+/**
+ * Zip archive that contains other 3d file format.
+ */
+  public static final com.aspose.threed.FileFormat ZIP;
+/**
+ * Universal Scene Description
+ */
+  public static final com.aspose.threed.FileFormat USD;
+/**
+ * Universal Scene Description in ASCII format.
+ */
+  public static final com.aspose.threed.FileFormat USDA;
+/**
+ * Compressed Universal Scene Description
+ */
+  public static final com.aspose.threed.FileFormat USDZ;
+/**
+ * Xyz point cloud file
+ */
+  public static final com.aspose.threed.FileFormat XYZ;
+/**
+ * PCL Point Cloud Data file in ASCII mode
+ */
+  public static final com.aspose.threed.FileFormat PCD;
+/**
+ * PCL Point Cloud Data file in Binary mode
+ */
+  public static final com.aspose.threed.FileFormat PCD_BINARY;
+/**
+ * Access to all supported formats
+ * @return Access to all supported formats
+ */
+  public static java.util.List<com.aspose.threed.FileFormat> getFormats();
+/**
+ * Gets file format version
+ * @return file format version
+ */
+  public com.aspose.threed.Version getVersion();
+/**
+ * Gets the preferred file format from the file extension name
+ *   The extension name should starts with a dot('.').
+ * @param extensionName The extension name started with '.' to query.
+ * @return Instance of FileFormat, otherwise null returned.
+ *  Example:
+ *   The following code shows how to save scene to memory using specified format
+ *   
+ *      Scene scene = new Scene(new Box());
+ *      var outputFormat = ".glb";
+ *      var format = FileFormat.getFormatByExtension(outputFormat);
+ *      var output = new ByteArrayOutputStream();
+ *      scene.save(output);
+ */
+  public static com.aspose.threed.FileFormat getFormatByExtension(java.lang.String extensionName);
+/**
+ * Gets whether Aspose.3D supports export scene to current file format.
+ * @return whether Aspose.3D supports export scene to current file format.
+ *  Example:
+ *   The following code shows how to check if exporting to specified format is supported.
+ *   
+ *      var outputFormat = ".glb";
+ *      var format = FileFormat.getFormatByExtension(outputFormat);
+ *      if (format.getCanExport())
+ *          System.out.printf("Can export to %s", outputFormat);
+ */
+  public boolean getCanExport();
+/**
+ * Gets whether Aspose.3D supports import scene from current file format.
+ * @return whether Aspose.3D supports import scene from current file format.
+ *  Example:
+ *   The following code shows how to check if importing from specified format is supported.
+ *   
+ *      var outputFormat = ".glb";
+ *      var format = FileFormat.getFormatByExtension(outputFormat);
+ *      if (format.getCanImport())
+ *          System.out.printf("Can import from %s", outputFormat);
+ */
+  public boolean getCanImport();
+/**
+ * Gets the extension name of this type.
+ * @return the extension name of this type.
+ *  Example:
+ *  
+ *      var format = FileFormat.MAYA_BINARY;
+ *      System.out.printf("Extension of %s is %s", format, format.getExtension());
+ */
+  public java.lang.String getExtension();
+/**
+ * Gets the extension names of this type.
+ * @return the extension names of this type.
+ */
+  public java.lang.String[] getExtensions();
+/**
+ * Gets file format content type
+ * @return file format content type
+ *  Example:
+ *  
+ *      var format = FileFormat.MAYA_BINARY;
+ *      if (format.getContentType() == FileContentType.BINARY)
+ *          System.out.printf("%s is binary format", format);
+ *      else
+ *          System.out.printf("%s is text-based format", format);
+ */
+  public com.aspose.threed.FileContentType getContentType();
+/**
+ * Gets file format type
+ * @return file format type
+ */
+  public com.aspose.threed.FileFormatType getFileFormatType();
+/**
+ * Detect the file format from data stream, file name is optional for guessing types that has no magic header.
+ * @param stream Stream containing data to detect
+ * @param fileName Original file name of the data, used as hint.
+ * @return The FileFormat instance of the detected type or null if failed.
+ */
+  public static com.aspose.threed.FileFormat detect(com.aspose.threed.Stream stream, java.lang.String fileName) throws java.io.IOException;
+/**
+ * Detect the file format from file name, file must be readable so Aspose.3D can detect the file format through file header.
+ * @param fileName Path to the file to detect file format.
+ * @return The FileFormat instance of the detected type or null if failed.
+ */
+  public static com.aspose.threed.FileFormat detect(java.lang.String fileName) throws java.io.IOException;
+/**
+ * Create a default load options for this file format
+ * @return A default load option for current format
+ */
+  public com.aspose.threed.LoadOptions createLoadOptions() throws com.aspose.threed.ImportException;
+/**
+ * Create a default save options for this file format
+ * @return A default save option for current format
+ */
+  public com.aspose.threed.SaveOptions createSaveOptions();
+/**
+ * Formats to string
+ * @return Object string
+ */
+  public java.lang.String toString();
+}

@@ -202,22 +202,21 @@ Before marking an API complete:
 - [ ] AGENTS.md updated with implementation status
 - [ ] TODO.md updated with task completion
 - [ ] No license/trial/DRM code exists
-
-## Current Status (Session 13 - 2026-06-24)
+**Current Status (Session 14 - 2026-06-24)**
 
 **Stage 2: API Surface Alignment** (IN PROGRESS)
 
-**Status:** The Java FOSS is missing ~107 classes that exist in On-Premise 26.1.0 and needs removal of 12 incorrectly added classes.
+**Status:** The Java FOSS has ~160 classes that need to be ported from On-Premise 26.1.0, and 11 incorrectly added classes that need removal.
 
-**API Diff Summary:**
-- **Added types (107):** Missing from Java FOSS (A3dwSaveOptions, AmfSaveOptions, ApertureMode, ArbitraryProfile, BlendFactor, Bone, BoneLinkMode, BooleanOperand, BooleanOperator, CenterLineProfile, CircleShape, CompareFunction, ComposeOrder, CryptoUtils, CShape, CubeFace, CubeFaceData<T>, CullFaceMode, DescriptorSetUpdater, Discreet3dsLoadOptions, Discreet3dsSaveOptions, DracoCompressionLevel, DracoFormat, DracoSaveOptions, DrawOperation, DriverException, EllipseShape, EndPoint, EntityRenderer, Enumerable<T>, Enumerator<T>, EventCallback<EventArg>, FileStream, FileSystemFactory, FontFile, FrontFace, Frustum, GLSLSource, GltfEmbeddedImageFormat, HalfSpace, HollowCircleShape, HollowRectangleShape, HShape, Html5SaveOptions, IBuffer, ICommandList, IDescriptorSet, IIndexBuffer, IIndexedVertexElement, IndexDataType, InitializationException, Int2D, IOrientable, IPipeline, IRenderQueue, IRenderTarget, IRenderTexture, IRenderWindow, ITexture1D, ITexture2D, ITextureCodec, ITextureCubemap, ITextureDecoder, ITextureEncoder, ITextureUnit, IVertexBuffer, JavaXImageCodec, JtLoadOptions, LinearExtrusion, LShape, MaterialConverter, MathUtils, MemoryStream, Microsoft3MFFormat, MirroredProfile, MorphTargetChannel, MorphTargetDeformer, MulticastEvent<EventArg>, NotImplementedException, NurbsDirection, NurbsSurface, ParameterizedProfile, Patch, PatchDirection, PatchDirectionType, PbrSpecularMaterial, PdfFormat, PdfLightingScheme, PdfLoadOptions, PdfRenderMode, PdfSaveOptions, PixelFormat, PixelMapMode, PixelMapping, PlyFormat, PointCloud, PolygonBuilder, PostProcessing, PresetShaders, ProjectionType, PushConstant, Rect, RectangleShape, RelativeRectangle, Renderer, RendererException, RendererVariableManager, RenderFactory, RenderParameters, RenderQueueGroupId, RenderResource, RenderStage, RenderState, RotationMode, RotationOrder, RvmFormat, RvmLoadOptions, RvmSaveOptions, ShaderException, ShaderMaterial, ShaderProgram, ShaderSet, ShaderSource, ShaderStage, ShaderTechnique, ShaderVariable, Skeleton, SkeletonType, SkinDeformer, SPIRVSource, SplitMeshPolicy, StencilAction, StencilState, Structs, StructuralMetadata, SweptAreaSolid, Text, TextureCodec, TextureType, TransformBuilder, TransformedCurve, TrapeziumShape, TriMesh, TrimmedCurve, TShape, U3dLoadOptions, U3dSaveOptions, UsdSaveOptions, UShape, Vertex, VertexElementDoublesTemplate, VertexElementEdgeCrease, VertexElementFVector, VertexElementHole, VertexElementIntsTemplate, VertexElementPolygonGroup, VertexElementSmoothingGroup, VertexElementSpecular, VertexElementTemplate<T>, VertexElementUserData, VertexElementVector4, VertexElementVertexCrease, VertexElementVisibility, VertexElementWeight, Viewport, Watermark, WindowHandle, XLoadOptions, ZShape)
-
-- **Removed types (12):** Incorrectly added to Java FOSS - need removal:
-  - formats.FbxExporter, formats.FbxImporter, formats.GltfExporter, formats.GltfImporter
-  - formats.ObjExporter, formats.ObjImporter, formats.StlExporter, formats.StlImporter
+**API Diff Summary (from `aspose-cli api diff`):**
+- **Added types (~160):** Missing from Java FOSS (A3dwSaveOptions, AmfSaveOptions, ApertureMode, ArbitraryProfile, BlendFactor, Bone, BoneLinkMode, BooleanOperand, BooleanOperator, CenterLineProfile, CircleShape, CompareFunction, ComposeOrder, CryptoUtils, CShape, CubeFace, CubeFaceData<T>, CullFaceMode, DescriptorSetUpdater, Discreet3dsLoadOptions, Discreet3dsSaveOptions, DracoCompressionLevel, DracoFormat, DracoSaveOptions, DrawOperation, DriverException, EllipseShape, EndPoint, EntityRenderer, Enumerable<T>, Enumerator<T>, EventCallback<EventArg>, FileStream, FileSystemFactory, FontFile, FrontFace, Frustum, GLSLSource, GltfEmbeddedImageFormat, HalfSpace, HollowCircleShape, HollowRectangleShape, HShape, Html5SaveOptions, IBuffer, ICommandList, IDescriptorSet, IIndexBuffer, IIndexedVertexElement, IndexDataType, InitializationException, Int2D, IOrientable, IPipeline, IRenderQueue, IRenderTarget, IRenderTexture, IRenderWindow, ITexture1D, ITexture2D, ITextureCodec, ITextureCubemap, ITextureDecoder, ITextureEncoder, ITextureUnit, IVertexBuffer, JavaXImageCodec, JtLoadOptions, LinearExtrusion, LShape, MaterialConverter, MathUtils, MemoryStream, Microsoft3MFFormat, MirroredProfile, MorphTargetChannel, MorphTargetDeformer, MulticastEvent<EventArg>, NotImplementedException, NurbsDirection, NurbsSurface, ParameterizedProfile, Patch, PatchDirection, PatchDirectionType, PbrSpecularMaterial, PdfFormat, PdfLightingScheme, PdfLoadOptions, PdfRenderMode, PdfSaveOptions, PixelFormat, PixelMapMode, PixelMapping, PlyFormat, PointCloud, PolygonBuilder, PostProcessing, PresetShaders, ProjectionType, PushConstant, Rect, RectangleShape, RelativeRectangle, Renderer, RendererException, RendererVariableManager, RenderFactory, RenderParameters, RenderQueueGroupId, RenderResource, RenderStage, RenderState, RotationMode, RotationOrder, RvmFormat, RvmLoadOptions, RvmSaveOptions, ShaderException, ShaderMaterial, ShaderProgram, ShaderSet, ShaderSource, ShaderStage, ShaderTechnique, ShaderVariable, Skeleton, SkeletonType, SkinDeformer, SPIRVSource, SplitMeshPolicy, StencilAction, StencilState, Structs, StructuralMetadata, SweptAreaSolid, Text, TextureCodec, TextureType, TransformBuilder, TransformedCurve, TrapeziumShape, TriMesh, TrimmedCurve, TShape, U3dLoadOptions, U3dSaveOptions, UsdSaveOptions, UShape, Vertex, VertexElementDoublesTemplate, VertexElementEdgeCrease, VertexElementFVector, VertexElementHole, VertexElementIntsTemplate, VertexElementPolygonGroup, VertexElementSmoothingGroup, VertexElementSpecular, VertexElementTemplate<T>, VertexElementUserData, VertexElementVector4, VertexElementVertexCrease, VertexElementVisibility, VertexElementWeight, Viewport, Watermark, WindowHandle, XLoadOptions, ZShape)
+- **Removed types (11):** Incorrectly added to Java FOSS - need removal:
+  - FbxExporter, FbxImporter
+  - GltfExporter, GltfImporter
+  - ObjExporter, ObjImporter
+  - StlExporter, StlImporter
   - IExporter, IImporter, PropertyFlags
-
-- **Changed types:** Various API signatures need fixes (AlphaSource, AnimationChannel, etc.)
+- **Changed types:** 100+ types with API signature differences
 
 **What's Missing:**
 1. **File Format Options (25+ types):** A3dwSaveOptions, AmfSaveOptions, Discreet3dsLoadOptions, Discreet3dsSaveOptions, DracoSaveOptions, Html5SaveOptions, JtLoadOptions, PdfLoadOptions, PdfSaveOptions, RvmLoadOptions, RvmSaveOptions, U3dLoadOptions, U3dSaveOptions, UsdSaveOptions, XLoadOptions, and more
@@ -227,8 +226,8 @@ Before marking an API complete:
 5. **Utilities (10+ types):** CryptoUtils, EntityRenderer, Enumerables, EventCallback, FileStream, FileSystemFactory, FontFile, Int2D, IOrientable, MemoryStream, TransformBuilder, etc.
 6. **File Formats (15+ types):** DracoFormat, GltfEmbeddedImageFormat, Microsoft3MFFormat, PdfFormat, PlyFormat, RvmFormat
 
-**Next Session Tasks:**
-1. Remove 12 incorrect classes (FbxExporter, FbxImporter, GltfExporter, GltfImporter, ObjExporter, ObjImporter, StlExporter, StlImporter, IExporter, IImporter, PropertyFlags)
+**Next Session Tasks (Session 337):**
+1. Remove 11 incorrect classes (FbxExporter, FbxImporter, GltfExporter, GltfImporter, ObjExporter, ObjImporter, StlExporter, StlImporter, IExporter, IImporter, PropertyFlags)
 2. Port missing classes from .NET FOSS to match On-Premise 26.1.0 API
 3. Fix any API signature differences
 
@@ -241,6 +240,7 @@ Before marking an API complete:
 - src/main/Aspose.ThreeD/Aspose/ThreeD/Profiles/
 - src/main/Aspose.ThreeD/Aspose/ThreeD/Shading/
 - src/main/Aspose.ThreeD/Aspose/ThreeD/Utilities/
+- src/main/Aspose.ThreeD/Aspose/ThreeD/Render/- src/main/Aspose.ThreeD/Aspose/ThreeD/Utilities/
 - src/main/Aspose.ThreeD/Aspose/ThreeD/Render/
 
 **Test Results:**

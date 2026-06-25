@@ -1,14 +1,27 @@
 package com.aspose.threed;
 
+/**
+ * Extrapolation type.
+ */
 public enum ExtrapolationType {
-    PRE_SYMMETRICAL,
-    POST_SYMMETRICAL,
-    PRE_CONSTANT,
-    POST_CONSTANT,
-    PRE_CYCLE,
-    POST_CYCLE,
-    PRE_CYCLE_OFFSET,
-    POST_CYCLE_OFFSET,
-    PRE_PERIODIC,
-    POST_PERIODIC
+    /**
+     * Value will keep the same value of the last value
+     */
+    CONSTANT,
+    /**
+     * Value will keep the same slope by time
+     */
+    GRADIENT,
+    /**
+     * The repetition.
+     */
+    CYCLE,
+    /**
+     * Repeat the previous pattern based on the last value
+     */
+    CYCLE_RELATIVE,
+    /**
+     * The mirror repetition.
+     */
+    OSCILLATE;
 }

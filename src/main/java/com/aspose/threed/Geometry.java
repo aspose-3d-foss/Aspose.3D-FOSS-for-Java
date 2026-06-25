@@ -88,6 +88,15 @@ public class Geometry extends Entity {
         vertexElements.add(element);
     }
 
+    /**
+     * Adds a deformer to this geometry and sets the owner reference.
+     * @param deformer The deformer to add.
+     */
+    public void addDeformer(Deformer deformer) {
+        deformers.add(deformer);
+        deformer.setOwner(this);
+    }
+
     public VertexElementUV getVertexElementOfUV(TextureMapping mapping) {
         for (VertexElement element : vertexElements) {
             if (element instanceof VertexElementUV) {

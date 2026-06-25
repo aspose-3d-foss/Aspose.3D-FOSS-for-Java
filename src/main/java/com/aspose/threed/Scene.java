@@ -166,13 +166,12 @@ public class Scene extends SceneObject {
                 throw new IOException("Failed to create load options", e);
             }
         }
-        Scene imported = null;
-        if (format.getImporter() != null) {
-            try {
-                imported = format.getImporter().load(stream, options);
-            } catch (ImportException e) {
-                throw new IOException("Import failed: " + e.getMessage(), e);
-            }
+        
+        Scene imported;
+        try {
+            imported = format.load(stream, options);
+        } catch (ImportException e) {
+            throw new IOException("Import failed: " + e.getMessage(), e);
         }
         if (imported != null) {
             rootNode.getChildNodes().clear();
@@ -223,13 +222,11 @@ public class Scene extends SceneObject {
             throw new IOException("File format not specified");
         }
         clear();
-        Scene imported = null;
-        if (format.getImporter() != null) {
-            try {
-                imported = format.getImporter().load(stream, options);
-            } catch (ImportException e) {
-                throw new IOException("Import failed: " + e.getMessage(), e);
-            }
+        Scene imported;
+        try {
+            imported = format.load(stream, options);
+        } catch (ImportException e) {
+            throw new IOException("Import failed: " + e.getMessage(), e);
         }
         if (imported != null) {
             rootNode.getChildNodes().clear();
@@ -400,16 +397,8 @@ public class Scene extends SceneObject {
         if (options.getFileFormat() == null) {
             throw new IOException("File format not specified in SaveOptions");
         }
-        FileFormat fileFormat = options.getFileFormat();
-        if (fileFormat.getExporter() != null) {
-            try {
-                fileFormat.getExporter().export(this, new Stream(stream), options);
-            } catch (ExportException e) {
-                throw new IOException("Export failed: " + e.getMessage(), e);
-            }
-        } else {
-            throw new IOException("No exporter available for format: " + fileFormat.getExtension());
-        }
+        
+        format.save(this, new Stream(stream), options);
     }
 
     public void save(Stream stream, FileFormat format) throws IOException {
@@ -436,15 +425,7 @@ public class Scene extends SceneObject {
             throw new IOException("File format not specified in SaveOptions");
         }
         FileFormat format = options.getFileFormat();
-        if (format.getExporter() != null) {
-            try {
-                format.getExporter().export(this, stream, options);
-            } catch (ExportException e) {
-                throw new IOException("Export failed: " + e.getMessage(), e);
-            }
-        } else {
-            throw new IOException("No exporter available for format: " + format.getExtension());
-        }
+        format.save(this, new Stream(stream), options);
     }
 
     public void render(Camera camera, String fileName) throws IOException {

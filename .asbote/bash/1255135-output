@@ -1,0 +1,200 @@
+﻿using System.Collections.Generic;
+using Aspose.ThreeD.Animation;
+using Aspose.ThreeD.Constraints;
+using System;
+using Aspose.ThreeD.Utilities;
+
+namespace Aspose.ThreeD
+{
+
+    /// <summary>
+    /// A scene is a top-level object that contains the nodes, geometries, materials, textures, animation, poses, sub-scenes and etc.
+    /// Scene can have sub-scenes, acts as multiple-document support in files like collada/blender/fbx
+    /// Node hierarchy can be accessed through <see cref="RootNode"/>
+    /// <see cref="Library"/> is used to keep a reference of unattached objects during serialization(like meta data or custom objects) so it can be used as a library. 
+    /// </summary>
+    public partial class Scene : SceneObject
+    {
+        /// <summary>
+        /// Gets the current release version
+        /// </summary>
+        public const string Version = AssemblyConstants.ReleaseVersion;
+#region Backing fields
+
+        private AnimationClip currentAnimationClip;
+
+        private AssetInfo assetInfo;
+        private ObservableList<A3DObject> library;
+        private ObservableList<AnimationClip> animationClips;
+        private IList<Scene> subScenes;
+        internal VentureLicense ventureLicense;
+        internal Node rootNode;
+        ICollection<Pose> poses;
+        ICollection<Constraint> constraints;
+
+        internal bool hasLightChanges;
+        internal string fileName;
+        internal object[] raiseTrialExceptions = new object[1];
+
+#endregion
+
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Aspose.ThreeD.Scene"/> class.
+        /// </summary>
+        public Scene()
+            :this(null, "")
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Aspose.ThreeD.Scene"/> class with an entity attached to a new node.
+        /// </summary>
+        /// <param name="entity">The initial entity that attached to the scene</param>
+        ///<example>
+        /// The following code shows how to create a <see cref="Scene"/> directly from an <see cref="Entity"/>:
+        ///<code lang="csharp"><![CDATA[
+        /// var scene = new Scene(new Box());
+        /// ]]></code>
+        ///<code lang="java"><![CDATA[
+        /// var scene = new Scene(new Box());
+        /// ]]></code>
+        ///</example>
+        public Scene(Entity entity)
+            :this(null, "")
+        {
+            if (entity == null)
+                throw new ArgumentNullException("entity");
+            RootNode.CreateChildNode(entity);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Aspose.ThreeD.Scene"/> class as a sub-scene.
+        /// </summary>
+        /// <param name="parentScene">The parent scene.</param>
+        /// <param name="name">Scene's name.</param>
+        public Scene(Scene parentScene, string name)
+            :base(name)
+        {
+            InitScene();
+            this.Name = name;
+            this.scene = parentScene;
+            if(parentScene != null)
+                parentScene.subScenes.Add(this);
+        }
+
+        internal void InitScene()
+        {
+            //A3DObject
+            this.properties = null;
+            this.Name = "";
+            //this.referenceTo = null;
+            this.scene = null;
+            this._objectId = InvalidObjectId;
+            //Document
+            this.currentAnimationClip = null;
+            assetInfo = new AssetInfo("");
+            animationClips = new ObservableList<AnimationClip>(1);
+            animationClips.onChanged = OnAnimationClipChanged;
+            subScenes = new List<Scene>();
+            library = new ObservableList<A3DObject>(10);
+            library.onChanged = OnLibraryChanged;
+            //Scene
+            rootNode = new Node("RootNode");
+            rootNode.scene = this;
+            rootNode._objectId = InvalidObjectId;
+            poses = new TypedSubCollection<A3DObject, Pose>(library);
+            constraints = new TypedSubCollection<A3DObject, Constraint>(library);
+            hasLightChanges = true;
+            fileName = null;
+        }
+
+        /// <summary>
+        /// Gets all sub-scenes
+        /// </summary>
+        public IList<Scene> SubScenes
+        {
+            get { return subScenes; }
+        }
+
+        /// <summary>
+        /// Objects that not directly used in scene hierarchy can be defined in Library.
+        /// This is useful when you're using sub-scenes and put reusable components under sub-scenes.
+        /// </summary>
+        public IList<A3DObject> Library
+        {
+            get { return library; }
+        }
+        /// <summary>
+        /// Gets all <see cref="AnimationClip"/> defined in the scene.
+        /// </summary>
+        public IList<AnimationClip> AnimationClips
+        {
+            get { return animationClips; }
+        }
+
+        /// <summary>
+        /// Gets or sets the active <see cref="AnimationClip"/>
+        /// </summary>
+        public AnimationClip CurrentAnimationClip
+        {
+            get { return this.currentAnimationClip;}
+            set { this.currentAnimationClip = value; }
+        }
+
+
+        /// <summary>
+        /// Gets a named <see cref="AnimationClip"/>
+        /// </summary>
+        /// <param name="name">The <see cref="AnimationClip"/>'s name to look up</param>
+        /// <returns>Returned AnimationClip</returns>
+        public AnimationClip GetAnimationClip(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+                return null;
+            foreach (AnimationClip clip in animationClips)
+            {
+                if (name.Equals(clip.Name))
+                    return clip;
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Gets or sets the top-level asset information
+        /// </summary>
+        /// <value>The document info.</value>
+        /// <example>
+		/// The following code shows how to read the application information from a FBX file:
+		/// <code lang="csharp">
+		///    Scene scene = Scene.FromFile("test.fbx");
+		///    Console.WriteLine($"The FBX file is created by {scene.AssetInfo.ApplicationName} {scene.AssetInfo.ApplicationVersion}");
+		/// </code>
+		/// <code lang="java">
+		///    Scene scene = Scene.fromFile("test.fbx");
+		///    System.out.printf("The FBX file is created by %s %s",
+        ///        scene.getAssetInfo().getApplicationName(),
+        ///        scene.getAssetInfo().getApplicationVersion());
+		/// </code>
+		/// </example>
+        public AssetInfo AssetInfo
+        {
+            get { return this.assetInfo;}
+            set { this.assetInfo = value; }
+        }
+
+        /// <summary>
+        /// Gets the constraints defined in this scene.
+        /// </summary>
+        /// <value>The constraints.</value>
+        internal ICollection<Constraint> Constraints
+        {
+            get { return constraints; }
+        }
+
+        /// <summary>
+        /// Gets all <see cref="Pose"/> used in this scene.
+        /// </summary>
+        /// <value>The poses.</value>
+        public ICollection<Pose> Poses
+        {

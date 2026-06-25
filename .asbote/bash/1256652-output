@@ -1,0 +1,100 @@
+[[1;34mINFO[m] Scanning for projects...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m---------------------< [0;36mcom.aspose:aspose-3d-foss[0;1m >----------------------[m
+[[1;34mINFO[m] [1mBuilding Aspose.3D FOSS 26.1.0[m
+[[1;34mINFO[m]   from pom.xml
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mresources:3.3.1:resources[m [1m(default-resources)[m @ [36maspose-3d-foss[0;1m ---[m
+[[1;34mINFO[m] skip non existing resourceDirectory /home/lexchou/workspace/aspose/foss.3d.java/src/main/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mcompiler:3.11.0:compile[m [1m(default-compile)[m @ [36maspose-3d-foss[0;1m ---[m
+[[1;34mINFO[m] Changes detected - recompiling the module! :source
+[[1;34mINFO[m] Compiling 135 source files with javac [debug target 21] to target/classes
+[[1;34mINFO[m] -------------------------------------------------------------
+[[1;31mERROR[m] COMPILATION ERROR : 
+[[1;34mINFO[m] -------------------------------------------------------------
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[368,6] illegal start of type
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[369,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[370,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[370,8] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[371,6] illegal start of type
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[373,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[373,12] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[374,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[374,16] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[375,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[375,12] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[376,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[376,12] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[377,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[378,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[378,12] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[379,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[379,12] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[380,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[380,16] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[381,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[381,12] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[382,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[383,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[383,12] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[384,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[384,8] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[398,115] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[398,121] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[399,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[399,16] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[400,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[400,12] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[401,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[401,12] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[402,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[402,16] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[403,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[403,12] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[404,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[404,12] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[405,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[405,16] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[406,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[406,12] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[407,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[408,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[408,12] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[409,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[409,8] illegal start of expression
+[[1;34mINFO[m] 50 errors 
+[[1;34mINFO[m] -------------------------------------------------------------
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;31mBUILD FAILURE[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  1.505 s
+[[1;34mINFO[m] Finished at: 2026-06-24T11:27:26+08:00
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;31mERROR[m] Failed to execute goal [32morg.apache.maven.plugins:maven-compiler-plugin:3.11.0:compile[m [1m(default-compile)[m on project [36maspose-3d-foss[m: [1;31mCompilation failure[m: Compilation failure: 
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[368,6] illegal start of type
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[369,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[370,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[370,8] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[371,6] illegal start of type
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[373,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[373,12] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[374,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[374,16] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[375,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[375,12] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[376,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[376,12] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[377,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[378,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[378,12] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[379,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[379,12] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[380,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[380,16] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[381,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[381,12] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[382,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[383,6] illegal start of expression
+[[1;31mERROR[m] /home/lexchou/workspace/aspose/foss.3d.java/src/main/java/com/aspose/threed/Scene.java:[383,12] illegal start of expression

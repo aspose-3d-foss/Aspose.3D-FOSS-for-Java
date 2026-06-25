@@ -1,48 +1,89 @@
 package com.aspose.threed;
 
-import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class KeyframeSequence implements Serializable {
-    private String name;
-    private float startTime;
-    private float endTime;
-    private boolean loop;
-    private Extrapolation preExtrapolation;
-    private Extrapolation postExtrapolation;
+/**
+ * The sequence of key-frames, it describes the transformation of a sampled value over time.
+ */
+public class KeyframeSequence extends A3DObject implements Iterable<KeyFrame> {
+    private final List<KeyFrame> keyFrames = new ArrayList<KeyFrame>();
+    private Extrapolation preBehavior;
+    private Extrapolation postBehavior;
 
     public KeyframeSequence() {
-        this.name = "";
-        this.startTime = 0.0f;
-        this.endTime = 0.0f;
-        this.loop = false;
-        this.preExtrapolation = Extrapolation.NONE;
-        this.postExtrapolation = Extrapolation.NONE;
+        super();
+        this.preBehavior = new Extrapolation();
+        this.postBehavior = new Extrapolation();
     }
 
     public KeyframeSequence(String name) {
-        this.name = name;
-        this.startTime = 0.0f;
-        this.endTime = 0.0f;
-        this.loop = false;
-        this.preExtrapolation = Extrapolation.NONE;
-        this.postExtrapolation = Extrapolation.NONE;
+        super(name);
+        this.preBehavior = new Extrapolation();
+        this.postBehavior = new Extrapolation();
     }
 
-    public String getName() { return name; }
-    public void setName(String value) { this.name = value; }
+    /**
+     * Gets the property bind point which owns this curve
+     */
+    public BindPoint getBindPoint() {
+        return null;
+    }
 
-    public float getStartTime() { return startTime; }
-    public void setStartTime(float value) { this.startTime = value; }
+    /**
+     * Gets the key frames of this curve.
+     */
+    public List<KeyFrame> getKeyFrames() {
+        return keyFrames;
+    }
 
-    public float getEndTime() { return endTime; }
-    public void setEndTime(float value) { this.endTime = value; }
+    /**
+     * Gets the post behavior indicates what the sampled value should be after the last key frame.
+     */
+    public Extrapolation getPostBehavior() {
+        return postBehavior;
+    }
 
-    public boolean getLoop() { return loop; }
-    public void setLoop(boolean value) { this.loop = value; }
+    /**
+     * Gets the pre behavior indicates what the sampled value should be before the first key.
+     */
+    public Extrapolation getPreBehavior() {
+        return preBehavior;
+    }
 
-    public Extrapolation getPreExtrapolation() { return preExtrapolation; }
-    public void setPreExtrapolation(Extrapolation value) { this.preExtrapolation = value; }
+    /**
+     * Create a new key frame with specified value
+     */
+    public void add(double time, float value) {
+        KeyFrame frame = new KeyFrame(this, (float)time);
+        frame.setValue(value);
+        keyFrames.add(frame);
+    }
 
-    public Extrapolation getPostExtrapolation() { return postExtrapolation; }
-    public void setPostExtrapolation(Extrapolation value) { this.postExtrapolation = value; }
+    /**
+     * Create a new key frame with specified value
+     */
+    public void add(double time, float value, Interpolation interpolation) {
+        KeyFrame frame = new KeyFrame(this, (float)time);
+        frame.setValue(value);
+        frame.setInterpolation(interpolation);
+        keyFrames.add(frame);
+    }
+
+    /**
+     * Removes all key frames and reset the post/pre behaviors.
+     */
+    public void reset() {
+        keyFrames.clear();
+        preBehavior = new Extrapolation();
+        postBehavior = new Extrapolation();
+    }
+
+    /**
+     * Gets the enumerator to traverse all key frames.
+     */
+    public Iterator<KeyFrame> iterator() {
+        return keyFrames.iterator();
+    }
 }

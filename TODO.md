@@ -152,10 +152,10 @@
   - Add missing core infrastructure classes from .NET FOSS
   - Add License, Metered classes (with UnsupportedOperationException for license methods)
   - Add Animation classes (AnimationClip, KeyFrame, etc.)
-  - Add Entities (Camera, Light, Primitive, Mesh, etc.)
+  - Add Entities (Camera, Light, Box, Cylinder, Sphere, etc.)
   - Add Deformers (Deformer, SkinDeformer, etc.)
   - Add Shading (Material, Texture, etc.)
-  - Add Utilities (all math and utility classes)
+  - Add Utilities (MathUtils, Vector2, Vector3, Vector4, Matrix4, Quaternion, BoundingBox, Vertex*, FileSystem, IOExtension)
   - Add file format plugins from Formats directory
 - **Status:** Awaiting developer implementation
 
@@ -237,12 +237,12 @@
    - Total source files: 144
  - **Status:** Stage 2 partially complete, still ~100+ classes missing from On-Premise 26.1.0
 
-### Session 13 - 2026-06-24 (CURRENT)
- - **Status:** Agent `developer` session completed with API diff analysis
+### Session 13 - 2026-06-24
+ - **Status:** Agent `developer` completed API diff analysis
  - **API Diff Summary:**
    - **82 new types** - Missing from Java FOSS that exist in On-Premise 26.1.0
    - **14 types removed** - Incorrectly added classes that need removal
-   - **Many changed types** - API signatures need updates
+   - **100+ changed types** - API signatures need updates
  - **Removed Types (14 - must delete):**
    - formats.FbxExporter, formats.FbxImporter
    - formats.GltfExporter, formats.GltfImporter
@@ -255,15 +255,8 @@
    - Entities: Bone, CircleShape, EllipseShape, LinearExtrusion, NurbsSurface, Skeleton, SkinDeformer
    - Utilities: CryptoUtils, EntityRenderer, FileStream, FileSystemFactory, MathUtils, TransformBuilder
    - File Formats: DracoFormat, GltfEmbeddedImageFormat, Microsoft3MFFormat, PdfFormat, PlyFormat, RvmFormat
- - **Changed Types:**
-   - AlphaSource: FixedValue → FIXED_VALUE (enum values renamed to uppercase)
-   - AnimationChannel: Removed default constructor, added getComponentType(), getKeyframeSequence()
-   - AnimationNode: Added constructors, createBindPoint(), findBindPoint(), getKeyframeSequence()
-   - BindPoint: Removed static values(), added getChannel(), createKeyframeSequence()
-   - AssetInfo: getComments() → getComment(), added AxisSystem, CoordinateSystem, Vector4 Ambient
-   - BooleanOperation: Values renamed to uppercase
- - **Next Session Tasks (Session 336):**
-   1. Remove 12 incorrect classes (exporter/importer interfaces and format-specific classes)
+ - **Next Session Tasks (Session 337):**
+   1. Remove 11 incorrect classes (exporter/importer interfaces and format-specific classes)
    2. Port missing utility classes from .NET FOSS
    3. Port missing entity classes from .NET FOSS
    4. Port missing file format options
@@ -273,7 +266,18 @@
    - All 16 tests passing
    - Build: SUCCESS
    - Total source files: 144
- - **Status:** Session 335 complete. API diff analysis done. Awaiting next session for implementation work.
+ - **Status:** Session 13 complete. API diff analysis done. Awaiting next session for implementation work.
 
-**Test Data Requests**
-- None yet
+### Session 14 - 2026-06-24 (CURRENT)
+ - **Status:** Agent `developer` completed directory structure fix
+ - **Changes Committed:**
+   1. Moved format classes from `src/formats/java/` to `src/main/java/com/aspose/threed/`
+   2. Fixed package declarations from `package com.aspose.threed.formats;` to `package com.aspose.threed;`
+   3. Removed `src/formats/java/` directory
+   4. Removed `build-helper-maven-plugin` configuration from `pom.xml`
+ - **API Diff Status:**
+   - **~160 added types** - Missing from Java FOSS that exist in On-Premise 26.1.0
+   - **11 removed types** - Incorrectly added classes that need removal (FbxExporter, GltfImporter, etc.)
+   - **100+ changed types** - API signatures need updates
+ - **Next Session Tasks (Session 337):**
+   1. Remove 11 incorrect classes (FbxExporter, FbxImporter, GltfExporter,

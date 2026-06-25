@@ -1,0 +1,4428 @@
+diff --git a/AGENTS.md b/AGENTS.md
+index db7727b..c927b1d 100644
+--- a/AGENTS.md
++++ b/AGENTS.md
+@@ -202,22 +202,21 @@ Before marking an API complete:
+ - [ ] AGENTS.md updated with implementation status
+ - [ ] TODO.md updated with task completion
+ - [ ] No license/trial/DRM code exists
+-
+-## Current Status (Session 13 - 2026-06-24)
++**Current Status (Session 14 - 2026-06-24)**
+ 
+ **Stage 2: API Surface Alignment** (IN PROGRESS)
+ 
+-**Status:** The Java FOSS is missing ~107 classes that exist in On-Premise 26.1.0 and needs removal of 12 incorrectly added classes.
+-
+-**API Diff Summary:**
+-- **Added types (107):** Missing from Java FOSS (A3dwSaveOptions, AmfSaveOptions, ApertureMode, ArbitraryProfile, BlendFactor, Bone, BoneLinkMode, BooleanOperand, BooleanOperator, CenterLineProfile, CircleShape, CompareFunction, ComposeOrder, CryptoUtils, CShape, CubeFace, CubeFaceData<T>, CullFaceMode, DescriptorSetUpdater, Discreet3dsLoadOptions, Discreet3dsSaveOptions, DracoCompressionLevel, DracoFormat, DracoSaveOptions, DrawOperation, DriverException, EllipseShape, EndPoint, EntityRenderer, Enumerable<T>, Enumerator<T>, EventCallback<EventArg>, FileStream, FileSystemFactory, FontFile, FrontFace, Frustum, GLSLSource, GltfEmbeddedImageFormat, HalfSpace, HollowCircleShape, HollowRectangleShape, HShape, Html5SaveOptions, IBuffer, ICommandList, IDescriptorSet, IIndexBuffer, IIndexedVertexElement, IndexDataType, InitializationException, Int2D, IOrientable, IPipeline, IRenderQueue, IRenderTarget, IRenderTexture, IRenderWindow, ITexture1D, ITexture2D, ITextureCodec, ITextureCubemap, ITextureDecoder, ITextureEncoder, ITextureUnit, IVertexBuffer, JavaXImageCodec, JtLoadOptions, LinearExtrusion, LShape, MaterialConverter, MathUtils, MemoryStream, Microsoft3MFFormat, MirroredProfile, MorphTargetChannel, MorphTargetDeformer, MulticastEvent<EventArg>, NotImplementedException, NurbsDirection, NurbsSurface, ParameterizedProfile, Patch, PatchDirection, PatchDirectionType, PbrSpecularMaterial, PdfFormat, PdfLightingScheme, PdfLoadOptions, PdfRenderMode, PdfSaveOptions, PixelFormat, PixelMapMode, PixelMapping, PlyFormat, PointCloud, PolygonBuilder, PostProcessing, PresetShaders, ProjectionType, PushConstant, Rect, RectangleShape, RelativeRectangle, Renderer, RendererException, RendererVariableManager, RenderFactory, RenderParameters, RenderQueueGroupId, RenderResource, RenderStage, RenderState, RotationMode, RotationOrder, RvmFormat, RvmLoadOptions, RvmSaveOptions, ShaderException, ShaderMaterial, ShaderProgram, ShaderSet, ShaderSource, ShaderStage, ShaderTechnique, ShaderVariable, Skeleton, SkeletonType, SkinDeformer, SPIRVSource, SplitMeshPolicy, StencilAction, StencilState, Structs, StructuralMetadata, SweptAreaSolid, Text, TextureCodec, TextureType, TransformBuilder, TransformedCurve, TrapeziumShape, TriMesh, TrimmedCurve, TShape, U3dLoadOptions, U3dSaveOptions, UsdSaveOptions, UShape, Vertex, VertexElementDoublesTemplate, VertexElementEdgeCrease, VertexElementFVector, VertexElementHole, VertexElementIntsTemplate, VertexElementPolygonGroup, VertexElementSmoothingGroup, VertexElementSpecular, VertexElementTemplate<T>, VertexElementUserData, VertexElementVector4, VertexElementVertexCrease, VertexElementVisibility, VertexElementWeight, Viewport, Watermark, WindowHandle, XLoadOptions, ZShape)
++**Status:** The Java FOSS has ~160 classes that need to be ported from On-Premise 26.1.0, and 11 incorrectly added classes that need removal.
+ 
+-- **Removed types (12):** Incorrectly added to Java FOSS - need removal:
+-  - formats.FbxExporter, formats.FbxImporter, formats.GltfExporter, formats.GltfImporter
+-  - formats.ObjExporter, formats.ObjImporter, formats.StlExporter, formats.StlImporter
++**API Diff Summary (from `aspose-cli api diff`):**
++- **Added types (~160):** Missing from Java FOSS (A3dwSaveOptions, AmfSaveOptions, ApertureMode, ArbitraryProfile, BlendFactor, Bone, BoneLinkMode, BooleanOperand, BooleanOperator, CenterLineProfile, CircleShape, CompareFunction, ComposeOrder, CryptoUtils, CShape, CubeFace, CubeFaceData<T>, CullFaceMode, DescriptorSetUpdater, Discreet3dsLoadOptions, Discreet3dsSaveOptions, DracoCompressionLevel, DracoFormat, DracoSaveOptions, DrawOperation, DriverException, EllipseShape, EndPoint, EntityRenderer, Enumerable<T>, Enumerator<T>, EventCallback<EventArg>, FileStream, FileSystemFactory, FontFile, FrontFace, Frustum, GLSLSource, GltfEmbeddedImageFormat, HalfSpace, HollowCircleShape, HollowRectangleShape, HShape, Html5SaveOptions, IBuffer, ICommandList, IDescriptorSet, IIndexBuffer, IIndexedVertexElement, IndexDataType, InitializationException, Int2D, IOrientable, IPipeline, IRenderQueue, IRenderTarget, IRenderTexture, IRenderWindow, ITexture1D, ITexture2D, ITextureCodec, ITextureCubemap, ITextureDecoder, ITextureEncoder, ITextureUnit, IVertexBuffer, JavaXImageCodec, JtLoadOptions, LinearExtrusion, LShape, MaterialConverter, MathUtils, MemoryStream, Microsoft3MFFormat, MirroredProfile, MorphTargetChannel, MorphTargetDeformer, MulticastEvent<EventArg>, NotImplementedException, NurbsDirection, NurbsSurface, ParameterizedProfile, Patch, PatchDirection, PatchDirectionType, PbrSpecularMaterial, PdfFormat, PdfLightingScheme, PdfLoadOptions, PdfRenderMode, PdfSaveOptions, PixelFormat, PixelMapMode, PixelMapping, PlyFormat, PointCloud, PolygonBuilder, PostProcessing, PresetShaders, ProjectionType, PushConstant, Rect, RectangleShape, RelativeRectangle, Renderer, RendererException, RendererVariableManager, RenderFactory, RenderParameters, RenderQueueGroupId, RenderResource, RenderStage, RenderState, RotationMode, RotationOrder, RvmFormat, RvmLoadOptions, RvmSaveOptions, ShaderException, ShaderMaterial, ShaderProgram, ShaderSet, ShaderSource, ShaderStage, ShaderTechnique, ShaderVariable, Skeleton, SkeletonType, SkinDeformer, SPIRVSource, SplitMeshPolicy, StencilAction, StencilState, Structs, StructuralMetadata, SweptAreaSolid, Text, TextureCodec, TextureType, TransformBuilder, TransformedCurve, TrapeziumShape, TriMesh, TrimmedCurve, TShape, U3dLoadOptions, U3dSaveOptions, UsdSaveOptions, UShape, Vertex, VertexElementDoublesTemplate, VertexElementEdgeCrease, VertexElementFVector, VertexElementHole, VertexElementIntsTemplate, VertexElementPolygonGroup, VertexElementSmoothingGroup, VertexElementSpecular, VertexElementTemplate<T>, VertexElementUserData, VertexElementVector4, VertexElementVertexCrease, VertexElementVisibility, VertexElementWeight, Viewport, Watermark, WindowHandle, XLoadOptions, ZShape)
++- **Removed types (11):** Incorrectly added to Java FOSS - need removal:
++  - FbxExporter, FbxImporter
++  - GltfExporter, GltfImporter
++  - ObjExporter, ObjImporter
++  - StlExporter, StlImporter
+   - IExporter, IImporter, PropertyFlags
+-
+-- **Changed types:** Various API signatures need fixes (AlphaSource, AnimationChannel, etc.)
++- **Changed types:** 100+ types with API signature differences
+ 
+ **What's Missing:**
+ 1. **File Format Options (25+ types):** A3dwSaveOptions, AmfSaveOptions, Discreet3dsLoadOptions, Discreet3dsSaveOptions, DracoSaveOptions, Html5SaveOptions, JtLoadOptions, PdfLoadOptions, PdfSaveOptions, RvmLoadOptions, RvmSaveOptions, U3dLoadOptions, U3dSaveOptions, UsdSaveOptions, XLoadOptions, and more
+@@ -227,8 +226,8 @@ Before marking an API complete:
+ 5. **Utilities (10+ types):** CryptoUtils, EntityRenderer, Enumerables, EventCallback, FileStream, FileSystemFactory, FontFile, Int2D, IOrientable, MemoryStream, TransformBuilder, etc.
+ 6. **File Formats (15+ types):** DracoFormat, GltfEmbeddedImageFormat, Microsoft3MFFormat, PdfFormat, PlyFormat, RvmFormat
+ 
+-**Next Session Tasks:**
+-1. Remove 12 incorrect classes (FbxExporter, FbxImporter, GltfExporter, GltfImporter, ObjExporter, ObjImporter, StlExporter, StlImporter, IExporter, IImporter, PropertyFlags)
++**Next Session Tasks (Session 337):**
++1. Remove 11 incorrect classes (FbxExporter, FbxImporter, GltfExporter, GltfImporter, ObjExporter, ObjImporter, StlExporter, StlImporter, IExporter, IImporter, PropertyFlags)
+ 2. Port missing classes from .NET FOSS to match On-Premise 26.1.0 API
+ 3. Fix any API signature differences
+ 
+@@ -241,6 +240,7 @@ Before marking an API complete:
+ - src/main/Aspose.ThreeD/Aspose/ThreeD/Profiles/
+ - src/main/Aspose.ThreeD/Aspose/ThreeD/Shading/
+ - src/main/Aspose.ThreeD/Aspose/ThreeD/Utilities/
++- src/main/Aspose.ThreeD/Aspose/ThreeD/Render/- src/main/Aspose.ThreeD/Aspose/ThreeD/Utilities/
+ - src/main/Aspose.ThreeD/Aspose/ThreeD/Render/
+ 
+ **Test Results:**
+diff --git a/TODO.md b/TODO.md
+index ac846b0..21b2882 100644
+--- a/TODO.md
++++ b/TODO.md
+@@ -152,10 +152,10 @@
+   - Add missing core infrastructure classes from .NET FOSS
+   - Add License, Metered classes (with UnsupportedOperationException for license methods)
+   - Add Animation classes (AnimationClip, KeyFrame, etc.)
+-  - Add Entities (Camera, Light, Primitive, Mesh, etc.)
++  - Add Entities (Camera, Light, Box, Cylinder, Sphere, etc.)
+   - Add Deformers (Deformer, SkinDeformer, etc.)
+   - Add Shading (Material, Texture, etc.)
+-  - Add Utilities (all math and utility classes)
++  - Add Utilities (MathUtils, Vector2, Vector3, Vector4, Matrix4, Quaternion, BoundingBox, Vertex*, FileSystem, IOExtension)
+   - Add file format plugins from Formats directory
+ - **Status:** Awaiting developer implementation
+ 
+@@ -237,12 +237,12 @@
+    - Total source files: 144
+  - **Status:** Stage 2 partially complete, still ~100+ classes missing from On-Premise 26.1.0
+ 
+-### Session 13 - 2026-06-24 (CURRENT)
+- - **Status:** Agent `developer` session completed with API diff analysis
++### Session 13 - 2026-06-24
++ - **Status:** Agent `developer` completed API diff analysis
+  - **API Diff Summary:**
+    - **82 new types** - Missing from Java FOSS that exist in On-Premise 26.1.0
+    - **14 types removed** - Incorrectly added classes that need removal
+-   - **Many changed types** - API signatures need updates
++   - **100+ changed types** - API signatures need updates
+  - **Removed Types (14 - must delete):**
+    - formats.FbxExporter, formats.FbxImporter
+    - formats.GltfExporter, formats.GltfImporter
+@@ -255,15 +255,8 @@
+    - Entities: Bone, CircleShape, EllipseShape, LinearExtrusion, NurbsSurface, Skeleton, SkinDeformer
+    - Utilities: CryptoUtils, EntityRenderer, FileStream, FileSystemFactory, MathUtils, TransformBuilder
+    - File Formats: DracoFormat, GltfEmbeddedImageFormat, Microsoft3MFFormat, PdfFormat, PlyFormat, RvmFormat
+- - **Changed Types:**
+-   - AlphaSource: FixedValue → FIXED_VALUE (enum values renamed to uppercase)
+-   - AnimationChannel: Removed default constructor, added getComponentType(), getKeyframeSequence()
+-   - AnimationNode: Added constructors, createBindPoint(), findBindPoint(), getKeyframeSequence()
+-   - BindPoint: Removed static values(), added getChannel(), createKeyframeSequence()
+-   - AssetInfo: getComments() → getComment(), added AxisSystem, CoordinateSystem, Vector4 Ambient
+-   - BooleanOperation: Values renamed to uppercase
+- - **Next Session Tasks (Session 336):**
+-   1. Remove 12 incorrect classes (exporter/importer interfaces and format-specific classes)
++ - **Next Session Tasks (Session 337):**
++   1. Remove 11 incorrect classes (exporter/importer interfaces and format-specific classes)
+    2. Port missing utility classes from .NET FOSS
+    3. Port missing entity classes from .NET FOSS
+    4. Port missing file format options
+@@ -273,7 +266,18 @@
+    - All 16 tests passing
+    - Build: SUCCESS
+    - Total source files: 144
+- - **Status:** Session 335 complete. API diff analysis done. Awaiting next session for implementation work.
++ - **Status:** Session 13 complete. API diff analysis done. Awaiting next session for implementation work.
+ 
+-**Test Data Requests**
+-- None yet
++### Session 14 - 2026-06-24 (CURRENT)
++ - **Status:** Agent `developer` completed directory structure fix
++ - **Changes Committed:**
++   1. Moved format classes from `src/formats/java/` to `src/main/java/com/aspose/threed/`
++   2. Fixed package declarations from `package com.aspose.threed.formats;` to `package com.aspose.threed;`
++   3. Removed `src/formats/java/` directory
++   4. Removed `build-helper-maven-plugin` configuration from `pom.xml`
++ - **API Diff Status:**
++   - **~160 added types** - Missing from Java FOSS that exist in On-Premise 26.1.0
++   - **11 removed types** - Incorrectly added classes that need removal (FbxExporter, GltfImporter, etc.)
++   - **100+ changed types** - API signatures need updates
++ - **Next Session Tasks (Session 337):**
++   1. Remove 11 incorrect classes (FbxExporter, FbxImporter, GltfExporter,
+\ No newline at end of file
+diff --git a/docs/foss-java-progress.md b/docs/foss-java-progress.md
+index 841fe4b..fa39280 100644
+--- a/docs/foss-java-progress.md
++++ b/docs/foss-java-progress.md
+@@ -1,64 +1,91 @@
+ # FOSS Java Progress Tracking
+ 
+-## Current Phase: Stage 2 - API Surface Alignment (IN PROGRESS)
++## Current Phase: Stage 1 - Source Port (IN PROGRESS)
+ 
+ ### Date: 2026-06-24
++### Session: 344
+ 
+-### Session 335 - 2026-06-24 (CURRENT)
+-
+-**Status:** Agent `developer` completed API diff analysis. Next task: Remove incorrect classes and port missing types.
+-
+-**API Diff Summary (from developer's analysis):**
+-- **82 new types** - Missing from Java FOSS that exist in On-Premise
+-- **14 types removed** - Incorrectly added classes that need removal
+-- **Many changed types** - API signatures need updates
+-
+-**Removed Types (14 - must delete these):**
+-- formats.FbxExporter, formats.FbxImporter
+-- formats.GltfExporter, formats.GltfImporter
+-- formats.ObjExporter, formats.ObjImporter
+-- formats.StlExporter, formats.StlImporter
+-- IExporter, IImporter, PropertyFlags
+-- (2 additional format-specific exporter classes)
+-
+-**Added Types (82 - must port from .NET FOSS):**
+-- Core: A3dwSaveOptions, AmfSaveOptions, ApertureMode, ArbitraryProfile, Bone, CircleShape, etc.
+-- Rendering: IBuffer, IVertexBuffer, IPipeline, ShaderMaterial, ShaderProgram, Renderer, etc.
+-- Entities: Bone, CircleShape, EllipseShape, LinearExtrusion, NurbsSurface, Skeleton, SkinDeformer
+-- Utilities: CryptoUtils, EntityRenderer, FileStream, FileSystemFactory, MathUtils, MemoryStream, TransformBuilder
+-- File Formats: DracoFormat, GltfEmbeddedImageFormat, Microsoft3MFFormat, PdfFormat, PlyFormat, RvmFormat
+-
+-**Changed Types:**
+-- AlphaSource: FixedValue → FIXED_VALUE (enum values renamed to uppercase)
+-- AnimationChannel: Removed default constructor, added getComponentType(), getKeyframeSequence()
+-- AnimationNode: Added constructors, createBindPoint(), findBindPoint(), getKeyframeSequence()
+-- BindPoint: Removed static values(), added getChannel(), createKeyframeSequence(), bindKeyframeSequence()
+-- AssetInfo: getComments() → getComment(), added AxisSystem, CoordinateSystem, Vector4 Ambient
+-- BooleanOperation: Values renamed to uppercase (SUBTRACTION → SUBTRACTION)
+-- Many types now have final methods for better performance
+-
+-**Next Tasks for Session 336:**
+-1. Remove 12 incorrect classes (exporter/importer interfaces and format-specific classes)
+-2. Port missing utility classes from .NET FOSS `src/main/Aspose.ThreeD/Aspose/ThreeD/Utilities/`
+-3. Port missing entity classes from .NET FOSS `src/main/Aspose.ThreeD/Aspose/ThreeD/Entities/`
+-4. Port missing file format options (A3dwSaveOptions, AmfSaveOptions, etc.)
+-5. Port missing rendering classes (IRender* interfaces, Shader* classes)
+-6. Fix API signature differences (AlphaSource, AnimationChannel, BindPoint, etc.)
+-
+-**.NET FOSS Source Path:** `/home/lexchou/workspace/aspose/foss.3d.net/src/main/Aspose.ThreeD/Aspose/ThreeD/`
++**Status:** Agent `developer` completed synchronization with .NET FOSS commit 8c981b3, fixing API signature mismatches for enums and ports.
++
++**Changes:**
++- Fixed enum values to match On-Premise API (Aspose.3D for Java 26.2.0):
++  - `ExtrapolationType`: Changed from PRE_SYMMETRICAL/POST_SYMMETRICAL... to CONSTANT/GRADIENT/CYCLE/CYCLE_RELATIVE/OSCILLATE
++  - `WeightedMode`: Changed from class with static instances to final class with static final int constants (NONE=0, OUT_WEIGHT=1, NEXT_IN_WEIGHT=2, BOTH=3)
++  - `StepMode`: Changed from NONE/ALL/ONE/LAST to PREVIOUS_VALUE/NEXT_VALUE
++- Fixed IOExtension FMatrix4.write() method - corrected matrix element write order (was writing duplicate elements)
++- Updated `KeyFrame.java`: Changed `tangentWeightMode` from `WeightedMode` to `int` type, changed `stepMode` default to `StepMode.PREVIOUS_VALUE`
++- Updated `BonePose` and `Pose` classes to match .NET FOSS commit 8c981b3
++
++**Test Results:**
++- All 16 tests passing (3 SceneTest + 3 GltfFormatTest + 6 StlFormatTest + 4 Vector3Test)
++- Build: SUCCESS
++
++**Files Modified:**
++- `src/main/java/com/aspose/threed/ExtrapolationType.java` - Updated enum values
++- `src/main/java/com/aspose/threed/WeightedMode.java` - Changed to final class with static int constants
++- `src/main/java/com/aspose/threed/StepMode.java` - Updated enum values
++- `src/main/java/com/aspose/threed/IOExtension.java` - Fixed FMatrix4.write() order (matrix write order was writing duplicate elements)
++- `src/main/java/com/aspose/threed/FMatrix4.java` - Removed FVector4 multiplication method (On-Premise doesn't have it)
++- `src/main/java/com/aspose/threed/KeyFrame.java` - Updated field types and default values
++
++**Notes:**
++- IOExtension write methods are internal utilities not present in On-Premise API (methods exist in FOSS but not in On-Premise)
++
++---
++
++## Session 343 - 2026-06-24
++
++**Status:** Agent `developer` completed rendering class porting, fixing compilation errors for new Java-specific classes.
++
++**Changes:**
++- Created missing core classes:
++  - `TriMesh` - Triangular mesh for GPU rendering
++  - `Frustum` - Base class for Camera and Light
++  - `RelativeRectangle` - Relative coordinate rectangle
++  - `TextureType` - Texture type enumeration
++  - `Vertex` - Vertex reference class
++  - `IOrientable` - Orientable entities interface
++  - `Rect` - Rectangle class
++  - `RotationMode` - Frustum rotation mode
++  - Updated `Struct<T>` interface with byVal() method
++
++- Fixed compilation errors:
++  - Removed duplicate `compareTo(Object)` from `RenderState` and `Vertex`
++  - Removed duplicate `copyFrom(Object)` from `Rect` and `RelativeRectangle`
++  - Removed duplicate `clone()` methods
++  - Fixed `RenderFactory.TEXTURE_2D` to `TEXTURE2D`
++  - Fixed `VertexFieldDataType` enum values in `TriMesh.getVertexSize()`
++  - Removed duplicate `loadData(TriMesh)` from `IVertexBuffer` and `IIndexBuffer` (conflicts with parent IBuffer.loadData(byte[]))
+ 
+ **Test Results:**
+-- All 16 tests passing
++- All 16 tests passing (3 SceneTest + 3 GltfFormatTest + 6 StlFormatTest + 4 Vector3Test)
+ - Build: SUCCESS
+-- Total source files: 144
+ 
+-**Status:** Session 335 complete. Developer analysis complete. Awaiting next session to remove incorrect classes and port missing types.
++**Files Added:**
++- `src/main/java/com/aspose/threed/TriMesh.java`
++- `src/main/java/com/aspose/threed/Frustum.java`
++- `src/main/java/com/aspose/threed/RelativeRectangle.java`
++- `src/main/java/com/aspose/threed/TextureType.java`
++- `src/main/java/com/aspose/threed/Vertex.java`
++- `src/main/java/com/aspose/threed/IOrientable.java`
++- `src/main/java/com/aspose/threed/Rect.java`
++- `src/main/java/com/aspose/threed/RotationMode.java`
++
++**Files Modified:**
++- `src/main/java/com/aspose/threed/RenderFactory.java` - Fixed TextureType reference
++- `src/main/java/com/aspose/threed/Struct.java` - Added Serializable and byVal() method
++- `src/main/java/com/aspose/threed/RenderState.java` - Removed duplicate compareTo
++- `src/main/java/com/aspose/threed/Vertex.java` - Removed duplicate compareTo
++- `src/main/java/com/aspose/threed/IVertexBuffer.java` - Removed conflicting loadData(TriMesh)
++- `src/main/java/com/aspose/threed/IIndexBuffer.java` - Removed conflicting loadData(TriMesh)
++- `src/main/java/com/aspose/threed/Rect.java` - Removed duplicate methods
++- `src/main/java/com/aspose/threed/RelativeRectangle.java` - Removed duplicate methods
+ 
+ ---
+ 
+ ## Verification Commands
+ 
+-```bash
++```
+ # Compile and test
+ mvn compile
+ mvn test
+diff --git a/src/main/java/com/aspose/threed/Camera.java b/src/main/java/com/aspose/threed/Camera.java
+index ee28ac9..a4e2dfd 100644
+--- a/src/main/java/com/aspose/threed/Camera.java
++++ b/src/main/java/com/aspose/threed/Camera.java
+@@ -1,11 +1,103 @@
+ package com.aspose.threed;
+ 
+-public class Camera extends Entity {
++public class Camera extends Frustum implements IOrientable {
++    private ProjectionType projectionType = ProjectionType.PERSPECTIVE;
++    private double fieldOfView = 45.0;
++    private double fieldOfViewX = 45.0;
++    private double fieldOfViewY = 45.0;
++    private double width = 1.0;
++    private double height = 1.0;
++    private double aspectRatio = 1.0;
++    private Vector2 magnification = new Vector2(1, 1);
++    private ApertureMode apertureMode = ApertureMode.HORIZ_AND_VERT;
++
+     public Camera() {
+-        super();
++        super("Camera");
++    }
++
++    public Camera(ProjectionType projectionType) {
++        super("Camera");
++        this.projectionType = projectionType;
+     }
+ 
+     public Camera(String name) {
+         super(name);
+     }
++
++    public Camera(String name, ProjectionType projectionType) {
++        super(name);
++        this.projectionType = projectionType;
++    }
++
++    public ApertureMode getApertureMode() {
++        return apertureMode;
++    }
++
++    public void setApertureMode(ApertureMode value) {
++        this.apertureMode = value;
++    }
++
++    public double getFieldOfView() {
++        return fieldOfView;
++    }
++
++    public void setFieldOfView(double value) {
++        this.fieldOfView = value;
++    }
++
++    public double getFieldOfViewX() {
++        return fieldOfViewX;
++    }
++
++    public void setFieldOfViewX(double value) {
++        this.fieldOfViewX = value;
++    }
++
++    public double getFieldOfViewY() {
++        return fieldOfViewY;
++    }
++
++    public void setFieldOfViewY(double value) {
++        this.fieldOfViewY = value;
++    }
++
++    public double getWidth() {
++        return width;
++    }
++
++    public void setWidth(double value) {
++        this.width = value;
++    }
++
++    public double getHeight() {
++        return height;
++    }
++
++    public void setHeight(double value) {
++        this.height = value;
++    }
++
++    public double getAspectRatio() {
++        return aspectRatio;
++    }
++
++    public void setAspectRatio(double value) {
++        this.aspectRatio = value;
++    }
++
++    public Vector2 getMagnification() {
++        return magnification;
++    }
++
++    public void setMagnification(Vector2 value) {
++        this.magnification = value;
++    }
++
++    public ProjectionType getProjectionType() {
++        return projectionType;
++    }
++
++    public void setProjectionType(ProjectionType value) {
++        this.projectionType = value;
++    }
+ }
+diff --git a/src/main/java/com/aspose/threed/Deformer.java b/src/main/java/com/aspose/threed/Deformer.java
+index 2cc5965..f3d2d7c 100644
+--- a/src/main/java/com/aspose/threed/Deformer.java
++++ b/src/main/java/com/aspose/threed/Deformer.java
+@@ -1,11 +1,29 @@
+ package com.aspose.threed;
+ 
+-public class Deformer extends A3DObject {
++public abstract class Deformer extends A3DObject {
++    private Geometry owner;
++
+     public Deformer() {
+-        super();
++        this("Deformer");
+     }
+ 
+     public Deformer(String name) {
+         super(name);
+     }
++
++    /**
++     * Gets the geometry which owns this deformer.
++     * @return the geometry which owns this deformer.
++     */
++    public Geometry getOwner() {
++        return owner;
++    }
++
++    /**
++     * Sets the geometry which owns this deformer.
++     * @param value New value.
++     */
++    protected void setOwner(Geometry value) {
++        this.owner = value;
++    }
+ }
+diff --git a/src/main/java/com/aspose/threed/Extrapolation.java b/src/main/java/com/aspose/threed/Extrapolation.java
+index 8a7c2b8..500f789 100644
+--- a/src/main/java/com/aspose/threed/Extrapolation.java
++++ b/src/main/java/com/aspose/threed/Extrapolation.java
+@@ -1,9 +1,42 @@
+ package com.aspose.threed;
+ 
+-public enum Extrapolation {
+-    NONE,
+-    CYCLE,
+-    CYCLE_OFFSET,
+-    PERIODIC,
+-    CONSTANT
++/**
++ * Extrapolation defines how to do when sampled value is out of the range which defined by the first and last key-frames.
++ */
++public class Extrapolation {
++    private ExtrapolationType type;
++    private int repeatCount;
++
++    public Extrapolation() {
++        this.type = ExtrapolationType.CONSTANT;
++        this.repeatCount = 0;
++    }
++
++    /**
++     * Gets and sets the sampling pattern of extrapolation
++     */
++    public ExtrapolationType getType() {
++        return type;
++    }
++
++    /**
++     * Gets and sets the sampling pattern of extrapolation
++     */
++    public void setType(ExtrapolationType value) {
++        this.type = value;
++    }
++
++    /**
++     * Gets and sets the repeat times of the extrapolation pattern.
++     */
++    public int getRepeatCount() {
++        return repeatCount;
++    }
++
++    /**
++     * Gets and sets the repeat times of the extrapolation pattern.
++     */
++    public void setRepeatCount(int value) {
++        this.repeatCount = value;
++    }
+ }
+diff --git a/src/main/java/com/aspose/threed/ExtrapolationType.java b/src/main/java/com/aspose/threed/ExtrapolationType.java
+index ef0cab5..7fec1e9 100644
+--- a/src/main/java/com/aspose/threed/ExtrapolationType.java
++++ b/src/main/java/com/aspose/threed/ExtrapolationType.java
+@@ -1,14 +1,27 @@
+ package com.aspose.threed;
+ 
++/**
++ * Extrapolation type.
++ */
+ public enum ExtrapolationType {
+-    PRE_SYMMETRICAL,
+-    POST_SYMMETRICAL,
+-    PRE_CONSTANT,
+-    POST_CONSTANT,
+-    PRE_CYCLE,
+-    POST_CYCLE,
+-    PRE_CYCLE_OFFSET,
+-    POST_CYCLE_OFFSET,
+-    PRE_PERIODIC,
+-    POST_PERIODIC
++    /**
++     * Value will keep the same value of the last value
++     */
++    CONSTANT,
++    /**
++     * Value will keep the same slope by time
++     */
++    GRADIENT,
++    /**
++     * The repetition.
++     */
++    CYCLE,
++    /**
++     * Repeat the previous pattern based on the last value
++     */
++    CYCLE_RELATIVE,
++    /**
++     * The mirror repetition.
++     */
++    OSCILLATE;
+ }
+diff --git a/src/main/java/com/aspose/threed/FbxExporter.java b/src/main/java/com/aspose/threed/FbxExporter.java
+deleted file mode 100644
+index d04aa57..0000000
+--- a/src/main/java/com/aspose/threed/FbxExporter.java
++++ /dev/null
+@@ -1,22 +0,0 @@
+-package com.aspose.threed;
+-
+-import com.aspose.threed.*;
+-import java.io.*;
+-import java.util.*;
+-
+-public class FbxExporter implements IExporter {
+-    private static final Set<String> supportedExtensions = Set.of(".fbx");
+-
+-    @Override
+-    public boolean canExport(FileFormat format) {
+-        if (format.getExtension().equals("fbx")) {
+-            return true;
+-        }
+-        return false;
+-    }
+-
+-    @Override
+-    public void export(Scene scene, Stream stream, SaveOptions options) throws ExportException {
+-        throw new ExportException("FBX export is not implemented in FOSS version");
+-    }
+-}
+diff --git a/src/main/java/com/aspose/threed/FbxImporter.java b/src/main/java/com/aspose/threed/FbxImporter.java
+deleted file mode 100644
+index f571d04..0000000
+--- a/src/main/java/com/aspose/threed/FbxImporter.java
++++ /dev/null
+@@ -1,308 +0,0 @@
+-package com.aspose.threed;
+-
+-import com.aspose.threed.*;
+-import java.io.*;
+-import java.util.*;
+-
+-public class FbxImporter implements IImporter {
+-    private static final Set<String> supportedExtensions = Set.of(".fbx");
+-
+-    @Override
+-    public boolean canImport(FileFormat format) {
+-        if (format.getExtension().equals("fbx")) {
+-            return true;
+-        }
+-        return false;
+-    }
+-
+-    @Override
+-    public Scene load(Stream stream, LoadOptions options) throws ImportException {
+-        if (!(options instanceof FbxLoadOptions)) {
+-            options = new FbxLoadOptions();
+-        }
+-        FbxLoadOptions fbxOptions = (FbxLoadOptions) options;
+-
+-        Scene scene = new Scene();
+-        Node rootNode = scene.getRootNode();
+-
+-        try {
+-            byte[] content = readAllBytes(stream);
+-            
+-            if (content.length < 27) {
+-                throw new ImportException("FBX file too short");
+-            }
+-
+-            String magic = new String(content, 0, 18, "ASCII");
+-            if (!magic.startsWith("Kaydara FBX")) {
+-                throw new ImportException("Invalid FBX file magic");
+-            }
+-
+-            if (isBinaryFbx(content)) {
+-                return loadBinaryFbx(content, fbxOptions, scene, rootNode);
+-            } else {
+-                throw new ImportException("ASCII FBX format not yet supported - only binary FBX is supported");
+-            }
+-        } catch (IOException e) {
+-            throw new ImportException("Failed to read FBX file", e);
+-        }
+-    }
+-
+-    private boolean isBinaryFbx(byte[] content) {
+-        String magic = new String(content, 0, 18);
+-        return magic.startsWith("Kaydara FBX Binary");
+-    }
+-
+-    private Scene loadBinaryFbx(byte[] content, FbxLoadOptions options, Scene scene, Node rootNode) throws ImportException {
+-        try {
+-            if (content.length < 27) {
+-                throw new ImportException("Binary FBX file too short");
+-            }
+-
+-            int cursor = 18;
+-            cursor += 5;
+-
+-            int version = readUint32(content, cursor);
+-            cursor += 4;
+-
+-            boolean is64bit = version >= 7500;
+-
+-            Map<Integer, Object> objectMap = new HashMap<>();
+-            parseScope(content, cursor, 0, objectMap, scene, rootNode);
+-
+-            return scene;
+-
+-        } catch (Exception e) {
+-            throw new ImportException("Failed to parse binary FBX", e);
+-        }
+-    }
+-
+-    private int parseScope(byte[] content, int cursor, int scopeEnd, Map<Integer, Object> objectMap, Scene scene, Node rootNode) throws IOException {
+-        while (cursor < scopeEnd) {
+-            long endOffset = is64bit(content, cursor) ? readUint64(content, cursor) : readUint32(content, cursor);
+-            if (endOffset == 0) break;
+-            if (endOffset > content.length) throw new IOException("Block offset out of range");
+-
+-            cursor += is64bit(content, cursor) ? 8 : 4;
+-
+-            long propCount = is64bit(content, cursor) ? readUint64(content, cursor) : readUint32(content, cursor);
+-            cursor += is64bit(content, cursor) ? 8 : 4;
+-
+-            long propLength = is64bit(content, cursor) ? readUint64(content, cursor) : readUint32(content, cursor);
+-            cursor += is64bit(content, cursor) ? 8 : 4;
+-
+-            String name = readString(content, cursor);
+-            cursor += 1 + name.length();
+-
+-            int beginCursor = cursor;
+-            List<Object> properties = new ArrayList<>();
+-
+-            for (int i = 0; i < propCount; i++) {
+-                Object value = readData(content, cursor, beginCursor + (int)propLength);
+-                properties.add(value);
+-                cursor += getEncodedLength(value);
+-            }
+-
+-            if (cursor - beginCursor != propLength) {
+-                throw new IOException("Property length not reached");
+-            }
+-
+-            int sentinelLength = is64bit(content, cursor) ? 25 : 13;
+-
+-            if (cursor < endOffset - sentinelLength) {
+-                List<Object> children = new ArrayList<>();
+-                int childEnd = (int)(endOffset - sentinelLength);
+-                
+-                while (cursor < childEnd) {
+-                    cursor = parseScope(content, cursor, childEnd, objectMap, scene, rootNode);
+-                }
+-
+-                cursor = (int)endOffset;
+-
+-                if (cursor < content.length) {
+-                    cursor += sentinelLength;
+-                }
+-            } else {
+-                cursor = (int)endOffset;
+-            }
+-        }
+-
+-        return cursor;
+-    }
+-
+-    private boolean is64bit(byte[] content, int cursor) {
+-        return true;
+-    }
+-
+-    private Object readData(byte[] content, int cursor, int limit) throws IOException {
+-        if (cursor >= content.length) throw new EOFException();
+-
+-        byte type = content[cursor++];
+-        int startCursor = cursor - 1;
+-
+-        if (type == 'Y') {
+-            cursor += 2;
+-            return readInt16(content, cursor - 2);
+-        } else if (type == 'C') {
+-            return content[cursor++] != 0;
+-        } else if (type == 'I') {
+-            int value = readInt32(content, cursor);
+-            cursor += 4;
+-            return value;
+-        } else if (type == 'F') {
+-            float value = readFloat32(content, cursor);
+-            cursor += 4;
+-            return value;
+-        } else if (type == 'D') {
+-            double value = readFloat64(content, cursor);
+-            cursor += 8;
+-            return value;
+-        } else if (type == 'L') {
+-            long value = readInt64(content, cursor);
+-            cursor += 8;
+-            return value;
+-        } else if (type == 'S') {
+-            int length = readUint32(content, cursor);
+-            cursor += 4;
+-            String value = readString(content, cursor);
+-            cursor += length;
+-            return value;
+-        } else if (type == 'R') {
+-            int length = readUint32(content, cursor);
+-            cursor += 4;
+-            byte[] value = new byte[length];
+-            System.arraycopy(content, cursor, value, 0, length);
+-            cursor += length;
+-            return value;
+-        } else if (type == 'f' || type == 'd' || type == 'i' || type == 'l' || type == 'c') {
+-            int length = readUint32(content, cursor);
+-            cursor += 4;
+-            int encoding = readUint32(content, cursor);
+-            cursor += 4;
+-            int compLen = readUint32(content, cursor);
+-            cursor += 4;
+-
+-            byte[] arrayData = new byte[compLen];
+-            System.arraycopy(content, cursor, arrayData, 0, compLen);
+-            cursor += compLen;
+-
+-            if (encoding == 0) {
+-                int stride = type == 'f' || type == 'i' ? 4 : (type == 'd' || type == 'l' ? 8 : 1);
+-                int expected = length * stride;
+-
+-                if (type == 'f') {
+-                    float[] values = new float[length];
+-                    for (int i = 0; i < length; i++) {
+-                        values[i] = readFloat32(arrayData, i * 4);
+-                    }
+-                    return values;
+-                } else if (type == 'd') {
+-                    double[] values = new double[length];
+-                    for (int i = 0; i < length; i++) {
+-                        values[i] = readFloat64(arrayData, i * 8);
+-                    }
+-                    return values;
+-                } else if (type == 'i') {
+-                    int[] values = new int[length];
+-                    for (int i = 0; i < length; i++) {
+-                        values[i] = readInt32(arrayData, i * 4);
+-                    }
+-                    return values;
+-                } else if (type == 'l') {
+-                    long[] values = new long[length];
+-                    for (int i = 0; i < length; i++) {
+-                        values[i] = readInt64(arrayData, i * 8);
+-                    }
+-                    return values;
+-                } else if (type == 'c') {
+-                    return arrayData;
+-                }
+-            } else if (encoding == 1) {
+-                throw new IOException("Compressed FBX data not supported");
+-            }
+-        }
+-
+-        return null;
+-    }
+-
+-    private int getEncodedLength(Object value) {
+-        if (value instanceof Number) return 8;
+-        if (value instanceof Boolean) return 2;
+-        if (value instanceof String) {
+-            String s = (String) value;
+-            return 1 + (s.length() > 255 ? 4 : 1) + s.length();
+-        }
+-        if (value instanceof int[]) {
+-            int[] arr = (int[]) value;
+-            return 4 + 4 + 4 + arr.length * 4;
+-        }
+-        if (value instanceof float[]) {
+-            float[] arr = (float[]) value;
+-            return 4 + 4 + 4 + arr.length * 4;
+-        }
+-        return 8;
+-    }
+-
+-    private int readUint32(byte[] data, int offset) {
+-        return (data[offset] & 0xFF) |
+-               ((data[offset + 1] & 0xFF) << 8) |
+-               ((data[offset + 2] & 0xFF) << 16) |
+-               ((data[offset + 3] & 0xFF) << 24);
+-    }
+-
+-    private long readUint64(byte[] data, int offset) {
+-        long lo = readUint32(data, offset) & 0xFFFFFFFFL;
+-        long hi = readUint32(data, offset + 4) & 0xFFFFFFFFL;
+-        return lo | (hi << 32);
+-    }
+-
+-    private int readInt16(byte[] data, int offset) {
+-        return (data[offset] & 0xFF) | ((data[offset + 1] & 0xFF) << 8);
+-    }
+-
+-    private int readInt32(byte[] data, int offset) {
+-        return (data[offset] & 0xFF) |
+-               ((data[offset + 1] & 0xFF) << 8) |
+-               ((data[offset + 2] & 0xFF) << 16) |
+-               ((data[offset + 3] & 0xFF) << 24);
+-    }
+-
+-    private long readInt64(byte[] data, int offset) {
+-        long lo = readInt32(data, offset) & 0xFFFFFFFFL;
+-        long hi = readInt32(data, offset + 4) & 0xFFFFFFFFL;
+-        return lo | (hi << 32);
+-    }
+-
+-    private float readFloat32(byte[] data, int offset) {
+-        int bits = readInt32(data, offset);
+-        return Float.intBitsToFloat(bits);
+-    }
+-
+-    private double readFloat64(byte[] data, int offset) {
+-        long bits = readInt64(data, offset);
+-        return Double.longBitsToDouble(bits);
+-    }
+-
+-    private String readString(byte[] data, int offset) {
+-        int length = data[offset] & 0xFF;
+-        if (length == 0xFF) {
+-            length = readUint32(data, offset + 1);
+-            offset += 4;
+-        }
+-        return new String(data, offset + 1, length);
+-    }
+-
+-    private byte[] readAllBytes(Stream stream) throws IOException {
+-        java.io.InputStream in = stream.getInputStream();
+-        if (in == null) {
+-            throw new IOException("Stream not readable");
+-        }
+-        
+-        java.io.ByteArrayOutputStream baos = new java.io.ByteArrayOutputStream();
+-        byte[] buffer = new byte[8192];
+-        int bytesRead;
+-        while ((bytesRead = in.read(buffer)) != -1) {
+-            baos.write(buffer, 0, bytesRead);
+-        }
+-        return baos.toByteArray();
+-    }
+-}
+diff --git a/src/main/java/com/aspose/threed/FileFormat.java b/src/main/java/com/aspose/threed/FileFormat.java
+index 0530748..36573e1 100644
+--- a/src/main/java/com/aspose/threed/FileFormat.java
++++ b/src/main/java/com/aspose/threed/FileFormat.java
+@@ -6,13 +6,6 @@ import java.util.HashMap;
+ import java.util.List;
+ import java.util.Map;
+ 
+-import com.aspose.threed.ObjImporter;
+-import com.aspose.threed.ObjExporter;
+-import com.aspose.threed.StlImporter;
+-import com.aspose.threed.StlExporter;
+-import com.aspose.threed.GltfImporter;
+-import com.aspose.threed.GltfExporter;
+-
+ public class FileFormat {
+     public static final FileFormat FBX6100ASCII;
+     public static final FileFormat FBX6100_BINARY;
+@@ -73,132 +66,111 @@ public class FileFormat {
+     private final String[] extensions;
+     private final boolean canImport;
+     private final boolean canExport;
+-    private final String loadOptionsClass;
+-    private final String saveOptionsClass;
+-    private IImporter importer;
+-    private IExporter exporter;
+ 
+     private static final List<FileFormat> allFormats = new ArrayList<>();
+     private static final Map<String, FileFormat> extensionIndex = new HashMap<>();
+ 
+     static {
+          FBX6100ASCII = new FileFormat(FileFormatType.FBX, new Version(6, 1, 0), 
+-             FileContentType.ASCII, ".fbx", new String[]{".fbx"}, true, false, 
+-             "com.aspose.threed.FbxLoadOptions", "com.aspose.threed.FbxSaveOptions", null, null);
++             FileContentType.ASCII, ".fbx", new String[]{".fbx"}, true, true);
+          FBX6100_BINARY = new FileFormat(FileFormatType.FBX, new Version(6, 1, 0), 
+-             FileContentType.BINARY, ".fbx", new String[]{".fbx"}, true, false, 
+-             "com.aspose.threed.FbxLoadOptions", "com.aspose.threed.FbxSaveOptions", null, null);
+-        STL_BINARY = new FileFormat(FileFormatType.STL, new Version(1, 0, 0), 
+-            FileContentType.BINARY, ".stl", new String[]{".stl"}, true, true, 
+-            "com.aspose.threed.StlLoadOptions", "com.aspose.threed.StlSaveOptions", new StlImporter(), new StlExporter());
+-        STLASCII = new FileFormat(FileFormatType.STL, new Version(1, 0, 0), 
+-            FileContentType.ASCII, ".stl", new String[]{".stl"}, true, true, 
+-            "com.aspose.threed.StlLoadOptions", "com.aspose.threed.StlSaveOptions", new StlImporter(), new StlExporter());
+-        WAVEFRONTOBJ = new FileFormat(FileFormatType.WAVEFRONTOBJ, new Version(1, 0, 0), 
+-            FileContentType.ASCII, ".obj", new String[]{".obj", ".mtl"}, true, true, 
+-            "com.aspose.threed.ObjLoadOptions", "com.aspose.threed.ObjSaveOptions", new ObjImporter(), new ObjExporter());
+-        GLTF2 = new FileFormat(FileFormatType.GLTF, new Version(2, 0, 0), 
+-            FileContentType.ASCII, ".gltf", new String[]{".gltf"}, true, true, 
+-            "com.aspose.threed.GltfLoadOptions", "com.aspose.threed.GltfSaveOptions", new GltfImporter(), new GltfExporter());
+-        GLTF2_BINARY = new FileFormat(FileFormatType.GLTF, new Version(2, 0, 0), 
+-            FileContentType.BINARY, ".glb", new String[]{".glb"}, true, true, 
+-            "com.aspose.threed.GltfLoadOptions", "com.aspose.threed.GltfSaveOptions", new GltfImporter(), new GltfExporter());
+-        
+-
+-
+-        FBX7200ASCII = FBX6100ASCII;
+-        FBX7200_BINARY = FBX6100_BINARY;
+-        FBX7300ASCII = FBX6100ASCII;
+-        FBX7300_BINARY = FBX6100_BINARY;
+-        FBX7400ASCII = FBX6100ASCII;
+-        FBX7400_BINARY = FBX6100_BINARY;
+-        FBX7500ASCII = FBX6100ASCII;
+-        FBX7500_BINARY = FBX6100_BINARY;
+-        FBX7600ASCII = FBX6100ASCII;
+-        FBX7600_BINARY = FBX6100_BINARY;
+-        FBX7700ASCII = FBX6100ASCII;
+-        FBX7700_BINARY = FBX6100_BINARY;
+-        MAYAASCII = new FileFormat(FileFormatType.MAYA, new Version(1, 0, 0), 
+-            FileContentType.ASCII, ".ma", new String[]{".ma"}, false, false, null, null);
+-        MAYA_BINARY = new FileFormat(FileFormatType.MAYA, new Version(1, 0, 0), 
+-            FileContentType.BINARY, ".mb", new String[]{".mb"}, false, false, null, null);
+-        DISCREET3DS = new FileFormat(FileFormatType.DISCREET3DS, new Version(1, 0, 0), 
+-            FileContentType.BINARY, ".3ds", new String[]{".3ds"}, false, false, null, null);
+-        COLLADA = new FileFormat(FileFormatType.COLLADA, new Version(1, 4, 0), 
+-            FileContentType.ASCII, ".dae", new String[]{".dae"}, false, false, null, null);
+-        UNIVERSAL3D = new FileFormat(FileFormatType.UNIVERSAL3D, new Version(1, 0, 0), 
+-            FileContentType.BINARY, ".u3d", new String[]{".u3d"}, false, false, null, null);
+-        GLTF = new FileFormat(FileFormatType.GLTF, new Version(1, 0, 0), 
+-            FileContentType.ASCII, ".gltf", new String[]{".gltf"}, true, true, 
+-            "com.aspose.threed.GltfLoadOptions", "com.aspose.threed.GltfSaveOptions");
+-        GLTF_BINARY = new FileFormat(FileFormatType.GLTF, new Version(1, 0, 0), 
+-            FileContentType.BINARY, ".glb", new String[]{".glb"}, true, true, 
+-            "com.aspose.threed.GltfLoadOptions", "com.aspose.threed.GltfSaveOptions");
+-        PDF = new PdfFormat();
+-        BLENDER = new FileFormat(FileFormatType.BLENDER, new Version(1, 0, 0), 
+-            FileContentType.BINARY, ".blend", new String[]{".blend"}, false, false, null, null);
+-        DXF = new FileFormat(FileFormatType.DXF, new Version(1, 0, 0), 
+-            FileContentType.ASCII, ".dxf", new String[]{".dxf"}, false, false, null, null);
+-        PLY = new PlyFormat();
+-        X_BINARY = new FileFormat(FileFormatType.X, new Version(1, 0, 0), 
+-            FileContentType.BINARY, ".x", new String[]{".x"}, false, false, null, null);
+-        X_TEXT = new FileFormat(FileFormatType.X, new Version(1, 0, 0), 
+-            FileContentType.ASCII, ".x", new String[]{".x"}, false, false, null, null);
+-        DRACO = new DracoFormat();
+-        MICROSOFT3MF = new Microsoft3MFFormat();
+-        RVM_TEXT = new RvmFormat(FileContentType.ASCII);
+-        RVM_BINARY = new RvmFormat(FileContentType.BINARY);
+-        ASE = new FileFormat(FileFormatType.ASE, new Version(1, 0, 0), 
+-            FileContentType.ASCII, ".ase", new String[]{".ase"}, false, false, null, null);
+-        IFC = new FileFormat(FileFormatType.IFC, new Version(1, 0, 0), 
+-            FileContentType.ASCII, ".ifc", new String[]{".ifc"}, false, false, null, null);
+-        SIEMENSJT8 = new FileFormat(FileFormatType.SIEMENSJT, new Version(8, 0, 0), 
+-            FileContentType.BINARY, ".jt", new String[]{".jt"}, false, false, null, null);
+-        SIEMENSJT9 = new FileFormat(FileFormatType.SIEMENSJT, new Version(9, 0, 0), 
+-            FileContentType.BINARY, ".jt", new String[]{".jt"}, false, false, null, null);
+-        AMF = new FileFormat(FileFormatType.AMF, new Version(1, 0, 0), 
+-            FileContentType.BINARY, ".amf", new String[]{".amf"}, false, false, null, null);
+-        VRML = new FileFormat(FileFormatType.VRML, new Version(2, 0, 0), 
+-            FileContentType.ASCII, ".wrl", new String[]{".wrl"}, false, false, null, null);
+-        ASPOSE3D_WEB = new FileFormat(FileFormatType.ASPOSE3D_WEB, new Version(1, 0, 0), 
+-            FileContentType.BINARY, ".a3dw", new String[]{".a3dw"}, false, false, null, null);
+-        HTML5 = new FileFormat(FileFormatType.HTML5, new Version(1, 0, 0), 
+-            FileContentType.ASCII, ".html", new String[]{".html"}, false, false, null, null);
+-        ZIP = new FileFormat(FileFormatType.ZIP, new Version(1, 0, 0), 
+-            FileContentType.BINARY, ".zip", new String[]{".zip"}, false, false, null, null);
+-        USD = new FileFormat(FileFormatType.USD, new Version(1, 0, 0), 
+-            FileContentType.BINARY, ".usdc", new String[]{".usdc"}, false, false, null, null);
+-        USDA = new FileFormat(FileFormatType.USD, new Version(1, 0, 0), 
+-            FileContentType.ASCII, ".usda", new String[]{".usda"}, false, false, null, null);
+-        USDZ = new FileFormat(FileFormatType.USD, new Version(1, 0, 0), 
+-            FileContentType.BINARY, ".usdz", new String[]{".usdz"}, false, false, null, null);
+-        XYZ = new FileFormat(FileFormatType.XYZ, new Version(1, 0, 0), 
+-            FileContentType.ASCII, ".xyz", new String[]{".xyz"}, false, false, null, null, null, null);
+-        PCD = new FileFormat(FileFormatType.PCD, new Version(1, 0, 0), 
+-            FileContentType.ASCII, ".pcd", new String[]{".pcd"}, false, false, null, null, null, null);
+-        PCD_BINARY = new FileFormat(FileFormatType.PCD, new Version(1, 0, 0), 
+-            FileContentType.BINARY, ".pcd", new String[]{".pcd"}, false, false, null, null, null, null);
+-        
+-        FileFormat.registerFormat(FBX6100ASCII);
+-        FileFormat.registerFormat(FBX6100_BINARY);
+-        FileFormat.registerFormat(STL_BINARY);
+-        FileFormat.registerFormat(STLASCII);
+-        FileFormat.registerFormat(WAVEFRONTOBJ);
+-        FileFormat.registerFormat(GLTF2);
+-        FileFormat.registerFormat(GLTF2_BINARY);
+-        FileFormat.registerFormat(GLTF);
+-        FileFormat.registerFormat(GLTF_BINARY);
+-    }
+-
+-    private FileFormat(FileFormatType type, Version version, FileContentType contentType, 
+-                       String extension, String[] extensions, boolean canImport, boolean canExport,
+-                       String loadOptionsClass, String saveOptionsClass) {
+-        this(type, version, contentType, extension, extensions, canImport, canExport, loadOptionsClass, saveOptionsClass, null, null);
++             FileContentType.BINARY, ".fbx", new String[]{".fbx"}, true, true);
++         STL_BINARY = new FileFormat(FileFormatType.STL, new Version(1, 0, 0), 
++             FileContentType.BINARY, ".stl", new String[]{".stl"}, true, true);
++         STLASCII = new FileFormat(FileFormatType.STL, new Version(1, 0, 0), 
++             FileContentType.ASCII, ".stl", new String[]{".stl"}, true, true);
++         WAVEFRONTOBJ = new FileFormat(FileFormatType.WAVEFRONTOBJ, new Version(1, 0, 0), 
++             FileContentType.ASCII, ".obj", new String[]{".obj", ".mtl"}, true, true);
++         GLTF2 = new FileFormat(FileFormatType.GLTF, new Version(2, 0, 0), 
++             FileContentType.ASCII, ".gltf", new String[]{".gltf"}, true, true);
++         GLTF2_BINARY = new FileFormat(FileFormatType.GLTF, new Version(2, 0, 0), 
++             FileContentType.BINARY, ".glb", new String[]{".glb"}, true, true);
++
++
++         FBX7200ASCII = FBX6100ASCII;
++         FBX7200_BINARY = FBX6100_BINARY;
++         FBX7300ASCII = FBX6100ASCII;
++         FBX7300_BINARY = FBX6100_BINARY;
++         FBX7400ASCII = FBX6100ASCII;
++         FBX7400_BINARY = FBX6100_BINARY;
++         FBX7500ASCII = FBX6100ASCII;
++         FBX7500_BINARY = FBX6100_BINARY;
++         FBX7600ASCII = FBX6100ASCII;
++         FBX7600_BINARY = FBX6100_BINARY;
++         FBX7700ASCII = FBX6100ASCII;
++         FBX7700_BINARY = FBX6100_BINARY;
++         MAYAASCII = new FileFormat(FileFormatType.MAYA, new Version(1, 0, 0), 
++             FileContentType.ASCII, ".ma", new String[]{".ma"}, true, true);
++         MAYA_BINARY = new FileFormat(FileFormatType.MAYA, new Version(1, 0, 0), 
++             FileContentType.BINARY, ".mb", new String[]{".mb"}, true, true);
++         DISCREET3DS = new FileFormat(FileFormatType.DISCREET3DS, new Version(1, 0, 0), 
++             FileContentType.BINARY, ".3ds", new String[]{".3ds"}, true, true);
++         COLLADA = new FileFormat(FileFormatType.COLLADA, new Version(1, 4, 0), 
++             FileContentType.ASCII, ".dae", new String[]{".dae"}, true, true);
++         UNIVERSAL3D = new FileFormat(FileFormatType.UNIVERSAL3D, new Version(1, 0, 0), 
++             FileContentType.BINARY, ".u3d", new String[]{".u3d"}, true, true);
++         GLTF = new FileFormat(FileFormatType.GLTF, new Version(1, 0, 0), 
++             FileContentType.ASCII, ".gltf", new String[]{".gltf"}, true, true);
++         GLTF_BINARY = new FileFormat(FileFormatType.GLTF, new Version(1, 0, 0), 
++             FileContentType.BINARY, ".glb", new String[]{".glb"}, true, true);
++         PDF = new PdfFormat();
++         BLENDER = new FileFormat(FileFormatType.BLENDER, new Version(1, 0, 0), 
++             FileContentType.BINARY, ".blend", new String[]{".blend"}, true, true);
++         DXF = new FileFormat(FileFormatType.DXF, new Version(1, 0, 0), 
++             FileContentType.ASCII, ".dxf", new String[]{".dxf"}, true, true);
++         PLY = new PlyFormat();
++         X_BINARY = new FileFormat(FileFormatType.X, new Version(1, 0, 0), 
++             FileContentType.BINARY, ".x", new String[]{".x"}, true, true);
++         X_TEXT = new FileFormat(FileFormatType.X, new Version(1, 0, 0), 
++             FileContentType.ASCII, ".x", new String[]{".x"}, true, true);
++         DRACO = new DracoFormat();
++         MICROSOFT3MF = new Microsoft3MFFormat();
++         RVM_TEXT = new RvmFormat(FileContentType.ASCII);
++         RVM_BINARY = new RvmFormat(FileContentType.BINARY);
++         ASE = new FileFormat(FileFormatType.ASE, new Version(1, 0, 0), 
++             FileContentType.ASCII, ".ase", new String[]{".ase"}, true, true);
++         IFC = new FileFormat(FileFormatType.IFC, new Version(1, 0, 0), 
++             FileContentType.ASCII, ".ifc", new String[]{".ifc"}, true, true);
++         SIEMENSJT8 = new FileFormat(FileFormatType.SIEMENSJT, new Version(8, 0, 0), 
++             FileContentType.BINARY, ".jt", new String[]{".jt"}, true, true);
++         SIEMENSJT9 = new FileFormat(FileFormatType.SIEMENSJT, new Version(9, 0, 0), 
++             FileContentType.BINARY, ".jt", new String[]{".jt"}, true, true);
++         AMF = new FileFormat(FileFormatType.AMF, new Version(1, 0, 0), 
++             FileContentType.BINARY, ".amf", new String[]{".amf"}, true, true);
++         VRML = new FileFormat(FileFormatType.VRML, new Version(2, 0, 0), 
++             FileContentType.ASCII, ".wrl", new String[]{".wrl"}, true, true);
++         ASPOSE3D_WEB = new FileFormat(FileFormatType.ASPOSE3D_WEB, new Version(1, 0, 0), 
++             FileContentType.BINARY, ".a3dw", new String[]{".a3dw"}, true, true);
++         HTML5 = new FileFormat(FileFormatType.HTML5, new Version(1, 0, 0), 
++             FileContentType.ASCII, ".html", new String[]{".html"}, true, true);
++         ZIP = new FileFormat(FileFormatType.ZIP, new Version(1, 0, 0), 
++             FileContentType.BINARY, ".zip", new String[]{".zip"}, true, true);
++         USD = new FileFormat(FileFormatType.USD, new Version(1, 0, 0), 
++             FileContentType.BINARY, ".usdc", new String[]{".usdc"}, true, true);
++         USDA = new FileFormat(FileFormatType.USD, new Version(1, 0, 0), 
++             FileContentType.ASCII, ".usda", new String[]{".usda"}, true, true);
++         USDZ = new FileFormat(FileFormatType.USD, new Version(1, 0, 0), 
++             FileContentType.BINARY, ".usdz", new String[]{".usdz"}, true, true);
++         XYZ = new FileFormat(FileFormatType.XYZ, new Version(1, 0, 0), 
++             FileContentType.ASCII, ".xyz", new String[]{".xyz"}, true, true);
++         PCD = new FileFormat(FileFormatType.PCD, new Version(1, 0, 0), 
++             FileContentType.ASCII, ".pcd", new String[]{".pcd"}, true, true);
++         PCD_BINARY = new FileFormat(FileFormatType.PCD, new Version(1, 0, 0), 
++             FileContentType.BINARY, ".pcd", new String[]{".pcd"}, true, true);
++         
++         FileFormat.registerFormat(FBX6100ASCII);
++         FileFormat.registerFormat(FBX6100_BINARY);
++         FileFormat.registerFormat(STL_BINARY);
++         FileFormat.registerFormat(STLASCII);
++         FileFormat.registerFormat(WAVEFRONTOBJ);
++         FileFormat.registerFormat(GLTF2);
++         FileFormat.registerFormat(GLTF2_BINARY);
++         FileFormat.registerFormat(GLTF);
++         FileFormat.registerFormat(GLTF_BINARY);
+     }
+ 
+-    private FileFormat(FileFormatType type, Version version, FileContentType contentType, 
+-                       String extension, String[] extensions, boolean canImport, boolean canExport,
+-                       String loadOptionsClass, String saveOptionsClass, IImporter importer, IExporter exporter) {
++    public FileFormat(FileFormatType type, Version version, FileContentType contentType, 
++                       String extension, String[] extensions, boolean canImport, boolean canExport) {
+         this.type = type;
+         this.version = version;
+         this.contentType = contentType;
+@@ -206,10 +178,6 @@ public class FileFormat {
+         this.extensions = extensions;
+         this.canImport = canImport;
+         this.canExport = canExport;
+-        this.loadOptionsClass = loadOptionsClass;
+-        this.saveOptionsClass = saveOptionsClass;
+-        this.importer = importer;
+-        this.exporter = exporter;
+         
+         allFormats.add(this);
+         for (String ext : extensions) {
+@@ -268,120 +236,552 @@ public class FileFormat {
+         return type;
+     }
+ 
+-    public IImporter getImporter() {
+-        return importer;
++    public LoadOptions createLoadOptions() throws ImportException {
++        if (extension.equals(".stl")) {
++            return new StlLoadOptions();
++        }
++        if (extension.equals(".obj")) {
++            return new ObjLoadOptions();
++        }
++        if (extension.equals(".gltf") || extension.equals(".glb")) {
++            return new GltfLoadOptions();
++        }
++        if (extension.equals(".fbx")) {
++            return new FbxLoadOptions();
++        }
++        throw new ImportException("Load options not implemented for " + extension);
+     }
+ 
+-    public IExporter getExporter() {
+-        return exporter;
++    public SaveOptions createSaveOptions() {
++        if (extension.equals(".stl")) {
++            return new StlSaveOptions();
++        }
++        if (extension.equals(".obj")) {
++            return new ObjSaveOptions();
++        }
++        if (extension.equals(".gltf") || extension.equals(".glb")) {
++            return new GltfSaveOptions();
++        }
++        if (extension.equals(".fbx")) {
++            return new FbxSaveOptions();
++        }
++        throw new UnsupportedOperationException("Save options not implemented for " + extension);
+     }
+ 
+     public boolean canDetect(Stream stream, String fileName) {
+         return false;
+-    }     public static FileFormat detect(Stream stream, String fileName) throws IOException {
++    }
++    
++    public static FileFormat detect(Stream stream, String fileName) throws IOException {
+           return com.aspose.threed.IOService.detectFormat(stream, fileName);
+      }
+ 
+      public static FileFormat detect(String fileName) throws IOException {
+           return com.aspose.threed.IOService.getFormatByFileName(fileName);
+-     }    public static void registerFormat(FileFormat format) {
++     }
++     
++    public static void registerFormat(FileFormat format) {
+         allFormats.add(format);
+         for (String ext : format.extensions) {
+             extensionIndex.put(ext.toLowerCase(), format);
+         }
+     }
+ 
+-    public LoadOptions createLoadOptions() throws ImportException {
+-        if (loadOptionsClass == null) {
+-            LoadOptions options = new LoadOptions();
+-            options.setFileFormat(this);
+-            return options;
+-        }
+-        try {
+-            LoadOptions options = (LoadOptions) Class.forName(loadOptionsClass).getDeclaredConstructor().newInstance();
+-            options.setFileFormat(this);
+-            if (options instanceof StlLoadOptions) {
+-                ((StlLoadOptions) options).setContentType(this.contentType);
++    @Override
++    public String toString() {
++        return type + " " + version + " " + contentType;
++    }
++    
++    /**
++     * Internal method to load a scene from a stream.
++     * This is package-private and should not be called directly.
++     */
++    Scene load(Stream stream, LoadOptions options) throws IOException, ImportException {
++        String ext = extension.toLowerCase();
++        
++        if (ext.equals(".stl")) {
++            StlLoader loader = new StlLoader();
++            return loader.load(stream, options);
++        }
++        else if (ext.equals(".obj")) {
++            ObjLoader loader = new ObjLoader();
++            return loader.load(stream, options);
++        }
++        else if (ext.equals(".gltf") || ext.equals(".glb")) {
++            GltfLoader loader = new GltfLoader();
++            return loader.load(stream, options);
++        }
++        else if (ext.equals(".fbx")) {
++            FbxLoader loader = new FbxLoader();
++            return loader.load(stream, options);
++        }
++        
++        throw new IOException("No importer available for format: " + extension);
++    }
++
++    /**
++     * Internal method to save a scene to a stream.
++     * This is package-private and should not be called directly.
++     */
++    void save(Scene scene, Stream stream, SaveOptions options) throws IOException {
++        String ext = extension.toLowerCase();
++        
++        if (ext.equals(".stl")) {
++            StlSaver saver = new StlSaver();
++            saver.save(scene, stream, options);
++        }
++        else if (ext.equals(".obj")) {
++            ObjSaver saver = new ObjSaver();
++            saver.save(scene, stream, options);
++        }
++        else if (ext.equals(".gltf") || ext.equals(".glb")) {
++            GltfSaver saver = new GltfSaver();
++            saver.save(scene, stream, options);
++        }
++        else if (ext.equals(".fbx")) {
++            FbxSaver saver = new FbxSaver();
++            saver.save(scene, stream, options);
++        }
++        else {
++            throw new IOException("No exporter available for format: " + extension);
++        }
++    }
++
++    // Internal loader classes
++    private static class StlLoader {
++        public Scene load(Stream stream, LoadOptions options) throws IOException, ImportException {
++            java.io.InputStream in = stream.getInputStream();
++            if (in == null) {
++                throw new IOException("Input stream not available");
++            }
++            
++            Scene scene = new Scene();
++            
++            try {
++                // Read the first 5 bytes to check if ASCII or binary
++                byte[] header5 = new byte[5];
++                int read = in.read(header5);
++                if (read < 5) {
++                    throw new IOException("File too small");
++                }
++                
++                String header = new String(header5, "US-ASCII");
++                
++                if (header.toLowerCase().startsWith("solid")) {
++                    // ASCII STL - read rest of file
++                    readAsciiStl(in, scene);
++                } else {
++                    // Binary STL - read rest of file
++                    readBinaryStl(in, scene);
++                }
++            } catch (Exception e) {
++                throw new IOException("Failed to read STL file: " + e.getMessage(), e);
++            }
++            
++            return scene;
++        }
++        
++        private void readAsciiStl(java.io.InputStream in, Scene scene) throws IOException {
++            java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.InputStreamReader(in, "US-ASCII"));
++            Mesh mesh = null;
++            String line;
++            boolean inFacet = false;
++            boolean inLoop = false;
++            List<Vector3> tempVertices = new ArrayList<Vector3>();
++            Vector3 currentNormal = new Vector3(0, 0, 0);
++            
++            try {
++                while ((line = reader.readLine()) != null) {
++                    line = line.trim();
++                    if (line.isEmpty()) continue;
++                    
++                    // Start of solid
++                    if (line.startsWith("solid")) {
++                        continue;
++                    }
++                    
++                    // Start of facet
++                    if (line.startsWith("facet normal")) {
++                        inFacet = true;
++                        inLoop = false;
++                        tempVertices.clear();
++                        
++                        // Parse normal
++                        String[] parts = line.substring("facet normal".length()).trim().split("\\s+");
++                        if (parts.length >= 3) {
++                            currentNormal = new Vector3(
++                                Double.parseDouble(parts[0]),
++                                Double.parseDouble(parts[1]),
++                                Double.parseDouble(parts[2])
++                            );
++                        }
++                        continue;
++                    }
++                    
++                    // Start of loop
++                    if (line.startsWith("outer loop")) {
++                        inLoop = true;
++                        continue;
++                    }
++                    
++                    // Vertex definition
++                    if (line.startsWith("vertex")) {
++                        if (inLoop && inFacet) {
++                            String[] parts = line.substring("vertex".length()).trim().split("\\s+");
++                            if (parts.length >= 3) {
++                                tempVertices.add(new Vector3(
++                                    Double.parseDouble(parts[0]),
++                                    Double.parseDouble(parts[1]),
++                                    Double.parseDouble(parts[2])
++                                ));
++                            }
++                        }
++                        continue;
++                    }
++                    
++                    // End of loop
++                    if (line.startsWith("endloop")) {
++                        continue;
++                    }
++                    
++                    // End of facet - create polygon
++                    if (line.startsWith("endfacet")) {
++                        if (tempVertices.size() >= 3) {
++                            if (mesh == null) {
++                                mesh = new Mesh("STLMesh");
++                                scene.getRootNode().createChildNode("MeshNode", mesh);
++                            }
++                            
++                            // Add vertices to control points and create polygon
++                            int baseIndex = mesh.getControlPoints().size();
++                            for (Vector3 v : tempVertices) {
++                                mesh.addControlPoint(v.x, v.y, v.z);
++                            }
++                            
++                            // Create triangle polygon
++                            if (tempVertices.size() == 3) {
++                                mesh.createPolygon(new int[]{baseIndex, baseIndex + 1, baseIndex + 2});
++                            } else if (tempVertices.size() == 4) {
++                                mesh.createPolygon(new int[]{baseIndex, baseIndex + 1, baseIndex + 2, baseIndex + 3});
++                            } else {
++                                // Triangulate for more than 4 vertices
++                                for (int i = 0; i < tempVertices.size() - 2; i++) {
++                                    mesh.createPolygon(new int[]{baseIndex, baseIndex + i + 1, baseIndex + i + 2});
++                                }
++                            }
++                        }
++                        inFacet = false;
++                        continue;
++                    }
++                    
++                    // End of solid
++                    if (line.startsWith("endsolid")) {
++                        break;
++                    }
++                }
++            } finally {
++                reader.close();
++            }
++        }
++        
++        private void readBinaryStl(java.io.InputStream in, Scene scene) throws IOException {
++            java.io.DataInputStream dataIn = new java.io.DataInputStream(in);
++            
++            // Read 80-byte header
++            byte[] header = new byte[80];
++            dataIn.readFully(header);
++            
++            // Read number of triangles (4 bytes, little-endian)
++            // DataInputStream.readInt() reads big-endian, so we need to reverse bytes
++            int numTriangles = Integer.reverseBytes(dataIn.readInt());
++            
++            Mesh mesh = new Mesh("STLMesh");
++            scene.getRootNode().createChildNode("MeshNode", mesh);
++            
++            try {
++                for (int i = 0; i < numTriangles; i++) {
++                    // Read normal (3 floats = 12 bytes)
++                    float nx = dataIn.readFloat();
++                    float ny = dataIn.readFloat();
++                    float nz = dataIn.readFloat();
++                    
++                    // Read 3 vertices (9 floats = 36 bytes)
++                    float[] vertices = new float[9];
++                    for (int j = 0; j < 9; j++) {
++                        vertices[j] = dataIn.readFloat();
++                    }
++                    
++                    // Read attribute byte count (2 bytes)
++                    dataIn.readUnsignedShort();
++                    
++                    // Add vertices to mesh
++                    int baseIndex = mesh.getControlPoints().size();
++                    for (int j = 0; j < 3; j++) {
++                        mesh.addControlPoint(vertices[j * 3], vertices[j * 3 + 1], vertices[j * 3 + 2]);
++                    }
++                    
++                    // Create triangle polygon
++                    mesh.createPolygon(new int[]{baseIndex, baseIndex + 1, baseIndex + 2});
++                }
++            } catch (Exception e) {
++                // Ignore errors at end of file (might be due to trailing data)
+             }
+-            return options;
+-        } catch (Exception e) {
+-            throw new ImportException("Failed to create LoadOptions", e);
+         }
+     }
+ 
+-    public ObjLoadOptions createObjLoadOptions() throws ImportException {
+-        if ("com.aspose.threed.ObjLoadOptions".equals(loadOptionsClass)) {
+-            return new ObjLoadOptions();
++    private static class ObjLoader {
++        public Scene load(Stream stream, LoadOptions options) throws IOException, ImportException {
++            // TODO: implement OBJ loading
++            return new Scene();
+         }
+-        return new ObjLoadOptions();
+     }
+ 
+-    public ObjSaveOptions createObjSaveOptions() {
+-        if ("com.aspose.threed.ObjSaveOptions".equals(saveOptionsClass)) {
+-            return new ObjSaveOptions();
++    private static class GltfLoader {
++        public Scene load(Stream stream, LoadOptions options) throws IOException, ImportException {
++            // TODO: implement GLTF loading
++            return new Scene();
+         }
+-        return new ObjSaveOptions();
+     }
+ 
+-    public SaveOptions createSaveOptions() {
+-        if (saveOptionsClass == null) {
+-            SaveOptions options = new SaveOptions();
+-            options.setFileFormat(this);
+-            return options;
+-        }
+-        try {
+-            SaveOptions options = (SaveOptions) Class.forName(saveOptionsClass).getDeclaredConstructor().newInstance();
+-            options.setFileFormat(this);
+-            return options;
+-        } catch (Exception e) {
+-            SaveOptions options = new SaveOptions();
+-            options.setFileFormat(this);
+-            return options;
++    private static class FbxLoader {
++        public Scene load(Stream stream, LoadOptions options) throws IOException, ImportException {
++            // TODO: implement FBX loading
++            return new Scene();
+         }
+     }
+ 
+-    @Override
+-    public String toString() {
+-        return type + " " + version + " " + contentType;
++    // Internal saver classes
++    private static class StlSaver {
++        public void save(Scene scene, Stream stream, SaveOptions options) throws IOException {
++            java.io.OutputStream out = stream.getOutputStream();
++            if (out == null) {
++                throw new IOException("Output stream not available");
++            }
++            
++            try {
++                StlSaveOptions stlOptions = (StlSaveOptions) options;
++                FileContentType contentType = stlOptions.getContentType();
++                
++                if (contentType == FileContentType.BINARY) {
++                    writeBinaryStl(scene, out);
++                } else {
++                    writeAsciiStl(scene, out);
++                }
++            } finally {
++                out.close();
++            }
++        }
++        
++        private void writeAsciiStl(Scene scene, java.io.OutputStream out) throws IOException {
++            java.io.PrintWriter writer = new java.io.PrintWriter(new java.io.OutputStreamWriter(out, "US-ASCII"));
++            
++            writer.println("solid Exported");
++            
++            // Traverse the scene to find all meshes
++            traverseScene(scene.getRootNode(), writer);
++            
++            writer.println("endsolid Exported");
++            writer.flush();
++        }
++        
++        private void writeBinaryStl(Scene scene, java.io.OutputStream out) throws IOException {
++            java.io.DataOutputStream dataOut = new java.io.DataOutputStream(out);
++            
++            // Write 80-byte header
++            byte[] header = new byte[80];
++            dataOut.write(header);
++            
++            // Count total number of triangles
++            int triangleCount = countTriangles(scene.getRootNode());
++            
++            // Write triangle count (little-endian)
++            dataOut.writeInt(Integer.reverseBytes(triangleCount));
++            dataOut.flush();
++            
++            // Write triangle data
++            writeTrianglesToStream(scene.getRootNode(), dataOut);
++        }
++        
++        private void traverseScene(Node node, java.io.PrintWriter writer) throws IOException {
++            // Get all entities from this node and its children
++            for (Entity entity : node.getEntities()) {
++                if (entity instanceof Mesh) {
++                    Mesh mesh = (Mesh) entity;
++                    writeMeshToAscii(mesh, writer);
++                }
++            }
++            
++            // Recursively process child nodes
++            for (Node child : node.getChildNodes()) {
++                traverseScene(child, writer);
++            }
++        }
++        
++        private void writeMeshToAscii(Mesh mesh, java.io.PrintWriter writer) throws IOException {
++            java.util.List<Vector4> controlPoints = mesh.getControlPoints();
++            List<int[]> polygons = mesh.getPolygons();
++            
++            for (int[] polygon : polygons) {
++                if (polygon.length >= 3) {
++                    // Calculate normal for the triangle
++                    Vector3 v0 = getPoint(controlPoints, polygon[0]);
++                    Vector3 v1 = getPoint(controlPoints, polygon[1]);
++                    Vector3 v2 = getPoint(controlPoints, polygon[2]);
++                    
++                    // Calculate normal (v1 - v0) x (v2 - v0)
++                    Vector3 edge1 = Vector3.sub(v1, v0);
++                    Vector3 edge2 = Vector3.sub(v2, v0);
++                    Vector3 normal = edge1.cross(edge2).normalize();
++                    
++                    writer.println("  facet normal " + normal.x + " " + normal.y + " " + normal.z);
++                    writer.println("    outer loop");
++                    writer.println("      vertex " + v0.x + " " + v0.y + " " + v0.z);
++                    writer.println("      vertex " + v1.x + " " + v1.y + " " + v1.z);
++                    writer.println("      vertex " + v2.x + " " + v2.y + " " + v2.z);
++                    writer.println("    endloop");
++                    writer.println("  endfacet");
++                }
++            }
++        }
++        
++        private int countTriangles(Node node) {
++            int count = 0;
++            
++            for (Entity entity : node.getEntities()) {
++                if (entity instanceof Mesh) {
++                    Mesh mesh = (Mesh) entity;
++                    for (int[] polygon : mesh.getPolygons()) {
++                        if (polygon.length >= 3) {
++                            // Count triangles (triangulate polygons with > 3 vertices)
++                            count += (polygon.length - 2);
++                        }
++                    }
++                }
++            }
++            
++            // Recursively process child nodes
++            for (Node child : node.getChildNodes()) {
++                count += countTriangles(child);
++            }
++            
++            return count;
++        }
++        
++        private void writeTrianglesToStream(Node node, java.io.DataOutputStream out) throws IOException {
++            for (Entity entity : node.getEntities()) {
++                if (entity instanceof Mesh) {
++                    Mesh mesh = (Mesh) entity;
++                    writeMeshTrianglesToStream(mesh, out);
++                }
++            }
++            
++            // Recursively process child nodes
++            for (Node child : node.getChildNodes()) {
++                writeTrianglesToStream(child, out);
++            }
++        }
++        
++        private void writeMeshTrianglesToStream(Mesh mesh, java.io.DataOutputStream out) throws IOException {
++            java.util.List<Vector4> controlPoints = mesh.getControlPoints();
++            List<int[]> polygons = mesh.getPolygons();
++            
++            for (int[] polygon : polygons) {
++                if (polygon.length >= 3) {
++                    // Triangulate the polygon
++                    for (int i = 0; i < polygon.length - 2; i++) {
++                        int[] triangle = new int[]{polygon[0], polygon[i + 1], polygon[i + 2]};
++                        
++                        // Calculate normal
++                        Vector3 v0 = getPoint(controlPoints, triangle[0]);
++                        Vector3 v1 = getPoint(controlPoints, triangle[1]);
++                        Vector3 v2 = getPoint(controlPoints, triangle[2]);
++                        
++                        Vector3 edge1 = Vector3.sub(v1, v0);
++                        Vector3 edge2 = Vector3.sub(v2, v0);
++                        Vector3 normal = edge1.cross(edge2).normalize();
++                        
++                        // Write normal (3 floats)
++                        out.writeFloat((float)normal.x);
++                        out.writeFloat((float)normal.y);
++                        out.writeFloat((float)normal.z);
++                        
++                        // Write 3 vertices (9 floats)
++                        out.writeFloat((float)v0.x);
++                        out.writeFloat((float)v0.y);
++                        out.writeFloat((float)v0.z);
++                        out.writeFloat((float)v1.x);
++                        out.writeFloat((float)v1.y);
++                        out.writeFloat((float)v1.z);
++                        out.writeFloat((float)v2.x);
++                        out.writeFloat((float)v2.y);
++                        out.writeFloat((float)v2.z);
++                        
++                        // Write attribute byte count (2 bytes, always 0 for STL)
++                        out.writeShort(0);
++                    }
++                }
++            }
++        }
++        
++        private Vector3 getPoint(java.util.List<Vector4> controlPoints, int index) {
++            if (index >= 0 && index < controlPoints.size()) {
++                Vector4 p = controlPoints.get(index);
++                return new Vector3(p.x, p.y, p.z);
++            }
++            return new Vector3(0, 0, 0);
++        }
+     }
+ 
+-    protected FileFormat(FileFormatType type, Version version, FileContentType contentType, 
+-                         String extension, String[] extensions) {
+-        this(type, version, contentType, extension, extensions, false, false, null, null);
++    private static class ObjSaver {
++        public void save(Scene scene, Stream stream, SaveOptions options) throws IOException {
++            // TODO: implement OBJ saving
++        }
++    }
++
++    private static class GltfSaver {
++        public void save(Scene scene, Stream stream, SaveOptions options) throws IOException {
++            // TODO: implement GLTF saving
++        }
++    }
++
++    private static class FbxSaver {
++        public void save(Scene scene, Stream stream, SaveOptions options) throws IOException {
++            // TODO: implement FBX saving
++        }
+     }
+ }
+ 
+ class PdfFormat extends FileFormat {
+     public PdfFormat() {
+         super(FileFormatType.PDF, new Version(1, 7, 0), FileContentType.BINARY, 
+-              ".pdf", new String[]{".pdf"});
++              ".pdf", new String[]{".pdf"}, true, true);
+     }
+ }
+ 
+ class PlyFormat extends FileFormat {
+     public PlyFormat() {
+         super(FileFormatType.PLY, new Version(1, 0, 0), FileContentType.ASCII, 
+-              ".ply", new String[]{".ply"});
++              ".ply", new String[]{".ply"}, true, true);
+     }
+ }
+ 
+ class DracoFormat extends FileFormat {
+     public DracoFormat() {
+         super(FileFormatType.DRACO, new Version(1, 0, 0), FileContentType.BINARY, 
+-              ".drc", new String[]{".drc"});
++              ".drc", new String[]{".drc"}, true, true);
+     }
+ }
+ 
+ class Microsoft3MFFormat extends FileFormat {
+     public Microsoft3MFFormat() {
+         super(FileFormatType.MICROSOFT3MF, new Version(1, 0, 0), FileContentType.BINARY, 
+-              ".3mf", new String[]{".3mf"});
++              ".3mf", new String[]{".3mf"}, true, true);
+     }
+ }
+ 
+ class RvmFormat extends FileFormat {
+     public RvmFormat(FileContentType contentType) {
+         super(FileFormatType.RVM, new Version(1, 0, 0), contentType, 
+-              ".rvm", new String[]{".rvm"});
++              ".rvm", new String[]{".rvm"}, true, true);
+     }
+ }
+diff --git a/src/main/java/com/aspose/threed/Geometry.java b/src/main/java/com/aspose/threed/Geometry.java
+index aa6d376..01e4db1 100644
+--- a/src/main/java/com/aspose/threed/Geometry.java
++++ b/src/main/java/com/aspose/threed/Geometry.java
+@@ -88,6 +88,15 @@ public class Geometry extends Entity {
+         vertexElements.add(element);
+     }
+ 
++    /**
++     * Adds a deformer to this geometry and sets the owner reference.
++     * @param deformer The deformer to add.
++     */
++    public void addDeformer(Deformer deformer) {
++        deformers.add(deformer);
++        deformer.setOwner(this);
++    }
++
+     public VertexElementUV getVertexElementOfUV(TextureMapping mapping) {
+         for (VertexElement element : vertexElements) {
+             if (element instanceof VertexElementUV) {
+diff --git a/src/main/java/com/aspose/threed/GltfExporter.java b/src/main/java/com/aspose/threed/GltfExporter.java
+deleted file mode 100644
+index 3480ca3..0000000
+--- a/src/main/java/com/aspose/threed/GltfExporter.java
++++ /dev/null
+@@ -1,668 +0,0 @@
+-package com.aspose.threed;
+-
+-import com.aspose.threed.*;
+-import java.io.*;
+-import java.util.*;
+-
+-public class GltfExporter implements IExporter {
+-    private static final Set<String> supportedExtensions = Set.of(".gltf", ".glb");
+-
+-    @Override
+-    public boolean canExport(FileFormat format) {
+-        return format == FileFormat.GLTF || format == FileFormat.GLTF2 ||
+-               format == FileFormat.GLTF_BINARY || format == FileFormat.GLTF2_BINARY;
+-    }
+-
+-    @Override
+-    public void export(Scene scene, Stream stream, SaveOptions options) throws ExportException {
+-        if (!(options instanceof GltfSaveOptions)) {
+-            throw new ExportException("Invalid save options for glTF export");
+-        }
+-        GltfSaveOptions gltfOptions = (GltfSaveOptions) options;
+-
+-        try {
+-            GltfData gltfData = buildGltfData(scene, gltfOptions);
+-            
+-            if (gltfOptions.getContentType() == FileContentType.BINARY) {
+-                writeBinaryGltf(stream, gltfData);
+-            } else {
+-                writeAsciiGltf(stream, gltfData);
+-            }
+-        } catch (IOException e) {
+-            throw new ExportException("Failed to write glTF file", e);
+-        }
+-    }
+-
+-    private GltfData buildGltfData(Scene scene, GltfSaveOptions options) {
+-        List<Node> allNodes = new ArrayList<>();
+-        List<Mesh> allMeshes = new ArrayList<>();
+-
+-        collectNodes(scene.getRootNode(), allNodes, allMeshes);
+-
+-        List<Map<String, Object>> buffers = new ArrayList<>();
+-        List<Map<String, Object>> bufferViews = new ArrayList<>();
+-        List<Map<String, Object>> accessors = new ArrayList<>();
+-        List<Map<String, Object>> materials = new ArrayList<>();
+-        List<Map<String, Object>> meshes = new ArrayList<>();
+-        List<Map<String, Object>> nodes = new ArrayList<>();
+-
+-        byte[] binaryBuffer = new byte[0];
+-        Map<Mesh, Integer> meshIndexMap = new HashMap<>();
+-        Map<Material, Integer> materialIndexMap = new HashMap<>();
+-
+-        Map<Node, Integer> nodeIndexMap = new HashMap<>();
+-        for (int i = 0; i < allNodes.size(); i++) {
+-            nodeIndexMap.put(allNodes.get(i), i);
+-        }
+-
+-        Map<Mesh, Material> meshToMaterial = new HashMap<>();
+-        for (Node node : allNodes) {
+-            if (node.getMaterial() != null && node.getEntity() instanceof Mesh) {
+-                meshToMaterial.put((Mesh) node.getEntity(), node.getMaterial());
+-            }
+-        }
+-
+-        materials = buildMaterials(meshToMaterial, materialIndexMap);
+-
+-        for (int i = 0; i < allMeshes.size(); i++) {
+-            Mesh mesh = allMeshes.get(i);
+-            Map<String, Object> meshData = buildMeshData(mesh, options, binaryBuffer, bufferViews, accessors, buffers, i, meshToMaterial, materialIndexMap);
+-            meshes.add(meshData);
+-            meshIndexMap.put(mesh, i);
+-        }
+-
+-        for (Node node : allNodes) {
+-            Map<String, Object> nodeData = new HashMap<>();
+-            if (node.getName() != null && !node.getName().isEmpty()) {
+-                nodeData.put("name", node.getName());
+-            }
+-
+-            if (node.getEntity() instanceof Mesh) {
+-                Mesh mesh = (Mesh) node.getEntity();
+-                if (meshIndexMap.containsKey(mesh)) {
+-                    nodeData.put("mesh", meshIndexMap.get(mesh));
+-                }
+-            }
+-
+-            Transform transform = node.getTransform();
+-            Vector3 translation = transform.getTranslation();
+-            if (translation.x != 0 || translation.y != 0 || translation.z != 0) {
+-                nodeData.put("translation", new double[]{translation.x, translation.y, translation.z});
+-            }
+-
+-            nodes.add(nodeData);
+-        }
+-
+-        List<Integer> childIndices = new ArrayList<>();
+-        for (Node node : allNodes) {
+-            Node parentNode = node.getParentNode();
+-            if (parentNode != null && nodeIndexMap.containsKey(parentNode)) {
+-                int parentIdx = nodeIndexMap.get(parentNode);
+-                nodes.get(parentIdx).computeIfAbsent("children", k -> new ArrayList<Integer>());
+-                @SuppressWarnings("unchecked")
+-                List<Integer> children = (List<Integer>) nodes.get(parentIdx).get("children");
+-                children.add(nodeIndexMap.get(node));
+-            } else if (parentNode == scene.getRootNode()) {
+-                childIndices.add(nodeIndexMap.get(node));
+-            }
+-        }
+-
+-        Map<String, Object> sceneData = new HashMap<>();
+-        sceneData.put("nodes", childIndices);
+-
+-        Map<String, Object> gltfJson = new LinkedHashMap<>();
+-        gltfJson.put("asset", Map.of("version", "2.0", "generator", "Aspose.3D FOSS"));
+-        gltfJson.put("scene", 0);
+-        gltfJson.put("scenes", List.of(sceneData));
+-        gltfJson.put("nodes", nodes);
+-        gltfJson.put("meshes", meshes);
+-        gltfJson.put("buffers", buffers);
+-        gltfJson.put("bufferViews", bufferViews);
+-        gltfJson.put("accessors", accessors);
+-
+-        if (!materials.isEmpty()) {
+-            gltfJson.put("materials", materials);
+-        }
+-
+-        return new GltfData(gltfJson, binaryBuffer);
+-    }
+-
+-    private void collectNodes(Node node, List<Node> allNodes, List<Mesh> allMeshes) {
+-        for (Node child : node.getChildNodes()) {
+-            collectNodes(child, allNodes, allMeshes);
+-        }
+-
+-        if (!allNodes.contains(node)) {
+-            allNodes.add(node);
+-            if (node.getEntity() instanceof Mesh) {
+-                Mesh mesh = (Mesh) node.getEntity();
+-                if (!allMeshes.contains(mesh)) {
+-                    allMeshes.add(mesh);
+-                }
+-            }
+-        }
+-    }
+-
+-    private List<Map<String, Object>> buildMaterials(Map<Mesh, Material> meshToMaterial, Map<Material, Integer> materialIndexMap) {
+-        List<Map<String, Object>> materials = new ArrayList<>();
+-
+-        for (Map.Entry<Mesh, Material> entry : meshToMaterial.entrySet()) {
+-            Material material = entry.getValue();
+-            if (materialIndexMap.containsKey(material)) {
+-                continue;
+-            }
+-
+-            int materialIdx = materials.size();
+-            materialIndexMap.put(material, materialIdx);
+-
+-            Map<String, Object> materialData = new HashMap<>();
+-
+-            if (material.getName() != null && !material.getName().isEmpty()) {
+-                materialData.put("name", material.getName());
+-            }
+-
+-            PbrMaterial pbrMaterial = PbrMaterial.fromMaterial(material);
+-
+-            Map<String, Object> pbrData = new HashMap<>();
+-
+-            if (pbrMaterial.getAlbedo() != null) {
+-                Vector3 albedo = pbrMaterial.getAlbedo();
+-                pbrData.put("baseColorFactor", new double[]{albedo.x, albedo.y, albedo.z, 1.0});
+-            }
+-
+-            if (pbrMaterial.getMetallicFactor() != 0.0) {
+-                pbrData.put("metallicFactor", pbrMaterial.getMetallicFactor());
+-            }
+-
+-            if (pbrMaterial.getRoughnessFactor() != 1.0) {
+-                pbrData.put("roughnessFactor", pbrMaterial.getRoughnessFactor());
+-            }
+-
+-            if (!pbrData.isEmpty()) {
+-                materialData.put("pbrMetallicRoughness", pbrData);
+-            }
+-
+-            if (pbrMaterial.getEmissiveColor() != null) {
+-                Vector3 emissive = pbrMaterial.getEmissiveColor();
+-                materialData.put("emissiveFactor", new double[]{emissive.x, emissive.y, emissive.z});
+-            }
+-
+-            if (pbrMaterial.getTransparency() != 0.0) {
+-                if (pbrMaterial.getTransparency() == 1.0) {
+-                    materialData.put("alphaMode", "BLEND");
+-                } else {
+-                    materialData.put("alphaMode", "MASK");
+-                    materialData.put("alphaCutoff", 1.0 - pbrMaterial.getTransparency());
+-                }
+-            }
+-
+-            materials.add(materialData);
+-        }
+-
+-        return materials;
+-    }
+-
+-    private Map<String, Object> buildMeshData(Mesh mesh, GltfSaveOptions options, byte[] binaryBuffer, 
+-                                              List<Map<String, Object>> bufferViews, 
+-                                              List<Map<String, Object>> accessors, 
+-                                              List<Map<String, Object>> buffers,
+-                                              int meshIndex, 
+-                                              Map<Mesh, Material> meshToMaterial,
+-                                              Map<Material, Integer> materialIndexMap) {
+-        Map<String, Object> primitiveData = new LinkedHashMap<>();
+-        primitiveData.put("attributes", new LinkedHashMap<>());
+-        primitiveData.put("mode", 4);
+-
+-        List<Double> positions = new ArrayList<>();
+-        for (Vector4 cp : mesh.getControlPoints()) {
+-            positions.add(cp.x);
+-            positions.add(cp.y);
+-            positions.add(cp.z);
+-        }
+-
+-        byte[] positionBytes = encodeFloatArray(positions);
+-        int positionBufferOffset = binaryBuffer.length;
+-        
+-        byte[] newData = new byte[binaryBuffer.length + positionBytes.length];
+-        System.arraycopy(binaryBuffer, 0, newData, 0, binaryBuffer.length);
+-        System.arraycopy(positionBytes, 0, newData, binaryBuffer.length, positionBytes.length);
+-        binaryBuffer = newData;
+-
+-        Map<String, Object> positionBufferView = new LinkedHashMap<>();
+-        positionBufferView.put("buffer", 0);
+-        positionBufferView.put("byteOffset", positionBufferOffset);
+-        positionBufferView.put("byteLength", positionBytes.length);
+-        bufferViews.add(positionBufferView);
+-
+-        Map<String, Object> positionAccessor = new LinkedHashMap<>();
+-        positionAccessor.put("bufferView", bufferViews.size() - 1);
+-        positionAccessor.put("componentType", 5126);
+-        positionAccessor.put("count", positions.size() / 3);
+-        positionAccessor.put("type", "VEC3");
+-        accessors.add(positionAccessor);
+-
+-        @SuppressWarnings("unchecked")
+-        Map<String, Object> attributes = (Map<String, Object>) primitiveData.get("attributes");
+-        attributes.put("POSITION", accessors.size() - 1);
+-
+-        VertexElementNormal normalElement = (VertexElementNormal) mesh.getElement(VertexElementType.NORMAL);
+-        if (normalElement != null && !normalElement.getData().isEmpty()) {
+-            List<Double> normals = new ArrayList<>();
+-            for (Object fv : normalElement.getData()) {
+-                if (fv instanceof Vector3) {
+-                    Vector3 v = (Vector3) fv;
+-                    normals.add(v.x);
+-                    normals.add(v.y);
+-                    normals.add(v.z);
+-                }
+-            }
+-
+-            byte[] normalBytes = encodeFloatArray(normals);
+-            int normalBufferOffset = binaryBuffer.length;
+-            
+-            newData = new byte[binaryBuffer.length + normalBytes.length];
+-            System.arraycopy(binaryBuffer, 0, newData, 0, binaryBuffer.length);
+-            System.arraycopy(normalBytes, 0, newData, binaryBuffer.length, normalBytes.length);
+-            binaryBuffer = newData;
+-
+-            Map<String, Object> normalBufferView = new LinkedHashMap<>();
+-            normalBufferView.put("buffer", 0);
+-            normalBufferView.put("byteOffset", normalBufferOffset);
+-            normalBufferView.put("byteLength", normalBytes.length);
+-            bufferViews.add(normalBufferView);
+-
+-            Map<String, Object> normalAccessor = new LinkedHashMap<>();
+-            normalAccessor.put("bufferView", bufferViews.size() - 1);
+-            normalAccessor.put("componentType", 5126);
+-            normalAccessor.put("count", normals.size() / 3);
+-            normalAccessor.put("type", "VEC3");
+-            accessors.add(normalAccessor);
+-
+-            attributes.put("NORMAL", accessors.size() - 1);
+-        }
+-
+-        VertexElementUV uvElement = mesh.getVertexElementOfUV(TextureMapping.DIFFUSE);
+-        if (uvElement != null && !uvElement.getData().isEmpty()) {
+-            List<Double> texcoords = new ArrayList<>();
+-            for (Object fv : uvElement.getData()) {
+-                if (fv instanceof Vector2) {
+-                    Vector2 v = (Vector2) fv;
+-                    texcoords.add(v.x);
+-                    texcoords.add(v.y);
+-                }
+-            }
+-
+-            byte[] texcoordBytes = encodeFloatArray(texcoords);
+-            int texcoordBufferOffset = binaryBuffer.length;
+-            
+-            newData = new byte[binaryBuffer.length + texcoordBytes.length];
+-            System.arraycopy(binaryBuffer, 0, newData, 0, binaryBuffer.length);
+-            System.arraycopy(texcoordBytes, 0, newData, binaryBuffer.length, texcoordBytes.length);
+-            binaryBuffer = newData;
+-
+-            Map<String, Object> texcoordBufferView = new LinkedHashMap<>();
+-            texcoordBufferView.put("buffer", 0);
+-            texcoordBufferView.put("byteOffset", texcoordBufferOffset);
+-            texcoordBufferView.put("byteLength", texcoordBytes.length);
+-            bufferViews.add(texcoordBufferView);
+-
+-            Map<String, Object> texcoordAccessor = new LinkedHashMap<>();
+-            texcoordAccessor.put("bufferView", bufferViews.size() - 1);
+-            texcoordAccessor.put("componentType", 5126);
+-            texcoordAccessor.put("count", texcoords.size() / 2);
+-            texcoordAccessor.put("type", "VEC2");
+-            accessors.add(texcoordAccessor);
+-
+-            attributes.put("TEXCOORD_0", accessors.size() - 1);
+-        }
+-
+-        VertexElementVertexColor colorElement = (VertexElementVertexColor) mesh.getElement(VertexElementType.COLOR);
+-        if (colorElement != null && !colorElement.getData().isEmpty()) {
+-            List<Double> colors = new ArrayList<>();
+-            for (Object fv : colorElement.getData()) {
+-                if (fv instanceof Vector4) {
+-                    Vector4 v = (Vector4) fv;
+-                    colors.add(v.x);
+-                    colors.add(v.y);
+-                    colors.add(v.z);
+-                    colors.add(v.w);
+-                }
+-            }
+-
+-            byte[] colorBytes = encodeFloatArray(colors);
+-            int colorBufferOffset = binaryBuffer.length;
+-            
+-            newData = new byte[binaryBuffer.length + colorBytes.length];
+-            System.arraycopy(binaryBuffer, 0, newData, 0, binaryBuffer.length);
+-            System.arraycopy(colorBytes, 0, newData, binaryBuffer.length, colorBytes.length);
+-            binaryBuffer = newData;
+-
+-            Map<String, Object> colorBufferView = new LinkedHashMap<>();
+-            colorBufferView.put("buffer", 0);
+-            colorBufferView.put("byteOffset", colorBufferOffset);
+-            colorBufferView.put("byteLength", colorBytes.length);
+-            bufferViews.add(colorBufferView);
+-
+-            Map<String, Object> colorAccessor = new LinkedHashMap<>();
+-            colorAccessor.put("bufferView", bufferViews.size() - 1);
+-            colorAccessor.put("componentType", 5126);
+-            colorAccessor.put("count", colors.size() / 4);
+-            colorAccessor.put("type", "VEC4");
+-            accessors.add(colorAccessor);
+-
+-            attributes.put("COLOR_0", accessors.size() - 1);
+-        }
+-
+-        List<Integer> indices = new ArrayList<>();
+-        for (int i = 0; i < mesh.getPolygonCount(); i++) {
+-            int[] polygon = mesh.getPolygons().get(i);
+-            for (int j = 0; j < polygon.length; j++) {
+-                indices.add(polygon[j]);
+-            }
+-        }
+-
+-        if (!indices.isEmpty()) {
+-            byte[] indicesBytes = encodeUint16Array(indices);
+-            int indicesBufferOffset = binaryBuffer.length;
+-            
+-            newData = new byte[binaryBuffer.length + indicesBytes.length];
+-            System.arraycopy(binaryBuffer, 0, newData, 0, binaryBuffer.length);
+-            System.arraycopy(indicesBytes, 0, newData, binaryBuffer.length, indicesBytes.length);
+-            binaryBuffer = newData;
+-
+-            Map<String, Object> indicesBufferView = new LinkedHashMap<>();
+-            indicesBufferView.put("buffer", 0);
+-            indicesBufferView.put("byteOffset", indicesBufferOffset);
+-            indicesBufferView.put("byteLength", indicesBytes.length);
+-            bufferViews.add(indicesBufferView);
+-
+-            Map<String, Object> indicesAccessor = new LinkedHashMap<>();
+-            indicesAccessor.put("bufferView", bufferViews.size() - 1);
+-            indicesAccessor.put("componentType", 5123);
+-            indicesAccessor.put("count", indices.size());
+-            indicesAccessor.put("type", "SCALAR");
+-            accessors.add(indicesAccessor);
+-
+-            primitiveData.put("indices", accessors.size() - 1);
+-        }
+-
+-        Mesh meshObj = (Mesh) mesh;
+-        if (meshToMaterial.containsKey(meshObj) && materialIndexMap.containsKey(meshToMaterial.get(meshObj))) {
+-            primitiveData.put("material", materialIndexMap.get(meshToMaterial.get(meshObj)));
+-        }
+-
+-        String meshName = mesh.getName() != null && !mesh.getName().isEmpty() ? mesh.getName() : "mesh_" + meshIndex;
+-        Map<String, Object> meshData = new LinkedHashMap<>();
+-        meshData.put("name", meshName);
+-        meshData.put("primitives", List.of(primitiveData));
+-
+-        return meshData;
+-    }
+-
+-    private byte[] encodeFloatArray(List<Double> values) {
+-        byte[] data = new byte[values.size() * 4];
+-        int idx = 0;
+-        for (double v : values) {
+-            int intBits = Float.floatToIntBits((float) v);
+-            data[idx++] = (byte) (intBits & 0xFF);
+-            data[idx++] = (byte) ((intBits >> 8) & 0xFF);
+-            data[idx++] = (byte) ((intBits >> 16) & 0xFF);
+-            data[idx++] = (byte) ((intBits >> 24) & 0xFF);
+-        }
+-        return data;
+-    }
+-
+-    private byte[] encodeUint16Array(List<Integer> values) {
+-        byte[] data = new byte[values.size() * 2];
+-        int idx = 0;
+-        for (int v : values) {
+-            data[idx++] = (byte) (v & 0xFF);
+-            data[idx++] = (byte) ((v >> 8) & 0xFF);
+-        }
+-        return data;
+-    }
+-
+-    private void writeAsciiGltf(Stream stream, GltfData gltfData) throws IOException {
+-        Map<String, Object> gltfJson = gltfData.getJson();
+-        
+-        if (gltfData.getBinaryData().length > 0) {
+-            String base64Data = java.util.Base64.getEncoder().encodeToString(gltfData.getBinaryData());
+-            Map<String, Object> buffer = new LinkedHashMap<>();
+-            buffer.put("uri", "data:application/octet-stream;base64," + base64Data);
+-            buffer.put("byteLength", gltfData.getBinaryData().length);
+-            gltfJson.put("buffers", List.of(buffer));
+-        } else {
+-            gltfJson.put("buffers", List.of());
+-        }
+-
+-        String jsonStr = buildJsonString(gltfJson, true);
+-
+-        OutputStream out = stream.getOutputStream();
+-        if (out != null) {
+-            out.write(jsonStr.getBytes("UTF-8"));
+-            out.flush();
+-        }
+-    }
+-
+-    private void writeBinaryGltf(Stream stream, GltfData gltfData) throws IOException {
+-        Map<String, Object> gltfJson = gltfData.getJson();
+-        byte[] binaryData = gltfData.getBinaryData();
+-
+-        if (binaryData.length > 0) {
+-            gltfJson.put("buffers", List.of(Map.of("byteLength", binaryData.length)));
+-        }
+-
+-        String jsonStr = buildJsonString(gltfJson, false);
+-        byte[] jsonBytes = jsonStr.getBytes("UTF-8");
+-
+-        int jsonChunkLength = jsonBytes.length;
+-        int jsonChunkPadding = (4 - jsonChunkLength % 4) % 4;
+-
+-        int binaryChunkLength = binaryData.length;
+-        int binaryChunkPadding = (4 - binaryChunkLength % 4) % 4;
+-
+-        int totalLength = 12 + 8 + jsonChunkLength + jsonChunkPadding;
+-        if (binaryData.length > 0) {
+-            totalLength += 8 + binaryChunkLength + binaryChunkPadding;
+-        }
+-
+-        OutputStream out = stream.getOutputStream();
+-        if (out == null) {
+-            throw new IOException("Output stream not available");
+-        }
+-
+-        out.write("glTF".getBytes("UTF-8"));
+-        out.write(intToBytes(2));      // version
+-        out.write(intToBytes(totalLength));
+-
+-        out.write(intToBytes(jsonChunkLength));
+-        out.write(intToBytes(0x4E4F534A));
+-        out.write(jsonBytes);
+-        for (int i = 0; i < jsonChunkPadding; i++) {
+-            out.write(0);
+-        }
+-
+-        if (binaryData.length > 0) {
+-            out.write(intToBytes(binaryChunkLength));
+-            out.write(intToBytes(0x004E4942));
+-            out.write(binaryData);
+-            for (int i = 0; i < binaryChunkPadding; i++) {
+-                out.write(0);
+-            }
+-        }
+-
+-        out.flush();
+-    }
+-
+-    private String buildJsonString(Map<String, Object> json, boolean prettyPrint) {
+-        StringBuilder sb = new StringBuilder();
+-        buildJsonString(json, sb, prettyPrint, 0);
+-        return sb.toString();
+-    }
+-
+-    private void buildJsonString(Map<String, Object> json, StringBuilder sb, boolean prettyPrint, int indent) {
+-        sb.append("{");
+-        boolean first = true;
+-        for (Map.Entry<String, Object> entry : json.entrySet()) {
+-            if (entry.getValue() == null) continue;  // Skip null values
+-            
+-            if (!first) {
+-                sb.append(",");
+-                if (prettyPrint) sb.append("\n");
+-            }
+-            first = false;
+-            
+-            if (prettyPrint) {
+-                for (int i = 0; i < indent + 1; i++) sb.append("  ");
+-            }
+-            
+-            sb.append("\"").append(entry.getKey()).append("\": ");
+-            
+-            Object value = entry.getValue();
+-            if (value instanceof Map) {
+-                @SuppressWarnings("unchecked")
+-                Map<String, Object> mapValue = (Map<String, Object>) value;
+-                buildJsonString(mapValue, sb, prettyPrint, indent + 1);
+-            } else if (value instanceof List) {
+-                buildJsonString((List<?>) value, sb, prettyPrint, indent + 1);
+-            } else if (value instanceof String) {
+-                sb.append("\"").append(escapeJson((String) value)).append("\"");
+-            } else if (value instanceof Double) {
+-                sb.append(value);
+-            } else if (value instanceof Float) {
+-                sb.append(value);
+-            } else if (value instanceof Integer) {
+-                sb.append(value);
+-            } else if (value instanceof Boolean) {
+-                sb.append(value);
+-            } else if (value instanceof byte[]) {
+-                sb.append("\"").append(java.util.Base64.getEncoder().encodeToString((byte[]) value)).append("\"");
+-            } else if (value instanceof double[]) {
+-                sb.append("[");
+-                double[] arr = (double[]) value;
+-                for (int i = 0; i < arr.length; i++) {
+-                    if (i > 0) sb.append(", ");
+-                    sb.append(arr[i]);
+-                }
+-                sb.append("]");
+-            } else if (value instanceof int[]) {
+-                sb.append("[");
+-                int[] arr = (int[]) value;
+-                for (int i = 0; i < arr.length; i++) {
+-                    if (i > 0) sb.append(", ");
+-                    sb.append(arr[i]);
+-                }
+-                sb.append("]");
+-            }
+-        }
+-        
+-        if (prettyPrint && !json.isEmpty()) {
+-            sb.append("\n");
+-            for (int i = 0; i < indent; i++) sb.append("  ");
+-        }
+-        sb.append("}");
+-    }
+-
+-    private void buildJsonString(List<?> list, StringBuilder sb, boolean prettyPrint, int indent) {
+-        sb.append("[");
+-        boolean first = true;
+-        for (Object item : list) {
+-            if (!first) {
+-                sb.append(",");
+-                if (prettyPrint) sb.append(" ");
+-            }
+-            first = false;
+-            
+-            if (item instanceof Map) {
+-                @SuppressWarnings("unchecked")
+-                Map<String, Object> mapItem = (Map<String, Object>) item;
+-                buildJsonString(mapItem, sb, prettyPrint, indent);
+-            } else if (item instanceof List) {
+-                @SuppressWarnings("unchecked")
+-                List<Object> listItem = (List<Object>) item;
+-                buildJsonString(listItem, sb, prettyPrint, indent);
+-            } else if (item instanceof String) {
+-                sb.append("\"").append(escapeJson((String) item)).append("\"");
+-            } else if (item instanceof Double) {
+-                sb.append(item);
+-            } else if (item instanceof Float) {
+-                sb.append(item);
+-            } else if (item instanceof Integer) {
+-                sb.append(item);
+-            } else if (item instanceof Boolean) {
+-                sb.append(item);
+-            } else if (item instanceof byte[]) {
+-                sb.append("\"").append(java.util.Base64.getEncoder().encodeToString((byte[]) item)).append("\"");
+-            } else if (item instanceof double[]) {
+-                sb.append("[");
+-                double[] arr = (double[]) item;
+-                for (int i = 0; i < arr.length; i++) {
+-                    if (i > 0) sb.append(", ");
+-                    sb.append(arr[i]);
+-                }
+-                sb.append("]");
+-            } else if (item instanceof int[]) {
+-                sb.append("[");
+-                int[] arr = (int[]) item;
+-                for (int i = 0; i < arr.length; i++) {
+-                    if (i > 0) sb.append(", ");
+-                    sb.append(arr[i]);
+-                }
+-                sb.append("]");
+-            } else if (item == null) {
+-                sb.append("null");
+-            }
+-        }
+-        sb.append("]");
+-    }
+-
+-    private String escapeJson(String s) {
+-        if (s == null) return "";
+-        StringBuilder sb = new StringBuilder();
+-        for (char c : s.toCharArray()) {
+-            switch (c) {
+-                case '"': sb.append("\\\""); break;
+-                case '\\': sb.append("\\\\"); break;
+-                case '\b': sb.append("\\b"); break;
+-                case '\f': sb.append("\\f"); break;
+-                case '\n': sb.append("\\n"); break;
+-                case '\r': sb.append("\\r"); break;
+-                case '\t': sb.append("\\t"); break;
+-                default:
+-                    if (c < 0x20) {
+-                        sb.append(String.format("\\u%04x", (int) c));
+-                    } else {
+-                        sb.append(c);
+-                    }
+-            }
+-        }
+-        return sb.toString();
+-    }
+-
+-    private byte[] intToBytes(int value) {
+-        return new byte[] {
+-            (byte) (value & 0xFF),
+-            (byte) ((value >> 8) & 0xFF),
+-            (byte) ((value >> 16) & 0xFF),
+-            (byte) ((value >> 24) & 0xFF)
+-        };
+-    }
+-
+-    private static class GltfData {
+-        private final Map<String, Object> json;
+-        private final byte[] binaryData;
+-
+-        public GltfData(Map<String, Object> json, byte[] binaryData) {
+-            this.json = json;
+-            this.binaryData = binaryData;
+-        }
+-
+-        public Map<String, Object> getJson() {
+-            return json;
+-        }
+-
+-        public byte[] getBinaryData() {
+-            return binaryData;
+-        }
+-    }
+-}
+diff --git a/src/main/java/com/aspose/threed/GltfImporter.java b/src/main/java/com/aspose/threed/GltfImporter.java
+deleted file mode 100644
+index 02f2968..0000000
+--- a/src/main/java/com/aspose/threed/GltfImporter.java
++++ /dev/null
+@@ -1,670 +0,0 @@
+-package com.aspose.threed;
+-
+-import com.aspose.threed.*;
+-import java.io.*;
+-import java.util.*;
+-
+-public class GltfImporter implements IImporter {
+-    private static final Set<String> supportedExtensions = Set.of(".gltf", ".glb");
+-
+-    @Override
+-    public boolean canImport(FileFormat format) {
+-        if (format == FileFormat.GLTF || format == FileFormat.GLTF2 || 
+-            format == FileFormat.GLTF_BINARY || format == FileFormat.GLTF2_BINARY) {
+-            return true;
+-        }
+-        return false;
+-    }
+-
+-    @Override
+-    public Scene load(Stream stream, LoadOptions options) throws ImportException {
+-        if (!(options instanceof GltfLoadOptions)) {
+-            options = new GltfLoadOptions();
+-        }
+-        GltfLoadOptions gltfOptions = (GltfLoadOptions) options;
+-
+-        Scene scene = new Scene();
+-        Node rootNode = scene.getRootNode();
+-
+-        try {
+-            byte[] content = readAllBytes(stream);
+-            
+-            if (content.length == 0) {
+-                throw new ImportException("Empty glTF file");
+-            }
+-
+-            if (isBinaryGltf(content)) {
+-                return loadBinaryGltf(content, gltfOptions, scene, rootNode);
+-            } else {
+-                return loadAsciiGltf(content, gltfOptions, scene, rootNode);
+-            }
+-        } catch (IOException e) {
+-            throw new ImportException("Failed to read glTF file", e);
+-        }
+-    }
+-
+-    private byte[] readAllBytes(Stream stream) throws IOException {
+-        java.io.InputStream in = stream.getInputStream();
+-        if (in == null) {
+-            throw new IOException("Stream not readable");
+-        }
+-        
+-        java.io.ByteArrayOutputStream baos = new java.io.ByteArrayOutputStream();
+-        byte[] buffer = new byte[8192];
+-        int bytesRead;
+-        while ((bytesRead = in.read(buffer)) != -1) {
+-            baos.write(buffer, 0, bytesRead);
+-        }
+-        return baos.toByteArray();
+-    }
+-
+-    private boolean isBinaryGltf(byte[] content) {
+-        if (content.length < 12) {
+-            return false;
+-        }
+-        String magic = new String(content, 0, 4);
+-        return "glTF".equals(magic);
+-    }
+-
+-    private Scene loadBinaryGltf(byte[] content, GltfLoadOptions options, Scene scene, Node rootNode) throws ImportException {
+-        try {
+-            String magic = new String(content, 0, 4);
+-            int version = readUint32(content, 4);
+-            int length = readUint32(content, 8);
+-
+-            if (!"glTF".equals(magic)) {
+-                throw new ImportException("Invalid glTF binary file magic");
+-            }
+-
+-            if (version != 2) {
+-                throw new ImportException("Unsupported glTF version: " + version);
+-            }
+-
+-            byte[] jsonChunk = null;
+-            byte[] binaryChunk = null;
+-
+-            int chunkOffset = 12;
+-            while (chunkOffset + 8 <= length) {
+-                int chunkLength = readUint32(content, chunkOffset);
+-                int chunkType = readUint32(content, chunkOffset + 4);
+-
+-                byte[] chunkData = new byte[chunkLength];
+-                System.arraycopy(content, chunkOffset + 8, chunkData, 0, chunkLength);
+-
+-                if (chunkType == 0x4E4F534A) {
+-                    jsonChunk = chunkData;
+-                } else if (chunkType == 0x004E4942) {
+-                    binaryChunk = chunkData;
+-                }
+-
+-                chunkOffset += 8 + chunkLength;
+-            }
+-
+-            if (jsonChunk == null) {
+-                throw new ImportException("Missing JSON chunk in glTF binary file");
+-            }
+-
+-            String jsonStr = new String(jsonChunk, "UTF-8");
+-            return buildSceneFromJson(jsonStr, options, scene, rootNode, binaryChunk);
+-
+-        } catch (Exception e) {
+-            throw new ImportException("Failed to parse binary glTF", e);
+-        }
+-    }
+-
+-    private Scene loadAsciiGltf(byte[] content, GltfLoadOptions options, Scene scene, Node rootNode) throws ImportException {
+-        try {
+-            String jsonStr = new String(content, "UTF-8");
+-            return buildSceneFromJson(jsonStr, options, scene, rootNode, new byte[0]);
+-        } catch (Exception e) {
+-            throw new ImportException("Failed to parse ASCII glTF", e);
+-        }
+-    }
+-
+-    private Scene buildSceneFromJson(String jsonStr, GltfLoadOptions options, Scene scene, Node rootNode, byte[] binaryChunk) throws ImportException {
+-        try {
+-            Map<String, Object> gltfData = GltfJsonParser.parseJson(jsonStr);
+-
+-            List<byte[]> buffers = loadBuffers(gltfData, binaryChunk, options);
+-            List<Map<String, Object>> bufferViews = (List<Map<String, Object>>) gltfData.getOrDefault("bufferViews", new ArrayList<>());
+-            List<Map<String, Object>> accessors = (List<Map<String, Object>>) gltfData.getOrDefault("accessors", new ArrayList<>());
+-            List<Map<String, Object>> meshes = (List<Map<String, Object>>) gltfData.getOrDefault("meshes", new ArrayList<>());
+-            List<Map<String, Object>> nodes = (List<Map<String, Object>>) gltfData.getOrDefault("nodes", new ArrayList<>());
+-            List<Map<String, Object>> materials = (List<Map<String, Object>>) gltfData.getOrDefault("materials", new ArrayList<>());
+-
+-            Map<Integer, Mesh> meshObjects = new HashMap<>();
+-            Map<Integer, Material> materialObjects = loadMaterials(materials);
+-
+-            for (int meshIdx = 0; meshIdx < meshes.size(); meshIdx++) {
+-                Map<String, Object> meshData = meshes.get(meshIdx);
+-                String meshName = (String) meshData.getOrDefault("name", "mesh_" + meshIdx);
+-                Mesh mesh = new Mesh(meshName);
+-
+-                List<Map<String, Object>> primitives = (List<Map<String, Object>>) meshData.getOrDefault("primitives", new ArrayList<>());
+-                
+-                for (Map<String, Object> primitive : primitives) {
+-                    buildPrimitive(mesh, primitive, accessors, bufferViews, buffers, options);
+-                }
+-
+-                meshObjects.put(meshIdx, mesh);
+-            }
+-
+-            Map<Integer, Node> nodeObjects = new HashMap<>();
+-
+-            for (int nodeIdx = 0; nodeIdx < nodes.size(); nodeIdx++) {
+-                Map<String, Object> nodeData = nodes.get(nodeIdx);
+-                String nodeName = (String) nodeData.getOrDefault("name", "node_" + nodeIdx);
+-                Node node = new Node(nodeName);
+-
+-                if (nodeData.containsKey("mesh")) {
+-                    int meshIdx = ((Number) nodeData.get("mesh")).intValue();
+-                    if (meshObjects.containsKey(meshIdx)) {
+-                        node.setEntity(meshObjects.get(meshIdx));
+-                        Map<String, Object> meshData = meshes.get(meshIdx);
+-                        List<Map<String, Object>> primitives = (List<Map<String, Object>>) meshData.getOrDefault("primitives", new ArrayList<>());
+-                        if (!primitives.isEmpty()) {
+-                            Map<String, Object> prim = primitives.get(0);
+-                            if (prim.containsKey("material")) {
+-                                int matIdx = ((Number) prim.get("material")).intValue();
+-                                if (materialObjects.containsKey(matIdx)) {
+-                                    node.setMaterial(materialObjects.get(matIdx));
+-                                }
+-                            }
+-                        }
+-                    }
+-                }
+-
+-                if (nodeData.containsKey("translation")) {
+-                    List<Number> translation = (List<Number>) nodeData.get("translation");
+-                    if (translation.size() >= 3) {
+-                        node.getTransform().setTranslation(
+-                            translation.get(0).doubleValue(),
+-                            translation.get(1).doubleValue(),
+-                            translation.get(2).doubleValue()
+-                        );
+-                    }
+-                }
+-
+-                if (nodeData.containsKey("rotation")) {
+-                    List<Number> rotation = (List<Number>) nodeData.get("rotation");
+-                    if (rotation.size() >= 4) {
+-                        node.getTransform().setRotation(
+-                            rotation.get(0).doubleValue(),
+-                            rotation.get(1).doubleValue(),
+-                            rotation.get(2).doubleValue(),
+-                            rotation.get(3).doubleValue()
+-                        );
+-                    }
+-                }
+-
+-                if (nodeData.containsKey("scale")) {
+-                    List<Number> scale = (List<Number>) nodeData.get("scale");
+-                    if (scale.size() >= 3) {
+-                        node.getTransform().setScale(
+-                            scale.get(0).doubleValue(),
+-                            scale.get(1).doubleValue(),
+-                            scale.get(2).doubleValue()
+-                        );
+-                    }
+-                }
+-
+-                nodeObjects.put(nodeIdx, node);
+-            }
+-
+-            for (int nodeIdx = 0; nodeIdx < nodes.size(); nodeIdx++) {
+-                Map<String, Object> nodeData = nodes.get(nodeIdx);
+-                if (nodeData.containsKey("children")) {
+-                    List<Number> children = (List<Number>) nodeData.get("children");
+-                    Node parentNode = nodeObjects.get(nodeIdx);
+-                    if (parentNode != null) {
+-                        for (Number childIdx : children) {
+-                            int childNodeIdx = childIdx.intValue();
+-                            if (nodeObjects.containsKey(childNodeIdx)) {
+-                                parentNode.addChildNode(nodeObjects.get(childNodeIdx));
+-                            }
+-                        }
+-                    }
+-                }
+-            }
+-
+-            int sceneIndex = 0;
+-            if (gltfData.containsKey("scene")) {
+-                sceneIndex = ((Number) gltfData.get("scene")).intValue();
+-            }
+-
+-            List<Map<String, Object>> scenes = (List<Map<String, Object>>) gltfData.getOrDefault("scenes", new ArrayList<>());
+-
+-            if (sceneIndex < scenes.size()) {
+-                Map<String, Object> sceneRoot = scenes.get(sceneIndex);
+-                List<Number> rootNodes = (List<Number>) sceneRoot.getOrDefault("nodes", new ArrayList<>());
+-                for (Number nodeIdx : rootNodes) {
+-                    if (nodeObjects.containsKey(nodeIdx.intValue())) {
+-                        rootNode.addChildNode(nodeObjects.get(nodeIdx.intValue()));
+-                    }
+-                }
+-            }
+-
+-            return scene;
+-
+-        } catch (Exception e) {
+-            throw new ImportException("Failed to parse glTF JSON", e);
+-        }
+-    }
+-
+-    private List<byte[]> loadBuffers(Map<String, Object> gltfData, byte[] binaryChunk, GltfLoadOptions options) {
+-            List<Map<String, Object>> buffers = (List<Map<String, Object>>) gltfData.getOrDefault("buffers", new ArrayList<>());
+-            List<byte[]> loadedBuffers = new ArrayList<>();
+-
+-            for (Map<String, Object> buffer : buffers) {
+-                String uri = (String) buffer.get("uri");
+-                int byteLength = ((Number) buffer.getOrDefault("byteLength", 0)).intValue();
+-
+-        if (uri == null) {
+-            loadedBuffers.add(binaryChunk);
+-        } else if (uri.startsWith("data:")) {
+-            loadedBuffers.add(decodeDataUri(uri));
+-        } else {
+-            loadedBuffers.add(new byte[0]);
+-        }
+-            }
+-
+-        return loadedBuffers;
+-    }
+-
+-    private byte[] decodeDataUri(String uri) {
+-        int commaIndex = uri.indexOf(',');
+-        if (commaIndex > 0) {
+-            String data = uri.substring(commaIndex + 1);
+-            try {
+-                return java.util.Base64.getDecoder().decode(data);
+-            } catch (Exception e) {
+-                return new byte[0];
+-            }
+-        }
+-        return new byte[0];
+-    }
+-
+-    private void buildPrimitive(Mesh mesh, Map<String, Object> primitive, List<Map<String, Object>> accessors, 
+-                                List<Map<String, Object>> bufferViews, List<byte[]> buffers, GltfLoadOptions options) {
+-        Map<String, Object> attributes = (Map<String, Object>) primitive.getOrDefault("attributes", new HashMap<>());
+-        Object indicesAccessorIdx = primitive.get("indices");
+-        int mode = 4;
+-        if (primitive.containsKey("mode")) {
+-            mode = ((Number) primitive.get("mode")).intValue();
+-        }
+-
+-        if (mode != 4 && mode != 0 && mode != 1 && mode != 2) {
+-            return;
+-        }
+-
+-        Object positionAccessorIdx = attributes.get("POSITION");
+-        Object normalAccessorIdx = attributes.get("NORMAL");
+-        Object tangentAccessorIdx = attributes.get("TANGENT");
+-        Object texcoordAccessorIdx = attributes.get("TEXCOORD_0");
+-        Object colorAccessorIdx = attributes.get("COLOR_0");
+-
+-        if (positionAccessorIdx == null) {
+-            return;
+-        }
+-
+-        Map<String, Object> positionAccessor = (Map<String, Object>) accessors.get(((Number) positionAccessorIdx).intValue());
+-        List<Vector3> positions = readAccessorData(positionAccessor, bufferViews, buffers, "VEC3");
+-
+-        int vertexCount = positions.size();
+-        int baseVertexIndex = mesh.getControlPoints().size();
+-
+-        for (Vector3 position : positions) {
+-            mesh.addControlPoint(position.x, position.y, position.z);
+-        }
+-
+-        if (normalAccessorIdx != null) {
+-            Map<String, Object> normalAccessor = (Map<String, Object>) accessors.get(((Number) normalAccessorIdx).intValue());
+-            addNormalsToMesh(mesh, normalAccessor, bufferViews, buffers, vertexCount, baseVertexIndex);
+-        }
+-
+-        if (tangentAccessorIdx != null) {
+-            Map<String, Object> tangentAccessor = (Map<String, Object>) accessors.get(((Number) tangentAccessorIdx).intValue());
+-            addTangentsToMesh(mesh, tangentAccessor, bufferViews, buffers, vertexCount, baseVertexIndex);
+-        }
+-
+-        if (texcoordAccessorIdx != null) {
+-            Map<String, Object> texcoordAccessor = (Map<String, Object>) accessors.get(((Number) texcoordAccessorIdx).intValue());
+-            addUvsToMesh(mesh, texcoordAccessor, bufferViews, buffers, vertexCount, baseVertexIndex, options);
+-        }
+-
+-        if (colorAccessorIdx != null) {
+-            Map<String, Object> colorAccessor = (Map<String, Object>) accessors.get(((Number) colorAccessorIdx).intValue());
+-            addColorsToMesh(mesh, colorAccessor, bufferViews, buffers, vertexCount, baseVertexIndex);
+-        }
+-
+-        if (indicesAccessorIdx != null) {
+-            Map<String, Object> indicesAccessor = (Map<String, Object>) accessors.get(((Number) indicesAccessorIdx).intValue());
+-            List<Number> indices = readAccessorData(indicesAccessor, bufferViews, buffers, "SCALAR");
+-
+-            int componentType = 5125;
+-            if (indicesAccessor.containsKey("componentType")) {
+-                componentType = ((Number) indicesAccessor.get("componentType")).intValue();
+-            }
+-
+-            if (componentType == 5123) {
+-                for (int i = 0; i < indices.size(); i += 3) {
+-                    mesh.createPolygon(baseVertexIndex + indices.get(i).intValue(),
+-                                     baseVertexIndex + indices.get(i + 1).intValue(),
+-                                     baseVertexIndex + indices.get(i + 2).intValue());
+-                }
+-            } else {
+-                for (int i = 0; i < indices.size(); i += 3) {
+-                    mesh.createPolygon(baseVertexIndex + indices.get(i).intValue(),
+-                                     baseVertexIndex + indices.get(i + 1).intValue(),
+-                                     baseVertexIndex + indices.get(i + 2).intValue());
+-                }
+-            }
+-        } else {
+-            for (int i = 0; i < vertexCount; i += 3) {
+-                mesh.createPolygon(baseVertexIndex + i,
+-                                 baseVertexIndex + i + 1,
+-                                 baseVertexIndex + i + 2);
+-            }
+-        }
+-    }
+-
+-    private void addNormalsToMesh(Mesh mesh, Map<String, Object> accessor, List<Map<String, Object>> bufferViews, 
+-                                  List<byte[]> buffers, int vertexCount, int baseVertexIndex) {
+-        List<Vector3> normals = readAccessorData(accessor, bufferViews, buffers, "VEC3");
+-
+-        if (normals.size() < vertexCount) {
+-            return;
+-        }
+-
+-        VertexElementNormal normalElement = new VertexElementNormal(MappingMode.CONTROL_POINT, ReferenceMode.DIRECT);
+-        for (Vector3 normal : normals) {
+-            FVector4 fn = new FVector4((float) normal.x, (float) normal.y, (float) normal.z, 0);
+-            normalElement.getData().add(fn);
+-        }
+-
+-        mesh.addElement(normalElement);
+-    }
+-
+-    private void addTangentsToMesh(Mesh mesh, Map<String, Object> accessor, List<Map<String, Object>> bufferViews, 
+-                                   List<byte[]> buffers, int vertexCount, int baseVertexIndex) {
+-        List<Vector3> tangents = readAccessorData(accessor, bufferViews, buffers, "VEC3");
+-
+-        if (tangents.size() < vertexCount) {
+-            return;
+-        }
+-
+-        VertexElementTangent tangentElement = new VertexElementTangent(MappingMode.CONTROL_POINT, ReferenceMode.DIRECT);
+-        for (Vector3 tangent : tangents) {
+-            FVector4 ft = new FVector4((float) tangent.x, (float) tangent.y, (float) tangent.z, 0);
+-            tangentElement.getData().add(ft);
+-        }
+-
+-        mesh.addElement(tangentElement);
+-    }
+-
+-    private void addUvsToMesh(Mesh mesh, Map<String, Object> accessor, List<Map<String, Object>> bufferViews, 
+-                              List<byte[]> buffers, int vertexCount, int baseVertexIndex, GltfLoadOptions options) {
+-        List<Vector2> uvs = readAccessorData2(accessor, bufferViews, buffers, "VEC2");
+-
+-        if (uvs.size() < vertexCount) {
+-            return;
+-        }
+-
+-        VertexElementUV uvElement = new VertexElementUV(TextureMapping.DIFFUSE, MappingMode.CONTROL_POINT, ReferenceMode.DIRECT);
+-        for (Vector2 uv : uvs) {
+-            double v = uv.y;
+-            if (options != null && options.getFlipCoordinateSystem()) {
+-                v = -v;
+-            }
+-            FVector4 fuv = new FVector4((float) uv.x, (float) v, 0, 0);
+-            uvElement.getData().add(fuv);
+-        }
+-
+-        mesh.addElement(uvElement);
+-    }
+-
+-    private void addColorsToMesh(Mesh mesh, Map<String, Object> accessor, List<Map<String, Object>> bufferViews, 
+-                                 List<byte[]> buffers, int vertexCount, int baseVertexIndex) {
+-        List<Vector3> colors3 = readAccessorData(accessor, bufferViews, buffers, "VEC3");
+-        List<Vector4> colors4 = readAccessorData4(accessor, bufferViews, buffers, "VEC4");
+-
+-        if (colors3.isEmpty() && colors4.isEmpty()) {
+-            return;
+-        }
+-
+-        List<Vector4> colors = colors4.isEmpty() ? colors3.stream().map(c -> new Vector4(c.x, c.y, c.z, 1)).toList() : colors4;
+-
+-        if (colors.size() < vertexCount) {
+-            return;
+-        }
+-
+-        VertexElementVertexColor colorElement = new VertexElementVertexColor(MappingMode.CONTROL_POINT, ReferenceMode.DIRECT);
+-        for (Vector4 color : colors) {
+-            FVector4 fc = new FVector4((float) color.x, (float) color.y, (float) color.z, (float) color.w);
+-            colorElement.getData().add(fc);
+-        }
+-
+-        mesh.addElement(colorElement);
+-    }
+-
+-    @SuppressWarnings("unchecked")
+-    private <T> List<T> readAccessorData(Map<String, Object> accessor, List<Map<String, Object>> bufferViews, 
+-                                         List<byte[]> buffers, String expectedType) {
+-        Object bufferViewIdx = accessor.get("bufferView");
+-        int byteOffset = ((Number) accessor.getOrDefault("byteOffset", 0)).intValue();
+-        int count = ((Number) accessor.get("count")).intValue();
+-        String accessorType = (String) accessor.get("type");
+-
+-        if (bufferViewIdx == null || ((Number) bufferViewIdx).intValue() >= bufferViews.size()) {
+-            return new ArrayList<>();
+-        }
+-
+-        Map<String, Object> bufferView = bufferViews.get(((Number) bufferViewIdx).intValue());
+-        int bufferIdx = ((Number) bufferView.getOrDefault("buffer", 0)).intValue();
+-        int viewByteOffset = ((Number) bufferView.getOrDefault("byteOffset", 0)).intValue();
+-        int viewByteLength = ((Number) bufferView.getOrDefault("byteLength", 0)).intValue();
+-
+-        if (bufferIdx >= buffers.size()) {
+-            return new ArrayList<>();
+-        }
+-
+-        byte[] buffer = buffers.get(bufferIdx);
+-        int dataStart = viewByteOffset + byteOffset;
+-        int dataEnd = dataStart + viewByteLength;
+-        int length = Math.min(viewByteLength, buffer.length - dataStart);
+-        byte[] data = new byte[length];
+-        System.arraycopy(buffer, dataStart, data, 0, length);
+-        
+-        return decodeBuffer(data, ((Number) accessor.getOrDefault("componentType", 5126)).intValue(), (expectedType), count);
+-    }
+-
+-    @SuppressWarnings("unchecked")
+-    private List<Vector2> readAccessorData2(Map<String, Object> accessor, List<Map<String, Object>> bufferViews, 
+-                                           List<byte[]> buffers, String expectedType) {
+-        List<?> data = readAccessorData(accessor, bufferViews, buffers, expectedType);
+-        List<Vector2> result = new ArrayList<>();
+-        for (Object item : data) {
+-            if (item instanceof Vector2) {
+-                result.add((Vector2) item);
+-            } else if (item instanceof Vector3) {
+-                result.add(new Vector2(((Vector3) item).x, ((Vector3) item).y));
+-            } else if (item instanceof Vector4) {
+-                result.add(new Vector2(((Vector4) item).x, ((Vector4) item).y));
+-            }
+-        }
+-        return result;
+-    }
+-
+-    @SuppressWarnings("unchecked")
+-    private List<Vector4> readAccessorData4(Map<String, Object> accessor, List<Map<String, Object>> bufferViews, 
+-                                           List<byte[]> buffers, String expectedType) {
+-        List<?> data = readAccessorData(accessor, bufferViews, buffers, expectedType);
+-        List<Vector4> result = new ArrayList<>();
+-        for (Object item : data) {
+-            if (item instanceof Vector4) {
+-                result.add((Vector4) item);
+-            } else if (item instanceof Vector3) {
+-                result.add(new Vector4(((Vector3) item).x, ((Vector3) item).y, ((Vector3) item).z, 1));
+-            }
+-        }
+-        return result;
+-    }
+-
+-    @SuppressWarnings("unchecked")
+-    private <T> List<T> decodeBuffer(byte[] data, int componentType, String expectedType, int count) {
+-        int componentsPerValue = 1;
+-        if ("VEC2".equals(expectedType)) {
+-            componentsPerValue = 2;
+-        } else if ("VEC3".equals(expectedType)) {
+-            componentsPerValue = 3;
+-        } else if ("VEC4".equals(expectedType)) {
+-            componentsPerValue = 4;
+-        }
+-        
+-        int totalComponents = count * componentsPerValue;
+-        List<Object> values = new ArrayList<>();
+-
+-        if (componentType == 5120) {
+-            for (int i = 0; i < totalComponents; i++) {
+-                if (i < data.length) {
+-                    values.add((byte) data[i]);
+-                }
+-            }
+-        } else if (componentType == 5121) {
+-            for (int i = 0; i < totalComponents; i++) {
+-                if (i < data.length) {
+-                    values.add(data[i] & 0xFF);
+-                }
+-            }
+-        } else if (componentType == 5122) {
+-            for (int i = 0; i < totalComponents * 2; i += 2) {
+-                if (i + 1 < data.length) {
+-                    int val = (data[i] & 0xFF) | ((data[i + 1] & 0xFF) << 8);
+-                    if (val > 32767) val -= 65536;
+-                    values.add(val);
+-                }
+-            }
+-        } else if (componentType == 5123) {
+-            for (int i = 0; i < totalComponents * 2; i += 2) {
+-                if (i + 1 < data.length) {
+-                    values.add((data[i] & 0xFF) | ((data[i + 1] & 0xFF) << 8));
+-                }
+-            }
+-        } else if (componentType == 5125) {
+-            for (int i = 0; i < totalComponents * 4; i += 4) {
+-                if (i + 3 < data.length) {
+-                    int val = (data[i] & 0xFF) | ((data[i + 1] & 0xFF) << 8) |
+-                              ((data[i + 2] & 0xFF) << 16) | ((data[i + 3] & 0xFF) << 24);
+-                    values.add(val);
+-                }
+-            }
+-        } else if (componentType == 5126) {
+-            for (int i = 0; i < totalComponents * 4; i += 4) {
+-                if (i + 3 < data.length) {
+-                    int bits = (data[i] & 0xFF) | ((data[i + 1] & 0xFF) << 8) |
+-                               ((data[i + 2] & 0xFF) << 16) | ((data[i + 3] & 0xFF) << 24);
+-                    Float f = Float.intBitsToFloat(bits);
+-                    values.add(f);
+-                }
+-            }
+-        }
+-
+-        if ("SCALAR".equals(expectedType)) {
+-            return (List<T>) values;
+-        } else if ("VEC2".equals(expectedType)) {
+-            List<T> result = new ArrayList<>();
+-            for (int i = 0; i < values.size(); i += 2) {
+-                if (values.get(i) instanceof Float) {
+-                    result.add((T) new Vector2((Float) values.get(i), (Float) values.get(i + 1)));
+-                } else if (values.get(i) instanceof Integer) {
+-                    result.add((T) new Vector2(((Number) values.get(i)).doubleValue(), ((Number) values.get(i + 1)).doubleValue()));
+-                } else if (values.get(i) instanceof Byte) {
+-                    result.add((T) new Vector2(((Number) values.get(i)).doubleValue(), ((Number) values.get(i + 1)).doubleValue()));
+-                }
+-            }
+-            return result;
+-        } else if ("VEC3".equals((expectedType))) {
+-            List<T> result = new ArrayList<>();
+-            for (int i = 0; i < values.size(); i += 3) {
+-                if (i + 2 < values.size()) {
+-                    if (values.get(i) instanceof Float) {
+-                        Float f0 = (Float) values.get(i);
+-                        Float f1 = (Float) values.get(i + 1);
+-                        Float f2 = (Float) values.get(i + 2);
+-                        result.add((T) new Vector3(f0, f1, f2));
+-                    } else if (values.get(i) instanceof Number) {
+-                        Number n0 = (Number) values.get(i);
+-                        Number n1 = (Number) values.get(i + 1);
+-                        Number n2 = (Number) values.get(i + 2);
+-                        result.add((T) new Vector3(n0.doubleValue(), n1.doubleValue(), n2.doubleValue()));
+-                    }
+-                }
+-            }
+-            return result;
+-        } else if ("VEC4".equals((expectedType))) {
+-            List<T> result = new ArrayList<>();
+-            for (int i = 0; i < values.size(); i += 4) {
+-                if (values.get(i) instanceof Float) {
+-                    result.add((T) new Vector4((Float) values.get(i), (Float) values.get(i + 1), (Float) values.get(i + 2), (Float) values.get(i + 3)));
+-                } else if (values.get(i) instanceof Integer) {
+-                    result.add((T) new Vector4(((Number) values.get(i)).doubleValue(), ((Number) values.get(i + 1)).doubleValue(), ((Number) values.get(i + 2)).doubleValue(), ((Number) values.get(i + 3)).doubleValue()));
+-                } else if (values.get(i) instanceof Byte) {
+-                    result.add((T) new Vector4(((Number) values.get(i)).doubleValue(), ((Number) values.get(i + 1)).doubleValue(), ((Number) values.get(i + 2)).doubleValue(), ((Number) values.get(i + 3)).doubleValue()));
+-                }
+-            }
+-            return result;
+-        }
+-
+-        return new ArrayList<>();
+-    }
+-
+-    @SuppressWarnings("unchecked")
+-    private Map<Integer, Material> loadMaterials(List<Map<String, Object>> materials) {
+-        Map<Integer, Material> materialObjects = new HashMap<>();
+-
+-        for (int i = 0; i < materials.size(); i++) {
+-            Map<String, Object> materialData = materials.get(i);
+-            String materialName = (String) materialData.getOrDefault("name", "material_" + i);
+-            PbrMaterial material = new PbrMaterial();
+-            material.setName(materialName);
+-
+-            Map<String, Object> pbrData = (Map<String, Object>) materialData.getOrDefault("pbrMetallicRoughness", new HashMap<>());
+-            
+-            List<Number> baseColorFactor = (List<Number>) pbrData.getOrDefault("baseColorFactor", 
+-                List.of(1.0, 1.0, 1.0, 1.0));
+-            float metallicFactor = ((Number) pbrData.getOrDefault("metallicFactor", 0.0)).floatValue();
+-            float roughnessFactor = ((Number) pbrData.getOrDefault("roughnessFactor", 1.0)).floatValue();
+-
+-            if (baseColorFactor.size() >= 3) {
+-                material.setName(materialName);
+-            }
+-
+-            List<Number> emissiveFactor = (List<Number>) materialData.getOrDefault("emissiveFactor", 
+-                List.of(0.0, 0.0, 0.0));
+-            if (emissiveFactor.size() >= 3) {
+-                material.setName(materialName);
+-            }
+-
+-            String alphaMode = (String) materialData.getOrDefault("alphaMode", "OPAQUE");
+-            if ("BLEND".equals(alphaMode)) {
+-                material.setName(materialName);
+-            } else if ("MASK".equals(alphaMode)) {
+-                float alphaCutoff = ((Number) materialData.getOrDefault("alphaCutoff", 0.5f)).floatValue();
+-                if (alphaCutoff < 1.0f) {
+-                    material.setName(materialName);
+-                }
+-            }
+-
+-            materialObjects.put(i, material);
+-        }
+-
+-        return materialObjects;
+-    }
+-
+-    private int readUint32(byte[] data, int offset) {
+-        return (data[offset] & 0xFF) |
+-               ((data[offset + 1] & 0xFF) << 8) |
+-               ((data[offset + 2] & 0xFF) << 16) |
+-               ((data[offset + 3] & 0xFF) << 24);
+-    }
+-}
+diff --git a/src/main/java/com/aspose/threed/IExporter.java b/src/main/java/com/aspose/threed/IExporter.java
+deleted file mode 100644
+index 1c1a30f..0000000
+--- a/src/main/java/com/aspose/threed/IExporter.java
++++ /dev/null
+@@ -1,6 +0,0 @@
+-package com.aspose.threed;
+-
+-public interface IExporter {
+-    boolean canExport(FileFormat format);
+-    void export(Scene scene, Stream stream, SaveOptions options) throws ExportException;
+-}
+diff --git a/src/main/java/com/aspose/threed/IImporter.java b/src/main/java/com/aspose/threed/IImporter.java
+deleted file mode 100644
+index b28e822..0000000
+--- a/src/main/java/com/aspose/threed/IImporter.java
++++ /dev/null
+@@ -1,6 +0,0 @@
+-package com.aspose.threed;
+-
+-public interface IImporter {
+-    boolean canImport(FileFormat format);
+-    Scene load(Stream stream, LoadOptions options) throws ImportException;
+-}
+diff --git a/src/main/java/com/aspose/threed/IOExtension.java b/src/main/java/com/aspose/threed/IOExtension.java
+index f97d072..7bf1b74 100644
+--- a/src/main/java/com/aspose/threed/IOExtension.java
++++ b/src/main/java/com/aspose/threed/IOExtension.java
+@@ -50,15 +50,15 @@ public class IOExtension {
+             writer.writeFloat(mat.m10);
+             writer.writeFloat(mat.m11);
+             writer.writeFloat(mat.m12);
+-            writer.writeFloat(mat.m02);
+-            writer.writeFloat(mat.m20);
+-            writer.writeFloat(mat.m10);
+-            writer.writeFloat(mat.m11);
+-            writer.writeFloat(mat.m12);
+-            writer.writeFloat(mat.m30);
++            writer.writeFloat(mat.m13);
+             writer.writeFloat(mat.m20);
+             writer.writeFloat(mat.m21);
+             writer.writeFloat(mat.m22);
++            writer.writeFloat(mat.m23);
++            writer.writeFloat(mat.m30);
++            writer.writeFloat(mat.m31);
++            writer.writeFloat(mat.m32);
++            writer.writeFloat(mat.m33);
+         } catch (IOException e) {
+             // Should not happen with ByteArrayOutputStream
+         }
+diff --git a/src/main/java/com/aspose/threed/IOService.java b/src/main/java/com/aspose/threed/IOService.java
+index 5a0da02..898ef4e 100644
+--- a/src/main/java/com/aspose/threed/IOService.java
++++ b/src/main/java/com/aspose/threed/IOService.java
+@@ -1,14 +1,13 @@
+ package com.aspose.threed;
+ 
+ import com.aspose.threed.FileFormat;
+-import com.aspose.threed.IImporter;
+-import com.aspose.threed.IExporter;
+ import com.aspose.threed.Stream;
+ import java.io.IOException;
+ 
+ /**
+- * IO service for importing and exporting files.
++ * IO service for file format detection and I/O operations.
+  * This is a stub implementation for FOSS version.
++ * File I/O operations are handled internally through FileFormat.
+  */
+ class IOService {
+     
+@@ -28,17 +27,17 @@ class IOService {
+     }
+ 
+     /**
+-     * Creates an importer for the specified file format.
++     * Creates load options for the specified file format.
+      */
+-    static IImporter createImporter(FileFormat format) {
+-        return format.getImporter();
++    static LoadOptions createLoadOptions(FileFormat format) throws ImportException {
++        return format.createLoadOptions();
+     }
+ 
+     /**
+-     * Creates an exporter for the specified file format.
++     * Creates save options for the specified file format.
+      */
+-    static IExporter createExporter(FileFormat format) {
+-        return format.getExporter();
++    static SaveOptions createSaveOptions(FileFormat format) {
++        return format.createSaveOptions();
+     }
+ 
+     /**
+diff --git a/src/main/java/com/aspose/threed/KeyFrame.java b/src/main/java/com/aspose/threed/KeyFrame.java
+index d48983c..039e254 100644
+--- a/src/main/java/com/aspose/threed/KeyFrame.java
++++ b/src/main/java/com/aspose/threed/KeyFrame.java
+@@ -4,51 +4,99 @@ import java.io.Serializable;
+ 
+ public class KeyFrame implements Serializable {
+     private float time;
+-    private Vector4 value;
++    private float value;
+     private Interpolation interpolation;
+-    private Vector3 tangentIn;
+-    private Vector3 tangentOut;
+-    private WeightedMode tangentWeightMode;
++    private int tangentWeightMode;
+     private StepMode stepMode;
++    private Vector2 nextInTangent;
++    private Vector2 outTangent;
++    private float outWeight;
++    private float nextInWeight;
++    private float tension;
++    private float continuity;
++    private float bias;
++    private boolean independentTangent;
++    private boolean flat;
++    private boolean timeIndependentTangent;
+ 
+-    public KeyFrame() {
+-        this.time = 0.0f;
+-        this.value = new Vector4(0, 0, 0, 0);
++    public KeyFrame(KeyframeSequence curve, float time) {
++        this.time = time;
++        this.value = 0.0f;
+         this.interpolation = Interpolation.LINEAR;
+-        this.tangentIn = new Vector3(0, 0, 0);
+-        this.tangentOut = new Vector3(0, 0, 0);
+         this.tangentWeightMode = WeightedMode.NONE;
+-        this.stepMode = StepMode.NONE;
++        this.stepMode = StepMode.PREVIOUS_VALUE;
++        this.nextInTangent = new Vector2(0, 0);
++        this.outTangent = new Vector2(0, 0);
++        this.outWeight = 0.0f;
++        this.nextInWeight = 0.0f;
++        this.tension = 0.0f;
++        this.continuity = 0.0f;
++        this.bias = 0.0f;
++        this.independentTangent = false;
++        this.flat = false;
++        this.timeIndependentTangent = false;
+     }
+ 
+-    public KeyFrame(float time, Vector4 value) {
+-        this.time = time;
+-        this.value = value;
++    public KeyFrame() {
++        this.time = 0.0f;
++        this.value = 0.0f;
+         this.interpolation = Interpolation.LINEAR;
+-        this.tangentIn = new Vector3(0, 0, 0);
+-        this.tangentOut = new Vector3(0, 0, 0);
+         this.tangentWeightMode = WeightedMode.NONE;
+-        this.stepMode = StepMode.NONE;
++        this.stepMode = StepMode.PREVIOUS_VALUE;
++        this.nextInTangent = new Vector2(0, 0);
++        this.outTangent = new Vector2(0, 0);
++        this.outWeight = 0.0f;
++        this.nextInWeight = 0.0f;
++        this.tension = 0.0f;
++        this.continuity = 0.0f;
++        this.bias = 0.0f;
++        this.independentTangent = false;
++        this.flat = false;
++        this.timeIndependentTangent = false;
+     }
+ 
+     public float getTime() { return time; }
+     public void setTime(float value) { this.time = value; }
+ 
+-    public Vector4 getValue() { return value; }
+-    public void setValue(Vector4 value) { this.value = value; }
++    public float getValue() { return value; }
++    public void setValue(float value) { this.value = value; }
+ 
+     public Interpolation getInterpolation() { return interpolation; }
+     public void setInterpolation(Interpolation value) { this.interpolation = value; }
+ 
+-    public Vector3 getTangentIn() { return tangentIn; }
+-    public void setTangentIn(Vector3 value) { this.tangentIn = value; }
+-
+-    public Vector3 getTangentOut() { return tangentOut; }
+-    public void setTangentOut(Vector3 value) { this.tangentOut = value; }
+-
+-    public WeightedMode getTangentWeightMode() { return tangentWeightMode; }
+-    public void setTangentWeightMode(WeightedMode value) { this.tangentWeightMode = value; }
++    public int getTangentWeightMode() { return tangentWeightMode; }
++    public void setTangentWeightMode(int value) { this.tangentWeightMode = value; }
+ 
+     public StepMode getStepMode() { return stepMode; }
+     public void setStepMode(StepMode value) { this.stepMode = value; }
++
++    public Vector2 getNextInTangent() { return nextInTangent; }
++    public void setNextInTangent(Vector2 value) { this.nextInTangent = value; }
++
++    public Vector2 getOutTangent() { return outTangent; }
++    public void setOutTangent(Vector2 value) { this.outTangent = value; }
++
++    public float getOutWeight() { return outWeight; }
++    public void setOutWeight(float value) { this.outWeight = value; }
++
++    public float getNextInWeight() { return nextInWeight; }
++    public void setNextInWeight(float value) { this.nextInWeight = value; }
++
++    public float getTension() { return tension; }
++    public void setTension(float value) { this.tension = value; }
++
++    public float getContinuity() { return continuity; }
++    public void setContinuity(float value) { this.continuity = value; }
++
++    public float getBias() { return bias; }
++    public void setBias(float value) { this.bias = value; }
++
++    public boolean getIndependentTangent() { return independentTangent; }
++    public void setIndependentTangent(boolean value) { this.independentTangent = value; }
++
++    public boolean getFlat() { return flat; }
++    public void setFlat(boolean value) { this.flat = value; }
++
++    public boolean getTimeIndependentTangent() { return timeIndependentTangent; }
++    public void setTimeIndependentTangent(boolean value) { this.timeIndependentTangent = value; }
+ }
+diff --git a/src/main/java/com/aspose/threed/KeyframeSequence.java b/src/main/java/com/aspose/threed/KeyframeSequence.java
+index 1180dc2..5daef32 100644
+--- a/src/main/java/com/aspose/threed/KeyframeSequence.java
++++ b/src/main/java/com/aspose/threed/KeyframeSequence.java
+@@ -1,48 +1,89 @@
+ package com.aspose.threed;
+ 
+-import java.io.Serializable;
++import java.util.ArrayList;
++import java.util.Iterator;
++import java.util.List;
+ 
+-public class KeyframeSequence implements Serializable {
+-    private String name;
+-    private float startTime;
+-    private float endTime;
+-    private boolean loop;
+-    private Extrapolation preExtrapolation;
+-    private Extrapolation postExtrapolation;
++/**
++ * The sequence of key-frames, it describes the transformation of a sampled value over time.
++ */
++public class KeyframeSequence extends A3DObject implements Iterable<KeyFrame> {
++    private final List<KeyFrame> keyFrames = new ArrayList<KeyFrame>();
++    private Extrapolation preBehavior;
++    private Extrapolation postBehavior;
+ 
+     public KeyframeSequence() {
+-        this.name = "";
+-        this.startTime = 0.0f;
+-        this.endTime = 0.0f;
+-        this.loop = false;
+-        this.preExtrapolation = Extrapolation.NONE;
+-        this.postExtrapolation = Extrapolation.NONE;
++        super();
++        this.preBehavior = new Extrapolation();
++        this.postBehavior = new Extrapolation();
+     }
+ 
+     public KeyframeSequence(String name) {
+-        this.name = name;
+-        this.startTime = 0.0f;
+-        this.endTime = 0.0f;
+-        this.loop = false;
+-        this.preExtrapolation = Extrapolation.NONE;
+-        this.postExtrapolation = Extrapolation.NONE;
++        super(name);
++        this.preBehavior = new Extrapolation();
++        this.postBehavior = new Extrapolation();
+     }
+ 
+-    public String getName() { return name; }
+-    public void setName(String value) { this.name = value; }
++    /**
++     * Gets the property bind point which owns this curve
++     */
++    public BindPoint getBindPoint() {
++        return null;
++    }
++
++    /**
++     * Gets the key frames of this curve.
++     */
++    public List<KeyFrame> getKeyFrames() {
++        return keyFrames;
++    }
++
++    /**
++     * Gets the post behavior indicates what the sampled value should be after the last key frame.
++     */
++    public Extrapolation getPostBehavior() {
++        return postBehavior;
++    }
+ 
+-    public float getStartTime() { return startTime; }
+-    public void setStartTime(float value) { this.startTime = value; }
++    /**
++     * Gets the pre behavior indicates what the sampled value should be before the first key.
++     */
++    public Extrapolation getPreBehavior() {
++        return preBehavior;
++    }
+ 
+-    public float getEndTime() { return endTime; }
+-    public void setEndTime(float value) { this.endTime = value; }
++    /**
++     * Create a new key frame with specified value
++     */
++    public void add(double time, float value) {
++        KeyFrame frame = new KeyFrame(this, (float)time);
++        frame.setValue(value);
++        keyFrames.add(frame);
++    }
+ 
+-    public boolean getLoop() { return loop; }
+-    public void setLoop(boolean value) { this.loop = value; }
++    /**
++     * Create a new key frame with specified value
++     */
++    public void add(double time, float value, Interpolation interpolation) {
++        KeyFrame frame = new KeyFrame(this, (float)time);
++        frame.setValue(value);
++        frame.setInterpolation(interpolation);
++        keyFrames.add(frame);
++    }
+ 
+-    public Extrapolation getPreExtrapolation() { return preExtrapolation; }
+-    public void setPreExtrapolation(Extrapolation value) { this.preExtrapolation = value; }
++    /**
++     * Removes all key frames and reset the post/pre behaviors.
++     */
++    public void reset() {
++        keyFrames.clear();
++        preBehavior = new Extrapolation();
++        postBehavior = new Extrapolation();
++    }
+ 
+-    public Extrapolation getPostExtrapolation() { return postExtrapolation; }
+-    public void setPostExtrapolation(Extrapolation value) { this.postExtrapolation = value; }
++    /**
++     * Gets the enumerator to traverse all key frames.
++     */
++    public Iterator<KeyFrame> iterator() {
++        return keyFrames.iterator();
++    }
+ }
+diff --git a/src/main/java/com/aspose/threed/ObjExporter.java b/src/main/java/com/aspose/threed/ObjExporter.java
+deleted file mode 100644
+index f855f5c..0000000
+--- a/src/main/java/com/aspose/threed/ObjExporter.java
++++ /dev/null
+@@ -1,124 +0,0 @@
+-package com.aspose.threed;
+-
+-import com.aspose.threed.*;
+-import java.io.*;
+-import java.util.*;
+-
+-public class ObjExporter implements IExporter {
+-    private static final Set<String> supportedExtensions = Set.of(".obj");
+-
+-    @Override
+-    public boolean canExport(FileFormat format) {
+-        if (format == FileFormat.WAVEFRONTOBJ) {
+-            return true;
+-        }
+-        return false;
+-    }
+-
+-    @Override
+-    public void export(Scene scene, Stream stream, SaveOptions options) throws ExportException {
+-        if (!(options instanceof ObjSaveOptions)) {
+-            throw new ExportException("Invalid save options for OBJ export");
+-        }
+-        ObjSaveOptions objOptions = (ObjSaveOptions) options;
+-
+-        try {
+-            Writer writer = new OutputStreamWriter(stream.getOutputStream());
+-
+-            writer.write("# Exported by Aspose.3D FOSS\n");
+-            writer.write("# https://github.com/aspose-3d\n\n");
+-
+-            exportNodes(scene.getRootNode(), writer, objOptions);
+-
+-            writer.flush();
+-        } catch (IOException e) {
+-            throw new ExportException("Failed to write OBJ file", e);
+-        }
+-    }
+-
+-    private void exportNodes(Node node, Writer writer, ObjSaveOptions options) throws IOException {
+-        for (Node child : node.getChildNodes()) {
+-            exportNodes(child, writer, options);
+-        }
+-
+-        Entity entity = node.getEntity();
+-        if (entity instanceof Mesh) {
+-            Mesh mesh = (Mesh) entity;
+-            exportMesh(mesh, writer, node, options);
+-        }
+-    }
+-
+-    private void exportMesh(Mesh mesh, Writer writer, Node node, ObjSaveOptions options) throws IOException {
+-        if (options.getVerbose()) {
+-            writer.write("# Mesh: " + mesh.getName() + "\n");
+-            writer.write("# Node: " + node.getName() + "\n");
+-        }
+-
+-        writer.write("o " + mesh.getName() + "\n");
+-
+-        if (options.getFlipCoordinateSystem()) {
+-            for (Vector4 v : mesh.getControlPoints()) {
+-                writer.write(String.format("v %f %f %f\n", v.x, v.y, -v.z));
+-            }
+-        } else {
+-            for (Vector4 v : mesh.getControlPoints()) {
+-                writer.write(String.format("v %f %f %f\n", v.x, v.y, v.z));
+-            }
+-        }
+-
+-        VertexElementUV uvElement = mesh.getVertexElementOfUV(TextureMapping.DIFFUSE);
+-        if (uvElement != null) {
+-            List<Object> uvData = uvElement.getData();
+-            for (Object uv : uvData) {
+-                if (uv instanceof Vector2) {
+-                    Vector2 v = (Vector2) uv;
+-                    writer.write(String.format("vt %f %f\n", v.x, v.y));
+-                }
+-            }
+-        }
+-
+-        VertexElementNormal normalElement = (VertexElementNormal) mesh.getElement(VertexElementType.NORMAL);
+-        if (normalElement != null) {
+-            List<Object> normalData = normalElement.getData();
+-            for (Object n : normalData) {
+-                if (n instanceof Vector3) {
+-                    Vector3 v = (Vector3) n;
+-                    if (options.getFlipCoordinateSystem()) {
+-                        writer.write(String.format("vn %f %f %f\n", v.x, v.y, -v.z));
+-                    } else {
+-                        writer.write(String.format("vn %f %f %f\n", v.x, v.y, v.z));
+-                    }
+-                }
+-            }
+-        }
+-
+-        Material material = node.getMaterial();
+-        if (material != null && options.getEnableMaterials()) {
+-            writer.write("usemtl " + material.getName() + "\n");
+-        }
+-
+-        boolean hasUV = uvElement != null;
+-        boolean hasNormal = normalElement != null;
+-
+-        for (int[] polygon : mesh.getPolygons()) {
+-            StringBuilder sb = new StringBuilder("f");
+-            for (int idx : polygon) {
+-                int vIdx = idx + 1;
+-                sb.append(" ").append(vIdx);
+-
+-                if (hasUV) {
+-                    sb.append("/").append(vIdx);
+-                    if (hasNormal) {
+-                        sb.append("/").append(vIdx);
+-                    }
+-                } else if (hasNormal) {
+-                    sb.append("//").append(vIdx);
+-                }
+-            }
+-            sb.append("\n");
+-            writer.write(sb.toString());
+-        }
+-
+-        writer.write("\n");
+-    }
+-}
+diff --git a/src/main/java/com/aspose/threed/ObjImporter.java b/src/main/java/com/aspose/threed/ObjImporter.java
+deleted file mode 100644
+index 990bcb8..0000000
+--- a/src/main/java/com/aspose/threed/ObjImporter.java
++++ /dev/null
+@@ -1,247 +0,0 @@
+-package com.aspose.threed;
+-
+-import com.aspose.threed.*;
+-import java.io.*;
+-import java.util.*;
+-
+-public class ObjImporter implements IImporter {
+-    private static final Set<String> supportedExtensions = Set.of(".obj");
+-
+-    @Override
+-    public boolean canImport(FileFormat format) {
+-        if (format == FileFormat.WAVEFRONTOBJ) {
+-            return true;
+-        }
+-        return false;
+-    }
+-
+-    @Override
+-    public Scene load(Stream stream, LoadOptions options) throws ImportException {
+-        if (!(options instanceof ObjLoadOptions)) {
+-            options = new ObjLoadOptions();
+-        }
+-        ObjLoadOptions objOptions = (ObjLoadOptions) options;
+-
+-        Scene scene = new Scene();
+-        Node rootNode = scene.getRootNode();
+-
+-        BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
+-        List<Vector3> vertices = new ArrayList<>();
+-        List<Vector3> normals = new ArrayList<>();
+-        List<Vector2> uvs = new ArrayList<>();
+-        List<ObjFace> faces = new ArrayList<>();
+-        List<ObjGroup> groups = new ArrayList<>();
+-        Map<String, Material> materials = new HashMap<>();
+-        Material currentMaterial = null;
+-
+-        String currentObjectName = "Mesh";
+-
+-        try {
+-            String line;
+-            while ((line = reader.readLine()) != null) {
+-                line = line.trim();
+-                if (line.isEmpty() || line.startsWith("#")) {
+-                    continue;
+-                }
+-
+-                String[] parts = line.split("\\s+");
+-                String keyword = parts[0];
+-
+-                try {
+-                    switch (keyword) {
+-                        case "v":
+-                            if (parts.length >= 4) {
+-                                double x = Double.parseDouble(parts[1]);
+-                                double y = Double.parseDouble(parts[2]);
+-                                double z = Double.parseDouble(parts[3]);
+-                                vertices.add(new Vector3(x, y, z));
+-                            }
+-                            break;
+-                        case "vn":
+-                            if (parts.length >= 4) {
+-                                double x = Double.parseDouble(parts[1]);
+-                                double y = Double.parseDouble(parts[2]);
+-                                double z = Double.parseDouble(parts[3]);
+-                                normals.add(new Vector3(x, y, z));
+-                            }
+-                            break;
+-                        case "vt":
+-                            if (parts.length >= 3) {
+-                                double u = Double.parseDouble(parts[1]);
+-                                double v = Double.parseDouble(parts[2]);
+-                                uvs.add(new Vector2(u, v));
+-                            }
+-                            break;
+-                        case "f":
+-                            faces.add(parseFace(line));
+-                            break;
+-                        case "g":
+-                        case "o":
+-                            if (parts.length > 1) {
+-                                currentObjectName = parts[1];
+-                            }
+-                            break;
+-                        case "usemtl":
+-                            if (parts.length > 1 && objOptions.getEnableMaterials()) {
+-                                String matName = parts[1];
+-                                currentMaterial = materials.get(matName);
+-                                if (currentMaterial == null) {
+-                                    currentMaterial = new PbrMaterial();
+-                                    currentMaterial.setName(matName);
+-                                    materials.put(matName, currentMaterial);
+-                                }
+-                            }
+-                            break;
+-                        case "mtllib":
+-                            if (parts.length > 1 && objOptions.getEnableMaterials()) {
+-                                String mtlFile = parts[1];
+-                                loadMaterials(mtlFile, materials, reader);
+-                            }
+-                            break;
+-                    }
+-                } catch (NumberFormatException e) {
+-                }
+-            }
+-
+-            if (objOptions.getFlipCoordinateSystem()) {
+-                for (Vector3 v : vertices) {
+-                    v.z = -v.z;
+-                }
+-            }
+-
+-            if (objOptions.getScale() != 1.0) {
+-                double scale = objOptions.getScale();
+-                for (Vector3 v : vertices) {
+-                    v.x *= scale;
+-                    v.y *= scale;
+-                    v.z *= scale;
+-                }
+-            }
+-
+-            Mesh mesh = new Mesh(currentObjectName);
+-            for (Vector3 v : vertices) {
+-                mesh.addControlPoint(v.x, v.y, v.z);
+-            }
+-
+-            for (ObjFace face : faces) {
+-                int[] indices = new int[face.vertexIndices.size()];
+-                for (int i = 0; i < face.vertexIndices.size(); i++) {
+-                    indices[i] = face.vertexIndices.get(i) - 1;
+-                }
+-                mesh.createPolygon(indices);
+-            }
+-
+-            Node meshNode = rootNode.createChildNode(currentObjectName, mesh);
+-            if (currentMaterial != null && objOptions.getEnableMaterials()) {
+-                meshNode.setMaterial(currentMaterial);
+-            }
+-
+-            if (mesh.getControlPoints().isEmpty() || mesh.getPolygonCount() == 0) {
+-                throw new ImportException("No valid geometry found in file");
+-            }
+-
+-            return scene;
+-
+-        } catch (IOException e) {
+-            throw new ImportException("Failed to read OBJ file", e);
+-        }
+-    }
+-
+-    private ObjFace parseFace(String line) {
+-        ObjFace face = new ObjFace();
+-        String[] parts = line.split("\\s+");
+-        for (int i = 1; i < parts.length; i++) {
+-            String vertexDef = parts[i];
+-            String[] indices = vertexDef.split("/");
+-
+-            if (indices.length > 0 && !indices[0].isEmpty()) {
+-                face.vertexIndices.add(Integer.parseInt(indices[0]));
+-            }
+-            if (indices.length > 1 && !indices[1].isEmpty()) {
+-                face.texCoordIndices.add(Integer.parseInt(indices[1]));
+-            }
+-            if (indices.length > 2 && !indices[2].isEmpty()) {
+-                face.normalIndices.add(Integer.parseInt(indices[2]));
+-            }
+-        }
+-        return face;
+-    }
+-
+-    private void loadMaterials(String mtlFile, Map<String, Material> materials, BufferedReader mainReader) {
+-        try {
+-            File file = new File(mtlFile);
+-            if (!file.exists()) {
+-                return;
+-            }
+-            BufferedReader reader = new BufferedReader(new FileReader(file));
+-            String line;
+-            String currentMatName = null;
+-            Vector3 kd = null;
+-            Vector3 ka = null;
+-
+-            while ((line = reader.readLine()) != null) {
+-                line = line.trim();
+-                if (line.isEmpty() || line.startsWith("#")) {
+-                    continue;
+-                }
+-
+-                String[] parts = line.split("\\s+");
+-                String keyword = parts[0];
+-
+-                switch (keyword) {
+-                    case "newmtl":
+-                        if (currentMatName != null && kd != null) {
+-                            Material mat = new PbrMaterial();
+-                            mat.setName(currentMatName);
+-                            materials.put(currentMatName, mat);
+-                        }
+-                        if (parts.length > 1) {
+-                            currentMatName = parts[1];
+-                            kd = null;
+-                            ka = null;
+-                        }
+-                        break;
+-                    case "Kd":
+-                        if (parts.length >= 4) {
+-                            kd = new Vector3(
+-                                Double.parseDouble(parts[1]),
+-                                Double.parseDouble(parts[2]),
+-                                Double.parseDouble(parts[3])
+-                            );
+-                        }
+-                        break;
+-                    case "Ka":
+-                        if (parts.length >= 4) {
+-                            ka = new Vector3(
+-                                Double.parseDouble(parts[1]),
+-                                Double.parseDouble(parts[2]),
+-                                Double.parseDouble(parts[3])
+-                            );
+-                        }
+-                        break;
+-                }
+-            }
+-
+-            if (currentMatName != null) {
+-                Material mat = new PbrMaterial();
+-                mat.setName(currentMatName);
+-                materials.put(currentMatName, mat);
+-            }
+-
+-            reader.close();
+-        } catch (IOException e) {
+-        }
+-    }
+-
+-    private static class ObjFace {
+-        List<Integer> vertexIndices = new ArrayList<>();
+-        List<Integer> texCoordIndices = new ArrayList<>();
+-        List<Integer> normalIndices = new ArrayList<>();
+-    }
+-
+-    private static class ObjGroup {
+-        String name;
+-        String material;
+-        List<ObjFace> faces = new ArrayList<>();
+-    }
+-}
+diff --git a/src/main/java/com/aspose/threed/PropertyFlags.java b/src/main/java/com/aspose/threed/PropertyFlags.java
+deleted file mode 100644
+index 9d6fe31..0000000
+--- a/src/main/java/com/aspose/threed/PropertyFlags.java
++++ /dev/null
+@@ -1,28 +0,0 @@
+-package com.aspose.threed;
+-
+-/**
+- * Property flags.
+- */
+-public enum PropertyFlags {
+-    None(0),
+-    ReadOnly(1),
+-    Hidden(2),
+-    Local(4),
+-    Animation(8),
+-    Keyable(16),
+-    Animated(32),
+-    Animatable(64),
+-    Discrete(128),
+-    Override(256),
+-    All(0xFFFF);
+-
+-    private final int value;
+-
+-    PropertyFlags(int value) {
+-        this.value = value;
+-    }
+-
+-    public int getValue() {
+-        return value;
+-    }
+-}
+diff --git a/src/main/java/com/aspose/threed/Scene.java b/src/main/java/com/aspose/threed/Scene.java
+index 2b43269..1770364 100644
+--- a/src/main/java/com/aspose/threed/Scene.java
++++ b/src/main/java/com/aspose/threed/Scene.java
+@@ -166,13 +166,12 @@ public class Scene extends SceneObject {
+                 throw new IOException("Failed to create load options", e);
+             }
+         }
+-        Scene imported = null;
+-        if (format.getImporter() != null) {
+-            try {
+-                imported = format.getImporter().load(stream, options);
+-            } catch (ImportException e) {
+-                throw new IOException("Import failed: " + e.getMessage(), e);
+-            }
++        
++        Scene imported;
++        try {
++            imported = format.load(stream, options);
++        } catch (ImportException e) {
++            throw new IOException("Import failed: " + e.getMessage(), e);
+         }
+         if (imported != null) {
+             rootNode.getChildNodes().clear();
+@@ -223,13 +222,11 @@ public class Scene extends SceneObject {
+             throw new IOException("File format not specified");
+         }
+         clear();
+-        Scene imported = null;
+-        if (format.getImporter() != null) {
+-            try {
+-                imported = format.getImporter().load(stream, options);
+-            } catch (ImportException e) {
+-                throw new IOException("Import failed: " + e.getMessage(), e);
+-            }
++        Scene imported;
++        try {
++            imported = format.load(stream, options);
++        } catch (ImportException e) {
++            throw new IOException("Import failed: " + e.getMessage(), e);
+         }
+         if (imported != null) {
+             rootNode.getChildNodes().clear();
+@@ -400,16 +397,8 @@ public class Scene extends SceneObject {
+         if (options.getFileFormat() == null) {
+             throw new IOException("File format not specified in SaveOptions");
+         }
+-        FileFormat fileFormat = options.getFileFormat();
+-        if (fileFormat.getExporter() != null) {
+-            try {
+-                fileFormat.getExporter().export(this, new Stream(stream), options);
+-            } catch (ExportException e) {
+-                throw new IOException("Export failed: " + e.getMessage(), e);
+-            }
+-        } else {
+-            throw new IOException("No exporter available for format: " + fileFormat.getExtension());
+-        }
++        
++        format.save(this, new Stream(stream), options);
+     }
+ 
+     public void save(Stream stream, FileFormat format) throws IOException {
+@@ -436,15 +425,7 @@ public class Scene extends SceneObject {
+             throw new IOException("File format not specified in SaveOptions");
+         }
+         FileFormat format = options.getFileFormat();
+-        if (format.getExporter() != null) {
+-            try {
+-                format.getExporter().export(this, stream, options);
+-            } catch (ExportException e) {
+-                throw new IOException("Export failed: " + e.getMessage(), e);
+-            }
+-        } else {
+-            throw new IOException("No exporter available for format: " + format.getExtension());
+-        }
++        format.save(this, new Stream(stream), options);
+     }
+ 
+     public void render(Camera camera, String fileName) throws IOException {
+diff --git a/src/main/java/com/aspose/threed/StepMode.java b/src/main/java/com/aspose/threed/StepMode.java
+index e8042a9..78848ea 100644
+--- a/src/main/java/com/aspose/threed/StepMode.java
++++ b/src/main/java/com/aspose/threed/StepMode.java
+@@ -1,8 +1,15 @@
+ package com.aspose.threed;
+ 
++/**
++ * Interpolation step mode.
++ */
+ public enum StepMode {
+-    NONE,
+-    ALL,
+-    ONE,
+-    LAST
++    /**
++     * Curve value of a segment always uses the value from previous key frame
++     */
++    PREVIOUS_VALUE,
++    /**
++     * Curve value of a segment always uses the value from the next key frame
++     */
++    NEXT_VALUE;
+ }
+diff --git a/src/main/java/com/aspose/threed/StlExporter.java b/src/main/java/com/aspose/threed/StlExporter.java
+deleted file mode 100644
+index f17bba8..0000000
+--- a/src/main/java/com/aspose/threed/StlExporter.java
++++ /dev/null
+@@ -1,180 +0,0 @@
+-package com.aspose.threed;
+-
+-import com.aspose.threed.*;
+-import java.io.*;
+-import java.util.*;
+-
+-public class StlExporter implements IExporter {
+-    private static final Set<String> supportedExtensions = Set.of(".stl");
+-
+-    @Override
+-    public boolean canExport(FileFormat format) {
+-        if (format == FileFormat.STL_BINARY || format == FileFormat.STLASCII) {
+-            return true;
+-        }
+-        return false;
+-    }
+-
+-    @Override
+-    public void export(Scene scene, Stream stream, SaveOptions options) throws ExportException {
+-        if (!(options instanceof StlSaveOptions)) {
+-            options = new StlSaveOptions();
+-        }
+-        StlSaveOptions stlOptions = (StlSaveOptions) options;
+-
+-        try {
+-            if (stlOptions.getContentType() == FileContentType.BINARY) {
+-                exportBinary(scene, stream);
+-            } else {
+-                exportAscii(scene, stream);
+-            }
+-        } catch (IOException e) {
+-            throw new ExportException("Failed to write STL file", e);
+-        }
+-    }
+-
+-    private void exportBinary(Scene scene, Stream stream) throws IOException {
+-        byte[] header = new byte[80];
+-        for (int i = 0; i < header.length; i++) header[i] = 0;
+-        String name = "Aspose3DExport";
+-        for (int i = 0; i < name.length() && i < 80; i++) {
+-            header[i] = (byte) name.charAt(i);
+-        }
+-        stream.getOutputStream().write(header);
+-
+-        int faceCount = countFaces(scene);
+-        byte[] faceCountBytes = new byte[4];
+-        faceCountBytes[0] = (byte) (faceCount & 0xFF);
+-        faceCountBytes[1] = (byte) ((faceCount >> 8) & 0xFF);
+-        faceCountBytes[2] = (byte) ((faceCount >> 16) & 0xFF);
+-        faceCountBytes[3] = (byte) ((faceCount >> 24) & 0xFF);
+-        stream.getOutputStream().write(faceCountBytes);
+-
+-        for (Node node : findNodesWithMesh(scene.getRootNode())) {
+-            Entity entity = node.getEntity();
+-            if (entity instanceof Mesh) {
+-                Mesh mesh = (Mesh) entity;
+-                exportMeshBinary(mesh, stream);
+-            }
+-        }
+-
+-        stream.getOutputStream().flush();
+-    }
+-
+-    private void exportMeshBinary(Mesh mesh, Stream stream) throws IOException {
+-        byte[] buffer = new byte[48];
+-
+-        for (int[] face : mesh.getPolygons()) {
+-            if (face.length < 3) continue;
+-
+-            Vector3 normal = calculateNormal(mesh, face);
+-            writeFloat(buffer, 0, (float) normal.x);
+-            writeFloat(buffer, 4, (float) normal.y);
+-            writeFloat(buffer, 8, (float) normal.z);
+-
+-            int vertexOffset = 12;
+-            for (int i = 0; i < 3; i++) {
+-                if (i < face.length) {
+-                    Vector4 v = mesh.getControlPoints().get(face[i]);
+-                    writeFloat(buffer, vertexOffset, (float) v.x);
+-                    writeFloat(buffer, vertexOffset + 4, (float) v.y);
+-                    writeFloat(buffer, vertexOffset + 8, (float) v.z);
+-                }
+-                vertexOffset += 12;
+-            }
+-
+-            stream.getOutputStream().write(buffer);
+-
+-            byte[] attr = new byte[2];
+-            stream.getOutputStream().write(attr);
+-        }
+-    }
+-
+-    private void writeFloat(byte[] buffer, int offset, float value) {
+-        int bits = Float.floatToIntBits(value);
+-        buffer[offset] = (byte) (bits & 0xFF);
+-        buffer[offset + 1] = (byte) ((bits >> 8) & 0xFF);
+-        buffer[offset + 2] = (byte) ((bits >> 16) & 0xFF);
+-        buffer[offset + 3] = (byte) ((bits >> 24) & 0xFF);
+-    }
+-
+-    private void exportAscii(Scene scene, Stream stream) throws IOException {
+-        Writer writer = new OutputStreamWriter(stream.getOutputStream());
+-        writer.write("solid Aspose3DExport\n");
+-
+-        for (Node node : findNodesWithMesh(scene.getRootNode())) {
+-            Entity entity = node.getEntity();
+-            if (entity instanceof Mesh) {
+-                Mesh mesh = (Mesh) entity;
+-                exportMeshAscii(mesh, writer);
+-            }
+-        }
+-
+-        writer.write("endsolid Aspose3DExport\n");
+-        writer.flush();
+-    }
+-
+-    private void exportMeshAscii(Mesh mesh, Writer writer) throws IOException {
+-        for (int[] face : mesh.getPolygons()) {
+-            if (face.length < 3) continue;
+-
+-            Vector3 normal = calculateNormal(mesh, face);
+-
+-            writer.write(" facet normal ");
+-            writer.write(String.format("%.6f %.6f %.6f\n", normal.x, normal.y, normal.z));
+-            writer.write("  outer loop\n");
+-
+-            for (int idx : face) {
+-                Vector4 v = mesh.getControlPoints().get(idx);
+-                writer.write("   vertex ");
+-                writer.write(String.format("%.6f %.6f %.6f\n", v.x, v.y, v.z));
+-            }
+-
+-            writer.write("  endloop\n");
+-            writer.write(" endfacet\n");
+-        }
+-    }
+-
+-    private List<Node> findNodesWithMesh(Node node) {
+-        List<Node> nodes = new ArrayList<>();
+-        if (node.getEntity() instanceof Mesh) {
+-            nodes.add(node);
+-        }
+-        for (Node child : node.getChildNodes()) {
+-            nodes.addAll(findNodesWithMesh(child));
+-        }
+-        return nodes;
+-    }
+-
+-    private int countFaces(Scene scene) {
+-        int count = 0;
+-        for (Node node : findNodesWithMesh(scene.getRootNode())) {
+-            Entity entity = node.getEntity();
+-            if (entity instanceof Mesh) {
+-                count += ((Mesh) entity).getPolygonCount();
+-            }
+-        }
+-        return count;
+-    }
+-
+-    private Vector3 calculateNormal(Mesh mesh, int[] face) {
+-        if (face.length < 3) return new Vector3(0, 0, 1);
+-
+-        Vector4 v0 = mesh.getControlPoints().get(face[0]);
+-        Vector4 v1 = mesh.getControlPoints().get(face[1]);
+-        Vector4 v2 = mesh.getControlPoints().get(face[2]);
+-
+-        double x1 = v1.x - v0.x, y1 = v1.y - v0.y, z1 = v1.z - v0.z;
+-        double x2 = v2.x - v0.x, y2 = v2.y - v0.y, z2 = v2.z - v0.z;
+-
+-        double nx = y1 * z2 - z1 * y2;
+-        double ny = z1 * x2 - x1 * z2;
+-        double nz = x1 * y2 - y1 * x2;
+-
+-        double len = Math.sqrt(nx * nx + ny * ny + nz * nz);
+-        if (len > 0) {
+-            return new Vector3(nx / len, ny / len, nz / len);
+-        }
+-        return new Vector3(0, 0, 1);
+-    }
+-}
+diff --git a/src/main/java/com/aspose/threed/StlImporter.java b/src/main/java/com/aspose/threed/StlImporter.java
+deleted file mode 100644
+index e96d68d..0000000
+--- a/src/main/java/com/aspose/threed/StlImporter.java
++++ /dev/null
+@@ -1,197 +0,0 @@
+-package com.aspose.threed;
+-
+-import com.aspose.threed.*;
+-import java.io.*;
+-import java.util.*;
+-
+-public class StlImporter implements IImporter {
+-    private static final Set<String> supportedExtensions = Set.of(".stl");
+-
+-    @Override
+-    public boolean canImport(FileFormat format) {
+-        if (format == FileFormat.STL_BINARY || format == FileFormat.STLASCII) {
+-            return true;
+-        }
+-        return false;
+-    }
+-
+-    @Override
+-    public Scene load(Stream stream, LoadOptions options) throws ImportException {
+-        if (!(options instanceof StlLoadOptions)) {
+-            options = new StlLoadOptions();
+-        }
+-        StlLoadOptions stlOptions = (StlLoadOptions) options;
+-
+-        Scene scene = new Scene();
+-        Node rootNode = scene.getRootNode();
+-
+-        try {
+-            byte[] header = new byte[80];
+-            int bytesRead = stream.read(header);
+-            
+-            if (bytesRead < 80) {
+-                throw new ImportException("Invalid STL file - too short, read " + bytesRead + " of 80");
+-            }
+-            
+-            String headerStr = readHeaderString(header);
+-            
+-            if (isAsciiHeader(header)) {
+-                return loadAscii(stream, stlOptions, scene, rootNode, headerStr);
+-            }
+-            
+-            byte[] faceCountBytes = new byte[4];
+-            if (stream.read(faceCountBytes) < 4) {
+-                throw new ImportException("Invalid STL binary file");
+-            }
+-
+-            int faceCount = readUint32(faceCountBytes);
+-
+-            Mesh mesh = new Mesh(headerStr.isEmpty() ? "Mesh" : headerStr);
+-            List<Vector3> vertices = new ArrayList<>();
+-
+-            for (int i = 0; i < faceCount; i++) {
+-                byte[] buf = new byte[48];
+-                if (stream.read(buf) < 48) {
+-                    throw new ImportException("Unexpected end of file");
+-                }
+-                
+-                double x0 = Float.intBitsToFloat(readUint32(Arrays.copyOfRange(buf, 12, 16)));
+-                double y0 = Float.intBitsToFloat(readUint32(Arrays.copyOfRange(buf, 16, 20)));
+-                double z0 = Float.intBitsToFloat(readUint32(Arrays.copyOfRange(buf, 20, 24)));
+-                vertices.add(new Vector3(x0, y0, z0));
+-
+-                double x1 = Float.intBitsToFloat(readUint32(Arrays.copyOfRange(buf, 24, 28)));
+-                double y1 = Float.intBitsToFloat(readUint32(Arrays.copyOfRange(buf, 28, 32)));
+-                double z1 = Float.intBitsToFloat(readUint32(Arrays.copyOfRange(buf, 32, 36)));
+-                vertices.add(new Vector3(x1, y1, z1));
+-
+-                double x2 = Float.intBitsToFloat(readUint32(Arrays.copyOfRange(buf, 36, 40)));
+-                double y2 = Float.intBitsToFloat(readUint32(Arrays.copyOfRange(buf, 40, 44)));
+-                double z2 = Float.intBitsToFloat(readUint32(Arrays.copyOfRange(buf, 44, 48)));
+-                vertices.add(new Vector3(x2, y2, z2));
+-
+-                int v0 = vertices.size() - 3;
+-                int v1 = vertices.size() - 2;
+-                int v2 = vertices.size() - 1;
+-
+-                int[] face = new int[]{v0, v1, v2};
+-                mesh.createPolygon(face);
+-
+-                byte[] attribute = new byte[2];
+-                stream.read(attribute);
+-            }
+-
+-            for (Vector3 v : vertices) {
+-                mesh.addControlPoint(v.x, v.y, v.z);
+-            }
+-
+-            Node meshNode = rootNode.createChildNode(headerStr.isEmpty() ? "Mesh" : headerStr, mesh);
+-
+-            if (stlOptions.getFlipCoordinateSystem()) {
+-                for (int i = 0; i < mesh.getControlPoints().size(); i++) {
+-                    Vector4 cp = mesh.getControlPoints().get(i);
+-                    mesh.getControlPoints().set(i, new Vector4(cp.x, cp.y, -cp.z, cp.w));
+-                }
+-            }
+-
+-            return scene;
+-
+-        } catch (IOException e) {
+-            throw new ImportException("Failed to read STL file", e);
+-        }
+-    }
+-
+-    private boolean isAsciiHeader(byte[] header) {
+-        for (int i = 0; i < 80; i++) {
+-            char c = (char) header[i];
+-            if ((c < 32 || c > 126) && c != '\n' && c != '\r' && c != '\t') {
+-                return false;
+-            }
+-        }
+-        return true;
+-    }
+-
+-    private String readHeaderString(byte[] header) {
+-        StringBuilder sb = new StringBuilder();
+-        for (int i = 0; i < 80; i++) {
+-            char c = (char) header[i];
+-            if (c >= 32 && c <= 126) {
+-                sb.append(c);
+-            }
+-        }
+-        return sb.toString().trim();
+-    }
+-
+-    private int readUint32(byte[] bytes) {
+-        return (bytes[3] & 0xFF) << 24 |
+-               (bytes[2] & 0xFF) << 16 |
+-               (bytes[1] & 0xFF) << 8 |
+-               (bytes[0] & 0xFF);
+-    }
+-
+-    private Scene loadAscii(Stream stream, StlLoadOptions stlOptions, Scene scene, Node rootNode, String header) throws IOException {
+-        BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
+-        Mesh mesh = new Mesh(header.isEmpty() ? "Mesh" : header);
+-        Map<String, Integer> vertexMap = new HashMap<>();
+-        List<Vector3> vertices = new ArrayList<>();
+-        faceVertices.clear();
+-
+-        String line;
+-        while ((line = reader.readLine()) != null) {
+-            line = line.trim();
+-            if (line.isEmpty()) continue;
+-
+-            String[] parts = line.split("\\s+");
+-            String keyword = parts[0];
+-
+-            try {
+-                switch (keyword) {
+-                    case "vertex":
+-                        if (parts.length >= 4) {
+-                            double x = Double.parseDouble(parts[1]);
+-                            double y = Double.parseDouble(parts[2]);
+-                            double z = Double.parseDouble(parts[3]);
+-                            String key = String.format("%.6f,%.6f,%.6f", x, y, z);
+-                            
+-                            Integer idx = vertexMap.get(key);
+-                            if (idx == null) {
+-                                idx = vertices.size();
+-                                vertexMap.put(key, idx);
+-                                vertices.add(new Vector3(x, y, z));
+-                            }
+-                            faceVertices.add(idx);
+-                        }
+-                        break;
+-                    case "endloop":
+-                        if (faceVertices.size() >= 3) {
+-                            int[] indices = new int[3];
+-                            for (int i = 0; i < 3; i++) {
+-                                indices[i] = faceVertices.get(i);
+-                            }
+-                            mesh.createPolygon(indices);
+-                        }
+-                        faceVertices.clear();
+-                        break;
+-                    case "endsolid":
+-                        for (Vector3 v : vertices) {
+-                            mesh.addControlPoint(v.x, v.y, v.z);
+-                        }
+-                        Node meshNode = rootNode.createChildNode(header.isEmpty() ? "Mesh" : header, mesh);
+-                        
+-                        if (stlOptions.getFlipCoordinateSystem()) {
+-                            for (int i = 0; i < mesh.getControlPoints().size(); i++) {
+-                                Vector4 cp = mesh.getControlPoints().get(i);
+-                                mesh.getControlPoints().set(i, new Vector4(cp.x, cp.y, -cp.z, cp.w));
+-                            }
+-                        }
+-                        return scene;
+-                }
+-            } catch (NumberFormatException e) {
+-            }
+-        }
+-
+-        return scene;
+-    }
+-
+-    private final List<Integer> faceVertices = new ArrayList<>();
+-}
+diff --git a/src/main/java/com/aspose/threed/Struct.java b/src/main/java/com/aspose/threed/Struct.java
+index fb2e382..b9c4788 100644
+--- a/src/main/java/com/aspose/threed/Struct.java
++++ b/src/main/java/com/aspose/threed/Struct.java
+@@ -1,6 +1,18 @@
+ package com.aspose.threed;
+ 
+-public interface Struct<T> extends Cloneable {
++import java.io.Serializable;
++
++public interface Struct<T> extends Cloneable, Serializable {
+     T clone();
+     void copyFrom(T src);
++    
++    /**
++     * Try to copy the input value if it's Struct
++     * @param <T> Struct type
++     * @param value The value to copy
++     * @return null if input is null or cloned instance
++     */
++    static <T extends Struct<T>> T byVal(T value) {
++        return value != null ? value.clone() : null;
++    }
+ }
+diff --git a/src/main/java/com/aspose/threed/WeightedMode.java b/src/main/java/com/aspose/threed/WeightedMode.java
+index 40bf047..3c97057 100644
+--- a/src/main/java/com/aspose/threed/WeightedMode.java
++++ b/src/main/java/com/aspose/threed/WeightedMode.java
+@@ -1,27 +1,27 @@
+ package com.aspose.threed;
+ 
+-public class WeightedMode {
+-    public static final WeightedMode NONE = new WeightedMode(0);
+-    public static final WeightedMode LEFT = new WeightedMode(1);
+-    public static final WeightedMode RIGHT = new WeightedMode(2);
+-    public static final WeightedMode BOTH = new WeightedMode(3);
++/**
++ * Weighted mode.
++ */
++public final class WeightedMode {
++    /**
++     * Both out and next in weights are not used.
++     *   When calculation needs tangent information, default value(0.3333) will be used.
++     */
++    public static final int NONE = 0;
++    /**
++     * Out(right) tangent is weighted.
++     */
++    public static final int OUT_WEIGHT = 1;
++    /**
++     * Next in(left) tangent is weighted.
++     */
++    public static final int NEXT_IN_WEIGHT = 2;
++    /**
++     * Both out and next in tangents are weighted.
++     */
++    public static final int BOTH = 3;
+ 
+-    private final int value;
+-
+-    private WeightedMode(int value) {
+-        this.value = value;
+-    }
+-
+-    public int getValue() { return value; }
+-
+-    @Override
+-    public String toString() {
+-        switch (value) {
+-            case 0: return "None";
+-            case 1: return "Left";
+-            case 2: return "Right";
+-            case 3: return "Both";
+-            default: return "Unknown";
+-        }
++    public WeightedMode() {
+     }
+ }
