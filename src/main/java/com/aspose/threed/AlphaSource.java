@@ -5,17 +5,17 @@ package com.aspose.threed;
  */
 public enum AlphaSource {
     /**
-     * No alpha source.
+     * No alpha is defined in the texture
      */
-    None,
+    NONE,
     
     /**
-     * Alpha from pixel data.
+     * The alpha is defined by pixel's alpha channel
      */
-    PixelAlpha,
+    PIXEL_ALPHA,
     
     /**
-     * Fixed alpha value.
+     * The Alpha is a fixed value which is defined by TextureBase.getAlpha()
      */
-    FixedValue;
+    FIXED_VALUE;
 }

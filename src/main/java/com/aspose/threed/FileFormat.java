@@ -750,38 +750,30 @@ public class FileFormat {
         }
     }
 }
-
 class PdfFormat extends FileFormat {
     public PdfFormat() {
         super(FileFormatType.PDF, new Version(1, 7, 0), FileContentType.BINARY, 
-              ".pdf", new String[]{".pdf"}, true, true);
+              "pdf", new String[]{"pdf"}, true, true);
     }
 }
 
 class PlyFormat extends FileFormat {
     public PlyFormat() {
         super(FileFormatType.PLY, new Version(1, 0, 0), FileContentType.ASCII, 
-              ".ply", new String[]{".ply"}, true, true);
-    }
-}
-
-class DracoFormat extends FileFormat {
-    public DracoFormat() {
-        super(FileFormatType.DRACO, new Version(1, 0, 0), FileContentType.BINARY, 
-              ".drc", new String[]{".drc"}, true, true);
+              "ply", new String[]{"ply"}, true, true);
     }
 }
 
 class Microsoft3MFFormat extends FileFormat {
     public Microsoft3MFFormat() {
         super(FileFormatType.MICROSOFT3MF, new Version(1, 0, 0), FileContentType.BINARY, 
-              ".3mf", new String[]{".3mf"}, true, true);
+              "3mf", new String[]{"3mf"}, true, true);
     }
 }
 
 class RvmFormat extends FileFormat {
     public RvmFormat(FileContentType contentType) {
         super(FileFormatType.RVM, new Version(1, 0, 0), contentType, 
-              ".rvm", new String[]{".rvm"}, true, true);
+              "rvm", new String[]{"rvm"}, true, true);
     }
 }

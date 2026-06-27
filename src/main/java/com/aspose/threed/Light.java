@@ -54,9 +54,4 @@ public class Light extends Entity {
     public BoundingBox getBoundingBox() {
         return new BoundingBox();
     }
-
-    @Override
-    public EntityRendererKey getEntityRendererKey() {
-        return new EntityRendererKey("Light");
-    }
 }

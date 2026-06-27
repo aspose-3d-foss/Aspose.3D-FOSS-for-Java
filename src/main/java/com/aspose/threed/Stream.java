@@ -27,4 +27,39 @@ public class Stream extends FilterInputStream {
     public java.io.InputStream getInputStream() {
         return (java.io.InputStream) in;
     }
+    
+    /**
+     * Writes a byte to the stream.
+     * @param b The byte to write
+     * @throws java.io.IOException if an I/O error occurs
+     */
+    public void writeByte(int b) throws java.io.IOException {
+        if (outputStream != null) {
+            outputStream.write(b);
+        }
+    }
+    
+    /**
+     * Writes bytes to the stream.
+     * @param buf The buffer to write
+     * @throws java.io.IOException if an I/O error occurs
+     */
+    public void write(byte[] buf) throws java.io.IOException {
+        if (outputStream != null) {
+            outputStream.write(buf);
+        }
+    }
+    
+    /**
+     * Writes bytes to the stream.
+     * @param buf The buffer to write
+     * @param start The start index
+     * @param len The number of bytes to write
+     * @throws java.io.IOException if an I/O error occurs
+     */
+    public void write(byte[] buf, int start, int len) throws java.io.IOException {
+        if (outputStream != null) {
+            outputStream.write(buf, start, len);
+        }
+    }
 }

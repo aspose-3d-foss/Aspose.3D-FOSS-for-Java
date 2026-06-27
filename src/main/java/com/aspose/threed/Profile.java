@@ -20,7 +20,7 @@ public abstract class Profile extends Entity {
     }
 
     @Override
-    public EntityRendererKey getEntityRendererKey() {
-        return new EntityRendererKey("Profile");
+    public BoundingBox getBoundingBox() {
+        return new BoundingBox();
     }
 }

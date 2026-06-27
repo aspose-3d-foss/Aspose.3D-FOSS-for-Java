@@ -10,13 +10,13 @@ import com.aspose.threed.Vector3;
  */
 public class TextureBase extends A3DObject {
     private double alpha = 1.0;
-    private AlphaSource alphaSource = AlphaSource.None;
+    private AlphaSource alphaSource = AlphaSource.NONE;
     private WrapMode wrapModeU = WrapMode.Wrap;
     private WrapMode wrapModeV = WrapMode.Wrap;
     private WrapMode wrapModeW = WrapMode.Wrap;
-    private TextureFilter minFilter = TextureFilter.None;
-    private TextureFilter magFilter = TextureFilter.None;
-    private TextureFilter mipFilter = TextureFilter.None;
+    private TextureFilter minFilter = TextureFilter.NONE;
+    private TextureFilter magFilter = TextureFilter.NONE;
+    private TextureFilter mipFilter = TextureFilter.NONE;
     private Vector3 uvRotation = new Vector3(0, 0, 0);
     private Vector2 uvScale = new Vector2(1, 1);
     private Vector2 uvTranslation = new Vector2(0, 0);

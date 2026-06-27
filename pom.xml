@@ -7,7 +7,7 @@
 
     <groupId>com.aspose</groupId>
     <artifactId>aspose-3d-foss</artifactId>
-    <version>26.1.0</version>
+    <version>26.2.0</version>
     <packaging>jar</packaging>
 
     <name>Aspose.3D FOSS</name>

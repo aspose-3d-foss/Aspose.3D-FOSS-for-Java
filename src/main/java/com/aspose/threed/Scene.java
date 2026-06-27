@@ -436,15 +436,7 @@ public class Scene extends SceneObject {
         throw new UnsupportedOperationException("Rendering is not implemented in FOSS version");
     }
 
-    public void render(Camera camera, String fileName, Vector2 size, String format, ImageRenderOptions options) throws IOException {
-        throw new UnsupportedOperationException("Rendering is not implemented in FOSS version");
-    }
-
     public void render(Camera camera, TextureData texture) throws IOException {
-        throw new UnsupportedOperationException("Rendering is not implemented in FOSS version");
-    }
-
-    public void render(Camera camera, TextureData texture, ImageRenderOptions options) throws IOException {
         throw new UnsupportedOperationException("Rendering is not implemented in FOSS version");
     }
 }

@@ -4,12 +4,13 @@ package com.aspose.threed;
  * Options for Draco compression.
  */
 public class DracoSaveOptions extends SaveOptions {
-    private int positionalAccuracy = 6;
-    private int normalAccuracy = 5;
-    private int textureCoordinateAccuracy = 5;
-    private int colorAccuracy = 4;
-    private int genericAccuracy = 3;
-    private boolean quantizeGeneration = true;
+    private int positionBits = 14;
+    private int textureCoordinateBits = 12;
+    private int colorBits = 10;
+    private int normalBits = 10;
+    private DracoCompressionLevel compressionLevel = DracoCompressionLevel.STANDARD;
+    private boolean applyUnitScale = false;
+    private boolean pointCloud = false;
 
     /**
      * Constructor of DracoSaveOptions.
@@ -18,98 +19,114 @@ public class DracoSaveOptions extends SaveOptions {
     }
 
     /**
-     * Gets the positional accuracy for Draco compression.
-     * @return the positional accuracy.
+     * Quantization bits for position, default value is 14.
+     * @return Quantization bits for position.
      */
-    public int getPositionalAccuracy() {
-        return positionalAccuracy;
+    public int getPositionBits() {
+        return positionBits;
     }
 
     /**
-     * Sets the positional accuracy for Draco compression.
+     * Quantization bits for position, default value is 14.
      * @param value New value.
      */
-    public void setPositionalAccuracy(int value) {
-        this.positionalAccuracy = value;
+    public void setPositionBits(int value) {
+        this.positionBits = value;
     }
 
     /**
-     * Gets the normal accuracy for Draco compression.
-     * @return the normal accuracy.
+     * Quantization bits for texture coordinate, default value is 12.
+     * @return Quantization bits for texture coordinate.
      */
-    public int getNormalAccuracy() {
-        return normalAccuracy;
+    public int getTextureCoordinateBits() {
+        return textureCoordinateBits;
     }
 
     /**
-     * Sets the normal accuracy for Draco compression.
+     * Quantization bits for texture coordinate, default value is 12.
      * @param value New value.
      */
-    public void setNormalAccuracy(int value) {
-        this.normalAccuracy = value;
+    public void setTextureCoordinateBits(int value) {
+        this.textureCoordinateBits = value;
     }
 
     /**
-     * Gets the texture coordinate accuracy for Draco compression.
-     * @return the texture coordinate accuracy.
+     * Quantization bits for vertex color, default value is 10.
+     * @return Quantization bits for vertex color.
      */
-    public int getTextureCoordinateAccuracy() {
-        return textureCoordinateAccuracy;
+    public int getColorBits() {
+        return colorBits;
     }
 
     /**
-     * Sets the texture coordinate accuracy for Draco compression.
+     * Quantization bits for vertex color, default value is 10.
      * @param value New value.
      */
-    public void setTextureCoordinateAccuracy(int value) {
-        this.textureCoordinateAccuracy = value;
+    public void setColorBits(int value) {
+        this.colorBits = value;
     }
 
     /**
-     * Gets the color accuracy for Draco compression.
-     * @return the color accuracy.
+     * Quantization bits for normal vectors, default value is 10.
+     * @return Quantization bits for normal vectors.
      */
-    public int getColorAccuracy() {
-        return colorAccuracy;
+    public int getNormalBits() {
+        return normalBits;
     }
 
     /**
-     * Sets the color accuracy for Draco compression.
+     * Quantization bits for normal vectors, default value is 10.
      * @param value New value.
      */
-    public void setColorAccuracy(int value) {
-        this.colorAccuracy = value;
+    public void setNormalBits(int value) {
+        this.normalBits = value;
     }
 
     /**
-     * Gets the generic accuracy for Draco compression.
-     * @return the generic accuracy.
+     * Compression level, default value is DracoCompressionLevel.STANDARD.
+     * @return Compression level.
      */
-    public int getGenericAccuracy() {
-        return genericAccuracy;
+    public DracoCompressionLevel getCompressionLevel() {
+        return compressionLevel;
     }
 
     /**
-     * Sets the generic accuracy for Draco compression.
+     * Compression level, default value is DracoCompressionLevel.STANDARD.
      * @param value New value.
      */
-    public void setGenericAccuracy(int value) {
-        this.genericAccuracy = value;
+    public void setCompressionLevel(DracoCompressionLevel value) {
+        this.compressionLevel = value;
     }
 
     /**
-     * Gets whether to quantize the generation.
-     * @return true if quantize generation.
+     * Apply AssetInfo.getUnitScaleFactor() to the mesh. Default value is false.
+     * @return true if apply unit scale.
      */
-    public boolean getQuantizeGeneration() {
-        return quantizeGeneration;
+    public boolean getApplyUnitScale() {
+        return applyUnitScale;
     }
 
     /**
-     * Sets whether to quantize the generation.
+     * Apply AssetInfo.getUnitScaleFactor() to the mesh. Default value is false.
      * @param value New value.
      */
-    public void setQuantizeGeneration(boolean value) {
-        this.quantizeGeneration = value;
+    public void setApplyUnitScale(boolean value) {
+        this.applyUnitScale = value;
+    }
+
+    /**
+     * Export the scene as point cloud, default value is false.
+     * @return true if export as point cloud.
+     */
+    public boolean getPointCloud() {
+        return pointCloud;
+    }
+
+    /**
+     * Export the scene as point cloud, default value is false.
+     * @param value New value.
+     */
+    public void setPointCloud(boolean value) {
+        this.pointCloud = value;
     }
 }

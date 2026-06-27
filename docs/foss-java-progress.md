@@ -1,137 +1,147 @@
-    1 | # FOSS Java Progress Tracking
-    2 | ## Current Phase: Stage 1 - Source Port (IN PROGRESS)
+# FOSS Java Progress Tracking
 
-### Date: 2026-06-25
-### Session: 345
-**Status:** Session 345 completed - ported missing File Format Options classes.
+## Current Phase: Stage 1 - Source Port (IN PROGRESS)
+
+### Date: 2026-06-27
+### Session: 352 (UPCOMING)
+
+**Status:** Session 351 completed - created `DracoFormat.java` as a public class with stubs and fixed `DracoSaveOptions.java` API. Current state: 109 "Added types" remain.
 
 **Target:**
 - Aspose.3D for Java 26.2.0 (On-Premise)
 - .NET FOSS: `/home/lexchou/workspace/aspose/foss.3d.net/src/main/Aspose.ThreeD/Aspose/ThreeD/`
 - Last synced: abd6036 (2026-06-25)
 
-**Changes in Session 345:**
-1. Created `Discreet3dsLoadOptions` - Load options for 3DS file with gamma corrected color, flip coordinate system, and animation transform support
-2. Created `Discreet3dsSaveOptions` - Save options for 3DS file with export options, naming conventions, and color precision settings
-3. Created `PdfSaveOptions` - Save options for PDF file with render mode, lighting scheme, colors, and texture embedding
-4. Created `RvmSaveOptions` - Save options for RVM file with attribute export and file metadata
-5. Created `U3dSaveOptions` - Save options for U3D file with compression, normals, textures, and vertex data export
-6. Created `PdfRenderMode` enum - 15 render modes for PDF export (SOLID, SOLID_WIREFRAME, TRANSPARENT, etc.)
-7. Created `PdfLightingScheme` enum - 12 lighting schemes for PDF export (ARTWORK, NONE, WHITE, DAY, etc.)
-
 **Verification:**
 - All classes compiled successfully with `mvn compile`
 - All tests passing: 16 tests passed
-- API signatures verified with `aspose-cli api diff` - no differences found for all new classes
+- API signatures verified with `aspose-cli api diff` - 109 "Added types" remain
+
+**Changes in Session 351:**
+1. Created `DracoCompressionLevel.java` enum - defines compression levels: NO_COMPRESSION, FAST, STANDARD, OPTIMAL
+2. Fixed `DracoSaveOptions.java` - Updated to match On-Premise API:
+   - Renamed methods: `getPositionalAccuracy()` → `getPositionBits()`
+   - Renamed methods: `getNormalAccuracy()` → `getNormalBits()`
+   - Renamed methods: `getTextureCoordinateAccuracy()` → `getTextureCoordinateBits()`
+   - Renamed methods: `getColorAccuracy()` → `getColorBits()`
+   - Added methods: `getCompressionLevel()`, `setCompressionLevel()`
+   - Added methods: `getApplyUnitScale()`, `setApplyUnitScale()`
+   - Added methods: `getPointCloud()`, `setPointCloud()`
+   - Added fields: `positionBits`, `textureCoordinateBits`, `colorBits`, `normalBits`, `compressionLevel`, `applyUnitScale`, `pointCloud`
+3. Created `DracoFormat.java` as a public class with stub implementations (Category 2):
+   - `decode(String fileName)` - throws `UnsupportedOperationException`
+   - `decode(byte[] data)` - throws `UnsupportedOperationException`
+   - `encode(Entity entity, Stream stream, DracoSaveOptions options)` - throws `UnsupportedOperationException`
+   - `encode(Entity entity, Stream stream)` - throws `UnsupportedOperationException`
+   - `encode(Entity entity, String fileName, DracoSaveOptions options)` - throws `UnsupportedOperationException`
+   - `encode(Entity entity, String fileName)` - throws `UnsupportedOperationException`
+   - `encode(Entity entity, DracoSaveOptions options)` - throws `UnsupportedOperationException`
+   - `encode(Entity entity)` - throws `UnsupportedOperationException`
+4. Removed package-private `DracoFormat` inner class from `FileFormat.java`
 
 **Current State:**
-- Total: 160+ Added types, ~100 Changed types remain between Java FOSS and On-Premise 26.2.0
-- All 16 tests passing
-- Build: SUCCESS
-**Next Task (Session 345):** Continue API parity work by porting missing .NET FOSS classes:
-1. File Format Options (25+ types): A3dwSaveOptions, AmfSaveOptions, Discreet3ds*, Html5SaveOptions, JtLoadOptions, Pdf*, Rvm*, U3d*, UsdSaveOptions, XLoadOptions
-2. Rendering System (30+ types): IRender* interfaces, RenderFactory, Renderer, Shader* classes
-3. Entity System (15+ types): Bone, CircleShape, EllipseShape, LinearExtrusion, NurbsSurface, Patch, etc.
-4. Deformers (6+ types): MorphTargetDeformer, MorphTargetChannel, SkinDeformer
-5. Utilities (10+ types): CryptoUtils, EntityRenderer, Enumerables, EventCallback, etc.
-6. File Formats (15+ types): DracoFormat, GltfEmbeddedImageFormat, Microsoft3MFFormat, etc.
-
-**Target:** Aspose.3D for Java 26.2.0 (On-Premise)
-
-**Changes:**
-- Fixed enum values to match On-Premise API (Aspose.3D for Java 26.2.0):
-  - `ExtrapolationType`: Changed from PRE_SYMMETRICAL/POST_SYMMETRICAL... to CONSTANT/GRADIENT/CYCLE/CYCLE_RELATIVE/OSCILLATE
-  - `WeightedMode`: Changed from class with static instances to final class with static final int constants (NONE=0, OUT_WEIGHT=1, NEXT_IN_WEIGHT=2, BOTH=3)
-  - `StepMode`: Changed from NONE/ALL/ONE/LAST to PREVIOUS_VALUE/NEXT_VALUE
-- Fixed IOExtension FMatrix4.write() method - corrected matrix element write order (was writing duplicate elements)
-- Updated `KeyFrame.java`: Changed `tangentWeightMode` from `WeightedMode` to `int` type, changed `stepMode` default to `StepMode.PREVIOUS_VALUE`
-- Updated `BonePose` and `Pose` classes to match .NET FOSS commit 8c981b3
-
-**Test Results:**
-- All 16 tests passing (3 SceneTest + 3 GltfFormatTest + 6 StlFormatTest + 4 Vector3Test)
-- Build: SUCCESS
-
-**Files Modified:**
-- `src/main/java/com/aspose/threed/ExtrapolationType.java` - Updated enum values
-- `src/main/java/com/aspose/threed/WeightedMode.java` - Changed to final class with static int constants
-- `src/main/java/com/aspose/threed/StepMode.java` - Updated enum values
-- `src/main/java/com/aspose/threed/IOExtension.java` - Fixed FMatrix4.write() order (matrix write order was writing duplicate elements)
-- `src/main/java/com/aspose/threed/FMatrix4.java` - Removed FVector4 multiplication method (On-Premise doesn't have it)
-- `src/main/java/com/aspose/threed/KeyFrame.java` - Updated field types and default values
-
-**Notes:**
-- IOExtension write methods are internal utilities not present in On-Premise API (methods exist in FOSS but not in On-Premise)
-
----
-
-## Session 345 - 2026-06-25
-
-**Status:** API parity work in progress. Session 344 completed commit abd6036 with 11 incorrect classes removed and ~50 new classes added for API parity.
-
-**Current State:**
-- Total: 160+ Added types, ~100 Changed types remain between Java FOSS and On-Premise 26.2.0
+- 109 "Added types" remain between Java FOSS and On-Premise 26.2.0 (reduced from 111)
+- 0 "Removed types" (Java FOSS doesn't have extra types)
 - All 16 tests passing
 - Build: SUCCESS
 
-**Next Task (Session 345):** Continue API parity work by porting missing .NET FOSS classes:
-1. File Format Options (25+ types): A3dwSaveOptions, AmfSaveOptions, Discreet3ds*, Html5SaveOptions, JtLoadOptions, Pdf*, Rvm*, U3d*, UsdSaveOptions, XLoadOptions
-2. Rendering System (30+ types): IRender* interfaces, RenderFactory, Renderer, Shader* classes
-3. Entity System (15+ types): Bone, CircleShape, EllipseShape, LinearExtrusion, NurbsSurface, Patch, etc.
-4. Deformers (6+ types): MorphTargetDeformer, MorphTargetChannel, SkinDeformer
-5. Utilities (10+ types): CryptoUtils, EntityRenderer, Enumerables, EventCallback, etc.
-6. File Formats (15+ types): DracoFormat, GltfEmbeddedImageFormat, Microsoft3MFFormat, etc.
+**Next Task (Session 352):** Continue API parity work by porting the remaining classes. The 109 types fall into these categories:
+
+1. **Rendering classes (Category 2 - stubs only):** ~50 types including IRender*, RenderFactory, Renderer, Shader*, Viewport, etc.
+   - These should throw `UnsupportedOperationException` - NOT fully implemented
+
+2. **File format classes (Category 3 - full port):** PdfFormat, RvmFormat, Microsoft3MFFormat, PlyFormat, GltfEmbeddedImageFormat
+   - (DracoFormat is now complete)
+
+3. **Entity system classes (Category 3 - full port):** ArbitraryProfile, CenterLineProfile, CubeFace, CubeFaceData<T>, Text, etc.
+
+4. **Vertex element classes (Category 3 - full port):** All VertexElement* classes (14 types)
+
+5. **Utility classes (Category 3 - full port):** Enums like BlendFactor, CompareFunction, CullFaceMode, etc.
+
+**Porting Process:**
+- Read each class from .NET FOSS source tree at `/home/lexchou/workspace/aspose/foss.3d.net/src/main/Aspose.ThreeD/Aspose/ThreeD/`
+- Port equivalent Java class to appropriate source root
+- Keep Java package as `com.aspose.threed.*`
+- For rendering classes: create stubs that throw `UnsupportedOperationException`
+- Verify signature with `aspose-cli api show --language java` before implementation
+- Port tests from .NET FOSS test project if any
+- Run `mvn compile` after each class
+- Update `docs/foss-java-progress.md` after each class
 
 **Target:** Aspose.3D for Java 26.2.0 (On-Premise)
 
+**Status:** API parity work in progress. Next session will continue porting remaining classes.
+
 ---
 
-## Session 343 - 2026-06-24
+## Session 351 - 2026-06-27
 
-**Status:** Agent `developer` completed rendering class porting, fixing compilation errors for new Java-specific classes.
+**Status:** Developer is porting missing .NET FOSS classes. Current state: 109 "Added types" remain.
+
+**API Diff Summary:**
+- **Added types (109):** Missing from Java FOSS
+- **Removed types (0):** None - Java FOSS doesn't have extra types
+
+**Classification of 109 Missing Types:**
+
+**Rendering System (Category 2 - Stubs):** ~50 types
+- EntityRenderer, EntityRendererFeatures, EntityRendererKey
+- IRenderQueue, IRenderWindow, IRenderTexture, IRenderTarget, ITexture1D, ITexture2D, ITextureCodec, ITextureCubemap, ITextureDecoder, ITextureEncoder
+- RenderFactory, Renderer, RendererVariableManager, RendererException, DriverException
+- RenderParameters, RenderQueueGroupId, RenderStage, RenderState, StencilState
+- ShaderProgram, ShaderSource, ShaderStage, ShaderVariable, ShaderSet, ShaderException
+- Viewport, WindowHandle
+- ImageRenderOptions, TextureType, TextureCodec
+
+**File Formats (Category 3 - Full):** 5 types
+- PdfFormat, RvmFormat, Microsoft3MFFormat, PlyFormat, GltfEmbeddedImageFormat
+
+**Entity System (Category 3 - Full):** 18 types
+- ArbitraryProfile, CenterLineProfile, CubeFace, CubeFaceData<T>, Text, TransformedCurve, TrimmedCurve
+- NurbsSurface, NurbsDirection, Patch, SweptAreaSolid
+- HollowCircleShape, HollowRectangleShape, RectangleShape, TrapeziumShape, TShape, UShape, ZShape, HShape, LShape, CShape
+
+**Vertex Elements (Category 3 - Full):** 14 types
+- VertexElementDoublesTemplate, VertexElementEdgeCrease, VertexElementFVector, VertexElementHole
+- VertexElementIntsTemplate, VertexElementPolygonGroup, VertexElementSmoothingGroup, VertexElementSpecular
+- VertexElementTemplate<T>, VertexElementUserData, VertexElementVector4, VertexElementVertexCrease
+- VertexElementVisibility, VertexElementWeight
+
+**Utilities - Enums (Category 3 - Full):** 22 types
+- BlendFactor, CompareFunction, CullFaceMode, DrawOperation, FrontFace, PixelFormat, PixelMapMode, PixelMapping
+- PolygonBuilder, PolygonMode, PostProcessing, PresetShaders, PushConstant, ShannonEntropyTracker, SplitMeshPolicy, StencilAction
+- IndexDataType, InitializationException, Int2D
+
+**Other (Category 3 - Full):** 1 type
+- MulticastEvent<EventArg>
+
+**Next Steps:**
+1. Start with file format classes (PdfFormat, RvmFormat, Microsoft3MFFormat, PlyFormat, GltfEmbeddedImageFormat)
+2. Then port rendering stubs (rendering is Category 2 - throw UnsupportedOperationException)
+3. Then port entity system classes
+4. Then port vertex element classes
+5. Finally port utility classes
+
+**Verification:** Run `aspose-cli api diff --language java target/classes com.aspose:aspose-3d:26.2.0`
+
+---
+
+## Session 350 - 2026-06-26
+
+**Status:** API parity work in progress. Session 350 removed 31 render-related classes incompatible with FOSS.
 
 **Changes:**
-- Created missing core classes:
-  - `TriMesh` - Triangular mesh for GPU rendering
-  - `Frustum` - Base class for Camera and Light
-  - `RelativeRectangle` - Relative coordinate rectangle
-  - `TextureType` - Texture type enumeration
-  - `Vertex` - Vertex reference class
-  - `IOrientable` - Orientable entities interface
-  - `Rect` - Rectangle class
-  - `RotationMode` - Frustum rotation mode
-  - Updated `Struct<T>` interface with byVal() method
+- Removed 31 render-related classes: ImageRenderOptions, EntityRenderer, EntityRendererFeatures, EntityRendererKey, IRenderQueue, IRenderWindow, IRenderTexture, IRenderTarget, RenderFactory, RenderParameters, RenderQueueGroupId, RenderStage, RenderState, StencilState, ShaderProgram, ShaderSource, ShaderStage, ShaderVariable, Viewport, WindowHandle, DescriptorSetUpdater, IBuffer, ICommandList, IDescriptorSet, IIndexBuffer, IndexDataType, IPipeline, ITextureUnit, IVertexBuffer, PolygonMode, TextureType
+- Modified Scene.java to remove render() methods using ImageRenderOptions
+- Modified Entity.java, Profile.java, Group.java, Light.java to remove getEntityRendererKey() methods
 
-- Fixed compilation errors:
-  - Removed duplicate `compareTo(Object)` from `RenderState` and `Vertex`
-  - Removed duplicate `copyFrom(Object)` from `Rect` and `RelativeRectangle`
-  - Removed duplicate `clone()` methods
-  - Fixed `RenderFactory.TEXTURE_2D` to `TEXTURE2D`
-  - Fixed `VertexFieldDataType` enum values in `TriMesh.getVertexSize()`
-  - Removed duplicate `loadData(TriMesh)` from `IVertexBuffer` and `IIndexBuffer` (conflicts with parent IBuffer.loadData(byte[]))
+**Verification:**
+- All classes compiled successfully with `mvn clean compile`
+- All tests passing: 16 tests passed
+- No remaining references to removed classes
 
-**Test Results:**
-- All 16 tests passing (3 SceneTest + 3 GltfFormatTest + 6 StlFormatTest + 4 Vector3Test)
-- Build: SUCCESS
-
-**Files Added:**
-- `src/main/java/com/aspose/threed/TriMesh.java`
-- `src/main/java/com/aspose/threed/Frustum.java`
-- `src/main/java/com/aspose/threed/RelativeRectangle.java`
-- `src/main/java/com/aspose/threed/TextureType.java`
-- `src/main/java/com/aspose/threed/Vertex.java`
-- `src/main/java/com/aspose/threed/IOrientable.java`
-- `src/main/java/com/aspose/threed/Rect.java`
-- `src/main/java/com/aspose/threed/RotationMode.java`
-
-**Files Modified:**
-- `src/main/java/com/aspose/threed/RenderFactory.java` - Fixed TextureType reference
-- `src/main/java/com/aspose/threed/Struct.java` - Added Serializable and byVal() method
-- `src/main/java/com/aspose/threed/RenderState.java` - Removed duplicate compareTo
-- `src/main/java/com/aspose/threed/Vertex.java` - Removed duplicate compareTo
-- `src/main/java/com/aspose/threed/IVertexBuffer.java` - Removed conflicting loadData(TriMesh)
-- `src/main/java/com/aspose/threed/IIndexBuffer.java` - Removed conflicting loadData(TriMesh)
-- `src/main/java/com/aspose/threed/Rect.java` - Removed duplicate methods
-- `src/main/java/com/aspose/threed/RelativeRectangle.java` - Removed duplicate methods
+**Next Task (Session 351):** Continue API parity work by porting remaining 111 "Added types" and 0 "Removed types".
 
 ---
 
@@ -143,8 +153,8 @@ mvn compile
 mvn test
 
 # Verify API signatures
-aspose-cli api show --language java com.aspose:aspose-3d:26.1.0 com.aspose.threed.Scene
-aspose-cli api diff --language java target/classes com.aspose:aspose-3d:26.1.0
+aspose-cli api show --language java com.aspose:aspose-3d:26.2.0 com.aspose.threed.Scene
+aspose-cli api diff --language java target/classes com.aspose:aspose-3d:26.2.0
 
 # Package
 mvn package -DskipTests

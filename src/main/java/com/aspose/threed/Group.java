@@ -13,9 +13,4 @@ public class Group extends Entity {
     public BoundingBox getBoundingBox() {
         return new BoundingBox();
     }
-
-    @Override
-    public EntityRendererKey getEntityRendererKey() {
-        return new EntityRendererKey("Group");
-    }
 }
