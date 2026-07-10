@@ -1,18 +1,17 @@
 package com.aspose.threed;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A CompositeCurve is consisting of several curve segments.
  */
 public class CompositeCurve extends Curve {
-    private final List<Segment> segments = new ArrayList<>();
+    private final ArrayList<Segment> segments = new ArrayList<>();
 
     /**
      * The segments of the curve.
      */
-    public List<Segment> getSegments() {
+    public ArrayList<Segment> getSegments() {
         return segments;
     }
 
@@ -20,15 +19,7 @@ public class CompositeCurve extends Curve {
      * Constructor of CompositeCurve.
      */
     public CompositeCurve() {
-        this("CompositeCurve");
-    }
-
-    /**
-     * Constructor.
-     * @param name The name of the composite curve.
-     */
-    public CompositeCurve(String name) {
-        super(name);
+        super();
     }
 
     /**

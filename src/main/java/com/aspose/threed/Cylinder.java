@@ -4,7 +4,7 @@ package com.aspose.threed;
  * Parameterized Cylinder.
  * It can also be used to represent a cone when one of radiusTop/radiusBottom is zero.
  */
-public class Cylinder extends Geometry implements IMeshConvertible {
+public class Cylinder extends Primitive implements IMeshConvertible {
     private double radiusTop;
     private double radiusBottom;
     private double height;
@@ -23,43 +23,27 @@ public class Cylinder extends Geometry implements IMeshConvertible {
      * Initializes a new instance of Cylinder class.
      */
     public Cylinder() {
-        this("Cylinder", 1, 1, 1, 32, 1, false, 0, Math.PI * 2);
+        this(1, 1, 1, 32, 1, false);
     }
 
     /**
      * Initializes a new instance of Cylinder class.
-     */
-    public Cylinder(double radius, double height) {
-        this("Cylinder", radius, radius, height, 32, 1, false, 0, Math.PI * 2);
-    }
-
-    /**
-     * Initializes a new instance of Cylinder class.
-     */
-    public Cylinder(double radiusTop, double radiusBottom, double height) {
-        this("Cylinder", radiusTop, radiusBottom, height, 32, 1, false, 0, Math.PI * 2);
-    }
-
-    /**
-     * Initializes a new instance of Cylinder class.
+     * @param radiusTop Radius of cylinder's top cap.
+     * @param radiusBottom Radius of cylinder's bottom cap.
+     * @param height Height of the cylinder.
+     * @param radialSegments Radial segments of both top and bottom circles..
+     * @param heightSegments Height segments.
+     * @param openEnded If set to true the cylinder would have no bottom/top caps..
      */
     public Cylinder(double radiusTop, double radiusBottom, double height, int radialSegments, int heightSegments, boolean openEnded) {
-        this("Cylinder", radiusTop, radiusBottom, height, radialSegments, heightSegments, openEnded, 0, Math.PI * 2);
-    }
-
-    /**
-     * Initializes a new instance of Cylinder class.
-     */
-    public Cylinder(String name, double radiusTop, double radiusBottom, double height, int radialSegments, int heightSegments, boolean openEnded, double thetaStart, double thetaLength) {
-        super(name);
         this.radiusTop = radiusTop;
         this.radiusBottom = radiusBottom;
         this.height = height;
         this.radialSegments = radialSegments;
         this.heightSegments = heightSegments;
         this.openEnded = openEnded;
-        this.thetaStart = thetaStart;
-        this.thetaLength = thetaLength;
+        this.thetaStart = 0;
+        this.thetaLength = Math.PI * 2;
         this.generateFanCylinder = false;
         this.shearTop = new Vector2(0, 0);
         this.shearBottom = new Vector2(0, 0);
@@ -68,7 +52,8 @@ public class Cylinder extends Geometry implements IMeshConvertible {
     }
 
     /**
-     * Gets or sets the vertices transformation offset of the bottom side.
+     * Gets the vertices transformation offset of the bottom side.
+     * @return the vertices transformation offset of the bottom side.
      */
     public Vector3 getOffsetBottom() {
         return offsetBottom;
@@ -79,7 +64,8 @@ public class Cylinder extends Geometry implements IMeshConvertible {
     }
 
     /**
-     * Gets or sets the vertices transformation offset of the top side.
+     * Gets the vertices transformation offset of the top side.
+     * @return the vertices transformation offset of the top side.
      */
     public Vector3 getOffsetTop() {
         return offsetTop;
@@ -90,7 +76,8 @@ public class Cylinder extends Geometry implements IMeshConvertible {
     }
 
     /**
-     * Gets or sets whether to generate fan-style cylinder when ThetaLength is less than 2*PI.
+     * Gets whether to generate the fan-style cylinder when the ThetaLength is less than 2*PI, otherwise the model will not be cut.
+     * @return whether to generate the fan-style cylinder when the ThetaLength is less than 2*PI, otherwise the model will not be cut.
      */
     public boolean getGenerateFanCylinder() {
         return generateFanCylinder;
@@ -101,7 +88,8 @@ public class Cylinder extends Geometry implements IMeshConvertible {
     }
 
     /**
-     * Gets or sets shear transform of the bottom side.
+     * Gets of the shear transform of the bottom side, vector stores the (x-axis, z-axis) shear value that measured in radian, default value is (0, 0)
+     * @return of the shear transform of the bottom side, vector stores the (x-axis, z-axis) shear value that measured in radian, default value is (0, 0)
      */
     public Vector2 getShearBottom() {
         return shearBottom;
@@ -112,7 +100,8 @@ public class Cylinder extends Geometry implements IMeshConvertible {
     }
 
     /**
-     * Gets or sets shear transform of the top side.
+     * Gets of the shear transform of the top side, vector stores the (x-axis, z-axis) shear value that measured in radian, default value is (0, 0)
+     * @return of the shear transform of the top side, vector stores the (x-axis, z-axis) shear value that measured in radian, default value is (0, 0)
      */
     public Vector2 getShearTop() {
         return shearTop;
@@ -123,7 +112,8 @@ public class Cylinder extends Geometry implements IMeshConvertible {
     }
 
     /**
-     * Gets or sets radius of cylinder's top cap.
+     * Gets the radius of cylinder's top cap.
+     * @return the radius of cylinder's top cap.
      */
     public double getRadiusTop() {
         return radiusTop;
@@ -134,7 +124,8 @@ public class Cylinder extends Geometry implements IMeshConvertible {
     }
 
     /**
-     * Gets or sets radius of cylinder's bottom cap.
+     * Gets the radius of cylinder's bottom cap.
+     * @return the radius of cylinder's bottom cap.
      */
     public double getRadiusBottom() {
         return radiusBottom;
@@ -145,7 +136,8 @@ public class Cylinder extends Geometry implements IMeshConvertible {
     }
 
     /**
-     * Gets or sets height of the cylinder.
+     * Gets the height of the cylinder.
+     * @return the height of the cylinder.
      */
     public double getHeight() {
         return height;
@@ -156,7 +148,8 @@ public class Cylinder extends Geometry implements IMeshConvertible {
     }
 
     /**
-     * Gets or sets radial segments.
+     * Gets the radial segments.
+     * @return the radial segments.
      */
     public int getRadialSegments() {
         return radialSegments;
@@ -167,7 +160,8 @@ public class Cylinder extends Geometry implements IMeshConvertible {
     }
 
     /**
-     * Gets or sets height segments.
+     * Gets the height segments.
+     * @return the height segments.
      */
     public int getHeightSegments() {
         return heightSegments;
@@ -178,7 +172,10 @@ public class Cylinder extends Geometry implements IMeshConvertible {
     }
 
     /**
-     * Gets or sets a value indicating whether this cylinder is open ended.
+     * Gets a value indicating whether this Cylinder open ended.
+     *   The default value is false.
+     * @return a value indicating whether this Cylinder open ended.
+     *  The default value is false.
      */
     public boolean getOpenEnded() {
         return openEnded;
@@ -189,7 +186,10 @@ public class Cylinder extends Geometry implements IMeshConvertible {
     }
 
     /**
-     * Gets or sets theta start.
+     * Gets the theta start.
+     *   The default value is 0.
+     * @return the theta start.
+     *  The default value is 0.
      */
     public double getThetaStart() {
         return thetaStart;
@@ -200,7 +200,10 @@ public class Cylinder extends Geometry implements IMeshConvertible {
     }
 
     /**
-     * Gets or sets length of theta.
+     * Gets the length of the theta.
+     *   The default value is 2π.
+     * @return the length of the theta.
+     *  The default value is 2π.
      */
     public double getThetaLength() {
         return thetaLength;
@@ -211,29 +214,27 @@ public class Cylinder extends Geometry implements IMeshConvertible {
     }
 
     /**
-     * Convert current object to mesh.
+     * Convert current object to mesh
+     * @return The mesh.
      */
     public Mesh toMesh() {
         Mesh mesh = new Mesh(getName());
-        float radiusTop = (float) this.radiusTop;
-        float radiusBottom = (float) this.radiusBottom;
-        float height = (float) this.height;
-        float halfHeight = height / 2;
+        double halfHeight = height / 2;
 
-        float topCenterX = (float) (this.offsetTop.x);
-        float topCenterY = (float) (halfHeight + this.offsetTop.y);
-        float topCenterZ = (float) this.offsetTop.z;
-        float bottomCenterX = (float) (this.offsetBottom.x);
-        float bottomCenterY = (float) (-halfHeight + this.offsetBottom.y);
-        float bottomCenterZ = (float) this.offsetBottom.z;
+        double topCenterX = this.offsetTop.x;
+        double topCenterY = halfHeight + this.offsetTop.y;
+        double topCenterZ = this.offsetTop.z;
+        double bottomCenterX = this.offsetBottom.x;
+        double bottomCenterY = -halfHeight + this.offsetBottom.y;
+        double bottomCenterZ = this.offsetBottom.z;
 
         for (int i = 0; i <= radialSegments; i++) {
             double angle = thetaStart + thetaLength * i / radialSegments;
             double sinAngle = Math.sin(angle);
             double cosAngle = Math.cos(angle);
 
-            float x = (float) (radiusTop * cosAngle);
-            float z = (float) (radiusTop * sinAngle);
+            double x = radiusTop * cosAngle;
+            double z = radiusTop * sinAngle;
             mesh.getControlPoints().add(new Vector4(x, halfHeight, z, 1));
         }
 
@@ -242,8 +243,8 @@ public class Cylinder extends Geometry implements IMeshConvertible {
             double sinAngle = Math.sin(angle);
             double cosAngle = Math.cos(angle);
 
-            float x = (float) (radiusBottom * cosAngle);
-            float z = (float) (radiusBottom * sinAngle);
+            double x = radiusBottom * cosAngle;
+            double z = radiusBottom * sinAngle;
             mesh.getControlPoints().add(new Vector4(x, -halfHeight, z, 1));
         }
 
