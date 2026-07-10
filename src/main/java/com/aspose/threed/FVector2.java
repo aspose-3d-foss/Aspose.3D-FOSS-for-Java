@@ -2,7 +2,7 @@ package com.aspose.threed;
 
 import java.io.Serializable;
 
-public final class FVector2 implements Serializable, Comparable<FVector2> {
+public final class FVector2 implements Struct<FVector2>, Serializable, Comparable<FVector2> {
     public float x;
     public float y;
 
@@ -26,35 +26,36 @@ public final class FVector2 implements Serializable, Comparable<FVector2> {
         this.y = (float)vec.y;
     }
 
-    public int compareTo(FVector2 other) {
+    public static Vector2 create(FVector2 v) {
+        return new Vector2(v.x, v.y);
+    }
+
+    @Override
+    public final int compareTo(FVector2 other) {
         int cmp = Float.compare(x, other.x);
         if (cmp != 0) return cmp;
         return Float.compare(y, other.y);
     }
 
-    public boolean equals(FVector2 rhs) {
+    public final boolean equals(FVector2 rhs) {
         return x == rhs.x && y == rhs.y;
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public final boolean equals(Object obj) {
         return obj instanceof FVector2 other && equals(other);
     }
 
     @Override
-    public int hashCode() {
+    public final int hashCode() {
         int xl = Float.floatToIntBits(x);
         int yl = Float.floatToIntBits(y);
         return xl ^ yl;
     }
 
     @Override
-    public String toString() {
+    public final String toString() {
         return "(" + x + ", " + y + ")";
-    }
-
-    public static Vector2 op_explicit(FVector2 v) {
-        return new Vector2(v.x, v.y);
     }
 
     public static FVector2 add(FVector2 a, FVector2 b) {
@@ -75,5 +76,19 @@ public final class FVector2 implements Serializable, Comparable<FVector2> {
 
     public static boolean op_ne(FVector2 a, FVector2 b) {
         return !a.equals(b);
+    }
+
+    @Override
+    public final FVector2 clone() {
+        try {
+            return (FVector2) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public final void copyFrom(FVector2 src) {
+        this.x = src.x;
+        this.y = src.y;
     }
 }
