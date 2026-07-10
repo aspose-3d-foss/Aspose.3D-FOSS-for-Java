@@ -194,7 +194,7 @@ public class Node extends SceneObject {
 
     public boolean accept(NodeVisitor visitor) {
         if (visitor == null) return true;
-        return visitor.visit(this);
+        return visitor.call(this);
     }
 
     public BoundingBox getBoundingBox() {
@@ -233,12 +233,5 @@ public class Node extends SceneObject {
     @Override
     public String toString() {
         return "Node[" + getName() + "]";
-    }
-
-    public void addEntity(Entity entity, Material material) {
-        addEntity(entity);
-        if (material != null) {
-            materials.add(material);
-        }
     }
 }
