@@ -7,7 +7,7 @@ public abstract class Entity extends SceneObject {
     private boolean excluded = false;
     private final ArrayList<Node> parentNodes = new ArrayList<>();
 
-    public Entity() {
+    protected Entity() {
         super();
     }
 
