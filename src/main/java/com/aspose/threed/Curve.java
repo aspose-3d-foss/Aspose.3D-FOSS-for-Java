@@ -33,4 +33,12 @@ public abstract class Curve extends Entity {
     public Curve() {
         this("Curve");
     }
+
+    /**
+     * Gets the entity renderer key for this entity.
+     * @return The entity renderer key.
+     */
+    public EntityRendererKey getEntityRendererKey() {
+        return new EntityRendererKey("Curve");
+    }
 }

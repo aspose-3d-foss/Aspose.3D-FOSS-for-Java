@@ -3,10 +3,6 @@ package com.aspose.threed;
 public abstract class Deformer extends A3DObject {
     private Geometry owner;
 
-    public Deformer() {
-        this("Deformer");
-    }
-
     public Deformer(String name) {
         super(name);
     }
