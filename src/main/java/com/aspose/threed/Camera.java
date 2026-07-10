@@ -10,27 +10,15 @@ public class Camera extends Frustum implements IOrientable {
     private double aspectRatio = 1.0;
     private Vector2 magnification = new Vector2(1, 1);
     private ApertureMode apertureMode = ApertureMode.HORIZ_AND_VERT;
+     public Camera() {
+         super("Camera");
+     }
 
-    public Camera() {
-        super("Camera");
-    }
+     public Camera(String name) {
+         super(name);
+     }
 
-    public Camera(ProjectionType projectionType) {
-        super("Camera");
-        this.projectionType = projectionType;
-    }
-
-    public Camera(String name) {
-        super(name);
-    }
-
-    public Camera(String name, ProjectionType projectionType) {
-        super(name);
-        this.projectionType = projectionType;
-    }
-
-    public ApertureMode getApertureMode() {
-        return apertureMode;
+     public ApertureMode getApertureMode() {        return apertureMode;
     }
 
     public void setApertureMode(ApertureMode value) {
@@ -99,5 +87,14 @@ public class Camera extends Frustum implements IOrientable {
 
     public void setProjectionType(ProjectionType value) {
         this.projectionType = value;
-    }
+         }
+
+     /**
+      * Move camera forward
+      * @param distance The distance to move forward
+      */
+     public void moveForward(double distance) {
+         // TODO: Implement moveForward
+         throw new UnsupportedOperationException("moveForward is not implemented in FOSS");
+     }
 }
