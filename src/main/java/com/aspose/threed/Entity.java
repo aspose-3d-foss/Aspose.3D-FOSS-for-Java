@@ -38,4 +38,8 @@ public abstract class Entity extends SceneObject {
     public BoundingBox getBoundingBox() {
         return new BoundingBox();
     }
+
+    public EntityRendererKey getEntityRendererKey() {
+        return new EntityRendererKey(this.getClass().getSimpleName());
+    }
 }
