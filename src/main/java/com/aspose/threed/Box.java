@@ -3,7 +3,7 @@ package com.aspose.threed;
 /**
  * Box primitive.
  */
-public class Box extends Geometry implements IMeshConvertible {
+public class Box extends Primitive implements IMeshConvertible {
     private double length;
     private double width;
     private double height;
@@ -15,27 +15,22 @@ public class Box extends Geometry implements IMeshConvertible {
      * Initializes a new instance of Box class.
      */
     public Box() {
-        this("Box", 1, 1, 1, 1, 1, 1);
+        this(1, 1, 1);
     }
 
     /**
      * Initializes a new instance of Box class.
+     * @param length Length of the box aligned in z-axis.
+     * @param width Width of the box aligned in x-axis.
+     * @param height Height of the box aligned in y-axis.
      */
     public Box(double length, double width, double height) {
-        this("Box", length, width, height, 1, 1, 1);
-    }
-
-    /**
-     * Initializes a new instance of Box class.
-     */
-    public Box(String name, double length, double width, double height, int lengthSegments, int widthSegments, int heightSegments) {
-        super(name);
         this.length = length;
         this.width = width;
         this.height = height;
-        this.lengthSegments = lengthSegments;
-        this.widthSegments = widthSegments;
-        this.heightSegments = heightSegments;
+        this.lengthSegments = 1;
+        this.widthSegments = 1;
+        this.heightSegments = 1;
     }
 
     /**

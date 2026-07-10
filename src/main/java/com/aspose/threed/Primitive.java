@@ -31,6 +31,13 @@ public abstract class Primitive extends Entity implements IMeshConvertible {
 
     /**
      * Initializes a new instance of the Primitive class.
+     */
+    public Primitive() {
+        this(null);
+    }
+
+    /**
+     * Initializes a new instance of the Primitive class.
      * @param name Name.
      */
     public Primitive(String name) {
