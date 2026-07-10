@@ -62,4 +62,23 @@ public class Stream extends FilterInputStream {
             outputStream.write(buf, start, len);
         }
     }
+
+    /**
+     * Wrap an InputStream as Stream.
+     * @param stream Input stream to wrap
+     * @return Wrapped Stream instance
+     * @throws java.io.IOException
+     */
+    public static Stream wrap(InputStream stream) throws java.io.IOException {
+        return new Stream(stream);
+    }
+
+    /**
+     * Wrap an OutputStream as Stream, the stream must be closed to flush data to output stream.
+     * @param stream Output stream to wrap
+     * @return Wrapped Stream instance
+     */
+    public static Stream wrap(OutputStream stream) {
+        return new Stream(stream);
+    }
 }

@@ -2,76 +2,85 @@
 
 ## Current Phase: Stage 1 - Source Port (IN PROGRESS)
 
-### Date: 2026-06-27
-### Session: 352 (UPCOMING)
+### Date: 2026-07-09
+### Session: 471
 
-**Status:** Session 351 completed - created `DracoFormat.java` as a public class with stubs and fixed `DracoSaveOptions.java` API. Current state: 109 "Added types" remain.
+**Status:** Session 470 completed - created 9 tasks for API signature fixes. Current state: 42 "Added types" (new classes to create), 145 "Changed types" (API fixes needed), 1 "Removed type" (PropertyFlags to remove).
+
+**Task breakdown (Session 471):** 9 tasks created for API signature fixes:
+1. Fix AnimationChannel API signature (add 5 methods)
+2. Fix AnimationClip API signature (add 8 methods)
+3. Fix AnimationNode API signature (add constructor and 7 methods)
+4. Convert BindPoint from enum to class (add 12 methods)
+5. Fix BoundingBox API signature (add final modifiers and static methods)
+6. Fix BoundingBox2D API signature (add final modifiers and static methods)
+7. Fix AssetInfo API signature (add 19 new methods, remove 4 old)
+8. Fix A3dwSaveOptions and AmfSaveOptions API signatures (replace compress with new properties)
+9. Remove PropertyFlags class (extra type not in On-Premise)
+
+**Current State:**
+- 42 "Added types" remain between Java FOSS and On-Premise 26.1.0
+- 145 "Changed types" remain (need API signature fixes)
+- 1 "Removed type" (PropertyFlags - extra type in FOSS that should be removed)
+- All 16 tests passing
+- Build: SUCCESS
 
 **Target:**
-- Aspose.3D for Java 26.2.0 (On-Premise)
+- Aspose.3D for Java 26.1.0 (On-Premise)
 - .NET FOSS: `/home/lexchou/workspace/aspose/foss.3d.net/src/main/Aspose.ThreeD/Aspose/ThreeD/`
-- Last synced: abd6036 (2026-06-25)
+- Last synced: 26.1.0 version
 
 **Verification:**
 - All classes compiled successfully with `mvn compile`
 - All tests passing: 16 tests passed
-- API signatures verified with `aspose-cli api diff` - 109 "Added types" remain
+- API signatures verified with `aspose-cli api diff` - 42 "Added types", 145 "Changed types", 1 "Removed type"
 
-**Changes in Session 351:**
-1. Created `DracoCompressionLevel.java` enum - defines compression levels: NO_COMPRESSION, FAST, STANDARD, OPTIMAL
-2. Fixed `DracoSaveOptions.java` - Updated to match On-Premise API:
-   - Renamed methods: `getPositionalAccuracy()` → `getPositionBits()`
-   - Renamed methods: `getNormalAccuracy()` → `getNormalBits()`
-   - Renamed methods: `getTextureCoordinateAccuracy()` → `getTextureCoordinateBits()`
-   - Renamed methods: `getColorAccuracy()` → `getColorBits()`
-   - Added methods: `getCompressionLevel()`, `setCompressionLevel()`
-   - Added methods: `getApplyUnitScale()`, `setApplyUnitScale()`
-   - Added methods: `getPointCloud()`, `setPointCloud()`
-   - Added fields: `positionBits`, `textureCoordinateBits`, `colorBits`, `normalBits`, `compressionLevel`, `applyUnitScale`, `pointCloud`
-3. Created `DracoFormat.java` as a public class with stub implementations (Category 2):
-   - `decode(String fileName)` - throws `UnsupportedOperationException`
-   - `decode(byte[] data)` - throws `UnsupportedOperationException`
-   - `encode(Entity entity, Stream stream, DracoSaveOptions options)` - throws `UnsupportedOperationException`
-   - `encode(Entity entity, Stream stream)` - throws `UnsupportedOperationException`
-   - `encode(Entity entity, String fileName, DracoSaveOptions options)` - throws `UnsupportedOperationException`
-   - `encode(Entity entity, String fileName)` - throws `UnsupportedOperationException`
-   - `encode(Entity entity, DracoSaveOptions options)` - throws `UnsupportedOperationException`
-   - `encode(Entity entity)` - throws `UnsupportedOperationException`
-4. Removed package-private `DracoFormat` inner class from `FileFormat.java`
+**Changes in Session 471:**
+1. Split large task #112 into 9 smaller tasks for API signature fixes
+2. Tasks cover: AnimationChannel, AnimationClip, AnimationNode, BindPoint, BoundingBox, BoundingBox2D, AssetInfo, SaveOptions, PropertyFlags removal
 
-**Current State:**
-- 109 "Added types" remain between Java FOSS and On-Premise 26.2.0 (reduced from 111)
-- 0 "Removed types" (Java FOSS doesn't have extra types)
-- All 16 tests passing
-- Build: SUCCESS
+**Target:** Aspose.3D for Java 26.1.0 (On-Premise)
 
-**Next Task (Session 352):** Continue API parity work by porting the remaining classes. The 109 types fall into these categories:
+**Status:** API parity work in progress. Next session will fix changed types first, then create missing classes.
 
-1. **Rendering classes (Category 2 - stubs only):** ~50 types including IRender*, RenderFactory, Renderer, Shader*, Viewport, etc.
-   - These should throw `UnsupportedOperationException` - NOT fully implemented
+---
 
-2. **File format classes (Category 3 - full port):** PdfFormat, RvmFormat, Microsoft3MFFormat, PlyFormat, GltfEmbeddedImageFormat
-   - (DracoFormat is now complete)
+## Session 469 - 2026-07-04
 
-3. **Entity system classes (Category 3 - full port):** ArbitraryProfile, CenterLineProfile, CubeFace, CubeFaceData<T>, Text, etc.
+**Status:** Vertex element API signature alignment complete. Fixed 0 "Removed types", added 11 new vertex element classes.
 
-4. **Vertex element classes (Category 3 - full port):** All VertexElement* classes (14 types)
+**Changes:**
+1. Fixed FileFormat.java - removed duplicate inner class definitions (PdfFormat, PlyFormat, Microsoft3MFFormat, RvmFormat)
+2. Updated VertexElement.java to match On-Premise API:
+   - Changed `getType()` to `getVertexElementType()`
+   - Changed `setIndices(List<Integer>)` to `setIndices(int[])`
+   - Added no-arg `clone()` method that delegates to `clone(false)`
+3. Created new vertex element helper classes:
+   - `VertexElementFVector.java` - helper for FVector-based elements
+   - `VertexElementTemplate.java` - generic template base class
+   - `VertexElementDoublesTemplate.java`
+   - `VertexElementIntsTemplate.java`
+4. Updated VertexElementUV.java - added `getMapping()`, proper constructors, `addData()` methods
+5. Updated VertexElementMaterial.java - implemented `clear()`, added indices list
+6. Updated all vertex element concrete classes to use no-arg constructors
+7. Created missing vertex element classes:
+   - VertexElementEdgeCrease
+   - VertexElementVisibility
+   - VertexElementWeight
+   - VertexElementSmoothingGroup
+   - VertexElementHole
+   - VertexElementPolygonGroup
+   - VertexElementSpecular
+   - VertexElementVertexCrease
+8. Fixed Geometry.java - updated to use `getVertexElementType()`, fixed constructor signatures, removed default case
 
-5. **Utility classes (Category 3 - full port):** Enums like BlendFactor, CompareFunction, CullFaceMode, etc.
+**Verification:**
+- All classes compiled successfully with `mvn clean compile`
+- All tests passing: 16 tests passed
+- API diff: 111 "Added types", 0 "Removed types"
 
-**Porting Process:**
-- Read each class from .NET FOSS source tree at `/home/lexchou/workspace/aspose/foss.3d.net/src/main/Aspose.ThreeD/Aspose/ThreeD/`
-- Port equivalent Java class to appropriate source root
-- Keep Java package as `com.aspose.threed.*`
-- For rendering classes: create stubs that throw `UnsupportedOperationException`
-- Verify signature with `aspose-cli api show --language java` before implementation
-- Port tests from .NET FOSS test project if any
-- Run `mvn compile` after each class
-- Update `docs/foss-java-progress.md` after each class
-
-**Target:** Aspose.3D for Java 26.2.0 (On-Premise)
-
-**Status:** API parity work in progress. Next session will continue porting remaining classes.
+**Next Steps:**
+Continue porting remaining 111 "Added types" (vertex elements complete, now working on other classes)
 
 ---
 
@@ -132,7 +141,6 @@
 **Status:** API parity work in progress. Session 350 removed 31 render-related classes incompatible with FOSS.
 
 **Changes:**
-- Removed 31 render-related classes: ImageRenderOptions, EntityRenderer, EntityRendererFeatures, EntityRendererKey, IRenderQueue, IRenderWindow, IRenderTexture, IRenderTarget, RenderFactory, RenderParameters, RenderQueueGroupId, RenderStage, RenderState, StencilState, ShaderProgram, ShaderSource, ShaderStage, ShaderVariable, Viewport, WindowHandle, DescriptorSetUpdater, IBuffer, ICommandList, IDescriptorSet, IIndexBuffer, IndexDataType, IPipeline, ITextureUnit, IVertexBuffer, PolygonMode, TextureType
 - Modified Scene.java to remove render() methods using ImageRenderOptions
 - Modified Entity.java, Profile.java, Group.java, Light.java to remove getEntityRendererKey() methods
 
