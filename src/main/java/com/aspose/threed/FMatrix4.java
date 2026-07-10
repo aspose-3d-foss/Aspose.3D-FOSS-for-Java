@@ -2,7 +2,7 @@ package com.aspose.threed;
 
 import java.io.Serializable;
 
-public final class FMatrix4 implements Serializable {
+public final class FMatrix4 implements Struct<FMatrix4>, Serializable {
     public float m00, m01, m02, m03;
     public float m10, m11, m12, m13;
     public float m20, m21, m22, m23;
@@ -48,11 +48,16 @@ public final class FMatrix4 implements Serializable {
         return new FMatrix4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
     }
 
-    public FMatrix4 concatenate(FMatrix4 m2) {
-        return this.mul(m2);
+    public final FMatrix4 concatenate(FMatrix4 m) {
+        return FMatrix4.mul(this, m);
     }
 
-    public FMatrix4 transpose() {
+    public final FMatrix4 concatenate(Matrix4 m) {
+        FMatrix4 other = new FMatrix4(m);
+        return FMatrix4.mul(this, other);
+    }
+
+    public final FMatrix4 transpose() {
         return new FMatrix4(
             m00, m10, m20, m30,
             m01, m11, m21, m31,
@@ -61,32 +66,8 @@ public final class FMatrix4 implements Serializable {
         );
     }
 
-    public FMatrix4 inverse() {
+    public final FMatrix4 inverse() {
         return getIdentity();
-    }
-
-    public FMatrix4 mul(FMatrix4 right) {
-        return new FMatrix4(
-            m00 * right.m00 + m01 * right.m10 + m02 * right.m20 + m03 * right.m30,
-            m00 * right.m01 + m01 * right.m11 + m02 * right.m21 + m03 * right.m31,
-            m00 * right.m02 + m01 * right.m12 + m02 * right.m22 + m03 * right.m32,
-            m00 * right.m03 + m01 * right.m13 + m02 * right.m23 + m03 * right.m33,
-
-            m10 * right.m00 + m11 * right.m10 + m12 * right.m20 + m13 * right.m30,
-            m10 * right.m01 + m11 * right.m11 + m12 * right.m21 + m13 * right.m31,
-            m10 * right.m02 + m11 * right.m12 + m12 * right.m22 + m13 * right.m32,
-            m10 * right.m03 + m11 * right.m13 + m12 * right.m23 + m13 * right.m33,
-
-            m20 * right.m00 + m21 * right.m10 + m22 * right.m20 + m23 * right.m30,
-            m20 * right.m01 + m21 * right.m11 + m22 * right.m21 + m23 * right.m31,
-            m20 * right.m02 + m21 * right.m12 + m22 * right.m22 + m23 * right.m32,
-            m20 * right.m03 + m21 * right.m13 + m22 * right.m23 + m23 * right.m33,
-
-            m30 * right.m00 + m31 * right.m10 + m32 * right.m20 + m33 * right.m30,
-            m30 * right.m01 + m31 * right.m11 + m32 * right.m21 + m33 * right.m31,
-            m30 * right.m02 + m31 * right.m12 + m32 * right.m22 + m33 * right.m32,
-            m30 * right.m03 + m31 * right.m13 + m32 * right.m23 + m33 * right.m33
-        );
     }
 
     public static FMatrix4 mul(FMatrix4 lhs, float v) {
@@ -98,16 +79,57 @@ public final class FMatrix4 implements Serializable {
         );
     }
 
-    public static boolean op_eq(FMatrix4 left, FMatrix4 right) {
-        return left.equals(right);
+    public static FMatrix4 mul(FMatrix4 lhs, FMatrix4 rhs) {
+        return new FMatrix4(
+            lhs.m00 * rhs.m00 + lhs.m01 * rhs.m10 + lhs.m02 * rhs.m20 + lhs.m03 * rhs.m30,
+            lhs.m00 * rhs.m01 + lhs.m01 * rhs.m11 + lhs.m02 * rhs.m21 + lhs.m03 * rhs.m31,
+            lhs.m00 * rhs.m02 + lhs.m01 * rhs.m12 + lhs.m02 * rhs.m22 + lhs.m03 * rhs.m32,
+            lhs.m00 * rhs.m03 + lhs.m01 * rhs.m13 + lhs.m02 * rhs.m23 + lhs.m03 * rhs.m33,
+
+            lhs.m10 * rhs.m00 + lhs.m11 * rhs.m10 + lhs.m12 * rhs.m20 + lhs.m13 * rhs.m30,
+            lhs.m10 * rhs.m01 + lhs.m11 * rhs.m11 + lhs.m12 * rhs.m21 + lhs.m13 * rhs.m31,
+            lhs.m10 * rhs.m02 + lhs.m11 * rhs.m12 + lhs.m12 * rhs.m22 + lhs.m13 * rhs.m32,
+            lhs.m10 * rhs.m03 + lhs.m11 * rhs.m13 + lhs.m12 * rhs.m23 + lhs.m13 * rhs.m33,
+
+            lhs.m20 * rhs.m00 + lhs.m21 * rhs.m10 + lhs.m22 * rhs.m20 + lhs.m23 * rhs.m30,
+            lhs.m20 * rhs.m01 + lhs.m21 * rhs.m11 + lhs.m22 * rhs.m21 + lhs.m23 * rhs.m31,
+            lhs.m20 * rhs.m02 + lhs.m21 * rhs.m12 + lhs.m22 * rhs.m22 + lhs.m23 * rhs.m32,
+            lhs.m20 * rhs.m03 + lhs.m21 * rhs.m13 + lhs.m22 * rhs.m23 + lhs.m23 * rhs.m33,
+
+            lhs.m30 * rhs.m00 + lhs.m31 * rhs.m10 + lhs.m32 * rhs.m20 + lhs.m33 * rhs.m30,
+            lhs.m30 * rhs.m01 + lhs.m31 * rhs.m11 + lhs.m32 * rhs.m21 + lhs.m33 * rhs.m31,
+            lhs.m30 * rhs.m02 + lhs.m31 * rhs.m12 + lhs.m32 * rhs.m22 + lhs.m33 * rhs.m32,
+            lhs.m30 * rhs.m03 + lhs.m31 * rhs.m13 + lhs.m32 * rhs.m23 + lhs.m33 * rhs.m33
+        );
     }
 
-    public static boolean op_ne(FMatrix4 left, FMatrix4 right) {
-        return !left.equals(right);
+    public static FVector3 mul(FMatrix4 m, FVector3 v) {
+        return new FVector3(
+            m.m00 * v.x + m.m01 * v.y + m.m02 * v.z + m.m03,
+            m.m10 * v.x + m.m11 * v.y + m.m12 * v.z + m.m13,
+            m.m20 * v.x + m.m21 * v.y + m.m22 * v.z + m.m23
+        );
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public final FMatrix4 clone() {
+        try {
+            return (FMatrix4) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public final void copyFrom(FMatrix4 other) {
+        this.m00 = other.m00; this.m01 = other.m01; this.m02 = other.m02; this.m03 = other.m03;
+        this.m10 = other.m10; this.m11 = other.m11; this.m12 = other.m12; this.m13 = other.m13;
+        this.m20 = other.m20; this.m21 = other.m21; this.m22 = other.m22; this.m23 = other.m23;
+        this.m30 = other.m30; this.m31 = other.m31; this.m32 = other.m32; this.m33 = other.m33;
+    }
+
+    @Override
+    public final boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         FMatrix4 other = (FMatrix4) obj;
@@ -118,7 +140,7 @@ public final class FMatrix4 implements Serializable {
     }
 
     @Override
-    public int hashCode() {
+    public final int hashCode() {
         int result = Float.floatToIntBits(m00);
         result = 31 * result + Float.floatToIntBits(m01);
         result = 31 * result + Float.floatToIntBits(m02);
@@ -136,13 +158,5 @@ public final class FMatrix4 implements Serializable {
         result = 31 * result + Float.floatToIntBits(m32);
         result = 31 * result + Float.floatToIntBits(m33);
         return result;
-    }
-
-    public static FVector3 mul(FMatrix4 m, FVector3 v) {
-        return new FVector3(
-            m.m00 * v.x + m.m01 * v.y + m.m02 * v.z + m.m03,
-            m.m10 * v.x + m.m11 * v.y + m.m12 * v.z + m.m13,
-            m.m20 * v.x + m.m21 * v.y + m.m22 * v.z + m.m23
-        );
     }
 }

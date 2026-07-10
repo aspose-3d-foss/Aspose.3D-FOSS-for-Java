@@ -18,7 +18,7 @@ public class DracoFormat extends FileFormat {
     /**
      * Constructs a new DracoFormat instance.
      */
-    public DracoFormat() {
+    DracoFormat() {
         super(FileFormatType.DRACO, new Version(1, 0, 0), FileContentType.BINARY, 
               "drc", new String[]{"drc"}, true, true);
     }
