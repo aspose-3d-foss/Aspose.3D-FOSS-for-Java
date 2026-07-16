@@ -3,3 +3,8 @@ bin
 classes
 testdata
 .opencode
+
+*.asc
+.secrets
+.env.act
+/src/test/resources/Input
