@@ -1,4 +1,4 @@
-package com.aspose.threed;
+﻿package com.aspose.threed;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -194,7 +194,7 @@ public class Node extends SceneObject {
 
     public boolean accept(NodeVisitor visitor) {
         if (visitor == null) return true;
-        return visitor.call(this);
+        return visitor.visit(this);
     }
 
     public BoundingBox getBoundingBox() {
@@ -235,3 +235,4 @@ public class Node extends SceneObject {
         return "Node[" + getName() + "]";
     }
 }
+

@@ -1,10 +1,10 @@
-package com.aspose.threed;
+﻿package com.aspose.threed;
 
 /**
  * The extent of the bounding box.
  */
 public enum BoundingBoxExtent {
-    Null,
-    Finite,
-    Infinite
+    NULL,
+    FINITE,
+    INFINITE
 }
