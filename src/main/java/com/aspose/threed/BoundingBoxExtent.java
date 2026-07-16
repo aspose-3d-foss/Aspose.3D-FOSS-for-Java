@@ -1,4 +1,4 @@
-﻿package com.aspose.threed;
+package com.aspose.threed;
 
 /**
  * The extent of the bounding box.

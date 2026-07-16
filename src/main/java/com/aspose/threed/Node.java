@@ -1,4 +1,4 @@
-﻿package com.aspose.threed;
+package com.aspose.threed;
 
 import java.util.ArrayList;
 import java.util.List;
