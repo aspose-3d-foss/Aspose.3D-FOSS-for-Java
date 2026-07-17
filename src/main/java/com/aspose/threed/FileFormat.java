@@ -69,95 +69,89 @@ public class FileFormat {
 
     private static final List<FileFormat> allFormats = new ArrayList<>();
     private static final Map<String, FileFormat> extensionIndex = new HashMap<>();
-
-    static {
-         FBX6100ASCII = new FileFormat(FileFormatType.FBX, new Version(6, 1, 0), 
-             FileContentType.ASCII, ".fbx", new String[]{".fbx"}, true, true);
-         FBX6100_BINARY = new FileFormat(FileFormatType.FBX, new Version(6, 1, 0), 
-             FileContentType.BINARY, ".fbx", new String[]{".fbx"}, true, true);
-         STL_BINARY = new FileFormat(FileFormatType.STL, new Version(1, 0, 0), 
-             FileContentType.BINARY, ".stl", new String[]{".stl"}, true, true);
-         STLASCII = new FileFormat(FileFormatType.STL, new Version(1, 0, 0), 
-             FileContentType.ASCII, ".stl", new String[]{".stl"}, true, true);
-         WAVEFRONTOBJ = new FileFormat(FileFormatType.WAVEFRONTOBJ, new Version(1, 0, 0), 
-             FileContentType.ASCII, ".obj", new String[]{".obj", ".mtl"}, true, true);
-         GLTF2 = new FileFormat(FileFormatType.GLTF, new Version(2, 0, 0), 
-             FileContentType.ASCII, ".gltf", new String[]{".gltf"}, true, true);
-         GLTF2_BINARY = new FileFormat(FileFormatType.GLTF, new Version(2, 0, 0), 
-             FileContentType.BINARY, ".glb", new String[]{".glb"}, true, true);
-
-
-         FBX7200ASCII = FBX6100ASCII;
-         FBX7200_BINARY = FBX6100_BINARY;
-         FBX7300ASCII = FBX6100ASCII;
-         FBX7300_BINARY = FBX6100_BINARY;
-         FBX7400ASCII = FBX6100ASCII;
-         FBX7400_BINARY = FBX6100_BINARY;
-         FBX7500ASCII = FBX6100ASCII;
-         FBX7500_BINARY = FBX6100_BINARY;
-         FBX7600ASCII = FBX6100ASCII;
-         FBX7600_BINARY = FBX6100_BINARY;
-         FBX7700ASCII = FBX6100ASCII;
-         FBX7700_BINARY = FBX6100_BINARY;
-         MAYAASCII = new FileFormat(FileFormatType.MAYA, new Version(1, 0, 0), 
-             FileContentType.ASCII, ".ma", new String[]{".ma"}, true, true);
-         MAYA_BINARY = new FileFormat(FileFormatType.MAYA, new Version(1, 0, 0), 
-             FileContentType.BINARY, ".mb", new String[]{".mb"}, true, true);
-         DISCREET3DS = new FileFormat(FileFormatType.DISCREET3DS, new Version(1, 0, 0), 
-             FileContentType.BINARY, ".3ds", new String[]{".3ds"}, true, true);
-         COLLADA = new FileFormat(FileFormatType.COLLADA, new Version(1, 4, 0), 
-             FileContentType.ASCII, ".dae", new String[]{".dae"}, true, true);
-         UNIVERSAL3D = new FileFormat(FileFormatType.UNIVERSAL3D, new Version(1, 0, 0), 
-             FileContentType.BINARY, ".u3d", new String[]{".u3d"}, true, true);
-         GLTF = new FileFormat(FileFormatType.GLTF, new Version(1, 0, 0), 
-             FileContentType.ASCII, ".gltf", new String[]{".gltf"}, true, true);
-         GLTF_BINARY = new FileFormat(FileFormatType.GLTF, new Version(1, 0, 0), 
-             FileContentType.BINARY, ".glb", new String[]{".glb"}, true, true);
-         PDF = new PdfFormat();
-         BLENDER = new FileFormat(FileFormatType.BLENDER, new Version(1, 0, 0), 
-             FileContentType.BINARY, ".blend", new String[]{".blend"}, true, true);
-         DXF = new FileFormat(FileFormatType.DXF, new Version(1, 0, 0), 
-             FileContentType.ASCII, ".dxf", new String[]{".dxf"}, true, true);
-         PLY = new PlyFormat();
-         X_BINARY = new FileFormat(FileFormatType.X, new Version(1, 0, 0), 
-             FileContentType.BINARY, ".x", new String[]{".x"}, true, true);
-         X_TEXT = new FileFormat(FileFormatType.X, new Version(1, 0, 0), 
-             FileContentType.ASCII, ".x", new String[]{".x"}, true, true);
-         DRACO = new DracoFormat();
-         MICROSOFT3MF = new Microsoft3MFFormat();
-         RVM_TEXT = new RvmFormat(FileContentType.ASCII);
-         RVM_BINARY = new RvmFormat(FileContentType.BINARY);
-         ASE = new FileFormat(FileFormatType.ASE, new Version(1, 0, 0), 
-             FileContentType.ASCII, ".ase", new String[]{".ase"}, true, true);
-         IFC = new FileFormat(FileFormatType.IFC, new Version(1, 0, 0), 
-             FileContentType.ASCII, ".ifc", new String[]{".ifc"}, true, true);
-         SIEMENSJT8 = new FileFormat(FileFormatType.SIEMENSJT, new Version(8, 0, 0), 
-             FileContentType.BINARY, ".jt", new String[]{".jt"}, true, true);
-         SIEMENSJT9 = new FileFormat(FileFormatType.SIEMENSJT, new Version(9, 0, 0), 
-             FileContentType.BINARY, ".jt", new String[]{".jt"}, true, true);
-         AMF = new FileFormat(FileFormatType.AMF, new Version(1, 0, 0), 
-             FileContentType.BINARY, ".amf", new String[]{".amf"}, true, true);
-         VRML = new FileFormat(FileFormatType.VRML, new Version(2, 0, 0), 
-             FileContentType.ASCII, ".wrl", new String[]{".wrl"}, true, true);
-         ASPOSE3D_WEB = new FileFormat(FileFormatType.ASPOSE3D_WEB, new Version(1, 0, 0), 
-             FileContentType.BINARY, ".a3dw", new String[]{".a3dw"}, true, true);
-         HTML5 = new FileFormat(FileFormatType.HTML5, new Version(1, 0, 0), 
-             FileContentType.ASCII, ".html", new String[]{".html"}, true, true);
-         ZIP = new FileFormat(FileFormatType.ZIP, new Version(1, 0, 0), 
-             FileContentType.BINARY, ".zip", new String[]{".zip"}, true, true);
-         USD = new FileFormat(FileFormatType.USD, new Version(1, 0, 0), 
-             FileContentType.BINARY, ".usdc", new String[]{".usdc"}, true, true);
-         USDA = new FileFormat(FileFormatType.USD, new Version(1, 0, 0), 
-             FileContentType.ASCII, ".usda", new String[]{".usda"}, true, true);
-         USDZ = new FileFormat(FileFormatType.USD, new Version(1, 0, 0), 
-             FileContentType.BINARY, ".usdz", new String[]{".usdz"}, true, true);
-         XYZ = new FileFormat(FileFormatType.XYZ, new Version(1, 0, 0), 
-             FileContentType.ASCII, ".xyz", new String[]{".xyz"}, true, true);
-         PCD = new FileFormat(FileFormatType.PCD, new Version(1, 0, 0), 
-             FileContentType.ASCII, ".pcd", new String[]{".pcd"}, true, true);
-         PCD_BINARY = new FileFormat(FileFormatType.PCD, new Version(1, 0, 0), 
-             FileContentType.BINARY, ".pcd", new String[]{".pcd"}, true, true);
-         
+     static {
+          FBX6100ASCII = new FileFormat(FileFormatType.FBX, new Version(6, 1, 0), 
+              FileContentType.ASCII, ".fbx", new String[]{".fbx"}, true, true);
+          FBX6100_BINARY = new FileFormat(FileFormatType.FBX, new Version(6, 1, 0), 
+              FileContentType.BINARY, ".fbx", new String[]{".fbx"}, true, true);
+          STL_BINARY = new FileFormat(FileFormatType.STL, new Version(1, 0, 0), 
+              FileContentType.BINARY, ".stl", new String[]{".stl"}, true, true);
+          STLASCII = new FileFormat(FileFormatType.STL, new Version(1, 0, 0), 
+              FileContentType.ASCII, ".stl", new String[]{".stl"}, true, true);
+          WAVEFRONTOBJ = new FileFormat(FileFormatType.WAVEFRONTOBJ, new Version(1, 0, 0), 
+              FileContentType.ASCII, ".obj", new String[]{".obj", ".mtl"}, true, true);
+          GLTF2 = new FileFormat(FileFormatType.GLTF, new Version(2, 0, 0), 
+              FileContentType.ASCII, ".gltf", new String[]{".gltf"}, true, true);
+          GLTF2_BINARY = new FileFormat(FileFormatType.GLTF, new Version(2, 0, 0), 
+              FileContentType.BINARY, ".glb", new String[]{".glb"}, true, true);
+          FBX7200ASCII = FBX6100ASCII;
+          FBX7200_BINARY = FBX6100_BINARY;
+          FBX7300ASCII = FBX6100ASCII;
+          FBX7300_BINARY = FBX6100_BINARY;
+          FBX7400ASCII = FBX6100ASCII;
+          FBX7400_BINARY = FBX6100_BINARY;
+          FBX7500ASCII = FBX6100ASCII;
+          FBX7500_BINARY = FBX6100_BINARY;
+          FBX7600ASCII = FBX6100ASCII;
+          FBX7600_BINARY = FBX6100_BINARY;
+          FBX7700ASCII = FBX6100ASCII;
+          FBX7700_BINARY = FBX6100_BINARY;
+          MAYAASCII = new FileFormat(FileFormatType.MAYA, new Version(1, 0, 0), 
+              FileContentType.ASCII, ".ma", new String[]{".ma"}, true, true);
+          MAYA_BINARY = new FileFormat(FileFormatType.MAYA, new Version(1, 0, 0), 
+              FileContentType.BINARY, ".mb", new String[]{".mb"}, true, true);
+          DISCREET3DS = new FileFormat(FileFormatType.DISCREET3DS, new Version(1, 0, 0), 
+              FileContentType.BINARY, ".3ds", new String[]{".3ds"}, true, true);
+          COLLADA = new FileFormat(FileFormatType.COLLADA, new Version(1, 4, 0), 
+              FileContentType.ASCII, ".dae", new String[]{".dae"}, true, true);
+          UNIVERSAL3D = new FileFormat(FileFormatType.UNIVERSAL3D, new Version(1, 0, 0), 
+              FileContentType.BINARY, ".u3d", new String[]{".u3d"}, true, true);
+          GLTF = new FileFormat(FileFormatType.GLTF, new Version(1, 0, 0), 
+              FileContentType.ASCII, ".gltf", new String[]{".gltf"}, true, true);
+          GLTF_BINARY = new FileFormat(FileFormatType.GLTF, new Version(1, 0, 0), 
+              FileContentType.BINARY, ".glb", new String[]{".glb"}, true, true);         PDF = new PdfFormat();          BLENDER = new FileFormat(FileFormatType.BLENDER, new Version(1, 0, 0), 
+              FileContentType.BINARY, ".blend", new String[]{".blend"}, true, true);
+          DXF = new FileFormat(FileFormatType.DXF, new Version(1, 0, 0), 
+              FileContentType.ASCII, ".dxf", new String[]{".dxf"}, true, true);
+          PLY = new PlyFormat();
+          X_BINARY = new FileFormat(FileFormatType.X, new Version(1, 0, 0), 
+              FileContentType.BINARY, ".x", new String[]{".x"}, true, true);
+          X_TEXT = new FileFormat(FileFormatType.X, new Version(1, 0, 0), 
+              FileContentType.ASCII, ".x", new String[]{".x"}, true, true);
+          DRACO = new DracoFormat();
+          MICROSOFT3MF = new Microsoft3MFFormat();
+          RVM_TEXT = new RvmFormat(FileContentType.ASCII);
+          RVM_BINARY = new RvmFormat(FileContentType.BINARY);
+          ASE = new FileFormat(FileFormatType.ASE, new Version(1, 0, 0), 
+              FileContentType.ASCII, ".ase", new String[]{".ase"}, true, true);
+          IFC = new FileFormat(FileFormatType.IFC, new Version(1, 0, 0), 
+              FileContentType.ASCII, ".ifc", new String[]{".ifc"}, true, true);
+          SIEMENSJT8 = new FileFormat(FileFormatType.SIEMENSJT, new Version(8, 0, 0), 
+              FileContentType.BINARY, ".jt", new String[]{".jt"}, true, true);
+          SIEMENSJT9 = new FileFormat(FileFormatType.SIEMENSJT, new Version(9, 0, 0), 
+              FileContentType.BINARY, ".jt", new String[]{".jt"}, true, true);
+          AMF = new FileFormat(FileFormatType.AMF, new Version(1, 0, 0), 
+              FileContentType.BINARY, ".amf", new String[]{".amf"}, true, true);
+          VRML = new FileFormat(FileFormatType.VRML, new Version(2, 0, 0), 
+              FileContentType.ASCII, ".wrl", new String[]{".wrl"}, true, true);
+          ASPOSE3D_WEB = new FileFormat(FileFormatType.ASPOSE3D_WEB, new Version(1, 0, 0), 
+              FileContentType.BINARY, ".a3dw", new String[]{".a3dw"}, true, true);
+          HTML5 = new FileFormat(FileFormatType.HTML5, new Version(1, 0, 0), 
+              FileContentType.ASCII, ".html", new String[]{".html"}, true, true);
+          ZIP = new FileFormat(FileFormatType.ZIP, new Version(1, 0, 0), 
+              FileContentType.BINARY, ".zip", new String[]{".zip"}, true, true);
+          USD = new FileFormat(FileFormatType.USD, new Version(1, 0, 0), 
+              FileContentType.BINARY, ".usdc", new String[]{".usdc"}, true, true);
+          USDA = new FileFormat(FileFormatType.USD, new Version(1, 0, 0), 
+              FileContentType.ASCII, ".usda", new String[]{".usda"}, true, true);
+          USDZ = new FileFormat(FileFormatType.USD, new Version(1, 0, 0), 
+              FileContentType.BINARY, ".usdz", new String[]{".usdz"}, true, true);
+          XYZ = new FileFormat(FileFormatType.XYZ, new Version(1, 0, 0), 
+              FileContentType.ASCII, ".xyz", new String[]{".xyz"}, true, true);
+          PCD = new FileFormat(FileFormatType.PCD, new Version(1, 0, 0), 
+              FileContentType.ASCII, ".pcd", new String[]{".pcd"}, true, true);
+          PCD_BINARY = new FileFormat(FileFormatType.PCD, new Version(1, 0, 0), 
+              FileContentType.BINARY, ".pcd", new String[]{".pcd"}, true, true);         
          FileFormat.registerFormat(FBX6100ASCII);
          FileFormat.registerFormat(FBX6100_BINARY);
          FileFormat.registerFormat(STL_BINARY);
@@ -203,7 +197,7 @@ public class FileFormat {
         
         int lastDot = ext.lastIndexOf('.');
         if (lastDot >= 0) {
-            ext = ext.substring(lastDot);
+            ext = ext.substring(lastDot);  // Keep the dot
         }
         
         if (!ext.startsWith(".")) {
@@ -235,39 +229,35 @@ public class FileFormat {
     public FileFormatType getFileFormatType() {
         return type;
     }
-
     public LoadOptions createLoadOptions() throws ImportException {
-        if (extension.equals(".stl")) {
-            return new StlLoadOptions();
+        if (extension.equals("stl")) {
+            return new StlLoadOptions(contentType);
         }
-        if (extension.equals(".obj")) {
+        if (extension.equals("obj")) {
             return new ObjLoadOptions();
         }
-        if (extension.equals(".gltf") || extension.equals(".glb")) {
+        if (extension.equals("gltf") || extension.equals("glb")) {
             return new GltfLoadOptions();
         }
-        if (extension.equals(".fbx")) {
+        if (extension.equals("fbx")) {
             return new FbxLoadOptions();
         }
         throw new ImportException("Load options not implemented for " + extension);
-    }
-
-    public SaveOptions createSaveOptions() {
-        if (extension.equals(".stl")) {
-            return new StlSaveOptions();
+    }    public SaveOptions createSaveOptions() {
+        if (extension.equals("stl")) {
+            return new StlSaveOptions(contentType);
         }
-        if (extension.equals(".obj")) {
+        if (extension.equals("obj")) {
             return new ObjSaveOptions();
         }
-        if (extension.equals(".gltf") || extension.equals(".glb")) {
-            return new GltfSaveOptions();
+        if (extension.equals("gltf") || extension.equals("glb")) {
+            return new GltfSaveOptions(contentType);
         }
-        if (extension.equals(".fbx")) {
+        if (extension.equals("fbx")) {
             return new FbxSaveOptions();
         }
         throw new UnsupportedOperationException("Save options not implemented for " + extension);
     }
-
     public boolean canDetect(Stream stream, String fileName) {
         return false;
     }
@@ -324,29 +314,28 @@ public class FileFormat {
      * This is package-private and should not be called directly.
      */
     void save(Scene scene, Stream stream, SaveOptions options) throws IOException {
-        String ext = extension.toLowerCase();
-        
-        if (ext.equals(".stl")) {
-            StlSaver saver = new StlSaver();
-            saver.save(scene, stream, options);
-        }
-        else if (ext.equals(".obj")) {
-            ObjSaver saver = new ObjSaver();
-            saver.save(scene, stream, options);
-        }
-        else if (ext.equals(".gltf") || ext.equals(".glb")) {
-            GltfSaver saver = new GltfSaver();
-            saver.save(scene, stream, options);
-        }
-        else if (ext.equals(".fbx")) {
-            FbxSaver saver = new FbxSaver();
-            saver.save(scene, stream, options);
-        }
-        else {
-            throw new IOException("No exporter available for format: " + extension);
-        }
-    }
-
+         String ext = extension.toLowerCase();
+         
+         if (ext.equals(".stl")) {
+             StlSaver saver = new StlSaver();
+             saver.save(scene, stream, options, contentType);
+         }
+         else if (ext.equals(".obj")) {
+             ObjSaver saver = new ObjSaver();
+             saver.save(scene, stream, options);
+         }
+         else if (ext.equals(".gltf") || ext.equals(".glb")) {
+             GltfSaver saver = new GltfSaver();
+             saver.save(scene, stream, options);
+         }
+         else if (ext.equals(".fbx")) {
+             FbxSaver saver = new FbxSaver();
+             saver.save(scene, stream, options);
+         }
+         else {
+             throw new IOException("No exporter available for format: " + extension);
+         }
+     }
     // Internal loader classes
     private static class StlLoader {
         public Scene load(Stream stream, LoadOptions options) throws IOException, ImportException {
@@ -552,16 +541,13 @@ public class FileFormat {
 
     // Internal saver classes
     private static class StlSaver {
-        public void save(Scene scene, Stream stream, SaveOptions options) throws IOException {
+        public void save(Scene scene, Stream stream, SaveOptions options, FileContentType contentType) throws IOException {
             java.io.OutputStream out = stream.getOutputStream();
             if (out == null) {
                 throw new IOException("Output stream not available");
             }
             
             try {
-                StlSaveOptions stlOptions = (StlSaveOptions) options;
-                FileContentType contentType = stlOptions.getContentType();
-                
                 if (contentType == FileContentType.BINARY) {
                     writeBinaryStl(scene, out);
                 } else {
@@ -753,27 +739,27 @@ public class FileFormat {
 class PdfFormat extends FileFormat {
     public PdfFormat() {
         super(FileFormatType.PDF, new Version(1, 7, 0), FileContentType.BINARY, 
-              "pdf", new String[]{"pdf"}, true, true);
+              ".pdf", new String[]{".pdf"}, true, true);
     }
 }
 
 class PlyFormat extends FileFormat {
     public PlyFormat() {
         super(FileFormatType.PLY, new Version(1, 0, 0), FileContentType.ASCII, 
-              "ply", new String[]{"ply"}, true, true);
+              ".ply", new String[]{".ply"}, true, true);
     }
 }
 
 class Microsoft3MFFormat extends FileFormat {
     public Microsoft3MFFormat() {
         super(FileFormatType.MICROSOFT3MF, new Version(1, 0, 0), FileContentType.BINARY, 
-              "3mf", new String[]{"3mf"}, true, true);
+              ".3mf", new String[]{".3mf"}, true, true);
     }
 }
 
 class RvmFormat extends FileFormat {
     public RvmFormat(FileContentType contentType) {
         super(FileFormatType.RVM, new Version(1, 0, 0), contentType, 
-              "rvm", new String[]{"rvm"}, true, true);
+              ".rvm", new String[]{".rvm"}, true, true);
     }
 }

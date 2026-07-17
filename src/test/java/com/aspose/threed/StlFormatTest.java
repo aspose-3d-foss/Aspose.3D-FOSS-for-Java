@@ -30,7 +30,8 @@ public class StlFormatTest {
         Path outputPath = Files.createTempFile("test_export", ".stl");
         try {
             StlSaveOptions options = new StlSaveOptions();
-            options.setContentType(FileContentType.BINARY);
+            // Set the file format explicitly
+            options.setFileFormat(FileFormat.STL_BINARY);
             scene.save(outputPath.toString(), options);
             
             assertTrue(Files.exists(outputPath));
@@ -59,7 +60,8 @@ public class StlFormatTest {
         Path outputPath = Files.createTempFile("test_export_ascii", ".stl");
         try {
             StlSaveOptions options = new StlSaveOptions();
-            options.setContentType(FileContentType.ASCII);
+            // Set the file format explicitly
+            options.setFileFormat(FileFormat.STLASCII);
             scene.save(outputPath.toString(), options);
             
             assertTrue(Files.exists(outputPath));
@@ -133,11 +135,8 @@ public class StlFormatTest {
         options.setFlipCoordinateSystem(true);
         assertTrue(options.getFlipCoordinateSystem());
         
-        options.setContentType(FileContentType.BINARY);
-        assertEquals(FileContentType.BINARY, options.getContentType());
-        
-        options.setContentType(FileContentType.ASCII);
-        assertEquals(FileContentType.ASCII, options.getContentType());
+        // Note: getContentType/setContentType don't exist in On-Premise
+        // Content type is determined by FileFormat during save/load
     }
     
     @Test
@@ -148,7 +147,7 @@ public class StlFormatTest {
         options.setFlipCoordinateSystem(true);
         assertTrue(options.getFlipCoordinateSystem());
         
-        options.setContentType(FileContentType.BINARY);
-        assertEquals(FileContentType.BINARY, options.getContentType());
+        // Note: getContentType/setContentType don't exist in On-Premise
+        // Content type is determined by FileFormat during save/load
     }
 }

@@ -1,7 +1,19 @@
 package com.aspose.threed;
 
-public class VertexElementNormal extends VertexElement {
+public class VertexElementNormal extends VertexElementFVector {
+    public VertexElementNormal() {
+    }
+
     public VertexElementNormal(MappingMode mappingMode, ReferenceMode referenceMode) {
-        super(VertexElementType.NORMAL, mappingMode, referenceMode);
+        setMappingMode(mappingMode);
+        setReferenceMode(referenceMode);
+    }
+
+    public VertexElementType getVertexElementType() {
+        return VertexElementType.NORMAL;
+    }
+
+    public void clear() {
+        getIndices().clear();
     }
 }

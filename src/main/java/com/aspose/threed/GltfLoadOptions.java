@@ -1,26 +1,32 @@
 package com.aspose.threed;
 
+/**
+ * Load options for glTF format.
+ */
 public class GltfLoadOptions extends LoadOptions {
-    private boolean flipCoordinateSystem = false;
-    private boolean prettyPrint = false;
+    private boolean flipTexCoordV = true;
 
+    /**
+     * Constructor of GltfLoadOptions.
+     */
     public GltfLoadOptions() {
         super();
     }
 
-    public boolean getFlipCoordinateSystem() {
-        return flipCoordinateSystem;
+    /**
+     * Gets or sets whether to flip the V coordinate of texture coordinates during import.
+     * Default value is true.
+     * @return true if flip texture coordinate V.
+     */
+    public boolean getFlipTexCoordV() {
+        return flipTexCoordV;
     }
 
-    public void setFlipCoordinateSystem(boolean value) {
-        this.flipCoordinateSystem = value;
-    }
-
-    public boolean getPrettyPrint() {
-        return prettyPrint;
-    }
-
-    public void setPrettyPrint(boolean value) {
-        this.prettyPrint = value;
+    /**
+     * Sets whether to flip the V coordinate of texture coordinates during import.
+     * @param value New value.
+     */
+    public void setFlipTexCoordV(boolean value) {
+        this.flipTexCoordV = value;
     }
 }

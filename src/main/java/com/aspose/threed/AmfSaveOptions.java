@@ -4,7 +4,7 @@ package com.aspose.threed;
  * Options for AMF saving.
  */
 public class AmfSaveOptions extends SaveOptions {
-    private boolean compress = true;
+    private boolean enableCompression = true;
 
     /**
      * Constructor of AmfSaveOptions.
@@ -13,18 +13,18 @@ public class AmfSaveOptions extends SaveOptions {
     }
 
     /**
-     * Gets whether to compress the output AMF file.
-     * @return true if compress.
+     * Whether to use compression to reduce the final file size, default value is true.
+     * @return true if enable compression.
      */
-    public boolean getCompress() {
-        return compress;
+    public boolean getEnableCompression() {
+        return enableCompression;
     }
 
     /**
-     * Sets whether to compress the output AMF file.
+     * Sets whether to use compression to reduce the final file size.
      * @param value New value.
      */
-    public void setCompress(boolean value) {
-        this.compress = value;
+    public void setEnableCompression(boolean value) {
+        this.enableCompression = value;
     }
 }

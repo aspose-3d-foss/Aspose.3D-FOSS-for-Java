@@ -25,7 +25,7 @@ public class FileStream extends Stream {
      * @throws java.io.IOException if an I/O error occurs
      */
     public FileStream(String fileName, int fileMode, int fileAccess) throws java.io.IOException {
-        super((InputStream) null);
+        super();
         this.fileMode = fileMode;
         this.fileAccess = fileAccess;
         this.file = new RandomAccessFile(fileName, fileAccess == READ ? "r" : "rw");
@@ -159,5 +159,24 @@ public class FileStream extends Stream {
      */
     public void flush() throws java.io.IOException {
         file.getChannel().force(true);
+    }
+    
+    @Override
+    public java.io.InputStream getInputStream() {
+        return null;
+    }
+    
+    @Override
+    public java.io.OutputStream getOutputStream() {
+        return null;
+    }
+
+    @Override
+    public void copyTo(Stream stream) throws java.io.IOException {
+        byte[] buffer = new byte[8192];
+        int bytesRead;
+        while ((bytesRead = read(buffer)) != -1) {
+            stream.write(buffer, 0, bytesRead);
+        }
     }
 }

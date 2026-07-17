@@ -14,3 +14,7 @@ build.sh
 run-tests.sh
 foss.net
 .asbote
+
+# Build artifacts and backups
+*.class
+*.bak

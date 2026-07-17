@@ -54,7 +54,7 @@ public class Geometry extends Entity {
 
     public VertexElement getElement(VertexElementType type) {
         for (VertexElement element : vertexElements) {
-            if (element.getType() == type) {
+            if (element.getVertexElementType() == type) {
                 return element;
             }
         }
@@ -68,20 +68,30 @@ public class Geometry extends Entity {
     }
 
     public VertexElement createElement(VertexElementType type, MappingMode mappingMode, ReferenceMode referenceMode) {
+        VertexElement element;
         switch (type) {
             case NORMAL:
-                return new VertexElementNormal(mappingMode, referenceMode);
+                element = new VertexElementNormal();
+                break;
             case UV:
-                return new VertexElementUV(TextureMapping.DIFFUSE, mappingMode, referenceMode);
+                element = new VertexElementUV(TextureMapping.DIFFUSE);
+                break;
             case MATERIAL:
-                return new VertexElementMaterial(mappingMode, referenceMode);
+                element = new VertexElementMaterial();
+                break;
             case BINORMAL:
-                return new VertexElementBinormal(mappingMode, referenceMode);
+                element = new VertexElementBinormal();
+                break;
             case TANGENT:
-                return new VertexElementTangent(mappingMode, referenceMode);
+                element = new VertexElementTangent();
+                break;
             default:
-                return new VertexElement(type, mappingMode, referenceMode);
+                return null;
         }
+        element.setMappingMode(mappingMode);
+        element.setReferenceMode(referenceMode);
+        vertexElements.add(element);
+        return element;
     }
 
     public void addElement(VertexElement element) {
@@ -101,9 +111,9 @@ public class Geometry extends Entity {
         for (VertexElement element : vertexElements) {
             if (element instanceof VertexElementUV) {
                 VertexElementUV uv = (VertexElementUV) element;
-                if (uv.getMapping() == mapping) {
-                    return uv;
-                }
+                // On-Premise doesn't expose TextureMapping in VertexElementUV
+                // so we just return the first UV element
+                return uv;
             }
         }
         return null;
@@ -114,7 +124,9 @@ public class Geometry extends Entity {
     }
 
     public VertexElementUV createElementUV(TextureMapping mapping, MappingMode mappingMode, ReferenceMode referenceMode) {
-        VertexElementUV element = new VertexElementUV(mapping, mappingMode, referenceMode);
+        VertexElementUV element = new VertexElementUV(mapping);
+        element.setMappingMode(mappingMode);
+        element.setReferenceMode(referenceMode);
         vertexElements.add(element);
         return element;
     }

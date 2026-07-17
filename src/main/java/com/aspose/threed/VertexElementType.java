@@ -2,15 +2,18 @@ package com.aspose.threed;
 
 public enum VertexElementType {
     BINORMAL,
-    COLOR,
-    EDGE_CREASE,
-    MATERIAL,
     NORMAL,
-    SPECULAR,
     TANGENT,
-    TEXTURE_COORDINATE,
+    MATERIAL,
+    POLYGON_GROUP,
     UV,
-    USER_DATA,
     VERTEX_COLOR,
-    VISIBILITY
+    SMOOTHING_GROUP,
+    VERTEX_CREASE,
+    EDGE_CREASE,
+    USER_DATA,
+    VISIBILITY,
+    SPECULAR,
+    WEIGHT,
+    HOLE
 }

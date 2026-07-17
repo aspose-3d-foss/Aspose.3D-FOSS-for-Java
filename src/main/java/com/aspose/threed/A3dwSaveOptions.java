@@ -4,7 +4,8 @@ package com.aspose.threed;
  * Options for A3DW saving.
  */
 public class A3dwSaveOptions extends SaveOptions {
-    private boolean compress = true;
+    private boolean exportMetaData = true;
+    private String metaDataPrefix = null;
 
     /**
      * Constructor of A3dwSaveOptions.
@@ -13,18 +14,35 @@ public class A3dwSaveOptions extends SaveOptions {
     }
 
     /**
-     * Gets whether to compress the output A3DW file.
-     * @return true if compress.
+     * Export meta data associated with Scene/Node to client.
+     * Default value is true.
+     * @return true if export meta data.
      */
-    public boolean getCompress() {
-        return compress;
+    public boolean getExportMetaData() {
+        return exportMetaData;
     }
 
     /**
-     * Sets whether to compress the output A3DW file.
+     * Sets whether to export meta data associated with Scene/Node to client.
      * @param value New value.
      */
-    public void setCompress(boolean value) {
-        this.compress = value;
+    public void setExportMetaData(boolean value) {
+        this.exportMetaData = value;
+    }
+
+    /**
+     * If this property is non-null, only the properties of Scene/Node that start with this prefix will be exported, and the prefix will be removed.
+     * @return The meta data prefix.
+     */
+    public String getMetaDataPrefix() {
+        return metaDataPrefix;
+    }
+
+    /**
+     * Sets the meta data prefix.
+     * @param value New value.
+     */
+    public void setMetaDataPrefix(String value) {
+        this.metaDataPrefix = value;
     }
 }

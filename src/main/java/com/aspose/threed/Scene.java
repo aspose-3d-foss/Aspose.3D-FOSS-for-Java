@@ -103,7 +103,7 @@ public class Scene extends SceneObject {
         if (format == null) {
             throw new IOException("Unknown file format: " + filePath);
         }
-        open(new Stream(new java.io.FileInputStream(filePath)), format, cancellationToken);
+        open(Stream.wrap(new java.io.FileInputStream(filePath)), format, cancellationToken);
     }
 
     public void open(String filePath, FileFormat format) throws IOException {
@@ -111,7 +111,7 @@ public class Scene extends SceneObject {
     }
 
     public void open(String filePath, FileFormat format, Cancellation cancellationToken) throws IOException {
-        open(new Stream(new java.io.FileInputStream(filePath)), format, cancellationToken);
+        open(Stream.wrap(new java.io.FileInputStream(filePath)), format, cancellationToken);
     }
 
     public void open(String filePath, LoadOptions options) throws IOException {
@@ -123,7 +123,7 @@ public class Scene extends SceneObject {
         if (format == null) {
             format = IOService.getFormatByFileName(filePath);
         }
-        open(new Stream(new FileInputStream(filePath)), format, options, cancellationToken);
+        open(Stream.wrap(new FileInputStream(filePath)), format, options, cancellationToken);
     }
 
     public void open(InputStream stream) throws IOException {
@@ -131,7 +131,7 @@ public class Scene extends SceneObject {
     }
 
     public void open(InputStream stream, Cancellation cancellationToken) throws IOException {
-        open(new Stream(stream), cancellationToken);
+        open(Stream.wrap(stream), cancellationToken);
     }
 
     public void open(InputStream stream, FileFormat format) throws IOException {
@@ -139,7 +139,7 @@ public class Scene extends SceneObject {
     }
 
     public void open(InputStream stream, FileFormat format, Cancellation cancellationToken) throws IOException {
-        open(new Stream(stream), format, cancellationToken);
+        open(Stream.wrap(stream), format, cancellationToken);
     }
 
     public void open(InputStream stream, LoadOptions options) throws IOException {
@@ -147,7 +147,7 @@ public class Scene extends SceneObject {
     }
 
     public void open(InputStream stream, LoadOptions options, Cancellation cancellationToken) throws IOException {
-        open(new Stream(stream), options, cancellationToken);
+        open(Stream.wrap(stream), options, cancellationToken);
     }
 
     public void open(Stream stream, FileFormat format, LoadOptions options) throws IOException {
@@ -350,7 +350,11 @@ public class Scene extends SceneObject {
         if (cancellationToken != null && cancellationToken.isCancelled()) {
             return;
         }
-        FileFormat format = FileFormat.getFormatByExtension(filePath);
+        // Use options.getFileFormat() if set, otherwise fall back to file extension
+        FileFormat format = options.getFileFormat();
+        if (format == null) {
+            format = FileFormat.getFormatByExtension(filePath);
+        }
         if (format == null) {
             throw new IOException("Unknown file format for: " + filePath);
         }
@@ -398,7 +402,7 @@ public class Scene extends SceneObject {
             throw new IOException("File format not specified in SaveOptions");
         }
         
-        format.save(this, new Stream(stream), options);
+        format.save(this, Stream.wrap(stream), options);
     }
 
     public void save(Stream stream, FileFormat format) throws IOException {
@@ -425,7 +429,7 @@ public class Scene extends SceneObject {
             throw new IOException("File format not specified in SaveOptions");
         }
         FileFormat format = options.getFileFormat();
-        format.save(this, new Stream(stream), options);
+        format.save(this, stream, options);
     }
 
     public void render(Camera camera, String fileName) throws IOException {

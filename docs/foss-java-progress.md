@@ -3,25 +3,30 @@
 ## Current Phase: Stage 1 - Source Port (IN PROGRESS)
 
 ### Date: 2026-07-10
-### Session: 472
+### Session: 471
 
-**Status:** Session 471 completed - 1 task (Node API fix) resolved. Current state: 42 "Added types" (new classes to create), 137 "Changed types" (API fixes needed), 1 "Removed type" (PropertyFlags to remove).
+**Status:** Session 471 completed - All tests passing. Fixed 19 classes including FileFormat, Scene, Group, FbxSaveOptions, and StlFormat. Current state: 42 "Added types" (new classes to create), 118 "Changed types" (API fixes needed), 1 "Removed type" (PropertyFlags to remove).
 
-**Task breakdown (Session 472):**
-1. Fix Node API signature - **RESOLVED**: Verified Node class has correct API matching On-Premise 26.1.0 (no differences found)
-2. Synchronized Maven version from 26.2.0 to 26.1.0 to match .NET FOSS
+**Task breakdown (Session 471):**
+1. Fix FileFormat extension consistency - **RESOLVED**: Added dots to all extension strings
+2. Fix Scene.save() options handling - **RESOLVED**: Now uses options.getFileFormat() when set
+3. Fix Group class - **RESOLVED**: Changed to A3DObject, added getParent(), getGroups(), getNodes(), toString()
+4. Fix FbxSaveOptions - **RESOLVED**: Added FileContentType constructor
+5. Fix StlFormat - **RESOLVED**: All 6 tests now pass (was 1 failing)
 
-**Changes in Session 472:**
-1. Fixed Maven pom.xml - changed version from 26.2.0 to 26.1.0
-2. Verified Node.java API matches On-Premise 26.1.0 (diff shows no differences)
-3. Resolved task #154 - Node API signature fix
+**Changes in Session 471:**
+1. Fixed FileFormat.java - Added dots to all extension strings (stl → .stl, obj → .obj, etc.)
+2. Fixed Scene.java - Modified save() to use options.getFileFormat() if set
+3. Fixed Group.java - Changed from Entity to A3DObject, added methods
+4. Fixed FbxSaveOptions.java - Added FileContentType constructor
+5. Fixed FileFormat.java - Removed malformed comment in save() method
 
 **Current State:**
 - 42 "Added types" remain between Java FOSS and On-Premise 26.1.0
-- 137 "Changed types" remain (need API signature fixes, down from 145)
+- 118 "Changed types" remain (need API signature fixes, down from 137)
 - 1 "Removed type" (PropertyFlags - extra type in FOSS that should be removed)
-- All 17 tests passing
-- Build: SUCCESS
+- All 17 tests passing ✓
+- Build: SUCCESS ✓
 
 **Target:**
 - Aspose.3D for Java 26.1.0 (On-Premise)
@@ -31,10 +36,10 @@
 **Verification:**
 - All classes compiled successfully with `mvn compile`
 - All tests passing: 17 tests passed
-- API signatures verified with `aspose-cli api diff` - 42 "Added types", 137 "Changed types", 1 "Removed type"
+- API signatures verified with `aspose-cli api diff` - 42 "Added types", 118 "Changed types", 1 "Removed type"
 
 **Next Steps:**
-Continue fixing the 137 "Changed types" and removing the 1 "Removed type" (PropertyFlags). The remaining 42 "Added types" are mostly rendering-related stubs (Category 2) and new file format classes.
+Continue fixing the 118 "Changed types" (math utilities, format options, other classes). The remaining 42 "Added types" are mostly rendering-related stubs (Category 2) and new file format classes.
 
 ---
 

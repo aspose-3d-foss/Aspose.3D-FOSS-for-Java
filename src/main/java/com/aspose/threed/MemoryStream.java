@@ -23,7 +23,7 @@ public class MemoryStream extends Stream implements AutoCloseable {
      * @param capacity The initial capacity
      */
     public MemoryStream(int capacity) {
-        super((OutputStream) null);
+        super();
         this.capacity = capacity;
         this.buffer = new byte[capacity];
         this.position = 0;
@@ -261,5 +261,15 @@ public class MemoryStream extends Stream implements AutoCloseable {
      */
     public void copyTo(OutputStream stream) throws java.io.IOException {
         stream.write(buffer, 0, size);
+    }
+    
+    @Override
+    public java.io.InputStream getInputStream() {
+        return null;
+    }
+    
+    @Override
+    public java.io.OutputStream getOutputStream() {
+        return null;
     }
 }
