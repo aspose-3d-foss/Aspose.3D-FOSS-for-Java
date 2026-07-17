@@ -8,3 +8,9 @@ testdata
 .secrets
 .env.act
 /src/test/resources/Input
+
+# Local-only: agent build/test scripts, sibling-repo symlink, AI agent working files
+build.sh
+run-tests.sh
+foss.net
+.asbote
