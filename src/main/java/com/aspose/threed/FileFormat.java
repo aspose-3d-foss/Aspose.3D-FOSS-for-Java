@@ -282,19 +282,19 @@ public class FileFormat {
         String ext = extension.toLowerCase();
         
         if (ext.equals("stl")) {
-            StlLoader loader = new StlLoader();
+            StlReader loader = new StlReader();
             return loader.load(stream, options);
         }
         else if (ext.equals("obj")) {
-            ObjLoader loader = new ObjLoader();
+            ObjReader loader = new ObjReader();
             return loader.load(stream, options);
         }
         else if (ext.equals("gltf") || ext.equals("glb")) {
-            GltfLoader loader = new GltfLoader();
+            GltfReader loader = new GltfReader();
             return loader.load(stream, options);
         }
         else if (ext.equals("fbx")) {
-            FbxLoader loader = new FbxLoader();
+            FbxReader loader = new FbxReader();
             return loader.load(stream, options);
         }
         
@@ -309,11 +309,11 @@ public class FileFormat {
          String ext = extension.toLowerCase();
          
          if (ext.equals("stl")) {
-             StlSaver saver = new StlSaver();
+             StlWriter saver = new StlWriter();
              saver.save(scene, stream, options, contentType);
          }
          else if (ext.equals("obj")) {
-             ObjSaver saver = new ObjSaver();
+             ObjWriter saver = new ObjWriter();
              saver.save(scene, stream, options);
          }
          else if (ext.equals("gltf") || ext.equals("glb")) {
@@ -321,7 +321,7 @@ public class FileFormat {
              saver.save(scene, stream, options);
          }
          else if (ext.equals("fbx")) {
-             FbxSaver saver = new FbxSaver();
+             FbxWriter saver = new FbxWriter();
              saver.save(scene, stream, options);
          }
          else {
@@ -329,7 +329,7 @@ public class FileFormat {
          }
      }
     // Internal loader classes
-    private static class StlLoader {
+    private static class StlReader {
         public Scene load(Stream stream, LoadOptions options) throws IOException, ImportException {
             java.io.InputStream in = stream.getInputStream();
             if (in == null) {
@@ -510,7 +510,7 @@ public class FileFormat {
         }
     }
 
-    private static class ObjLoader {
+    private static class ObjReader {
         public Scene load(Stream stream, LoadOptions options) throws IOException, ImportException {
             java.io.InputStream in = stream.getInputStream();
             if (in == null) {
@@ -601,14 +601,14 @@ public class FileFormat {
         }
     }
 
-    private static class GltfLoader {
+    private static class GltfReader {
         public Scene load(Stream stream, LoadOptions options) throws IOException, ImportException {
             // TODO: implement GLTF loading
             return new Scene();
         }
     }
 
-    private static class FbxLoader {
+    private static class FbxReader {
         public Scene load(Stream stream, LoadOptions options) throws IOException, ImportException {
             // TODO: implement FBX loading
             return new Scene();
@@ -616,7 +616,7 @@ public class FileFormat {
     }
 
     // Internal saver classes
-    private static class StlSaver {
+    private static class StlWriter {
         public void save(Scene scene, Stream stream, SaveOptions options, FileContentType contentType) throws IOException {
             java.io.OutputStream out = stream.getOutputStream();
             if (out == null) {
@@ -794,7 +794,7 @@ public class FileFormat {
         }
     }
 
-    private static class ObjSaver {
+    private static class ObjWriter {
         public void save(Scene scene, Stream stream, SaveOptions options) throws IOException {
             // TODO: implement OBJ saving
         }
@@ -806,7 +806,7 @@ public class FileFormat {
         }
     }
 
-    private static class FbxSaver {
+    private static class FbxWriter {
         public void save(Scene scene, Stream stream, SaveOptions options) throws IOException {
             // TODO: implement FBX saving
         }
