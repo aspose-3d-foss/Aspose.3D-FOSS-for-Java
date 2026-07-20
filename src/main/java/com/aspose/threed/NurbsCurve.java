@@ -9,12 +9,12 @@ import java.util.List;
  */
 public class NurbsCurve extends Curve {
     private final List<Vector4> controlPoints = new ArrayList<>();
-    private int order = 3;
+    private int order = 2;
     private CurveDimension dimension = CurveDimension.THREE_DIMENSIONAL;
     private NurbsType curveType = NurbsType.OPEN;
     private final List<Double> knotVectors = new ArrayList<>();
     private final List<Integer> multiplicity = new ArrayList<>();
-    private boolean rational = true;
+    private boolean rational = false;
 
     /**
      * Gets all control points.

@@ -76,7 +76,7 @@ class IOService {
         if (fileName == null) return null;
         int lastDot = fileName.lastIndexOf('.');
         if (lastDot >= 0) {
-            String ext = fileName.substring(lastDot);
+            String ext = fileName.substring(lastDot + 1);  // Strip the dot
             return FileFormat.getFormatByExtension(ext);
         }
         return null;

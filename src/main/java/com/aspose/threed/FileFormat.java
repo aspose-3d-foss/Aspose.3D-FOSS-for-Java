@@ -69,22 +69,20 @@ public class FileFormat {
 
     private static final List<FileFormat> allFormats = new ArrayList<>();
     private static final Map<String, FileFormat> extensionIndex = new HashMap<>();
-     static {
-          FBX6100ASCII = new FileFormat(FileFormatType.FBX, new Version(6, 1, 0), 
-              FileContentType.ASCII, ".fbx", new String[]{".fbx"}, true, true);
-          FBX6100_BINARY = new FileFormat(FileFormatType.FBX, new Version(6, 1, 0), 
-              FileContentType.BINARY, ".fbx", new String[]{".fbx"}, true, true);
-          STL_BINARY = new FileFormat(FileFormatType.STL, new Version(1, 0, 0), 
-              FileContentType.BINARY, ".stl", new String[]{".stl"}, true, true);
-          STLASCII = new FileFormat(FileFormatType.STL, new Version(1, 0, 0), 
-              FileContentType.ASCII, ".stl", new String[]{".stl"}, true, true);
-          WAVEFRONTOBJ = new FileFormat(FileFormatType.WAVEFRONTOBJ, new Version(1, 0, 0), 
-              FileContentType.ASCII, ".obj", new String[]{".obj", ".mtl"}, true, true);
-          GLTF2 = new FileFormat(FileFormatType.GLTF, new Version(2, 0, 0), 
-              FileContentType.ASCII, ".gltf", new String[]{".gltf"}, true, true);
-          GLTF2_BINARY = new FileFormat(FileFormatType.GLTF, new Version(2, 0, 0), 
-              FileContentType.BINARY, ".glb", new String[]{".glb"}, true, true);
-          FBX7200ASCII = FBX6100ASCII;
+     static {           FBX6100ASCII = new FileFormat(FileFormatType.FBX, new Version(6, 1, 0), 
+               FileContentType.ASCII, "fbx", new String[]{"fbx"}, true, true);
+           FBX6100_BINARY = new FileFormat(FileFormatType.FBX, new Version(6, 1, 0), 
+               FileContentType.BINARY, "fbx", new String[]{"fbx"}, true, true);
+           STL_BINARY = new FileFormat(FileFormatType.STL, new Version(1, 0, 0), 
+               FileContentType.BINARY, "stl", new String[]{"stl"}, true, true);
+           STLASCII = new FileFormat(FileFormatType.STL, new Version(1, 0, 0), 
+               FileContentType.ASCII, "stl", new String[]{"stl"}, true, true);
+           WAVEFRONTOBJ = new FileFormat(FileFormatType.WAVEFRONTOBJ, new Version(1, 0, 0), 
+               FileContentType.ASCII, "obj", new String[]{"obj", "mtl"}, true, true);
+           GLTF2 = new FileFormat(FileFormatType.GLTF, new Version(2, 0, 0), 
+               FileContentType.ASCII, "gltf", new String[]{"gltf"}, true, true);
+           GLTF2_BINARY = new FileFormat(FileFormatType.GLTF, new Version(2, 0, 0), 
+               FileContentType.BINARY, "glb", new String[]{"glb"}, true, true);          FBX7200ASCII = FBX6100ASCII;
           FBX7200_BINARY = FBX6100_BINARY;
           FBX7300ASCII = FBX6100ASCII;
           FBX7300_BINARY = FBX6100_BINARY;
@@ -95,64 +93,62 @@ public class FileFormat {
           FBX7600ASCII = FBX6100ASCII;
           FBX7600_BINARY = FBX6100_BINARY;
           FBX7700ASCII = FBX6100ASCII;
-          FBX7700_BINARY = FBX6100_BINARY;
-          MAYAASCII = new FileFormat(FileFormatType.MAYA, new Version(1, 0, 0), 
-              FileContentType.ASCII, ".ma", new String[]{".ma"}, true, true);
-          MAYA_BINARY = new FileFormat(FileFormatType.MAYA, new Version(1, 0, 0), 
-              FileContentType.BINARY, ".mb", new String[]{".mb"}, true, true);
-          DISCREET3DS = new FileFormat(FileFormatType.DISCREET3DS, new Version(1, 0, 0), 
-              FileContentType.BINARY, ".3ds", new String[]{".3ds"}, true, true);
-          COLLADA = new FileFormat(FileFormatType.COLLADA, new Version(1, 4, 0), 
-              FileContentType.ASCII, ".dae", new String[]{".dae"}, true, true);
-          UNIVERSAL3D = new FileFormat(FileFormatType.UNIVERSAL3D, new Version(1, 0, 0), 
-              FileContentType.BINARY, ".u3d", new String[]{".u3d"}, true, true);
-          GLTF = new FileFormat(FileFormatType.GLTF, new Version(1, 0, 0), 
-              FileContentType.ASCII, ".gltf", new String[]{".gltf"}, true, true);
-          GLTF_BINARY = new FileFormat(FileFormatType.GLTF, new Version(1, 0, 0), 
-              FileContentType.BINARY, ".glb", new String[]{".glb"}, true, true);         PDF = new PdfFormat();          BLENDER = new FileFormat(FileFormatType.BLENDER, new Version(1, 0, 0), 
-              FileContentType.BINARY, ".blend", new String[]{".blend"}, true, true);
-          DXF = new FileFormat(FileFormatType.DXF, new Version(1, 0, 0), 
-              FileContentType.ASCII, ".dxf", new String[]{".dxf"}, true, true);
-          PLY = new PlyFormat();
-          X_BINARY = new FileFormat(FileFormatType.X, new Version(1, 0, 0), 
-              FileContentType.BINARY, ".x", new String[]{".x"}, true, true);
-          X_TEXT = new FileFormat(FileFormatType.X, new Version(1, 0, 0), 
-              FileContentType.ASCII, ".x", new String[]{".x"}, true, true);
-          DRACO = new DracoFormat();
-          MICROSOFT3MF = new Microsoft3MFFormat();
-          RVM_TEXT = new RvmFormat(FileContentType.ASCII);
-          RVM_BINARY = new RvmFormat(FileContentType.BINARY);
-          ASE = new FileFormat(FileFormatType.ASE, new Version(1, 0, 0), 
-              FileContentType.ASCII, ".ase", new String[]{".ase"}, true, true);
-          IFC = new FileFormat(FileFormatType.IFC, new Version(1, 0, 0), 
-              FileContentType.ASCII, ".ifc", new String[]{".ifc"}, true, true);
-          SIEMENSJT8 = new FileFormat(FileFormatType.SIEMENSJT, new Version(8, 0, 0), 
-              FileContentType.BINARY, ".jt", new String[]{".jt"}, true, true);
-          SIEMENSJT9 = new FileFormat(FileFormatType.SIEMENSJT, new Version(9, 0, 0), 
-              FileContentType.BINARY, ".jt", new String[]{".jt"}, true, true);
-          AMF = new FileFormat(FileFormatType.AMF, new Version(1, 0, 0), 
-              FileContentType.BINARY, ".amf", new String[]{".amf"}, true, true);
-          VRML = new FileFormat(FileFormatType.VRML, new Version(2, 0, 0), 
-              FileContentType.ASCII, ".wrl", new String[]{".wrl"}, true, true);
-          ASPOSE3D_WEB = new FileFormat(FileFormatType.ASPOSE3D_WEB, new Version(1, 0, 0), 
-              FileContentType.BINARY, ".a3dw", new String[]{".a3dw"}, true, true);
-          HTML5 = new FileFormat(FileFormatType.HTML5, new Version(1, 0, 0), 
-              FileContentType.ASCII, ".html", new String[]{".html"}, true, true);
-          ZIP = new FileFormat(FileFormatType.ZIP, new Version(1, 0, 0), 
-              FileContentType.BINARY, ".zip", new String[]{".zip"}, true, true);
-          USD = new FileFormat(FileFormatType.USD, new Version(1, 0, 0), 
-              FileContentType.BINARY, ".usdc", new String[]{".usdc"}, true, true);
-          USDA = new FileFormat(FileFormatType.USD, new Version(1, 0, 0), 
-              FileContentType.ASCII, ".usda", new String[]{".usda"}, true, true);
-          USDZ = new FileFormat(FileFormatType.USD, new Version(1, 0, 0), 
-              FileContentType.BINARY, ".usdz", new String[]{".usdz"}, true, true);
-          XYZ = new FileFormat(FileFormatType.XYZ, new Version(1, 0, 0), 
-              FileContentType.ASCII, ".xyz", new String[]{".xyz"}, true, true);
-          PCD = new FileFormat(FileFormatType.PCD, new Version(1, 0, 0), 
-              FileContentType.ASCII, ".pcd", new String[]{".pcd"}, true, true);
-          PCD_BINARY = new FileFormat(FileFormatType.PCD, new Version(1, 0, 0), 
-              FileContentType.BINARY, ".pcd", new String[]{".pcd"}, true, true);         
-         FileFormat.registerFormat(FBX6100ASCII);
+          FBX7700_BINARY = FBX6100_BINARY;           MAYAASCII = new FileFormat(FileFormatType.MAYA, new Version(1, 0, 0), 
+               FileContentType.ASCII, "ma", new String[]{"ma"}, true, true);
+           MAYA_BINARY = new FileFormat(FileFormatType.MAYA, new Version(1, 0, 0), 
+               FileContentType.BINARY, "mb", new String[]{"mb"}, true, true);
+           DISCREET3DS = new FileFormat(FileFormatType.DISCREET3DS, new Version(1, 0, 0), 
+               FileContentType.BINARY, "3ds", new String[]{"3ds"}, true, true);
+           COLLADA = new FileFormat(FileFormatType.COLLADA, new Version(1, 4, 0), 
+               FileContentType.ASCII, "dae", new String[]{"dae"}, true, true);
+           UNIVERSAL3D = new FileFormat(FileFormatType.UNIVERSAL3D, new Version(1, 0, 0), 
+               FileContentType.BINARY, "u3d", new String[]{"u3d"}, true, true);
+           GLTF = new FileFormat(FileFormatType.GLTF, new Version(1, 0, 0), 
+               FileContentType.ASCII, "gltf", new String[]{"gltf"}, true, true);
+           GLTF_BINARY = new FileFormat(FileFormatType.GLTF, new Version(1, 0, 0), 
+               FileContentType.BINARY, "glb", new String[]{"glb"}, true, true);         PDF = new PdfFormat();          BLENDER = new FileFormat(FileFormatType.BLENDER, new Version(1, 0, 0), 
+               FileContentType.BINARY, "blend", new String[]{"blend"}, true, true);
+           DXF = new FileFormat(FileFormatType.DXF, new Version(1, 0, 0), 
+               FileContentType.ASCII, "dxf", new String[]{"dxf"}, true, true);
+           PLY = new PlyFormat();
+           X_BINARY = new FileFormat(FileFormatType.X, new Version(1, 0, 0), 
+               FileContentType.BINARY, "x", new String[]{"x"}, true, true);
+           X_TEXT = new FileFormat(FileFormatType.X, new Version(1, 0, 0), 
+               FileContentType.ASCII, "x", new String[]{"x"}, true, true);
+           DRACO = new DracoFormat();
+           MICROSOFT3MF = new Microsoft3MFFormat();
+           RVM_TEXT = new RvmFormat(FileContentType.ASCII);
+           RVM_BINARY = new RvmFormat(FileContentType.BINARY);
+           ASE = new FileFormat(FileFormatType.ASE, new Version(1, 0, 0), 
+               FileContentType.ASCII, "ase", new String[]{"ase"}, true, true);
+           IFC = new FileFormat(FileFormatType.IFC, new Version(1, 0, 0), 
+               FileContentType.ASCII, "ifc", new String[]{"ifc"}, true, true);
+           SIEMENSJT8 = new FileFormat(FileFormatType.SIEMENSJT, new Version(8, 0, 0), 
+               FileContentType.BINARY, "jt", new String[]{"jt"}, true, true);
+           SIEMENSJT9 = new FileFormat(FileFormatType.SIEMENSJT, new Version(9, 0, 0), 
+               FileContentType.BINARY, "jt", new String[]{"jt"}, true, true);
+           AMF = new FileFormat(FileFormatType.AMF, new Version(1, 0, 0), 
+               FileContentType.BINARY, "amf", new String[]{"amf"}, true, true);
+           VRML = new FileFormat(FileFormatType.VRML, new Version(2, 0, 0), 
+               FileContentType.ASCII, "wrl", new String[]{"wrl"}, true, true);
+           ASPOSE3D_WEB = new FileFormat(FileFormatType.ASPOSE3D_WEB, new Version(1, 0, 0), 
+               FileContentType.BINARY, "a3dw", new String[]{"a3dw"}, true, true);
+           HTML5 = new FileFormat(FileFormatType.HTML5, new Version(1, 0, 0), 
+               FileContentType.ASCII, "html", new String[]{"html"}, true, true);
+           ZIP = new FileFormat(FileFormatType.ZIP, new Version(1, 0, 0), 
+               FileContentType.BINARY, "zip", new String[]{"zip"}, true, true);
+           USD = new FileFormat(FileFormatType.USD, new Version(1, 0, 0), 
+               FileContentType.BINARY, "usdc", new String[]{"usdc"}, true, true);
+           USDA = new FileFormat(FileFormatType.USD, new Version(1, 0, 0), 
+               FileContentType.ASCII, "usda", new String[]{"usda"}, true, true);
+           USDZ = new FileFormat(FileFormatType.USD, new Version(1, 0, 0), 
+               FileContentType.BINARY, "usdz", new String[]{"usdz"}, true, true);
+           XYZ = new FileFormat(FileFormatType.XYZ, new Version(1, 0, 0), 
+               FileContentType.ASCII, "xyz", new String[]{"xyz"}, true, true);
+           PCD = new FileFormat(FileFormatType.PCD, new Version(1, 0, 0), 
+               FileContentType.ASCII, "pcd", new String[]{"pcd"}, true, true);
+           PCD_BINARY = new FileFormat(FileFormatType.PCD, new Version(1, 0, 0), 
+               FileContentType.BINARY, "pcd", new String[]{"pcd"}, true, true);         FileFormat.registerFormat(FBX6100ASCII);
          FileFormat.registerFormat(FBX6100_BINARY);
          FileFormat.registerFormat(STL_BINARY);
          FileFormat.registerFormat(STLASCII);
@@ -197,11 +193,7 @@ public class FileFormat {
         
         int lastDot = ext.lastIndexOf('.');
         if (lastDot >= 0) {
-            ext = ext.substring(lastDot);  // Keep the dot
-        }
-        
-        if (!ext.startsWith(".")) {
-            ext = "." + ext;
+            ext = ext.substring(lastDot + 1);  // Strip the dot
         }
         return extensionIndex.get(ext);
     }
@@ -289,19 +281,19 @@ public class FileFormat {
     Scene load(Stream stream, LoadOptions options) throws IOException, ImportException {
         String ext = extension.toLowerCase();
         
-        if (ext.equals(".stl")) {
+        if (ext.equals("stl")) {
             StlLoader loader = new StlLoader();
             return loader.load(stream, options);
         }
-        else if (ext.equals(".obj")) {
+        else if (ext.equals("obj")) {
             ObjLoader loader = new ObjLoader();
             return loader.load(stream, options);
         }
-        else if (ext.equals(".gltf") || ext.equals(".glb")) {
+        else if (ext.equals("gltf") || ext.equals("glb")) {
             GltfLoader loader = new GltfLoader();
             return loader.load(stream, options);
         }
-        else if (ext.equals(".fbx")) {
+        else if (ext.equals("fbx")) {
             FbxLoader loader = new FbxLoader();
             return loader.load(stream, options);
         }
@@ -316,19 +308,19 @@ public class FileFormat {
     void save(Scene scene, Stream stream, SaveOptions options) throws IOException {
          String ext = extension.toLowerCase();
          
-         if (ext.equals(".stl")) {
+         if (ext.equals("stl")) {
              StlSaver saver = new StlSaver();
              saver.save(scene, stream, options, contentType);
          }
-         else if (ext.equals(".obj")) {
+         else if (ext.equals("obj")) {
              ObjSaver saver = new ObjSaver();
              saver.save(scene, stream, options);
          }
-         else if (ext.equals(".gltf") || ext.equals(".glb")) {
+         else if (ext.equals("gltf") || ext.equals("glb")) {
              GltfSaver saver = new GltfSaver();
              saver.save(scene, stream, options);
          }
-         else if (ext.equals(".fbx")) {
+         else if (ext.equals("fbx")) {
              FbxSaver saver = new FbxSaver();
              saver.save(scene, stream, options);
          }
@@ -520,8 +512,92 @@ public class FileFormat {
 
     private static class ObjLoader {
         public Scene load(Stream stream, LoadOptions options) throws IOException, ImportException {
-            // TODO: implement OBJ loading
-            return new Scene();
+            java.io.InputStream in = stream.getInputStream();
+            if (in == null) {
+                throw new IOException("Input stream not available");
+            }
+            
+            Scene scene = new Scene();
+            Node node = scene.getRootNode().createChildNode("RootEntity");
+            
+            java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.InputStreamReader(in, "US-ASCII"));
+            List<Vector4> vertices = new ArrayList<Vector4>();
+            List<List<Integer>> faces = new ArrayList<List<Integer>>();
+            int objectCount = 0;
+            
+            try {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    line = line.trim();
+                    if (line.isEmpty() || line.startsWith("#")) {
+                        continue;
+                    }
+                    
+                    String[] parts = line.split("\\s+");
+                    if (parts.length == 0) {
+                        continue;
+                    }
+                    
+                    if (parts[0].equals("v")) {
+                        if (parts.length >= 4) {
+                            double x = Double.parseDouble(parts[1]);
+                            double y = Double.parseDouble(parts[2]);
+                            double z = Double.parseDouble(parts[3]);
+                            double w = parts.length > 4 ? Double.parseDouble(parts[4]) : 1.0;
+                            vertices.add(new Vector4((float)x, (float)y, (float)z, (float)w));
+                        }
+                    } else if (parts[0].equals("f")) {
+                        if (parts.length >= 4) {
+                            List<Integer> face = new ArrayList<Integer>();
+                            for (int i = 1; i < parts.length; i++) {
+                                String[] indices = parts[i].split("/");
+                                int vertexIndex = Integer.parseInt(indices[0]);
+                                face.add(vertexIndex - 1);
+                            }
+                            faces.add(face);
+                        }
+                    } else if (parts[0].equals("g") || parts[0].equals("o")) {
+                        // When group/object changes, create mesh from accumulated faces
+                        if (faces.size() > 0) {
+                            createMeshFromFaces(node, vertices, faces, objectCount);
+                            objectCount++;
+                            vertices = new ArrayList<Vector4>();
+                            faces = new ArrayList<List<Integer>>();
+                        }
+                    }
+                }
+                
+                // Create final mesh from remaining faces
+                if (faces.size() > 0) {
+                    createMeshFromFaces(node, vertices, faces, objectCount);
+                }
+            } finally {
+                reader.close();
+            }
+            
+            return scene;
+        }
+        
+        private void createMeshFromFaces(Node node, List<Vector4> vertices, List<List<Integer>> faces, int meshIndex) {
+            Mesh mesh = new Mesh("Object_" + meshIndex);
+            
+            // Add all vertices to control points
+            for (Vector4 v : vertices) {
+                mesh.addControlPoint(v.x, v.y, v.z);
+            }
+            
+            // Create polygons
+            for (List<Integer> face : faces) {
+                if (face.size() == 3) {
+                    mesh.createPolygon(face.get(0), face.get(1), face.get(2));
+                } else if (face.size() == 4) {
+                    mesh.createPolygon(face.get(0), face.get(1), face.get(2), face.get(3));
+                }
+            }
+            
+            if (mesh.getPolygonCount() > 0) {
+                node.addEntity(mesh);
+            }
         }
     }
 
