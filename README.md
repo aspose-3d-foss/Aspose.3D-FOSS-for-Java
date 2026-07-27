@@ -29,9 +29,39 @@ The public API matches Aspose.3D for Java 26.1.0:
 - No licensing, trial, or DRM-related functionality (not applicable to an open-source project)
 - Some advanced features have stub implementations
 
+## Installation
+
+Aspose.3D FOSS for Java is published to [Maven Central](https://central.sonatype.com/). Add it to your project as a dependency — no extra repositories or configuration required.
+
+### Maven
+
+```xml
+<dependency>
+    <groupId>org.aspose</groupId>
+    <artifactId>aspose-3d-foss</artifactId>
+    <version>26.5.0</version>
+</dependency>
+```
+
+### Gradle (Kotlin DSL)
+
+```kotlin
+implementation("org.aspose:aspose-3d-foss:26.5.0")
+```
+
+### Gradle (Groovy DSL)
+
+```groovy
+implementation 'org.aspose:aspose-3d-foss:26.5.0'
+```
+
+### Other build tools
+
+The artifact coordinates are `org.aspose:aspose-3d-foss:26.5.0`. Use them with [SBT](https://www.scala-sbt.org/), [Leiningen](https://leiningen.org/), [Apache Ivy](https://ant.apache.org/ivy/), or any tool that resolves from Maven Central. It requires **Java 8** or later.
+
 ## Building
 
-This is a Maven project. Build and test with:
+This is a Maven project. Build and test from source with:
 
 ```bash
 # Build the project
@@ -43,15 +73,33 @@ mvn test
 
 ## Usage
 
+Load a 3D file and convert it to another format:
+
 ```java
 import com.aspose.threed.Scene;
 
-// Load a 3D file
-Scene scene = new Scene("testdata/input/cube.obj");
+// Load a 3D file (format is detected automatically)
+Scene scene = Scene.fromFile("input/cube.obj");
 
 // Save to another format
 scene.save("output.stl");
 ```
+
+To explicitly specify the output format, or load with custom options:
+
+```java
+import com.aspose.threed.FileFormat;
+import com.aspose.threed.Scene;
+import com.aspose.threed.StlSaveOptions;
+
+// Save in an explicit format
+scene.save("output.stl", FileFormat.STLASCII);
+
+// ...or with save options
+scene.save("output.stl", new StlSaveOptions());
+```
+
+See [FILE_FORMATS.md](FILE_FORMATS.md) for the list of supported formats.
 
 ## Contributing
 
