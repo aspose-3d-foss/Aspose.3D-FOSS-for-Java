@@ -317,7 +317,7 @@ public class FileFormat {
              saver.save(scene, stream, options);
          }
          else if (ext.equals("gltf") || ext.equals("glb")) {
-             GltfSaver saver = new GltfSaver();
+             GltfWriter saver = new GltfWriter();
              saver.save(scene, stream, options);
          }
          else if (ext.equals("fbx")) {
@@ -800,7 +800,7 @@ public class FileFormat {
         }
     }
 
-    private static class GltfSaver {
+    private static class GltfWriter {
         public void save(Scene scene, Stream stream, SaveOptions options) throws IOException {
             // TODO: implement GLTF saving
         }
